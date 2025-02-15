@@ -1,4 +1,4 @@
-.btn::first-letter {
+.btn::first-atom-input-text {
   text-transform: uppercase;
 }
 

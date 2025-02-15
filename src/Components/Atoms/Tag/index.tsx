@@ -17,12 +17,12 @@ const colorMap = {
   info: 'bg-info text-white',
   success: 'bg-success text-white',
   neutral: 'bg-neutral text-white',
-  'line-light': 'bg-line-light text-white',
-  line: 'bg-line text-white',
-  'line-dark': 'bg-line-dark text-white',
-  'letter-light': 'bg-letter-light text-white',
-  letter: 'bg-letter text-white',
-  'letter-dark': 'bg-letter-dark text-white',
+  'line-light': 'bg-atom-input-light text-white',
+  line: 'bg-atom-input text-white',
+  'line-dark': 'bg-atom-input-dark text-white',
+  'letter-light': 'bg-atom-input-text-light text-white',
+  letter: 'bg-atom-input-text text-white',
+  'letter-dark': 'bg-atom-input-text-dark text-white',
   'btn-light': 'bg-btn-light text-white',
   btn: 'bg-btn text-white',
   'btn-dark': 'bg-btn-dark text-white',
@@ -53,7 +53,7 @@ const Tag: React.FC<TagProps> = ({
       {icon && (
         <Button
           variant="icon"
-          className={`text-line-light text-white`}
+          className={`text-atom-input-light text-white`}
           onClick={() => handleRemove}
         >
           {icon}
