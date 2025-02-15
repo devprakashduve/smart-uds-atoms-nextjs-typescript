@@ -2,6 +2,10 @@
   "name": "atomic-uds-next-app",
   "version": "0.1.0",
   "private": true,
+  "description": "Reusable UDS library",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +13,8 @@
     "lint": "next lint",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "rollup": "rollup -c --bundleConfigAsCjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -21,7 +26,14 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.26.9",
     "@chromatic-com/storybook": "^3.2.4",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@storybook/addon-essentials": "^8.5.3",
     "@storybook/addon-interactions": "^8.5.3",
     "@storybook/addon-onboarding": "^8.5.3",
@@ -29,6 +41,7 @@
     "@storybook/nextjs": "^8.5.3",
     "@storybook/react": "^8.5.3",
     "@storybook/test": "^8.5.3",
+    "@svgr/rollup": "^8.1.0",
     "@types/enzyme": "^3.10.18",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
@@ -41,6 +54,13 @@
     "postcss": "^8",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "rollup": "^4.34.7",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-serve": "^3.0.0",
+    "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^8.5.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

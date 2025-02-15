@@ -10,7 +10,6 @@ const Checkbox = ({
   name,
   disabled = false,
   indeterminate = false,
-  rounded = false,
 }: CheckboxProps) => {
   const boxSize = {
     sm: 'h-4 w-4',
@@ -50,12 +49,14 @@ const Checkbox = ({
             toggleChecked(!isChecked);
           }}
           disabled={disabled}
-          className={`peer appearance-none ${rounded ? 'rounded' : ''} border-atom-input-light checked:bg-atom-input-dark hover:border-atom-input border shadow transition-all hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input-medium' : ''}`}
+          className={`rounded-checkbox peer appearance-none border border-atom-input/40 bg-atom-input-background/40 shadow transition-all checked:bg-atom-input-background hover:border-atom-input hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input' : ''}`}
           aria-labelledby={`${inputId}-label`}
         />
-        <span className="text-atom-input-text-light absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
+        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-atom-input-text/60 opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
           {indeterminate ? (
-            <div className={`${boxSize} bg-atom-input-medium rounded-sm`} />
+            <div
+              className={`${boxSize} bg-atom-input-medium rounded-checkbox`}
+            />
           ) : (
             <svg
               className={`${boxSize} text-atom-input-text-light`}
@@ -80,7 +81,7 @@ const Checkbox = ({
       <label
         id={`${inputId}-label`}
         htmlFor={inputId}
-        className={`text-atom-input-text ml-2 font-medium ${textSize} ${disabled ? 'cursor-not-allowed' : ''}`}
+        className={`ml-2 font-medium text-atom-input-text ${textSize} ${disabled ? 'cursor-not-allowed' : ''}`}
         onClick={(e) => disabled && e.preventDefault()}
       >
         {label}

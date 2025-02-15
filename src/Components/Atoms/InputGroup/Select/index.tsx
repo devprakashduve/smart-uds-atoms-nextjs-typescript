@@ -23,8 +23,7 @@ const Select: React.FC<SelectProps> = ({
   disabled = false,
   required = false,
   error = false,
-  rounded = true,
-  roundedFull = false,
+
   className = '',
   onChange,
 }) => {
@@ -47,11 +46,6 @@ const Select: React.FC<SelectProps> = ({
   const showError = error && (isTouched || !!internalValue);
   const isEmpty = internalValue === '';
   const shouldShowRequiredError = required && isEmpty && isTouched;
-  const borderRadiusClass = roundedFull
-    ? 'rounded-full'
-    : rounded
-      ? 'rounded'
-      : '';
 
   return (
     <div className={`min-w-[200px] ${className}`}>
@@ -74,12 +68,12 @@ const Select: React.FC<SelectProps> = ({
           disabled={disabled || !hasOptions}
           value={internalValue}
           onChange={handleChange}
-          className={`w-full appearance-none border transition-all ${borderRadiusClass} ${sizeClasses[size]} ${
+          className={`rounded-input w-full appearance-none border transition-all ${sizeClasses[size]} ${
             disabled || !hasOptions
-              ? 'text-atom-input-text-light border-atom-input-light cursor-not-allowed bg-gray-100'
+              ? 'cursor-not-allowed border-atom-input/40 bg-atom-input-background text-atom-input-text/40'
               : error && showError
-                ? 'hover:border-error-dark focus:border-error-dark cursor-pointer border-error'
-                : 'border-atom-input-light hover:border-atom-input-dark focus:border-atom-input cursor-pointer focus:shadow-md'
+                ? 'cursor-pointer border-error hover:border-error focus:border-error'
+                : 'cursor-pointer border-atom-input/40 hover:border-atom-input focus:border-atom-input focus:shadow-md'
           }`}
         >
           {!hasOptions ? (
@@ -116,10 +110,10 @@ const Select: React.FC<SelectProps> = ({
             iconSizes[size]
           } ${
             disabled || !hasOptions
-              ? 'text-atom-input-light'
+              ? 'text-atom-input/40'
               : error
                 ? 'text-error'
-                : 'text-atom-input-dark'
+                : 'text-atom-input'
           }`}
         >
           <path

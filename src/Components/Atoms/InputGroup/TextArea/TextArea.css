@@ -1,5 +1,5 @@
 .textarea-base {
-  @apply placeholder:text-atom-input-text-light text-atom-input-text border-atom-input-light hover:border-atom-input focus:border-atom-input-dark h-36 w-full rounded border px-4 py-2 focus:outline-none;
+  @apply h-36 w-full rounded border border-atom-input/40 bg-atom-input-background px-4 py-2 text-atom-input-text placeholder:text-atom-input-text/30 hover:border-atom-input focus:border-atom-input focus:outline-none;
 }
 
 .textarea-disabled {

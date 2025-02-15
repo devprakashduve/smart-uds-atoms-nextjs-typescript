@@ -13,8 +13,7 @@ export interface SelectMenusProps {
   disabled?: boolean;
   required?: boolean;
   error?: boolean;
-  rounded?: boolean;
-  roundedFull?: boolean;
+
   className?: string;
   onChange?: (item: Item) => void;
   placeholder?: string; // New property

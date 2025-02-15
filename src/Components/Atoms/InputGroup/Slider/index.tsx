@@ -24,7 +24,7 @@ const Slider: React.FC<SliderProps> = ({
     setStep(newValue); // Update step based on the new value
   };
   const borderColor =
-    'border border-atom-input-light hover:border-atom-input focus:border-atom-input-dark ';
+    'border border-atom-input-/40 hover:border-atom-input focus:border-atom-input';
   const sliderClass = classNames(
     className,
     border ? borderColor : '',

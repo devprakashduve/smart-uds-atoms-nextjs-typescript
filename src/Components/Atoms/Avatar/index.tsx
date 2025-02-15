@@ -38,7 +38,7 @@ const Avatar: React.FC<AvatarProps> = ({
         />
       ) : (
         <div
-          className="text-atom-input-background flex h-full w-full items-center justify-center bg-gray-300 font-semibold"
+          className="bg-atom-avatar-background text-atom-avatar-text flex h-full w-full items-center justify-center font-semibold"
           role="img"
           aria-label={alt}
         >

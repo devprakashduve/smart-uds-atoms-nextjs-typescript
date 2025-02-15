@@ -16,8 +16,6 @@ const meta: Meta<SelectStoryArgs> = {
       control: { type: 'radio' },
       options: ['sm', 'md', 'lg'],
     },
-    rounded: { control: 'boolean' },
-    roundedFull: { control: 'boolean' },
   },
   args: {
     options: [
@@ -32,8 +30,7 @@ const meta: Meta<SelectStoryArgs> = {
     disabled: false,
     required: false,
     error: false,
-    rounded: true,
-    roundedFull: false,
+
     onChange: (event) => console.log('Select Value:', event.target.value),
   },
 };
@@ -53,14 +50,11 @@ export const Defaults = () => (
       <Select
         {...BasicSelect.args}
         label="Square"
-        rounded={false}
-        roundedFull={false}
         size={BasicSelect.args.size as 'sm' | 'md' | 'lg'}
       />
       <Select
         {...BasicSelect.args}
         label="Pill"
-        roundedFull
         size={BasicSelect.args.size as 'sm' | 'md' | 'lg'}
       />
       <Select
@@ -101,8 +95,7 @@ export const BasicSelect = {
     disabled: false,
     required: false,
     error: false,
-    rounded: true,
-    roundedFull: false,
+
     onChange: (event: any) => console.log('Select Value:', event.target.value),
   },
 };
@@ -138,16 +131,12 @@ export const SmallSelect = {
 
 export const SquareSelect = {
   args: {
-    rounded: false,
-    roundedFull: false,
     label: 'Square Select',
   },
 };
 
 export const PillSelect = {
   args: {
-    rounded: false,
-    roundedFull: true,
     label: 'Pill Select',
   },
 };
