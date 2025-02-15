@@ -25,13 +25,13 @@
   }
 }
 .spinner-light {
-  @apply border-t-line-light;
+  @apply border-t-atom-input-light;
 }
 
 .spinner-primary {
-  @apply border-t-line;
+  @apply border-t-atom-input;
 }
 
 .spinner-dark {
-  @apply border-t-line-dark;
+  @apply border-t-atom-input-dark;
 }

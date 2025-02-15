@@ -24,11 +24,11 @@ const Slider: React.FC<SliderProps> = ({
     setStep(newValue); // Update step based on the new value
   };
   const borderColor =
-    'border border-line-light hover:border-line focus:border-line-dark ';
+    'border border-atom-input-light hover:border-atom-input focus:border-atom-input-dark ';
   const sliderClass = classNames(
     className,
     border ? borderColor : '',
-    background ? '' : 'bg-line'
+    background ? '' : 'bg-atom-input'
   );
 
   return (

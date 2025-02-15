@@ -7,7 +7,7 @@
   @apply w-full appearance-none rounded-full;
 }
 .slider-thumb::-webkit-slider-thumb {
-  @apply bg-line-dark;
+  @apply bg-atom-input-dark;
   width: 20px;
   height: 20px;
   appearance: none;
@@ -16,7 +16,7 @@
 }
 
 .slider-thumb:focus {
-  @apply outline-none ring-line ring-offset-2;
+  @apply ring-atom-input outline-none ring-offset-2;
 }
 
 .slider-thumb:disabled {

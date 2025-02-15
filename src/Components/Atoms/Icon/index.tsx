@@ -114,7 +114,7 @@ const Icon: React.FC<IconProps> = ({
   className = 'right-3',
   children,
 }) => {
-  const iconClass = classNames('text-primary-dark', className);
+  const iconClass = classNames('text-atom-input-text-dark', className);
 
   if (name === 'facebook') {
     return (

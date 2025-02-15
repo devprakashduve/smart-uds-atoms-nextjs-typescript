@@ -1,6 +1,20 @@
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
+  atom: {
+    background: '#fff',
+    input: {
+      background: '#fff',
+      light: '#FBCFE8', // Light Pink
+      DEFAULT: '#DB2777', // Dark Pink
+      dark: '#9D174D', // Deep Magenta
+      text: {
+        light: '#9CA3AF', // Gray (Slate-400)
+        DEFAULT: '#1F2937', // Dark Charcoal (Slate-800)
+        dark: '#111827', // Almost Black (Slate-900)
+      },
+    },
+  },
   primary: {
     light: '#FBCFE8', // Light Pink
     DEFAULT: '#DB2777', // Dark Pink

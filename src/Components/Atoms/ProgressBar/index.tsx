@@ -12,9 +12,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   striped = false,
 }) => {
   const progress = (value / max) * 100;
-  const bgColog = color ? `bg-${color}` : 'bg-line-dark';
+  const bgColog = color ? `bg-${color}` : 'bg-atom-input-dark';
   return (
-    <div className={`progress-bar-container w-full bg-line-light h-${height}`}>
+    <div
+      className={`progress-bar-container bg-atom-input-light w-full h-${height}`}
+    >
       <div
         className={`progress-bar ${striped ? 'progress-striped' : ''} ${bgColog}`}
         style={{ width: `${progress}%` }}

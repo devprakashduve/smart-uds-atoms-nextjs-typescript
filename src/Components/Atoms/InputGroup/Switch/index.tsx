@@ -16,11 +16,11 @@ const Switch = (props: SwitchProps) => {
   const switchClass = classNames(
     !noBackground
       ? isChecked
-        ? 'bg-line-light'
-        : 'bg-line-light'
+        ? 'bg-atom-input-light'
+        : 'bg-atom-input-light'
       : isChecked
-        ? 'border border-border'
-        : 'border border-border-light'
+        ? 'border border-input'
+        : 'border border-input-light'
   );
 
   const sizeClasses = {
@@ -50,19 +50,19 @@ const Switch = (props: SwitchProps) => {
         />
         {/* Switch Background */}
         <div
-          className={`rounded-full border border-line-light shadow-inner transition-all hover:border-line focus:border-line-dark ${switchClass} ${sizeClasses[size].container}`}
+          className={`border-atom-input-light hover:border-atom-input focus:border-atom-input-dark rounded-full border shadow-inner transition-all ${switchClass} ${sizeClasses[size].container}`}
         ></div>
 
         {/* Thumb with Check Mark */}
         <div
-          className={`absolute left-2 top-1 flex items-center justify-center rounded-full bg-line-dark shadow transition-all ${sizeClasses[size].dot} ${
+          className={`bg-atom-input-dark absolute left-2 top-1 flex items-center justify-center rounded-full shadow transition-all ${sizeClasses[size].dot} ${
             isChecked ? 'translate-x-full' : ''
           }`}
         >
           {!disableIcons &&
             (isChecked ? (
               <svg
-                className="h-6 w-6 text-letter-dark dark:text-white"
+                className="text-atom-input-text-dark dark:text-atom-input-background h-6 w-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -80,7 +80,7 @@ const Switch = (props: SwitchProps) => {
               </svg>
             ) : (
               <svg
-                className="h-6 w-6 text-letter-dark dark:text-white"
+                className="text-atom-input-text-dark dark:text-atom-input-background h-6 w-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

@@ -61,7 +61,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
       {label && (
         <label
           htmlFor="select-menus-input"
-          className={`text-letter-default mb-1 block font-medium ${
+          className={`text-atom-input-text-default mb-1 block font-medium ${
             size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base'
           }`}
         >
@@ -77,10 +77,10 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
           disabled={disabled || !hasItems}
           className={`grid w-full cursor-default grid-cols-1 border transition-all ${borderRadiusClass} ${sizeClasses[size]} ${
             disabled || !hasItems
-              ? 'cursor-not-allowed border-line-light bg-gray-100 text-letter-light'
+              ? 'text-atom-input-text-light border-atom-input-light cursor-not-allowed bg-gray-100'
               : error && showError
                 ? 'hover:border-error-dark focus:border-error-dark cursor-pointer border-error'
-                : 'cursor-pointer border-line-light hover:border-line-dark focus:border-line focus:shadow-md'
+                : 'border-atom-input-light hover:border-atom-input-dark focus:border-atom-input cursor-pointer focus:shadow-md'
           }`}
         >
           <span className="col-start-1 row-start-1 flex items-center gap-3 pr-6">
@@ -103,14 +103,14 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
         </button>
 
         {isOpen && (
-          <ul className="absolute z-50 max-h-56 w-full overflow-auto border border-l-0 border-r-0 border-t-0 border-b-line-light bg-white py-1 text-base sm:text-sm">
+          <ul className="border-b-atom-input-light absolute z-50 max-h-56 w-full overflow-auto border border-l-0 border-r-0 border-t-0 bg-white py-1 text-base sm:text-sm">
             {items.map((item) => (
               <li
                 key={item.id}
                 onClick={() => handleSelect(item)}
-                className={`group relative mt-1 cursor-default select-none py-2 pl-3 pr-9 hover:bg-line-dark ${
+                className={`hover:bg-atom-input-dark group relative mt-1 cursor-default select-none py-2 pl-3 pr-9 ${
                   selected.id === item.id
-                    ? 'bg-line-dark text-letter-light'
+                    ? 'text-atom-input-text-light bg-atom-input-dark'
                     : ''
                 }`}
               >
@@ -124,7 +124,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
                 </div>
 
                 {selected.id === item.id && (
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-line-dark">
+                  <span className="text-atom-input-dark absolute inset-y-0 right-0 flex items-center pr-4">
                     <CheckIcon aria-hidden="true" className="size-5" />
                   </span>
                 )}

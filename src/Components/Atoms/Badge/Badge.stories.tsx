@@ -22,7 +22,7 @@ export const Default = {
   args: {
     children: <span>&#10753;</span>,
     variant: 'primary',
-    backgroundColor: '#6366f1',
+
     scale: 'lg',
   },
 };

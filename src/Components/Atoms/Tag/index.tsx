@@ -3,29 +3,29 @@ import { TagProps } from './TagProps.interface';
 import Button from '../Button';
 
 const colorMap = {
-  'primary-light': 'bg-primary-light text-white',
-  primary: 'bg-primary text-white',
-  'primary-dark': 'bg-primary-dark text-white',
-  'secondary-light': 'bg-secondary-light text-white',
-  secondary: 'bg-secondary text-white',
-  'secondary-dark': 'bg-secondary-dark text-white',
-  'accent-light': 'bg-accent-light text-white',
-  accent: 'bg-accent text-white',
-  'accent-dark': 'bg-accent-dark text-white',
-  error: 'bg-error text-white',
-  warning: 'bg-warning text-white',
-  info: 'bg-info text-white',
-  success: 'bg-success text-white',
-  neutral: 'bg-neutral text-white',
-  'line-light': 'bg-line-light text-white',
-  line: 'bg-line text-white',
-  'line-dark': 'bg-line-dark text-white',
-  'letter-light': 'bg-letter-light text-white',
-  letter: 'bg-letter text-white',
-  'letter-dark': 'bg-letter-dark text-white',
-  'btn-light': 'bg-btn-light text-white',
-  btn: 'bg-btn text-white',
-  'btn-dark': 'bg-btn-dark text-white',
+  'primary-light': 'bg-atom-input-light text-atom-input-background',
+  primary: 'bg-primary text-atom-input-background',
+  'primary-dark': 'bg-atom-input-dark text-atom-input-background',
+  'secondary-light': 'bg-secondary-light text-atom-input-background',
+  secondary: 'bg-secondary text-atom-input-background',
+  'secondary-dark': 'bg-secondary-dark text-atom-input-background',
+  'accent-light': 'bg-accent-light text-atom-input-background',
+  accent: 'bg-accent text-atom-input-background',
+  'accent-dark': 'bg-accent-dark text-atom-input-background',
+  error: 'bg-error text-atom-input-background',
+  warning: 'bg-warning text-atom-input-background',
+  info: 'bg-info text-atom-input-background',
+  success: 'bg-success text-atom-input-background',
+  neutral: 'bg-neutral text-atom-input-background',
+  'line-light': 'bg-atom-input-light text-atom-input-background',
+  line: 'bg-atom-input text-atom-input-background',
+  'line-dark': 'bg-atom-input-dark text-atom-input-background',
+  'letter-light': 'bg-atom-input-text-light text-atom-input-background',
+  letter: 'bg-atom-input-text text-atom-input-background',
+  'letter-dark': 'bg-atom-input-text-dark text-atom-input-background',
+  'btn-light': 'bg-btn-light text-atom-input-background',
+  btn: 'bg-btn text-atom-input-background',
+  'btn-dark': 'bg-btn-dark text-atom-input-background',
 };
 
 const Tag: React.FC<TagProps> = ({
@@ -53,7 +53,7 @@ const Tag: React.FC<TagProps> = ({
       {icon && (
         <Button
           variant="icon"
-          className={`text-line-light text-white`}
+          className={`text-atom-input-light text-atom-input-background`}
           onClick={() => handleRemove}
         >
           {icon}

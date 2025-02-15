@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { InputProps, InputSize, InputType } from './InputProps.interface';
-import './../../../../app/globals.css';
 import './Input.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Label from '../../Label';
@@ -88,7 +87,7 @@ const Input: React.FC<InputProps> = ({
   );
 
   const inputClass = classNames(
-    'w-full bg-transparent placeholder:text-letter-light text-letter text-sm border border-line-light hover:border-line focus:border-line-dark pl-3 pr-10 py-2 transition duration-300 ease focus:outline-none shadow-sm',
+    'w-full bg-transparent placeholder:text-atom-input-text-light text-atom-input-text text-sm border border-atom-input-light hover:border-atom-input focus:border-atom-input-dark pl-3 pr-10 py-2 transition duration-300 ease focus:outline-none shadow-sm',
     className,
     boxSize,
     error && 'border border-error hover:border-error focus:border-error',
@@ -99,7 +98,10 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="relative w-full">
       {label && (
-        <Label className="mb-2 block text-sm text-letter" htmlFor={name}>
+        <Label
+          className="text-atom-input-text mb-2 block text-sm"
+          htmlFor={name}
+        >
           {label}
           {isRequired && <span className="text-error"> *</span>}
         </Label>

@@ -58,7 +58,7 @@ const Select: React.FC<SelectProps> = ({
       {label && (
         <label
           htmlFor="select-input"
-          className={`text-letter-default mb-1 block font-medium ${
+          className={`text-atom-input-text-default mb-1 block font-medium ${
             size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base'
           }`}
         >
@@ -76,10 +76,10 @@ const Select: React.FC<SelectProps> = ({
           onChange={handleChange}
           className={`w-full appearance-none border transition-all ${borderRadiusClass} ${sizeClasses[size]} ${
             disabled || !hasOptions
-              ? 'cursor-not-allowed border-line-light bg-gray-100 text-letter-light'
+              ? 'text-atom-input-text-light border-atom-input-light cursor-not-allowed bg-gray-100'
               : error && showError
                 ? 'hover:border-error-dark focus:border-error-dark cursor-pointer border-error'
-                : 'cursor-pointer border-line-light hover:border-line-dark focus:border-line focus:shadow-md'
+                : 'border-atom-input-light hover:border-atom-input-dark focus:border-atom-input cursor-pointer focus:shadow-md'
           }`}
         >
           {!hasOptions ? (
@@ -116,10 +116,10 @@ const Select: React.FC<SelectProps> = ({
             iconSizes[size]
           } ${
             disabled || !hasOptions
-              ? 'text-line-light'
+              ? 'text-atom-input-light'
               : error
                 ? 'text-error'
-                : 'text-line-dark'
+                : 'text-atom-input-dark'
           }`}
         >
           <path

@@ -50,15 +50,15 @@ const Checkbox = ({
             toggleChecked(!isChecked);
           }}
           disabled={disabled}
-          className={`peer appearance-none ${rounded ? 'rounded' : ''} border border-line-light shadow transition-all checked:bg-line-dark hover:border-line hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-line-medium' : ''}`}
+          className={`peer appearance-none ${rounded ? 'rounded' : ''} border-atom-input-light checked:bg-atom-input-dark hover:border-atom-input border shadow transition-all hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input-medium' : ''}`}
           aria-labelledby={`${inputId}-label`}
         />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-letter-light opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
+        <span className="text-atom-input-text-light absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
           {indeterminate ? (
-            <div className={`${boxSize} bg-line-medium rounded-sm`} />
+            <div className={`${boxSize} bg-atom-input-medium rounded-sm`} />
           ) : (
             <svg
-              className={`${boxSize} text-letter-light`}
+              className={`${boxSize} text-atom-input-text-light`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -80,7 +80,7 @@ const Checkbox = ({
       <label
         id={`${inputId}-label`}
         htmlFor={inputId}
-        className={`ml-2 font-medium text-letter ${textSize} ${disabled ? 'cursor-not-allowed' : ''}`}
+        className={`text-atom-input-text ml-2 font-medium ${textSize} ${disabled ? 'cursor-not-allowed' : ''}`}
         onClick={(e) => disabled && e.preventDefault()}
       >
         {label}

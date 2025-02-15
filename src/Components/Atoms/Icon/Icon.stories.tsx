@@ -69,12 +69,12 @@ export const AllIcons = () => (
         <Icon
           name={icon}
           variant="outline"
-          className="text-primary-dark transition-all hover:text-primary"
+          className="text-atom-input-text-dark transition-all hover:text-primary"
         />
         <Icon
           name={icon}
           variant="solid"
-          className="text-primary-dark transition-all hover:text-primary"
+          className="text-atom-input-text-dark transition-all hover:text-primary"
         />
         <span>{icon}</span>
       </div>
