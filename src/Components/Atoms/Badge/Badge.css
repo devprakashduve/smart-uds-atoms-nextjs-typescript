@@ -3,11 +3,11 @@
 }
 
 .badge-primary {
-  @apply text-atom-input-text-light bg-atom-input-dark;
+  @apply text-atom-input-text-light;
 }
 
 .badge-secondary {
-  @apply text-atom-input-text-dark bg-atom-input-light;
+  @apply text-atom-input-text-dark;
 }
 
 .badge-outline {
@@ -15,5 +15,5 @@
 }
 
 .badge-ghost {
-  @apply text-atom-input-text-dark bg-atom-input-light;
+  @apply text-atom-input-text-dark;
 }
