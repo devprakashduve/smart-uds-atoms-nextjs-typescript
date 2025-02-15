@@ -11,7 +11,7 @@ export interface SelectProps {
   disabled?: boolean;
   required?: boolean;
   error?: boolean;
-
+  name?: string;
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

@@ -93,7 +93,7 @@ export const ComparisonSliders = () => (
       step={1}
       onChange={(value: number) => console.log('Comparison Slider 1:', value)}
       setStep={(value: number) => console.log('Set Step 1:', value)}
-      className="h-2 bg-primary"
+      className="bg-primary h-2"
       border
       background
     />
@@ -104,7 +104,7 @@ export const ComparisonSliders = () => (
       step={5}
       onChange={(value: number) => console.log('Comparison Slider 2:', value)}
       setStep={(value: number) => console.log('Set Step 2:', value)}
-      className="h-3 bg-secondary"
+      className="bg-secondary h-3"
       border
       background={false}
     />
@@ -115,7 +115,7 @@ export const ComparisonSliders = () => (
       step={10}
       onChange={(value: number) => console.log('Comparison Slider 3:', value)}
       setStep={(value: number) => console.log('Set Step 3:', value)}
-      className="h-4 rounded-full bg-accent"
+      className="bg-accent h-4 rounded-full"
       border={false}
       background
     />
