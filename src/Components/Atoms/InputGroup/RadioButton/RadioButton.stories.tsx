@@ -23,7 +23,7 @@ export const SizeSM = {
     initialChecked: false,
     label: 'Small Radio',
     name: 'radio-group',
-    size: 'sm' as 'sm',
+    size: 'sm' as const,
   },
 };
 
@@ -32,7 +32,7 @@ export const SizeMD = {
     initialChecked: false,
     label: 'Medium Radio',
     name: 'radio-group',
-    size: 'md' as 'md',
+    size: 'md' as const,
   },
 };
 
@@ -41,7 +41,7 @@ export const SizeLG = {
     initialChecked: false,
     label: 'Large Radio',
     name: 'radio-group',
-    size: 'lg' as 'lg',
+    size: 'lg' as const,
   },
 };
 

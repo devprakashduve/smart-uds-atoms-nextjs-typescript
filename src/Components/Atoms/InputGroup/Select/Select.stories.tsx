@@ -31,7 +31,8 @@ const meta: Meta<SelectStoryArgs> = {
     required: false,
     error: false,
 
-    onChange: (event) => console.log('Select Value:', event.target.value),
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) =>
+      console.log('Select Value:', event.target.value),
   },
 };
 
@@ -96,7 +97,8 @@ export const BasicSelect = {
     required: false,
     error: false,
 
-    onChange: (event: any) => console.log('Select Value:', event.target.value),
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) =>
+      console.log('Select Value:', event.target.value),
   },
 };
 

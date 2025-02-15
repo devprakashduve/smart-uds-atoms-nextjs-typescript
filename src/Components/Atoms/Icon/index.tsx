@@ -141,7 +141,9 @@ const Icon: React.FC<IconProps> = ({
 
   if (!IconComponent) return null;
 
-  return <IconComponent className={`h-6 ${iconClass}`} />;
+  return (
+    <IconComponent className={`h-6 ${iconClass}`}>{children}</IconComponent>
+  );
 };
 
 export default Icon;

@@ -104,7 +104,7 @@ export default {
     required: false,
     error: false,
 
-    onChange: (event: { target: { value: any } }) =>
+    onChange: (event: { target: { value: string | number } }) =>
       console.log('Select Value:', event.target.value),
   },
 } as Meta;

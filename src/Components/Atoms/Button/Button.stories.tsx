@@ -36,10 +36,7 @@ export default {
   },
 };
 
-const Template: any = (args: any) => <Button {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
+export const Default = {
   children: 'Default Button',
   variant: 'default',
 };
@@ -64,27 +61,23 @@ export const RoundedVariants = () => (
   </div>
 );
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
+export const WithIcon = {
   children: 'Download',
   icon: <ArrowDownTrayIcon />,
   iconPosition: 'right',
 };
 
-export const LoadingState = Template.bind({});
-LoadingState.args = {
+export const LoadingState = {
   children: 'Processing',
   loading: true,
 };
 
-export const DisabledState = Template.bind({});
-DisabledState.args = {
+export const DisabledState = {
   children: 'Disabled',
   disabled: true,
 };
 
-export const AsCustomLink = Template.bind({});
-AsCustomLink.args = {
+export const AsCustomLink = {
   children: 'View Documentation',
   href: 'https://example.com',
   target: '_blank',

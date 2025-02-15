@@ -43,7 +43,7 @@ const Input: React.FC<InputProps> = ({
       [InputType.NUMBER]: customIconName || '',
     };
     setIconName(iconMap[type] || '');
-  }, [type]);
+  }, [type, customIconName]);
 
   const validateInput = useCallback(
     (value: string) => {
