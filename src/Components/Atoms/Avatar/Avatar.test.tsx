@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Avatar from '@/Components/Atoms/Avatar';
 import { classNames } from '@/Components/Utilities/componentsMethods';
+import { AvatarProps } from './AvatarProps.interface';
 
 // Mock dependencies
 jest.mock('@/Components/Utilities/componentsMethods', () => ({
@@ -9,7 +10,7 @@ jest.mock('@/Components/Utilities/componentsMethods', () => ({
 
 jest.mock('../Img', () => ({
   __esModule: true,
-  default: (props: any) => <img {...props} />,
+  default: (props: AvatarProps) => <img {...props} />,
 }));
 
 const testProps = {

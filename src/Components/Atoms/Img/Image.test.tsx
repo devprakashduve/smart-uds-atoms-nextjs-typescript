@@ -1,11 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import Img from '@/Components/Atoms/Img';
 import { classNames } from '@/Components/Utilities/componentsMethods';
+import { ImageProps } from './ImageProps.interface';
 
 // Mock the Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => <img {...props} />,
+  default: (props: ImageProps) => <img {...props} />,
 }));
 
 // Mock the classNames utility
