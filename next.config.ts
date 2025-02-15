@@ -1,10 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'export', // Enables static export
-  distDir: 'dist', // Changes build directory
-  // Optional: Add trailing slashes for better compatibility
-  trailingSlash: true,
+  distDir: 'dist',
   images: {
     domains: ['via.placeholder.com'],
   },

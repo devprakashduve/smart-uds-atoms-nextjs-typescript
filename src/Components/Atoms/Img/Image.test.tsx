@@ -10,13 +10,13 @@ jest.mock('next/image', () => ({
 }));
 
 // Mock the classNames utility
-jest.mock('@/Components/Utilities/componentsMethods', () => ({
+jest.mock('../../Utilities/componentsMethods', () => ({
   classNames: jest.fn((...classes) => classes.join(' ')),
 }));
 
 describe('Img Component', () => {
   const testProps = {
-    src: '/test-image.jpg',
+    src: '/images/avatar.jpg',
     alt: 'Test image',
     width: 300,
     height: 300,
