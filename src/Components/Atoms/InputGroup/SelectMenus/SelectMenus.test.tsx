@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import SelectMenus from './index';
+import SelectMenus from '.';
 
 const items = [
   {
@@ -56,6 +56,7 @@ const items = [
 describe('SelectMenus', () => {
   it('renders correctly', () => {
     render(<SelectMenus items={items} defaultSelected={items[3]} />);
+    fireEvent.click(screen.getByRole('button'));
     expect(screen.getByText('Assigned to')).toBeInTheDocument();
     expect(screen.getByText('Tom Cook')).toBeInTheDocument();
   });
