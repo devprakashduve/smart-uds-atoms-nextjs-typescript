@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SwitchProps } from './SwitchProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
+import Icon from '../../Icon';
 
 const Switch = (props: SwitchProps) => {
   const {
@@ -16,11 +17,11 @@ const Switch = (props: SwitchProps) => {
   const switchClass = classNames(
     !noBackground
       ? isChecked
-        ? 'bg-atom-input-light'
-        : 'bg-atom-input-light'
+        ? 'bg-atom-input/40'
+        : 'bg-atom-input/40'
       : isChecked
         ? 'border border-input'
-        : 'border border-input-light'
+        : 'border border-input/40'
   );
 
   const sizeClasses = {
@@ -50,52 +51,28 @@ const Switch = (props: SwitchProps) => {
         />
         {/* Switch Background */}
         <div
-          className={`border-atom-input-light hover:border-atom-input focus:border-atom-input-dark rounded-full border shadow-inner transition-all ${switchClass} ${sizeClasses[size].container}`}
+          className={`rounded-input border border-atom-input/40 shadow-inner transition-all hover:border-atom-input focus:border-atom-input ${switchClass} ${sizeClasses[size].container}`}
         ></div>
 
         {/* Thumb with Check Mark */}
         <div
-          className={`bg-atom-input-dark absolute left-2 top-1 flex items-center justify-center rounded-full shadow transition-all ${sizeClasses[size].dot} ${
+          className={`rounded-input absolute left-2 top-1 flex items-center justify-center bg-atom-input shadow transition-all ${sizeClasses[size].dot} ${
             isChecked ? 'translate-x-full' : ''
           }`}
         >
           {!disableIcons &&
             (isChecked ? (
-              <svg
-                className="text-atom-input-text-dark dark:text-atom-input-background h-6 w-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 11.917 9.724 16.5 19 7.5"
-                />
-              </svg>
+              <Icon
+                name="check"
+                variant={'outline'}
+                className="text-atom-input-text dark:text-atom-input-background"
+              />
             ) : (
-              <svg
-                className="text-atom-input-text-dark dark:text-atom-input-background h-6 w-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18 17.94 6M18 18 6.06 6"
-                />
-              </svg>
+              <Icon
+                name="close"
+                variant={'outline'}
+                className="text-atom-input-text dark:text-atom-input-background"
+              />
             ))}
         </div>
       </div>
