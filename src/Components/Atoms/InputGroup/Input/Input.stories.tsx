@@ -40,7 +40,6 @@ export const Default = {
     type: InputType.TEXT,
     label: 'Default Input',
     isRequired: true,
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -53,7 +52,6 @@ export const WithValue = {
     disabled: false,
     type: InputType.TEXT,
     label: 'Input with Value',
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -78,7 +76,7 @@ export const Password = {
     disabled: false,
     type: InputType.PASSWORD,
     label: 'Password Input',
-    onChange: (value: string) => console.log(value),
+
     showIcon: true,
   },
 };
@@ -92,7 +90,6 @@ export const Number = {
     disabled: false,
     type: InputType.NUMBER,
     label: 'Number Input',
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -105,7 +102,6 @@ export const Email = {
     disabled: false,
     type: InputType.EMAIL,
     label: 'Email Input',
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -118,7 +114,7 @@ export const Tel = {
     disabled: false,
     type: InputType.TEL,
     label: 'Telephone Input',
-    onChange: (value: string) => console.log(value),
+
     showIcon: true,
   },
 };
@@ -132,7 +128,7 @@ export const TelWithCustomIcon = {
     disabled: false,
     type: InputType.TEL,
     label: 'Telephone Input',
-    onChange: (value: string) => console.log(value),
+
     showIcon: true,
     customIconSVG: (
       <svg
@@ -160,7 +156,6 @@ export const Rounded = {
     type: InputType.TEXT,
     label: 'Rounded Input',
     rounded: true,
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -174,7 +169,7 @@ export const RoundedFull = {
     type: InputType.TEXT,
     label: 'Rounded Full Input',
     roundedFull: true,
-    onChange: (value: string) => console.log(value),
+
     rounded: true,
   },
 };
@@ -189,7 +184,6 @@ export const SmallSize = {
     type: InputType.TEXT,
     label: 'Small Size Input',
     size: InputSize.SM,
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -203,7 +197,6 @@ export const MediumSize = {
     type: InputType.TEXT,
     label: 'Medium Size Input',
     size: InputSize.MD,
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -217,7 +210,6 @@ export const LargeSize = {
     type: InputType.TEXT,
     label: 'Large Size Input',
     size: InputSize.LG,
-    onChange: (value: string) => console.log(value),
   },
 };
 
@@ -232,9 +224,6 @@ export const SizeComparison = {
         type={InputType.TEXT}
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
       />
       <Input
         label="Medium Size"
@@ -243,9 +232,6 @@ export const SizeComparison = {
         type={InputType.TEXT}
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
       />
       <Input
         label="Large Size"
@@ -254,9 +240,6 @@ export const SizeComparison = {
         type={InputType.TEXT}
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
       />
     </div>
   ),
@@ -271,9 +254,6 @@ export const TypeComparison = {
         placeholder="Search..."
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
         showIcon={true}
         customIconName="search"
@@ -284,9 +264,6 @@ export const TypeComparison = {
         placeholder="Enter text"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
       <Input
@@ -296,9 +273,6 @@ export const TypeComparison = {
         placeholder="Enter password"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
       <Input
@@ -307,9 +281,6 @@ export const TypeComparison = {
         placeholder="email@example.com"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
       <Input
@@ -319,9 +290,6 @@ export const TypeComparison = {
         placeholder="+1 234 567 890"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
       <Input
@@ -330,9 +298,6 @@ export const TypeComparison = {
         placeholder="Enter number"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
     </div>
@@ -347,9 +312,6 @@ export const StateComparison = {
         placeholder="Regular input"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -359,9 +321,6 @@ export const StateComparison = {
         placeholder="Disabled input"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -371,9 +330,6 @@ export const StateComparison = {
         placeholder="Required input"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -382,9 +338,6 @@ export const StateComparison = {
         value="Pre-filled content"
         placeholder="Has value"
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -400,9 +353,6 @@ export const StyleComparison = {
         placeholder="Normal borders"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -412,9 +362,6 @@ export const StyleComparison = {
         placeholder="Rounded corners"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -424,9 +371,6 @@ export const StyleComparison = {
         placeholder="Pill-shaped"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -436,9 +380,6 @@ export const StyleComparison = {
         className="border-error"
         placeholder="With error"
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
@@ -456,9 +397,6 @@ export const IconComparison = {
         placeholder="With eye icon"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
       <Input
@@ -468,9 +406,6 @@ export const IconComparison = {
         placeholder="With phone icon"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         size={InputSize.SM}
       />
       <Input
@@ -494,9 +429,6 @@ export const IconComparison = {
         placeholder="Custom SVG icon"
         value={''}
         name={''}
-        onChange={function (value: string): void {
-          throw new Error('Function not implemented.');
-        }}
         type={InputType.TEXT}
         size={InputSize.SM}
       />
