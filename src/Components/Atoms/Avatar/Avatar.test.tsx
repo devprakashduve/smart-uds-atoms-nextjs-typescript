@@ -4,7 +4,7 @@ import { classNames } from '@/Components/Utilities/componentsMethods';
 import { AvatarProps } from './AvatarProps.interface';
 
 // Mock dependencies
-jest.mock('@/Components/Utilities/componentsMethods', () => ({
+jest.mock('../../Utilities/componentsMethods', () => ({
   classNames: jest.fn((...args) => args.join(' ')),
 }));
 

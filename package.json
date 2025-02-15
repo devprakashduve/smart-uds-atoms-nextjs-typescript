@@ -22,17 +22,16 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build && mv .next/static dist/_next/static",
-    "export": "npm run build && next export -o dist",
+    "build": "next build",
     "lint": "next lint",
-    "test": "jest --coverage",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "rollup": "rollup -c --bundleConfigAsCjs",
     "npm:build": "rollup -c",
     "prepare": "npm run build",
-    "postinstall": "husky"
+    "postinstall": "husky",
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
@@ -45,7 +44,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "@testing-library/react": "^16.1.0",
     "ajv": "^8.17.1",
     "enzyme": "^3.11.0",
     "next": "^15.1.6",
@@ -54,9 +52,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.9",
-    "@babel/preset-env": "^7.26.9",
-    "@babel/preset-react": "^7.26.3",
-    "@babel/preset-typescript": "^7.26.0",
     "@chromatic-com/storybook": "^3.2.4",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.2",
@@ -72,7 +67,9 @@
     "@storybook/react": "^8.5.3",
     "@storybook/test": "^8.5.3",
     "@svgr/rollup": "^8.1.0",
+    "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
     "@types/enzyme": "^3.10.18",
     "@types/jest": "^29.5.14",
     "@types/node": "^20",
@@ -83,7 +80,6 @@
     "eslint-config-next": "15.0.3",
     "eslint-plugin-storybook": "^0.11.2",
     "husky": "^9.1.7",
-    "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.4.3",
@@ -99,7 +95,7 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^8.5.3",
     "tailwindcss": "^3.4.1",
-    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
