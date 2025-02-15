@@ -76,7 +76,7 @@ const Select: React.FC<SelectProps> = ({
           onChange={handleChange}
           className={`w-full appearance-none border transition-all ${borderRadiusClass} ${sizeClasses[size]} ${
             disabled || !hasOptions
-              ? 'cursor-not-allowed border-line-light bg-gray-100 text-letter-light'
+              ? 'text-atom-input-text-light cursor-not-allowed border-line-light bg-gray-100'
               : error && showError
                 ? 'hover:border-error-dark focus:border-error-dark cursor-pointer border-error'
                 : 'cursor-pointer border-line-light hover:border-line-dark focus:border-line focus:shadow-md'

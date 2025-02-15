@@ -53,12 +53,12 @@ const Checkbox = ({
           className={`peer appearance-none ${rounded ? 'rounded' : ''} border border-line-light shadow transition-all checked:bg-line-dark hover:border-line hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-line-medium' : ''}`}
           aria-labelledby={`${inputId}-label`}
         />
-        <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-letter-light opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
+        <span className="text-atom-input-text-light absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
           {indeterminate ? (
             <div className={`${boxSize} bg-line-medium rounded-sm`} />
           ) : (
             <svg
-              className={`${boxSize} text-letter-light`}
+              className={`${boxSize} text-atom-input-text-light`}
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"

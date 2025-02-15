@@ -77,7 +77,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
           disabled={disabled || !hasItems}
           className={`grid w-full cursor-default grid-cols-1 border transition-all ${borderRadiusClass} ${sizeClasses[size]} ${
             disabled || !hasItems
-              ? 'cursor-not-allowed border-line-light bg-gray-100 text-letter-light'
+              ? 'text-atom-input-text-light cursor-not-allowed border-line-light bg-gray-100'
               : error && showError
                 ? 'hover:border-error-dark focus:border-error-dark cursor-pointer border-error'
                 : 'cursor-pointer border-line-light hover:border-line-dark focus:border-line focus:shadow-md'
@@ -110,7 +110,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
                 onClick={() => handleSelect(item)}
                 className={`group relative mt-1 cursor-default select-none py-2 pl-3 pr-9 hover:bg-line-dark ${
                   selected.id === item.id
-                    ? 'bg-line-dark text-letter-light'
+                    ? 'text-atom-input-text-light bg-line-dark'
                     : ''
                 }`}
               >

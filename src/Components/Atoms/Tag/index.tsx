@@ -3,9 +3,9 @@ import { TagProps } from './TagProps.interface';
 import Button from '../Button';
 
 const colorMap = {
-  'primary-light': 'bg-primary-light text-white',
+  'primary-light': 'bg-atom-input-light text-white',
   primary: 'bg-primary text-white',
-  'primary-dark': 'bg-primary-dark text-white',
+  'primary-dark': 'bg-atom-input-dark text-white',
   'secondary-light': 'bg-secondary-light text-white',
   secondary: 'bg-secondary text-white',
   'secondary-dark': 'bg-secondary-dark text-white',

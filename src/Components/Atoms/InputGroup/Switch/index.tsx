@@ -62,7 +62,7 @@ const Switch = (props: SwitchProps) => {
           {!disableIcons &&
             (isChecked ? (
               <svg
-                className="h-6 w-6 text-letter-dark dark:text-white"
+                className="text-atom-input-text-dark h-6 w-6 dark:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -80,7 +80,7 @@ const Switch = (props: SwitchProps) => {
               </svg>
             ) : (
               <svg
-                className="h-6 w-6 text-letter-dark dark:text-white"
+                className="text-atom-input-text-dark h-6 w-6 dark:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

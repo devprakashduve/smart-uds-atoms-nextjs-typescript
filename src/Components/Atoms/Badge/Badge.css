@@ -3,17 +3,17 @@
 }
 
 .badge-primary {
-  @apply bg-primary-dark text-letter-light;
+  @apply text-atom-input-text-light bg-atom-input-dark;
 }
 
 .badge-secondary {
-  @apply bg-primary-light text-letter-dark;
+  @apply text-atom-input-text-dark bg-atom-input-light;
 }
 
 .badge-outline {
-  @apply border-2 border-primary-dark bg-transparent text-primary-dark;
+  @apply text-atom-input-text-dark border-2 border-primary-dark bg-transparent;
 }
 
 .badge-ghost {
-  @apply bg-primary-light text-letter-dark;
+  @apply text-atom-input-text-dark bg-atom-input-light;
 }
