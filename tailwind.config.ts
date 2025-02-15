@@ -5,9 +5,9 @@ const darkPinkWhitePalette = {
     background: '#fff',
     input: {
       background: '#fff',
-      border: '#ccc', // Light Pink
-      textColor: '#DB2777', // Dark Pink
-      over: '#9D174D', // Deep Magenta
+      light: '#FBCFE8', // Light Pink
+      DEFAULT: '#DB2777', // Dark Pink
+      dark: '#9D174D', // Deep Magenta
     },
   },
   primary: {
