@@ -68,7 +68,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
         <button
           onClick={() => setIsOpen(!isOpen)}
           disabled={disabled || !hasItems}
-          className={`rounded-input grid w-full cursor-default grid-cols-1 border bg-atom-input-background transition-all ${sizeClasses[size]} ${
+          className={`grid w-full cursor-default grid-cols-1 rounded-input border bg-atom-input-background transition-all ${sizeClasses[size]} ${
             disabled || !hasItems
               ? 'text-atom--input-text/40 cursor-not-allowed border-atom-input/40 bg-atom-input-background/20'
               : error && showError
@@ -96,7 +96,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
         </button>
 
         {isOpen && (
-          <ul className="rounded-input absolute z-50 max-h-56 w-full overflow-auto border border-l-0 border-r-0 border-t-0 border-b-atom-input/40 bg-atom-input-background py-1 text-base sm:text-sm">
+          <ul className="absolute z-50 max-h-56 w-full overflow-auto rounded-input border border-l-0 border-r-0 border-t-0 border-b-atom-input/40 bg-atom-input-background py-1 text-base sm:text-sm">
             {items.map((item) => (
               <li
                 key={item.id}

@@ -56,7 +56,7 @@ const Switch = (props: SwitchProps) => {
 
         {/* Thumb with Check Mark */}
         <div
-          className={`rounded-input absolute left-2 top-1 flex items-center justify-center bg-atom-input shadow transition-all ${sizeClasses[size].dot} ${
+          className={`absolute left-2 top-1 flex items-center justify-center rounded-input bg-atom-input shadow transition-all ${sizeClasses[size].dot} ${
             isChecked ? 'translate-x-full' : ''
           }`}
         >

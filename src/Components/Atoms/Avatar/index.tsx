@@ -40,7 +40,7 @@ const Avatar: React.FC<AvatarProps> = ({
         />
       ) : (
         <div
-          className="bg-atom-avatar-background text-atom-avatar-text flex h-full w-full items-center justify-center font-semibold"
+          className="flex h-full w-full items-center justify-center bg-atom-avatar-background font-semibold text-atom-avatar-text"
           role="img"
           aria-label={alt}
         >

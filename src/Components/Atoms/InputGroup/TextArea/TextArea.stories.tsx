@@ -150,7 +150,7 @@ export const CompareStates: StoryObj<typeof TextArea> = {
         <TextArea
           placeholder="Auto-focused"
           autoFocus
-          className="ring-2 ring-primary-dark"
+          className="ring-primary-dark ring-2"
         />
         <TextArea
           placeholder="Custom styled"

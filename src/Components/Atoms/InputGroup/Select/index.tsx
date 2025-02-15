@@ -68,7 +68,7 @@ const Select: React.FC<SelectProps> = ({
           disabled={disabled || !hasOptions}
           value={internalValue}
           onChange={handleChange}
-          className={`rounded-input w-full appearance-none border transition-all ${sizeClasses[size]} ${
+          className={`w-full appearance-none rounded-input border transition-all ${sizeClasses[size]} ${
             disabled || !hasOptions
               ? 'cursor-not-allowed border-atom-input/40 bg-atom-input-background text-atom-input-text/40'
               : error && showError
