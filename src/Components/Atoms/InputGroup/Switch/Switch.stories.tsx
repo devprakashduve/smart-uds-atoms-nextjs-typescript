@@ -33,7 +33,7 @@ export const CheckedSwitch = {
   },
 };
 
-export const withoutIcon = {
+export const WithoutIcon = {
   args: {
     checked: true,
     onChange: (checked: boolean) => console.log(checked),
@@ -96,30 +96,9 @@ export const LargeSizeSwitch = {
 export const SizeComparison = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Switch
-        size="sm"
-        checked={true}
-        textForOn="Small"
-        onChange={function (checked: boolean): void {
-          throw new Error('Function not implemented.');
-        }}
-      />
-      <Switch
-        size="md"
-        checked={true}
-        textForOn="Medium"
-        onChange={function (checked: boolean): void {
-          throw new Error('Function not implemented.');
-        }}
-      />
-      <Switch
-        size="lg"
-        checked={true}
-        textForOn="Large"
-        onChange={function (checked: boolean): void {
-          throw new Error('Function not implemented.');
-        }}
-      />
+      <Switch size="sm" checked={true} textForOn="Small" onChange={() => {}} />
+      <Switch size="md" checked={true} textForOn="Medium" onChange={() => {}} />
+      <Switch size="lg" checked={true} textForOn="Large" onChange={() => {}} />
     </div>
   ),
 };
