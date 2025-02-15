@@ -115,12 +115,6 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
                     {item.name}
                   </span>
                 </div>
-
-                {selected.id === item.id && (
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-atom-input">
-                    <CheckIcon aria-hidden="true" className="size-5" />
-                  </span>
-                )}
               </li>
             ))}
           </ul>
