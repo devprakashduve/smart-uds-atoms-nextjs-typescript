@@ -1,0 +1,13 @@
+/* Button Group container */
+.btn-group {
+  @apply flex space-x-2;
+}
+
+/* Button styles */
+.btn {
+  @apply rounded-md px-4 py-2 focus:outline-none;
+}
+
+.btn[disabled] {
+  @apply cursor-not-allowed bg-gray-400 text-gray-700;
+}

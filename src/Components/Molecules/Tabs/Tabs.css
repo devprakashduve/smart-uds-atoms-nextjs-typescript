@@ -1,0 +1,27 @@
+/* Tabs Container */
+.tabs-container {
+  @apply w-full;
+}
+
+/* Tabs Header */
+.tabs-header {
+  @apply flex space-x-4 border-b border-gray-300;
+}
+
+.tab-button {
+  @apply border-b-2 border-transparent px-4 py-2 text-sm font-medium text-gray-600 focus:outline-none;
+}
+
+.tab-button:hover {
+  @apply text-gray-800;
+}
+
+/* Active Tab */
+.active-tab {
+  @apply border-blue-600 text-blue-600;
+}
+
+/* Tabs Content */
+.tabs-content {
+  @apply p-4 text-gray-700;
+}

@@ -1,0 +1,37 @@
+/* ReviewSection Styles */
+.review-section {
+  @apply rounded-lg bg-gray-100 p-6;
+}
+
+.review-item {
+  @apply mb-4 rounded-lg bg-white p-4 shadow-md;
+}
+
+.review-item h3 {
+  @apply text-xl font-semibold;
+}
+
+.review-item p {
+  @apply text-gray-700;
+}
+
+.review-form {
+  @apply mt-6 rounded-lg bg-white p-4 shadow-md;
+}
+
+.review-form input,
+.review-form textarea {
+  @apply mb-4 w-full rounded-md border border-gray-300 p-2;
+}
+
+.review-form button {
+  @apply w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700;
+}
+
+.rating {
+  @apply text-yellow-500;
+}
+
+.rating span {
+  @apply cursor-pointer;
+}

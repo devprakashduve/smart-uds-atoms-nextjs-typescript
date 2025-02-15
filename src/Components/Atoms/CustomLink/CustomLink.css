@@ -1,0 +1,3 @@
+.link {
+  @apply text-line-dark underline-offset-4;
+}

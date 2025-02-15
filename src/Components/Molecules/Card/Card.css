@@ -1,0 +1,9 @@
+/* Card container */
+.card {
+  @apply cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-200 hover:shadow-lg;
+}
+
+/* Card Footer */
+.card-footer {
+  @apply border-t bg-gray-100 p-4;
+}

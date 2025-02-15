@@ -1,0 +1,48 @@
+/* SearchResultList Styles */
+.search-result-list {
+  @apply p-4;
+}
+
+.search-result-list .result-list {
+  @apply list-none;
+}
+
+.search-result-list .result-item {
+  @apply flex cursor-pointer items-center border-b p-4;
+}
+
+.search-result-list .result-item:hover {
+  @apply bg-gray-100;
+}
+
+.search-result-list .result-image img {
+  @apply mr-4 h-16 w-16 rounded-lg object-cover;
+}
+
+.search-result-list .result-content {
+  @apply flex-1;
+}
+
+.search-result-list .result-title {
+  @apply text-lg font-semibold;
+}
+
+.search-result-list .result-description {
+  @apply text-sm text-gray-500;
+}
+
+.search-result-list .pagination {
+  @apply mt-4 flex items-center justify-center;
+}
+
+.search-result-list .pagination-button {
+  @apply mr-2 rounded bg-blue-600 px-4 py-2 text-white disabled:opacity-50;
+}
+
+.search-result-list .pagination-page {
+  @apply mx-2 text-lg;
+}
+
+.loader {
+  @apply text-center text-xl font-semibold;
+}

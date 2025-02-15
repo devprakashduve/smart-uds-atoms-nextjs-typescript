@@ -1,0 +1,28 @@
+/* Base progress bar container */
+.progress-bar-container {
+  @apply overflow-hidden rounded-full;
+}
+
+/* Base progress bar filling */
+.progress-bar {
+  @apply h-full transition-all duration-300 ease-in-out;
+}
+
+/* Striped Effect for Progress Bar */
+.progress-striped {
+  @apply animate-progress-stripes bg-gradient-to-r from-transparent via-white to-transparent;
+}
+
+/* Animation for Striped Effect */
+@keyframes progress-stripes {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.animate-progress-stripes {
+  animation: progress-stripes 1s linear infinite;
+}

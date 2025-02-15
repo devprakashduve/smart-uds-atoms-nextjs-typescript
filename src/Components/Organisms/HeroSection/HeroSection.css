@@ -1,0 +1,24 @@
+/* Hero Section Styles */
+.hero-section {
+  @apply relative flex flex-col items-center justify-center bg-cover bg-center py-32 text-white;
+}
+
+.hero-section .overlay {
+  @apply absolute left-0 top-0 h-full w-full bg-black opacity-50;
+}
+
+.hero-section .text-center {
+  @apply relative z-10;
+}
+
+.hero-section h1 {
+  @apply text-4xl font-extrabold;
+}
+
+.hero-section p {
+  @apply mt-4 text-lg;
+}
+
+.hero-section a {
+  @apply mt-6 inline-block rounded-lg bg-blue-600 px-6 py-3 text-xl font-semibold text-white hover:bg-blue-700;
+}

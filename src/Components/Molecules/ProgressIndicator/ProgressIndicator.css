@@ -1,0 +1,27 @@
+/* Container */
+.progress-indicator-container {
+  @apply flex w-full flex-col items-center;
+}
+
+/* Progress Bar */
+.progress-bar {
+  @apply flex w-full items-center justify-between;
+}
+
+/* Step */
+.progress-step {
+  @apply relative flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-gray-700;
+}
+
+.progress-step.active {
+  @apply bg-blue-500 text-white;
+}
+
+.progress-step.completed {
+  @apply bg-green-500 text-white;
+}
+
+/* Label */
+.progress-label {
+  @apply absolute mt-10 w-20 text-center text-xs;
+}

@@ -1,0 +1,37 @@
+.spinner {
+  display: inline-block;
+  position: relative;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.spinner-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 5px solid #737171;
+  border-right: 5px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.spinner-light {
+  @apply border-t-line-light;
+}
+
+.spinner-primary {
+  @apply border-t-line;
+}
+
+.spinner-dark {
+  @apply border-t-line-dark;
+}

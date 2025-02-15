@@ -1,0 +1,83 @@
+.video-container {
+  position: relative;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-element {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.custom-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.custom-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 0.5rem 1rem;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.custom-controls:hover {
+  opacity: 1;
+}
+
+.progress-bar {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.progress {
+  height: 100%;
+  background: #ff0000;
+  transition: width 0.1s linear;
+}
+
+.controls-bottom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.controls-bottom button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+.controls-bottom button:hover {
+  transform: scale(1.1);
+}
+
+.time {
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .controls-bottom button {
+    font-size: 1rem;
+  }
+
+  .time {
+    font-size: 0.8rem;
+  }
+}

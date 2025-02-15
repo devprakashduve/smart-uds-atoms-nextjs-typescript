@@ -1,0 +1,7 @@
+.textarea-base {
+  @apply h-36 w-full rounded border border-line-light px-4 py-2 text-letter placeholder:text-letter-light hover:border-line focus:border-line-dark focus:outline-none;
+}
+
+.textarea-disabled {
+  @apply cursor-not-allowed opacity-50;
+}

@@ -1,0 +1,36 @@
+/* SearchResultsTemplate Styles */
+.search-results-template {
+  @apply bg-gray-50;
+}
+
+.header {
+  @apply bg-blue-500 px-4 py-6 text-white;
+}
+
+.results-container {
+  @apply px-4 py-6;
+}
+
+.results-list {
+  @apply space-y-4;
+}
+
+.result-item {
+  @apply rounded border p-4 shadow-md;
+}
+
+.pagination {
+  @apply flex justify-center py-4;
+}
+
+.pagination-button {
+  @apply mx-2 rounded-md bg-gray-200 px-4 py-2 disabled:opacity-50;
+}
+
+.page-info {
+  @apply text-lg;
+}
+
+.loader {
+  @apply text-center text-xl text-gray-600;
+}

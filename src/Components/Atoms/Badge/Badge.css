@@ -1,0 +1,19 @@
+.badge-base {
+  @apply inline-flex items-center px-3 py-1 font-medium;
+}
+
+.badge-primary {
+  @apply bg-primary-dark text-letter-light;
+}
+
+.badge-secondary {
+  @apply bg-primary-light text-letter-dark;
+}
+
+.badge-outline {
+  @apply border-2 border-primary-dark bg-transparent text-primary-dark;
+}
+
+.badge-ghost {
+  @apply bg-primary-light text-letter-dark;
+}

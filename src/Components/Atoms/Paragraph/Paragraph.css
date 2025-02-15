@@ -1,0 +1,4 @@
+/* Paragraph.css */
+.paragraph {
+  @apply text-base leading-relaxed text-letter;
+}

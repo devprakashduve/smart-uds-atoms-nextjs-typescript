@@ -1,0 +1,19 @@
+/* Rating Container */
+.rating-container {
+  @apply flex items-center;
+}
+
+/* Star Icon */
+.rating-star {
+  @apply text-rating-dark cursor-default text-xl;
+}
+
+/* Filled Star */
+.rating-star.filled {
+  @apply text-rating-light;
+}
+
+/* Interactive Star */
+.rating-star.interactive {
+  @apply hover:text-rating cursor-pointer;
+}

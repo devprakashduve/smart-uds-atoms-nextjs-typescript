@@ -1,0 +1,13 @@
+/* Image Gallery Styles */
+.image-gallery {
+  @apply grid gap-4;
+}
+
+.image-gallery .image-item {
+  @apply cursor-pointer;
+}
+
+.image-gallery img {
+  @apply h-auto w-full rounded-lg;
+  object-fit: cover;
+}

@@ -1,0 +1,20 @@
+/* App Header */
+.app-header {
+  @apply bg-blue-600 py-4 text-white;
+}
+
+.app-header .logo img {
+  @apply h-8;
+}
+
+.app-header .navigation a {
+  @apply text-white hover:text-blue-300;
+}
+
+.app-header .search-form input {
+  @apply rounded-lg px-4 py-2;
+}
+
+.app-header .search-form button {
+  @apply rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600;
+}

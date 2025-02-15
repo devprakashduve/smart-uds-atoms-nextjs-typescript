@@ -1,0 +1,38 @@
+/* Toast Notification Base */
+.toast-notification {
+  @apply mb-4 flex w-full max-w-xs items-center justify-between rounded-lg p-4 font-medium text-white shadow-md;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Success Toast */
+.toast-notification.success {
+  @apply bg-success;
+}
+
+/* Error Toast */
+.toast-notification.error {
+  @apply bg-error;
+}
+
+/* Info Toast */
+.toast-notification.info {
+  @apply bg-info;
+}
+
+/* Warning Toast */
+.toast-notification.warning {
+  @apply bg-warning;
+}
+
+/* Toast Message */
+.toast-message {
+  @apply mr-4;
+}
+
+/* Close Button */
+.toast-close-button {
+  @apply bg-transparent text-xl font-semibold text-white hover:text-gray-300 focus:outline-none;
+}
