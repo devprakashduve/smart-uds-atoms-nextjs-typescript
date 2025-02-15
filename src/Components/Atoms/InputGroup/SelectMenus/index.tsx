@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
+import { ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import Avatar from '../../Avatar';
 import { Item, SelectMenusProps } from './SelectMenus.interface';
 
@@ -115,12 +115,6 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
                     {item.name}
                   </span>
                 </div>
-
-                {selected.id === item.id && (
-                  <span className="absolute inset-y-0 right-0 flex items-center pr-4 text-atom-input">
-                    <CheckIcon aria-hidden="true" className="size-5" />
-                  </span>
-                )}
               </li>
             ))}
           </ul>

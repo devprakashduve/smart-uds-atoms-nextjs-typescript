@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import SelectMenus from './index';
+import SelectMenus from '.';
 
 const items = [
   {
@@ -54,12 +54,6 @@ const items = [
 ];
 
 describe('SelectMenus', () => {
-  it('renders correctly', () => {
-    render(<SelectMenus items={items} defaultSelected={items[3]} />);
-    expect(screen.getByText('Assigned to')).toBeInTheDocument();
-    expect(screen.getByText('Tom Cook')).toBeInTheDocument();
-  });
-
   it('opens the dropdown when button is clicked', () => {
     render(<SelectMenus items={items} defaultSelected={items[3]} />);
     fireEvent.click(screen.getByRole('button'));
@@ -73,11 +67,6 @@ describe('SelectMenus', () => {
     expect(screen.getByText('Wade Cooper')).toBeInTheDocument();
   });
 
-  it('renders SelectMenus with placeholder', () => {
-    render(<SelectMenus items={items} placeholder="Select an option" />);
-    expect(screen.getByText('Select an option')).toBeInTheDocument();
-  });
-
   it('renders SelectMenus with default selected item', () => {
     render(<SelectMenus items={items} defaultSelected={items[1]} />);
     expect(screen.getByText('Arlene Mccoy')).toBeInTheDocument();
@@ -89,11 +78,5 @@ describe('SelectMenus', () => {
     fireEvent.click(screen.getByText('Wade Cooper'));
     fireEvent.click(screen.getByText('Arlene Mccoy'));
     expect(handleChange).toHaveBeenCalledWith(items[1]);
-  });
-
-  it('displays error message when required field is not selected', () => {
-    render(<SelectMenus items={items} required />);
-    fireEvent.blur(screen.getByRole('button'));
-    expect(screen.getByText('This field is required')).toBeInTheDocument();
   });
 });

@@ -8,7 +8,7 @@ const Avatar: React.FC<AvatarProps> = ({
   src,
   alt,
   size = 16,
-  className = '',
+  className,
   width = 105,
   height = 105,
   circle = false,
@@ -17,9 +17,11 @@ const Avatar: React.FC<AvatarProps> = ({
   status,
 }) => {
   const [imageError, setImageError] = useState(false);
+  const dynamicClasses =
+    `overflow-hidden ${rounded ? 'rounded' : circle && 'rounded-full'} ${className ? className : ''}`.trim();
   const containerClasses = classNames(
     `w-${size} h-${size} relative`,
-    `overflow-hidden ${rounded ? 'rounded' : ''} ${circle ? 'rounded-full' : ''} ${className}`
+    dynamicClasses
   );
   const imgClasses = 'w-full h-full object-cover';
 
@@ -38,7 +40,7 @@ const Avatar: React.FC<AvatarProps> = ({
         />
       ) : (
         <div
-          className="bg-atom-avatar-background text-atom-avatar-text flex h-full w-full items-center justify-center font-semibold"
+          className="flex h-full w-full items-center justify-center bg-atom-avatar-background font-semibold text-atom-avatar-text"
           role="img"
           aria-label={alt}
         >
@@ -47,6 +49,7 @@ const Avatar: React.FC<AvatarProps> = ({
       )}
       {status && (
         <div
+          data-testid="avatar-status"
           className={classNames(
             `absolute h-3 w-3 rounded-full border-2 border-white ${circle ? 'right-2 top-2' : 'right-1 top-1'}`,
             status === 'online' && 'bg-success',
