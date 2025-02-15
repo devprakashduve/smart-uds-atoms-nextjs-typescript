@@ -87,7 +87,7 @@ const Input: React.FC<InputProps> = ({
   );
 
   const inputClass = classNames(
-    'w-full bg-transparent placeholder:text-atom-input-text-light text-atom-input-text text-sm border border-atom-input-light hover:border-atom-input focus:border-atom-input-dark pl-3 pr-10 py-2 transition duration-300 ease focus:outline-none shadow-sm',
+    'w-full bg-atom-input-background placeholder:text-atom-input-text/40 text-atom-input-text text-sm border border-atom-input/40 hover:border-atom-input focus:border-atom-input pl-3 pr-10 py-2 transition duration-300 ease focus:outline-none',
     className,
     boxSize,
     error && 'border border-error hover:border-error focus:border-error',
@@ -99,7 +99,7 @@ const Input: React.FC<InputProps> = ({
     <div className="relative w-full">
       {label && (
         <Label
-          className="text-atom-input-text mb-2 block text-sm"
+          className="mb-2 block text-sm text-atom-input-text"
           htmlFor={name}
         >
           {label}

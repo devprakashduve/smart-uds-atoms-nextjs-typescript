@@ -89,8 +89,6 @@ export default {
       control: { type: 'radio' },
       options: ['sm', 'md', 'lg'],
     },
-    rounded: { control: 'boolean' },
-    roundedFull: { control: 'boolean' },
   },
   args: {
     options: [
@@ -105,8 +103,7 @@ export default {
     disabled: false,
     required: false,
     error: false,
-    rounded: true,
-    roundedFull: false,
+
     onChange: (event: { target: { value: any } }) =>
       console.log('Select Value:', event.target.value),
   },
@@ -157,7 +154,6 @@ RoundedFull.args = {
   items,
   defaultSelected: items[5],
   placeholder: 'Select an option',
-  roundedFull: true,
 };
 
 export const VariantsComparison = () => (
@@ -194,7 +190,6 @@ export const VariantsComparison = () => (
       items={items}
       defaultSelected={items[5]}
       placeholder="Select an option"
-      roundedFull
     />
     <h3>Small Size</h3>
     <SelectMenus
@@ -224,14 +219,12 @@ export const VariantsComparison = () => (
       size="lg"
       label="Large rounded full"
       required
-      roundedFull
     />
     <h3>Rounded</h3>
     <SelectMenus
       items={items}
       defaultSelected={items[9]}
       placeholder="Select an option"
-      rounded
     />
   </div>
 );

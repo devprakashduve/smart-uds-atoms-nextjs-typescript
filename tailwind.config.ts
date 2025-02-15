@@ -2,44 +2,17 @@ import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
   atom: {
-    background: '#fff',
+    avatar: {
+      background: '#9CA3AF',
+      text: '#fff',
+    },
     input: {
-      background: '#fff',
-      light: '#FBCFE8', // Light Pink
-      DEFAULT: '#DB2777', // Dark Pink
-      dark: '#9D174D', // Deep Magenta
-      text: {
-        light: '#9CA3AF', // Gray (Slate-400)
-        DEFAULT: '#1F2937', // Dark Charcoal (Slate-800)
-        dark: '#111827', // Almost Black (Slate-900)
-      },
+      background: '#9CA3AF',
+      DEFAULT: '#9D174D', // Dark Pink
+      text: '#000',
     },
   },
-  primary: {
-    light: '#FBCFE8', // Light Pink
-    DEFAULT: '#DB2777', // Dark Pink
-    dark: '#9D174D', // Deep Magenta
-  },
-  secondary: {
-    light: '#F5F5F5', // Soft White
-    DEFAULT: '#FFFFFF', // Pure White
-    dark: '#E5E5E5', // Light Grayish White
-  },
-  accent: {
-    light: '#FDE8E8', // Light Rose
-    DEFAULT: '#E11D48', // Crimson
-    dark: '#BE123C', // Dark Red
-  },
-  line: {
-    light: '#FBCFE8', // Light Pink
-    DEFAULT: '#DB2777', // Dark Pink
-    dark: '#9D174D', // Deep Magenta
-  },
-  letter: {
-    light: '#9CA3AF', // Gray (Slate-400)
-    DEFAULT: '#1F2937', // Dark Charcoal (Slate-800)
-    dark: '#111827', // Almost Black (Slate-900)
-  },
+
   rating: {
     light: '#FDE047', // Yellow
     DEFAULT: '#FACC15', // Yellow
@@ -98,27 +71,7 @@ export default {
         serif: ['Merriweather', 'serif'],
         mono: ['Roboto Mono', 'monospace'],
       },
-      fontSize: {
-        xs: '12px',
-        sm: '14px',
-        base: '16px',
-        lg: '18px',
-        xl: '24px',
-        '2xl': '30px',
-        '3xl': '36px',
-        '4xl': '48px',
-        '5xl': '64px',
-        '6xl': '80px',
-        '7xl': '96px', // New font size (7xl)
-      },
-      lineHeight: {
-        DEFAULT: '1',
-        normal: '1.5',
-        relaxed: '1.75',
-        snug: '1.25',
-        tight: '1.1',
-        loose: '2',
-      },
+
       fontWeight: {
         thin: '100',
         hairline: '100',
@@ -133,11 +86,9 @@ export default {
         black: '900',
       },
       borderRadius: {
-        menu: '0px',
-        DEFAULT: '8px',
-        lg: '12px', // Large border radius
-        xl: '16px', // Extra large border radius
-        '2xl': '24px', // 2x Extra large border radius
+        input: '20px',
+        checkbox: '5px',
+        radio: '5px',
       },
       boxShadow: {
         default: '0 2px 4px rgba(0, 0, 0, 0.1)',

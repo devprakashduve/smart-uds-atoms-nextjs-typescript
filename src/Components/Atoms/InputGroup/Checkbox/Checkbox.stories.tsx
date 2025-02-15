@@ -14,7 +14,6 @@ export const Checked = {
     checked: true,
     toggleChecked: (value: boolean) => console.log(value),
     label: 'Checked State',
-    rounded: true,
   },
 };
 
@@ -74,7 +73,6 @@ export const Comparison = {
           size="lg"
           label="Large (lg)"
           checked
-          rounded={true}
           toggleChecked={(value: boolean) => console.log(value)}
         />
       </div>

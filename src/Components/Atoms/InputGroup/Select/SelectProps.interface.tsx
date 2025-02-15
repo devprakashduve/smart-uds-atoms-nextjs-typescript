@@ -11,8 +11,7 @@ export interface SelectProps {
   disabled?: boolean;
   required?: boolean;
   error?: boolean;
-  rounded?: boolean;
-  roundedFull?: boolean;
+
   className?: string;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

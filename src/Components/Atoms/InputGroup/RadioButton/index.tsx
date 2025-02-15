@@ -54,10 +54,10 @@ const RadioButton: React.FC<RadioButtonProps> = ({
           disabled={disabled}
           className={`peer ${inputSize} z-auto ${
             disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'
-          } border-atom-input checked:border-atom-input-dark appearance-none rounded-full border ${radioClass}`}
+          } appearance-none rounded-full border border-atom-input checked:border-atom-input hover:border-atom-input/40 ${radioClass}`}
         />
         <span
-          className={`absolute left-1/2 top-1/2 z-[-9] ${indicatorSize} bg-atom-input-dark -translate-x-1/2 -translate-y-1/2 transform rounded-full opacity-0 transition-opacity duration-200 peer-checked:opacity-100 ${
+          className={`absolute left-1/2 top-1/2 z-[-9] ${indicatorSize} -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-atom-input-text opacity-0 transition-opacity duration-200 peer-checked:opacity-100 ${
             disabled ? 'bg-opacity-50' : ''
           }`}
         ></span>
