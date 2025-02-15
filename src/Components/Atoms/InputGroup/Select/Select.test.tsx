@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Select from './index';
-import { SelectProps } from './SelectProps.interface';
 
 describe('Select Component', () => {
   const options = [
