@@ -51,7 +51,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
   const shouldShowRequiredError = required && isEmpty && isTouched;
 
   return (
-    <div className={`min-w-[200px] ${className}`}>
+    <div className={`w-full ${className}`}>
       {label && (
         <label
           htmlFor="select-menus-input"
@@ -66,12 +66,11 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
 
       <div className="relative mt-2">
         <button
-          id="select-menus-input"
           onClick={() => setIsOpen(!isOpen)}
           disabled={disabled || !hasItems}
-          className={`rounded-input grid w-full cursor-default grid-cols-1 border transition-all ${sizeClasses[size]} ${
+          className={`rounded-input grid w-full cursor-default grid-cols-1 border bg-atom-input-background transition-all ${sizeClasses[size]} ${
             disabled || !hasItems
-              ? 'text-atom--input-text/40 cursor-not-allowed border-atom-input/40 bg-atom-input-background'
+              ? 'text-atom--input-text/40 cursor-not-allowed border-atom-input/40 bg-atom-input-background/20'
               : error && showError
                 ? 'cursor-pointer border-error hover:border-error focus:border-error'
                 : 'cursor-pointer border-atom-input/40 hover:border-atom-input focus:border-atom-input focus:shadow-md'
@@ -97,7 +96,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
         </button>
 
         {isOpen && (
-          <ul className="absolute z-50 max-h-56 w-full overflow-auto border border-l-0 border-r-0 border-t-0 border-b-atom-input/40 bg-atom-input-background py-1 text-base sm:text-sm">
+          <ul className="rounded-input absolute z-50 max-h-56 w-full overflow-auto border border-l-0 border-r-0 border-t-0 border-b-atom-input/40 bg-atom-input-background py-1 text-base sm:text-sm">
             {items.map((item) => (
               <li
                 key={item.id}
