@@ -1,6 +1,5 @@
 import React, { useState, useId } from 'react';
 import { RadioButtonProps } from './RadioButtonProps.interface';
-import './../../../../app/globals.css';
 import './RadioButton.css';
 import Label from '../../Label';
 import { classNames } from '@/Components/Utilities/componentsMethods';

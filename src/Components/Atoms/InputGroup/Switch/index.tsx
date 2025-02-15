@@ -19,8 +19,8 @@ const Switch = (props: SwitchProps) => {
         ? 'bg-atom-input-light'
         : 'bg-atom-input-light'
       : isChecked
-        ? 'border border-border'
-        : 'border border-border-light'
+        ? 'border border-input'
+        : 'border border-input-light'
   );
 
   const sizeClasses = {
@@ -62,7 +62,7 @@ const Switch = (props: SwitchProps) => {
           {!disableIcons &&
             (isChecked ? (
               <svg
-                className="text-atom-input-text-dark h-6 w-6 dark:text-white"
+                className="text-atom-input-text-dark dark:text-atom-input-background h-6 w-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -80,7 +80,7 @@ const Switch = (props: SwitchProps) => {
               </svg>
             ) : (
               <svg
-                className="text-atom-input-text-dark h-6 w-6 dark:text-white"
+                className="text-atom-input-text-dark dark:text-atom-input-background h-6 w-6"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

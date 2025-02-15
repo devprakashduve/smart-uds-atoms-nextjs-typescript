@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { InputProps, InputSize, InputType } from './InputProps.interface';
-import './../../../../app/globals.css';
 import './Input.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Label from '../../Label';
