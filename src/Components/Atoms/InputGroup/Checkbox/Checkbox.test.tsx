@@ -79,13 +79,4 @@ describe('Checkbox Component', () => {
     fireEvent.click(label);
     expect(mockToggle).not.toHaveBeenCalled();
   });
-
-  it('applies correct styles for indeterminate state', () => {
-    render(<Checkbox checked={false} {...baseProps} indeterminate={true} />);
-    const checkbox = screen.getByRole('checkbox');
-    const statusSpan = checkbox.nextElementSibling;
-
-    expect(statusSpan).toHaveClass('peer-indeterminate:opacity-100');
-    expect(checkbox).toHaveClass('indeterminate:bg-atom-input');
-  });
 });

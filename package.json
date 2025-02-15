@@ -31,7 +31,7 @@
     "npm:build": "rollup -c",
     "prepare": "npm run build",
     "postinstall": "husky",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
