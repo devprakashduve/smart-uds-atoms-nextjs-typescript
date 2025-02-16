@@ -50,7 +50,9 @@ export default [
       // Import image files into the bundle
       image(),
       // Process CSS files with PostCSS
-      postcss(),
+      postcss({
+        extract: true, // or false if you prefer inline styles
+      }),
     ],
     // Externalize dependencies that should not be bundled
     external: ['react', 'react-dom'],
