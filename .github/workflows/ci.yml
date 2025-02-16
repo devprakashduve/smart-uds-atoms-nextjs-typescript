@@ -11,5 +11,3 @@ jobs:
       - run: npm install
       - run: npm test # Add tests if applicable
       - run: npm run build
-      - run: npm login
-      - run: npm publish
