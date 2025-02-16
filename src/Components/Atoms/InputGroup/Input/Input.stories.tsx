@@ -1,437 +1,218 @@
+import React, { useState } from 'react';
+import { Meta, StoryFn } from '@storybook/react';
 import Input from '.';
-import { InputSize, InputType } from './InputProps.interface';
+import { InputProps, InputSize } from './InputProps.interface';
 
 export default {
   title: 'Components/Atoms/InputGroup/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {
-    value: { control: 'text' },
-    name: { control: 'text' },
-    onChange: { action: 'changed' },
-    placeholder: { control: 'text' },
-    disabled: { control: 'boolean' },
     type: {
-      control: 'select',
-      options: Object.values(InputType),
+      control: {
+        type: 'select',
+        options: ['text', 'password', 'email', 'number', 'tel'],
+      },
+      description: 'HTML input type as a string',
     },
-    label: { control: 'text' },
-    id: { control: 'text' },
-    className: { control: 'text' },
     size: {
-      control: 'select',
-      options: Object.values(InputSize),
+      control: { type: 'select', options: Object.values(InputSize) },
+      description: 'Input size',
     },
-    isRequired: { control: 'boolean' },
-    rounded: { control: 'boolean' },
-    roundedFull: { control: 'boolean' },
-    showIcon: { control: 'boolean' },
-    customIconSVG: { control: 'object' },
+    disabled: { control: 'boolean', description: 'Disables the input' },
+    isBorder: { control: 'boolean', description: 'enable border' },
+    isRequired: {
+      control: 'boolean',
+      description: 'Marks the input as required',
+    },
+
+    showIcon: {
+      control: 'boolean',
+      description:
+        'Shows an icon inside the input (for toggling password visibility)',
+    },
   },
+} as Meta<typeof Input>;
+
+const Template: StoryFn<InputProps> = (args) => {
+  const [value] = useState(args.value);
+  return (
+    <Input
+      {...args}
+      value={value}
+      name="storybook-input"
+      id="storybook-input"
+    />
+  );
 };
 
-export const Default = {
-  args: {
-    id: 'default',
-    name: 'default',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Default Input',
-    isRequired: true,
-  },
+export const BasicTextInput = Template.bind({});
+BasicTextInput.args = {
+  type: 'text',
+  label: 'Basic Input',
+  placeholder: 'Enter text...',
+  disabled: false,
+  isRequired: false,
 };
 
-export const WithValue = {
-  args: {
-    id: 'with-value',
-    name: 'with-value',
-    placeholder: 'Enter text',
-    value: 'Sample text',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Input with Value',
-  },
+export const PasswordInput = Template.bind({});
+PasswordInput.args = {
+  type: 'password',
+  label: 'Password',
+  placeholder: 'Enter password...',
+  disabled: false,
+  isRequired: true,
+  showIcon: true,
 };
 
-export const Disabled = {
-  args: {
-    id: 'disabled',
-    name: 'disabled',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: true,
-    type: InputType.TEXT,
-    label: 'Disabled Input',
-  },
+export const EmailInput = Template.bind({});
+EmailInput.args = {
+  type: 'email',
+  label: 'Email',
+  placeholder: 'Enter email...',
+  disabled: false,
+  isRequired: true,
 };
 
-export const Password = {
-  args: {
-    id: 'password',
-    name: 'password',
-    placeholder: 'Enter password',
-    value: '',
-    disabled: false,
-    type: InputType.PASSWORD,
-    label: 'Password Input',
-
-    showIcon: true,
-  },
+export const NumberInput = Template.bind({});
+NumberInput.args = {
+  type: 'number',
+  label: 'Number',
+  placeholder: 'Enter a number...',
+  disabled: false,
 };
 
-export const Number = {
-  args: {
-    id: 'number',
-    name: 'number',
-    placeholder: 'Enter number',
-    value: '',
-    disabled: false,
-    type: InputType.NUMBER,
-    label: 'Number Input',
-  },
+export const DisabledInput = Template.bind({});
+DisabledInput.args = {
+  type: 'text',
+  label: 'Disabled Input',
+  placeholder: 'Cannot edit this...',
+  disabled: true,
 };
 
-export const Email = {
-  args: {
-    id: 'email',
-    name: 'email',
-    placeholder: 'Enter email',
-    value: '',
-    disabled: false,
-    type: InputType.EMAIL,
-    label: 'Email Input',
-  },
+export const RoundedInput = Template.bind({});
+RoundedInput.args = {
+  type: 'text',
+  label: 'Rounded Input',
+  placeholder: 'Rounded corners',
 };
 
-export const Tel = {
-  args: {
-    id: 'tel',
-    name: 'tel',
-    placeholder: 'Enter phone number',
-    value: '',
-    disabled: false,
-    type: InputType.TEL,
-    label: 'Telephone Input',
-
-    showIcon: true,
-  },
+export const PillInput = Template.bind({});
+PillInput.args = {
+  type: 'text',
+  label: 'Pill Input',
+  placeholder: 'Fully rounded',
 };
 
-export const TelWithCustomIcon = {
-  args: {
-    id: 'tel',
-    name: 'tel',
-    placeholder: 'Enter phone number',
-    value: '',
-    disabled: false,
-    type: InputType.TEL,
-    label: 'Telephone Input',
-
-    showIcon: true,
-    customIconSVG: (
-      <svg
-        className="h-6"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path d="M7.978 4a2.553 2.553 0 0 0-1.926.877C4.233 6.7 3.699 8.751 4.153 10.814c.44 1.995 1.778 3.893 3.456 5.572 1.68 1.679 3.577 3.018 5.57 3.459 2.062.456 4.115-.073 5.94-1.885a2.556 2.556 0 0 0 .001-3.861l-1.21-1.21a2.689 2.689 0 0 0-3.802 0l-.617.618a.806.806 0 0 1-1.14 0l-1.854-1.855a.807.807 0 0 1 0-1.14l.618-.62a2.692 2.692 0 0 0 0-3.803l-1.21-1.211A2.555 2.555 0 0 0 7.978 4Z" />
-      </svg>
-    ),
-  },
-};
-
-export const Rounded = {
-  args: {
-    id: 'rounded',
-    name: 'rounded',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Rounded Input',
-    rounded: true,
-  },
-};
-
-export const RoundedFull = {
-  args: {
-    id: 'rounded-full',
-    name: 'rounded-full',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Rounded Full Input',
-    roundedFull: true,
-
-    rounded: true,
-  },
-};
-
-export const SmallSize = {
-  args: {
-    id: 'small-size',
-    name: 'small-size',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Small Size Input',
-    size: InputSize.SM,
-  },
-};
-
-export const MediumSize = {
-  args: {
-    id: 'medium-size',
-    name: 'medium-size',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Medium Size Input',
-    size: InputSize.MD,
-  },
-};
-
-export const LargeSize = {
-  args: {
-    id: 'large-size',
-    name: 'large-size',
-    placeholder: 'Enter text',
-    value: '',
-    disabled: false,
-    type: InputType.TEXT,
-    label: 'Large Size Input',
-    size: InputSize.LG,
-  },
-};
-
-// COMPARISON STORIES
-export const SizeComparison = {
-  render: () => (
-    <div className="flex flex-col gap-4 p-4">
-      <Input
-        label="Small Size"
-        size={InputSize.SM}
-        placeholder="Small input"
-        type={InputType.TEXT}
-        value={''}
-        name={''}
-      />
-      <Input
-        label="Medium Size"
-        size={InputSize.MD}
-        placeholder="Medium input"
-        type={InputType.TEXT}
-        value={''}
-        name={''}
-      />
-      <Input
-        label="Large Size"
-        size={InputSize.LG}
-        placeholder="Large input"
-        type={InputType.TEXT}
-        value={''}
-        name={''}
-      />
+export const ComparisonOfInputs = () => {
+  return (
+    <div className="space-y-6">
+      <h3 className="text-lg font-bold">Comparison of Input Variants</h3>
+      <div className="space-y-4">
+        <div>
+          <p>Basic Text Input</p>
+          <Input
+            type="text"
+            label="Basic Input"
+            placeholder="Enter text..."
+            name="basic-input"
+            id="basic-input"
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>Password Input with Icon</p>
+          <Input
+            type="password"
+            label="Password"
+            placeholder="Enter password..."
+            name="password-input"
+            id="password-input"
+            showIcon={true}
+            isRequired={true}
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>Email Input</p>
+          <Input
+            type="email"
+            label="Email"
+            placeholder="Enter email..."
+            name="email-input"
+            id="email-input"
+            isRequired={true}
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>Number Input</p>
+          <Input
+            type="number"
+            label="Number"
+            placeholder="Enter a number..."
+            name="number-input"
+            id="number-input"
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>Disabled Input</p>
+          <Input
+            type="text"
+            label="Disabled Input"
+            placeholder="Cannot edit this..."
+            name="disabled-input"
+            id="disabled-input"
+            disabled={true}
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>Rounded Input</p>
+          <Input
+            type="text"
+            label="Rounded Input"
+            placeholder="Rounded corners"
+            name="rounded-input"
+            id="rounded-input"
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>Pill Input</p>
+          <Input
+            type="text"
+            label="Pill Input"
+            placeholder="Fully rounded"
+            name="pill-input"
+            id="pill-input"
+            value={''}
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+      </div>
     </div>
-  ),
+  );
 };
-
-export const TypeComparison = {
-  render: () => (
-    <div className="flex flex-col gap-4 p-4">
-      <Input
-        label="Text Input"
-        type={InputType.TEXT}
-        placeholder="Search..."
-        value={''}
-        name={''}
-        size={InputSize.SM}
-        showIcon={true}
-        customIconName="search"
-      />
-      <Input
-        label="Text Input"
-        type={InputType.TEXT}
-        placeholder="Enter text"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Password"
-        type={InputType.PASSWORD}
-        showIcon
-        placeholder="Enter password"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Email"
-        type={InputType.EMAIL}
-        placeholder="email@example.com"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Telephone"
-        type={InputType.TEL}
-        showIcon
-        placeholder="+1 234 567 890"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Number"
-        type={InputType.NUMBER}
-        placeholder="Enter number"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-    </div>
-  ),
-};
-
-export const StateComparison = {
-  render: () => (
-    <div className="flex flex-col gap-4 p-4">
-      <Input
-        label="Normal State"
-        placeholder="Regular input"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Disabled State"
-        disabled
-        placeholder="Disabled input"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Required Field"
-        isRequired
-        placeholder="Required input"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-      <Input
-        label="With Value"
-        value="Pre-filled content"
-        placeholder="Has value"
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-    </div>
-  ),
-};
-
-export const StyleComparison = {
-  render: () => (
-    <div className="flex flex-col gap-4 p-4">
-      <Input
-        label="Default Style"
-        placeholder="Normal borders"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Rounded"
-        rounded
-        placeholder="Rounded corners"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Full Rounded"
-        roundedFull
-        placeholder="Pill-shaped"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Error State"
-        value="Invalid value"
-        className="border-error"
-        placeholder="With error"
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-    </div>
-  ),
-};
-
-export const IconComparison = {
-  render: () => (
-    <div className="flex flex-col gap-4 p-4">
-      <Input
-        label="Password Toggle"
-        type={InputType.PASSWORD}
-        showIcon
-        placeholder="With eye icon"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Telephone Icon"
-        type={InputType.TEL}
-        showIcon
-        placeholder="With phone icon"
-        value={''}
-        name={''}
-        size={InputSize.SM}
-      />
-      <Input
-        label="Custom Icon"
-        showIcon
-        customIconSVG={
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
-        }
-        placeholder="Custom SVG icon"
-        value={''}
-        name={''}
-        type={InputType.TEXT}
-        size={InputSize.SM}
-      />
-    </div>
-  ),
-};
+ComparisonOfInputs.storyName = 'Comparison of Inputs';

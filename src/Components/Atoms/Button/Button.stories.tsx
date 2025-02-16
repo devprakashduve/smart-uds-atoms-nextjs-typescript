@@ -36,10 +36,7 @@ export default {
   },
 };
 
-export const Default = {
-  children: 'Default Button',
-  variant: 'default',
-};
+export const Default = () => <Button variant="default">Default</Button>;
 
 export const Sizes = () => (
   <div className="space-x-2">

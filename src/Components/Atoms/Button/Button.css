@@ -1,56 +1,56 @@
-.btn::first-letter {
+/* .btn::first-letter {
   text-transform: uppercase;
 }
 
 .btn {
   @apply inline-flex items-center justify-center border border-transparent hover:shadow focus:shadow-none active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none;
-}
+} */
 
 /* Variant Styles */
-.btn-default {
+/* .btn-default {
   @apply bg-btn-dark text-btn-light hover:border hover:bg-btn-dark/70 focus:border;
-}
-.btn.active {
+} */
+/* .btn.active {
   @apply bg-btn-dark text-btn-light hover:border hover:bg-btn-dark/70;
-}
-.btn-pill-outline {
+} */
+/* .btn-pill-outline {
   @apply border border-btn-dark bg-transparent text-btn-dark hover:border-transparent;
-}
+} */
 
-.btn-outline {
+/* .btn-outline {
   @apply border border-btn-dark bg-transparent;
-}
+} */
 
-.btn-disabled {
+/* .btn-disabled {
   @apply cursor-not-allowed bg-btn-dark text-btn-light opacity-50;
-}
+} */
 
-.btn-link {
+/* .btn-link {
   @apply bg-transparent text-btn-dark shadow-none hover:bg-transparent hover:text-btn-dark/80;
-}
+} */
 
-.btn-three-d {
+/* .btn-three-d {
   @apply transform shadow-[0_4px_0_rgba(0,0,0,0.1)] active:translate-y-0.5;
-}
+} */
 
-.btn-elevated {
+/* .btn-elevated {
   @apply shadow-lg transition-shadow hover:shadow-xl;
-}
+} */
 
-.btn-icon {
+/* .btn-icon {
   @apply p-2 hover:shadow-none !important;
-}
+} */
 
-.btn-groups {
+/* .btn-groups {
   @apply border-r-0 last:border-r hover:relative hover:z-10;
-}
+} */
 
 /* Loading Spinner */
-.btn-loading {
+/* .btn-loading {
   @apply mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent;
-}
+} */
 
 /* Add to existing styles */
-.btn-link {
+/* .btn-link {
   @apply bg-transparent text-btn-dark underline-offset-4 shadow-none transition-all hover:bg-transparent hover:text-btn-dark/80 hover:shadow-none focus:shadow-none active:shadow-none;
-}
+} */
