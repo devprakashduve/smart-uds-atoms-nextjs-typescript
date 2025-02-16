@@ -29,7 +29,6 @@
     "build:lib": "rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
     "prepublishOnly": "npm run build",
-    "postinstall": "husky",
     "test": "jest --coverage"
   },
   "lint-staged": {
