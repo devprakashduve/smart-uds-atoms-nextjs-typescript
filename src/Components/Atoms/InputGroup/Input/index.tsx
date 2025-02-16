@@ -150,7 +150,7 @@ const Input: React.FC<InputProps> = ({
           </span>
         )}
       </div>
-      {error && <p className="mt-1 text-error">{error}</p>}
+      {error && <p className="mt-1 text-sm text-error">{error}</p>}
     </div>
   );
 };
