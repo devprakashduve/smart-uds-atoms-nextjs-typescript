@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Avatar from '@/Components/Atoms/Avatar';
+import Avatar from '.';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import { AvatarProps } from './AvatarProps.interface';
 

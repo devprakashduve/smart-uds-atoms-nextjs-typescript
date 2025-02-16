@@ -1,0 +1,1 @@
+{"version":3,"file":"ImageProps.interface.js","sourceRoot":"","sources":["../../../../../../src/Components/Atoms/Img/ImageProps.interface.tsx"],"names":[],"mappings":"","sourcesContent":["export interface ImageProps {\n  src: string;\n  alt: string;\n  width?: number;\n  height?: number;\n  className?: string;\n  onError?: () => void;\n}\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"file":"jest.setup.js","sourceRoot":"","sources":["../../jest.setup.ts"],"names":[],"mappings":"AAAA,OAAO,2BAA2B,CAAC;AACnC,OAAO,KAAK,MAAM,OAAO,CAAC;AAC1B,MAAM,CAAC,KAAK,GAAG,KAAK,CAAC,CAAC,qCAAqC","sourcesContent":["import '@testing-library/jest-dom';\nimport React from 'react';\nglobal.React = React; // Ensure React is available globally\n"]}
