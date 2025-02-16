@@ -1,8 +1,8 @@
 import React from 'react';
 import { AvatarProps } from './AvatarProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
-import Img from '../Img';
 import './Avatar.css';
+import UDSImage from '../Image';
 
 const Avatar: React.FC<AvatarProps> = ({
   src,
@@ -29,7 +29,7 @@ const Avatar: React.FC<AvatarProps> = ({
   return (
     <div className={containerClasses}>
       {showImage ? (
-        <Img
+        <UDSImage
           className={imgClasses}
           src={src}
           alt={alt}

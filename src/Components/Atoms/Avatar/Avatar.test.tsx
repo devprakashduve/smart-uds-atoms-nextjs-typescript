@@ -10,7 +10,7 @@ jest.mock('../../Utilities/componentsMethods', () => ({
 
 jest.mock('../Img', () => ({
   __esModule: true,
-  default: (props: AvatarProps) => <img {...props} />,
+  default: (props: AvatarProps) => <Avatar {...props} />,
 }));
 
 const testProps = {
