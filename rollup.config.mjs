@@ -7,6 +7,7 @@ import postcss from 'rollup-plugin-postcss';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
 import pkg from './package.json';
+import terser from '@rollup/plugin-terser';
 
 export default [
   {
@@ -30,6 +31,7 @@ export default [
       peerDepsExternal(),
       // Resolve node modules so Rollup can bundle them
       resolve(),
+      terser(),
       // Convert CommonJS modules to ES6
       commonjs(),
       // Compile TypeScript files
