@@ -33,5 +33,5 @@
     "next-env.d.ts",
     "dist/types/**/*.ts"
   ],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules", ".rollup.cache", ".next"]
 }

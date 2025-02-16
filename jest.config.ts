@@ -11,7 +11,12 @@ const customJestConfig: Config.InitialOptions = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
-  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+  testPathIgnorePatterns: [
+    '<rootDir>/.next/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/.rollup.cache/',
+    '<rootDir>/dist/',
+  ],
 };
 
 // Merge with Next.js preset and export

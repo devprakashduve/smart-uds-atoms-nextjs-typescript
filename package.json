@@ -26,7 +26,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:lib": "rollup -c --bundleConfigAsCjs --clearCache",
+    "build:lib": "NODE_OPTIONS='--max_old_space_size=4096' rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
     "prepublishOnly": "npm run build",
     "test": "jest --coverage"
@@ -99,6 +99,7 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "^8.5.3",
     "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5"
   }
