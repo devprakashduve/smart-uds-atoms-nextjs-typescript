@@ -268,7 +268,7 @@ export const TypeComparison = {
       />
       <Input
         label="Password"
-        type={InputType.PASSWORD}
+        type={'password'}
         showIcon
         placeholder="Enter password"
         value={''}
@@ -371,7 +371,7 @@ export const StyleComparison = {
         placeholder="Pill-shaped"
         value={''}
         name={''}
-        type={InputType.TEXT}
+        type={'text'}
         size={InputSize.SM}
       />
       <Input

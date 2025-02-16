@@ -21,7 +21,7 @@ export interface InputProps {
   onKeyPress?: (value?: string) => void;
   placeholder?: string;
   disabled?: boolean;
-  type: InputType;
+  type: string;
   label?: string;
   id?: string;
   className?: string;

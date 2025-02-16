@@ -56,9 +56,43 @@ const Button: React.FC<ButtonProps> = ({
   className,
   underlineHover = false,
 }) => {
+  let extraClasses = '';
+  switch (variant) {
+    case 'default':
+      extraClasses =
+        'bg-btn-dark text-btn-light hover:border hover:bg-btn-dark/70 focus:border';
+      break;
+    case 'outline':
+      extraClasses = 'border border-btn-dark bg-transparent';
+      break;
+    case 'pill-outline':
+      extraClasses =
+        'border border-btn-dark bg-transparent text-btn-dark hover:border-transparent';
+      break;
+    case 'three-d':
+      extraClasses =
+        'transform shadow-[0_4px_0_rgba(0,0,0,0.1)] active:translate-y-0.5';
+      break;
+    case 'elevated':
+      extraClasses = 'shadow-lg transition-shadow hover:shadow-xl';
+      break;
+    case 'link':
+      extraClasses =
+        'bg-transparent text-btn-dark underline-offset-4 shadow-none transition-all hover:bg-transparent hover:text-btn-dark/80 hover:shadow-none focus:shadow-none active:shadow-none';
+      break;
+    case 'icon':
+      extraClasses = 'p-2 hover:shadow-none !important';
+      break;
+    case 'disabled':
+      extraClasses = 'cursor-not-allowed bg-btn-dark text-btn-light opacity-50';
+      break;
+    case 'groups':
+      extraClasses = 'border-r-0 last:border-r hover:relative hover:z-10';
+      break;
+  }
   const baseClasses = classNames(
-    'btn',
-    variantClasses[variant],
+    'inline-flex items-center justify-center border border-transparent hover:shadow focus:shadow-none active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
+    extraClasses,
     sizeClasses[size],
     roundedClasses[rounded],
     className,
