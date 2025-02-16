@@ -6,6 +6,9 @@ const darkPinkWhitePalette = {
       background: '#9CA3AF',
       text: '#fff',
     },
+    icon: {
+      text: '#9D174D',
+    },
     input: {
       background: '#9CA3AF',
       DEFAULT: '#9D174D', // Dark Pink
