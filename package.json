@@ -26,10 +26,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:lib": "NODE_OPTIONS='--max_old_space_size=4096' rollup -c --bundleConfigAsCjs --clearCache",
+    "build:lib": " rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
     "prepublishOnly": "npm run build",
-    "test": "cross-env NODE_OPTIONS=--max_old_space_size=4096  jest --coverage"
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
