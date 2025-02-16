@@ -4,29 +4,38 @@ import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
-const packageJson = require('./package.json');
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import pkg from './package.json';
 
 export default {
+  // Entry point of the library
   input: 'src/index.ts',
+  // Output bundles for CommonJS and ES Modules with sourcemaps enabled
   output: [
     {
-      file: packageJson.main,
+      file: pkg.main,
       format: 'cjs',
       sourcemap: true,
     },
     {
-      file: packageJson.module,
+      file: pkg.module,
       format: 'esm',
       sourcemap: true,
     },
   ],
   plugins: [
+    // Automatically externalize peerDependencies in package.json
+    peerDepsExternal(),
+    // Resolve node modules so Rollup can bundle them
     resolve(),
+    // Convert CommonJS modules to ES6
     commonjs(),
+    // Compile TypeScript files
     typescript({
       tsconfig: './tsconfig.json',
       jsx: 'preserve',
     }),
+    // Transpile JavaScript/TypeScript with Babel for broader compatibility
     babel({
       babelHelpers: 'bundled',
       extensions: ['.ts', '.tsx'],
@@ -36,8 +45,11 @@ export default {
         '@babel/preset-typescript',
       ],
     }),
+    // Import image files into the bundle
     image(),
+    // Process CSS files with PostCSS
     postcss(),
   ],
+  // Externalize dependencies that should not be bundled
   external: ['react', 'react-dom'],
 };
