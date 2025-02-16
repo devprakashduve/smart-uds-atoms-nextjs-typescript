@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AvatarProps } from './AvatarProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
-import Img from '../Img';
 import './Avatar.css';
+import UDSImage from '../Image';
 
 const Avatar: React.FC<AvatarProps> = ({
   src,
@@ -16,7 +16,6 @@ const Avatar: React.FC<AvatarProps> = ({
   initials,
   status,
 }) => {
-  const [imageError, setImageError] = useState(false);
   const dynamicClasses =
     `overflow-hidden ${rounded ? 'rounded' : circle && 'rounded-full'} ${className ? className : ''}`.trim();
   const containerClasses = classNames(
@@ -25,18 +24,17 @@ const Avatar: React.FC<AvatarProps> = ({
   );
   const imgClasses = 'w-full h-full object-cover';
 
-  const showImage = src && !imageError;
+  const showImage = src;
 
   return (
     <div className={containerClasses}>
       {showImage ? (
-        <Img
+        <UDSImage
           className={imgClasses}
           src={src}
           alt={alt}
           width={width}
           height={height}
-          onError={() => setImageError(true)}
         />
       ) : (
         <div

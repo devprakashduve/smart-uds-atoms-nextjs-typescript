@@ -5,7 +5,7 @@ import './Image.css';
 import Image from 'next/image';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 
-const Img: React.FC<ImageProps> = ({
+const UDSImage: React.FC<ImageProps> = ({
   src,
   alt,
   width = 300,
@@ -25,4 +25,4 @@ const Img: React.FC<ImageProps> = ({
   );
 };
 
-export default Img;
+export default UDSImage;

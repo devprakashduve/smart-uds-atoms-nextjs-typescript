@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Img from '@/Components/Atoms/Img';
+import UDSImage from '@/Components/Atoms/Image';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import { ImageProps } from './ImageProps.interface';
 
 // Mock the Next.js Image component
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: ImageProps) => <img {...props} />,
+  default: (props: ImageProps) => <UDSImage {...props} />,
 }));
 
 // Mock the classNames utility
@@ -27,12 +27,12 @@ describe('Img Component', () => {
   });
 
   it('renders without crashing', () => {
-    render(<Img {...testProps} />);
+    render(<UDSImage {...testProps} />);
     expect(screen.getByRole('img')).toBeInTheDocument();
   });
 
   it('applies default props correctly', () => {
-    render(<Img src={testProps.src} alt={testProps.alt} />);
+    render(<UDSImage src={testProps.src} alt={testProps.alt} />);
 
     const img = screen.getByRole('img');
     expect(img).toHaveAttribute('width', '300');
@@ -42,7 +42,7 @@ describe('Img Component', () => {
 
   it('merges custom classNames with default', () => {
     const customClass = 'custom-class';
-    render(<Img {...testProps} className={customClass} />);
+    render(<UDSImage {...testProps} className={customClass} />);
 
     expect(classNames).toHaveBeenCalledWith('object-cover', customClass);
     expect(screen.getByRole('img')).toHaveClass('object-cover custom-class');
@@ -55,7 +55,7 @@ describe('Img Component', () => {
       height: 500,
     };
 
-    render(<Img {...customProps} />);
+    render(<UDSImage {...customProps} />);
     const img = screen.getByRole('img');
 
     expect(img).toHaveAttribute('width', '500');
@@ -63,7 +63,7 @@ describe('Img Component', () => {
   });
 
   it('passes through all required props', () => {
-    render(<Img {...testProps} />);
+    render(<UDSImage {...testProps} />);
     const img = screen.getByRole('img');
 
     expect(img).toHaveAttribute('src', testProps.src);
@@ -71,7 +71,7 @@ describe('Img Component', () => {
   });
 
   it('renders without className prop', () => {
-    render(<Img {...testProps} />);
+    render(<UDSImage {...testProps} />);
     expect(classNames).toHaveBeenCalledWith('object-cover', undefined);
     expect(screen.getByRole('img')).toHaveClass('object-cover');
   });

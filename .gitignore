@@ -17,6 +17,8 @@
 /.next/
 /dist/
 /out/
+/.swc/
+/.rollup.cache/
 
 # production
 /build
