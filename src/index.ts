@@ -11,3 +11,19 @@ import SelectMenus from './Components/Atoms/InputGroup/SelectMenus';
 import Slider from './Components/Atoms/InputGroup/Slider';
 import Switch from './Components/Atoms/InputGroup/Switch';
 import TextArea from './Components/Atoms/InputGroup/TextArea';
+
+export default {
+  Avatar,
+  Button,
+  Icon,
+  Img,
+  Label,
+  Checkbox,
+  Input,
+  RadioButton,
+  Select,
+  SelectMenus,
+  Slider,
+  Switch,
+  TextArea,
+};
