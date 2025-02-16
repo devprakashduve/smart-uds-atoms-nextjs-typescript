@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { InputProps, InputSize, InputType } from './InputProps.interface';
+import React, { useState, useEffect, useCallback } from 'react';
+import { InputProps, InputSize } from './InputProps.interface';
 import './Input.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Label from '../../Label';
@@ -17,8 +17,7 @@ const Input: React.FC<InputProps> = ({
   className,
   size = InputSize.MD,
   isRequired,
-  rounded,
-  roundedFull,
+  isBorder,
   showIcon = false,
   customIconSVG,
   customIconName,
@@ -28,45 +27,58 @@ const Input: React.FC<InputProps> = ({
   const [iconName, setIconName] = useState('');
   const [inputType, setInputType] = useState(type);
 
-  const boxSize = {
-    [InputSize.SM]: 'h-10',
-    [InputSize.MD]: 'h-12',
-    [InputSize.LG]: 'h-14',
+  // Determine size classes (this might be more elaborate in your actual implementation)
+  const sizeClasses = {
+    [InputSize.SM]: 'py-1 px-2',
+    [InputSize.MD]: 'py-2 px-3',
+    [InputSize.LG]: 'py-3 px-4',
   }[size];
 
+  // Set default icon based on input type (using string comparisons)
   useEffect(() => {
-    const iconMap: { [key in InputType]?: string } = {
-      [InputType.PASSWORD]: customIconName || 'openEye',
-      [InputType.EMAIL]: customIconName || 'envelop',
-      [InputType.TEL]: customIconName || 'phone',
-      [InputType.TEXT]: customIconName || '',
-      [InputType.NUMBER]: customIconName || '',
-    };
-    setIconName(iconMap[type] || '');
+    let defaultIcon = '';
+    switch (type) {
+      case 'password':
+        defaultIcon = customIconName || 'openEye';
+        break;
+      case 'email':
+        defaultIcon = customIconName || 'envelop';
+        break;
+      case 'tel':
+        defaultIcon = customIconName || 'phone';
+        break;
+      default:
+        defaultIcon = customIconName || '';
+        break;
+    }
+    setIconName(defaultIcon);
   }, [type, customIconName]);
 
+  // Validate input value (this logic remains unchanged)
   const validateInput = useCallback(
     (value: string) => {
       if (isRequired && !value) return 'This field is required.';
-
       switch (type) {
-        case InputType.EMAIL:
+        case 'email': {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
           if (!emailRegex.test(value)) return 'Invalid email address.';
           break;
-        case InputType.NUMBER:
+        }
+        case 'number':
           if (isNaN(Number(value))) return 'Must be a number.';
           break;
-        case InputType.TEL:
+        case 'tel': {
           const telRegex = /^\+?[1-9]\d{1,14}$/;
           if (!telRegex.test(value)) return 'Invalid phone number.';
           break;
-        case InputType.PASSWORD:
+        }
+        case 'password': {
           const passwordRegex =
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
           if (!passwordRegex.test(value))
             return 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
           break;
+        }
         default:
           break;
       }
@@ -75,6 +87,7 @@ const Input: React.FC<InputProps> = ({
     [type, isRequired]
   );
 
+  // Handle input changes and validations
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
@@ -86,24 +99,21 @@ const Input: React.FC<InputProps> = ({
     [onChange, validateInput]
   );
 
+  // Merge classes for the input element
   const inputClass = classNames(
-    'w-full bg-atom-input-background placeholder:text-atom-input-text/40 text-atom-input-text text-sm border border-atom-input/40 hover:border-atom-input focus:border-atom-input pl-3 pr-10 py-2 transition duration-300 ease focus:outline-none',
+    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border hover:border-atom-input/40 focus:border-atom-input/50' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
     className,
-    boxSize,
-    error && 'border border-error hover:border-error focus:border-error',
-    rounded && 'rounded',
-    roundedFull && 'rounded-full'
+    sizeClasses,
+    error && 'border-error',
+    isBorder && 'border-atom-input '
   );
 
   return (
     <div className="relative w-full">
       {label && (
-        <Label
-          className="mb-2 block text-sm text-atom-input-text"
-          htmlFor={name}
-        >
+        <Label className="mb-2 block text-atom-input-text" htmlFor={name}>
           {label}
-          {isRequired && <span className="text-error"> *</span>}
+          {isRequired && <span className="ml-1 text-error">*</span>}
         </Label>
       )}
       <div className="relative">
@@ -116,34 +126,31 @@ const Input: React.FC<InputProps> = ({
           onChange={handleChange}
           placeholder={placeholder}
           disabled={disabled}
-          className={`${inputClass} ${disabled ? 'input-disabled' : ''} ${error ? 'input-error' : ''}`}
           required={isRequired}
+          className={`${inputClass} ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
         />
         {showIcon && (
           <span
             className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
             onClick={() => {
-              if (type === InputType.PASSWORD) {
+              if (type === 'password') {
+                // Toggle password visibility
                 setIconName(iconName === 'openEye' ? 'closeEye' : 'openEye');
-                setInputType(
-                  inputType === InputType.PASSWORD
-                    ? InputType.TEXT
-                    : InputType.PASSWORD
-                );
+                setInputType(inputType === 'password' ? 'text' : 'password');
               }
             }}
           >
             {customIconSVG ? (
-              <Icon name={''} variant={'outline'}>
+              <Icon name={''} variant="outline">
                 {customIconSVG}
               </Icon>
             ) : (
-              <Icon name={iconName} variant={'outline'} />
+              <Icon name={iconName} variant="outline" />
             )}
           </span>
         )}
       </div>
-      {error && <p className="text-error">{error}</p>}
+      {error && <p className="mt-1 text-xs text-error">{error}</p>}
     </div>
   );
 };

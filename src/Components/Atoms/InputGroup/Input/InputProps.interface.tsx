@@ -1,35 +1,37 @@
-import React from 'react';
-
 export enum InputSize {
   SM = 'sm',
   MD = 'md',
   LG = 'lg',
 }
 
-export enum InputType {
-  TEXT = 'text',
-  PASSWORD = 'password',
-  NUMBER = 'number',
-  EMAIL = 'email',
-  TEL = 'tel',
-}
-
 export interface InputProps {
+  /** The current value of the input */
   value: string;
-  name: string;
-  onChange?: (value?: string) => void;
-  onKeyPress?: (value?: string) => void;
+  /** Callback for when the input value changes */
+  onChange: (value: string) => void;
+  /** Placeholder text */
   placeholder?: string;
+  /** Whether the input is disabled */
   disabled?: boolean;
+  /** Input type as a string, e.g., "text", "password", "email", etc. */
   type: string;
+  /** Label text for the input */
   label?: string;
+  /** HTML id attribute for the input */
   id?: string;
+  /** Name attribute for the input */
+  name: string;
+  /** Additional custom class names */
   className?: string;
+  /** Input size; defaults to MD */
   size?: InputSize;
+  /** Whether the input is required */
   isRequired?: boolean;
-  rounded?: boolean;
-  roundedFull?: boolean;
+  /** Whether to show an icon inside the input (e.g., for password toggling) */
   showIcon?: boolean;
+  /** Optional custom SVG icon element */
   customIconSVG?: React.ReactNode;
+  /** Optional custom icon name (if not provided, a default is chosen based on the input type) */
   customIconName?: string;
+  isBorder?: boolean;
 }

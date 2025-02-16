@@ -1,26 +1,25 @@
 import React from 'react';
 import {
   ButtonProps,
-  ButtonVariant,
   ButtonSize,
   ButtonRounded,
 } from './ButtonProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import './Button.css';
 
-const variantClasses: Record<ButtonVariant, string> = {
-  default: 'btn-default',
-  outline: 'btn-outline',
-  pill: 'btn-pill',
-  'pill-outline': 'btn-pill-outline',
-  bordered: 'btn-bordered',
-  'three-d': 'btn-three-d',
-  elevated: 'btn-elevated',
-  link: 'btn-link',
-  icon: 'btn-icon',
-  groups: 'btn-groups',
-  disabled: 'btn-disabled',
-};
+// const variantClasses: Record<ButtonVariant, string> = {
+//   default: 'btn-default',
+//   outline: 'btn-outline',
+//   pill: 'btn-pill',
+//   'pill-outline': 'btn-pill-outline',
+//   bordered: 'btn-bordered',
+//   'three-d': 'btn-three-d',
+//   elevated: 'btn-elevated',
+//   link: 'btn-link',
+//   icon: 'btn-icon',
+//   groups: 'btn-groups',
+//   disabled: 'btn-disabled',
+// };
 
 const sizeClasses: Record<ButtonSize, string> = {
   xs: 'py-1 px-2.5 text-xs',

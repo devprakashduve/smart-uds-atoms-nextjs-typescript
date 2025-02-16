@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Input from './index';
-import { InputType } from './InputProps.interface'; // Adjust the import as needed
+import Input from '.';
 
 describe('Input Component', () => {
   it('renders the label when provided', () => {
@@ -9,7 +8,7 @@ describe('Input Component', () => {
       <Input
         name="email"
         label="Email Address"
-        type={InputType.EMAIL}
+        type={'email'}
         value=""
         onChange={() => {}}
       />
@@ -23,7 +22,7 @@ describe('Input Component', () => {
       <Input
         name="email"
         label="Email Address"
-        type={InputType.EMAIL}
+        type={'email'}
         value=""
         onChange={handleChange}
       />
@@ -39,7 +38,7 @@ describe('Input Component', () => {
       <Input
         name="email"
         label="Email Address"
-        type={InputType.EMAIL}
+        type={'email'}
         value=""
         onChange={handleChange}
         isRequired={true}
@@ -57,7 +56,7 @@ describe('Input Component', () => {
       <Input
         name="password"
         label="Password"
-        type={InputType.PASSWORD}
+        type={'password'}
         value="password123"
         onChange={handleChange}
         showIcon={true}
@@ -93,7 +92,7 @@ describe('Input Component', () => {
       <Input
         name="test"
         label="Test Input"
-        type={InputType.TEXT}
+        type={'text'}
         value="test"
         onChange={handleChange}
         disabled={true}

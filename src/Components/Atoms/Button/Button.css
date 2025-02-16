@@ -41,14 +41,14 @@
   @apply p-2 hover:shadow-none !important;
 } */
 
-.btn-groups {
+/* .btn-groups {
   @apply border-r-0 last:border-r hover:relative hover:z-10;
-}
+} */
 
 /* Loading Spinner */
-.btn-loading {
+/* .btn-loading {
   @apply mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent;
-}
+} */
 
 /* Add to existing styles */
 /* .btn-link {
