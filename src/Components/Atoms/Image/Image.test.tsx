@@ -1,17 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import UDSImage from '@/Components/Atoms/Image';
-import { ImageProps } from './ImageProps.interface';
-
-// Mock the Next.js Image component
-jest.mock('./index', () => ({
-  __esModule: true,
-  default: (props: ImageProps) => <UDSImage {...props} />,
-}));
-
-// Mock the classNames utility
-jest.mock('../../Utilities/componentsMethods', () => ({
-  classNames: jest.fn((...classes) => classes.join(' ')),
-}));
 
 describe('Img Component', () => {
   const testProps = {

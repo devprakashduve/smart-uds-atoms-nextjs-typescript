@@ -5,6 +5,7 @@ const createJestConfig = nextJest({ dir: './' });
 
 // Explicit Jest config type
 const customJestConfig: Config.InitialOptions = {
+  maxWorkers: 2,
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
