@@ -19,7 +19,7 @@ const Avatar: React.FC<AvatarProps> = ({
   const [imageError, setImageError] = useState(false);
   const containerClasses = classNames(
     `w-${size} h-${size} relative`,
-    `overflow-hidden ${rounded ? 'rounded' : ''} ${circle ? 'rounded-full' : ''} ${className}`
+    `overflow-hidden  ${rounded ? 'rounded' : ''} ${circle ? 'rounded-full' : ''} ${className}`
   );
   const imgClasses = 'w-full h-full object-cover';
 
