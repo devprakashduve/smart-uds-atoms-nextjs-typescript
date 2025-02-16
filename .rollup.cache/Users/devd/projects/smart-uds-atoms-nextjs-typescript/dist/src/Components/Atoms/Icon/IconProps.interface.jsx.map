@@ -1,1 +1,0 @@
-{"version":3,"file":"IconProps.interface.jsx","sourceRoot":"","sources":["../../../../../src/Components/Atoms/Icon/IconProps.interface.tsx"],"names":[],"mappings":"","sourcesContent":["export interface IconProps {\n  name: string;\n  variant: 'outline' | 'solid';\n  className?: string;\n  children?: React.ReactNode;\n}\n"]}

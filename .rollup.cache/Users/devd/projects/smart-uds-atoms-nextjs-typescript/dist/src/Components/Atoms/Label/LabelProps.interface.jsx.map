@@ -1,1 +1,0 @@
-{"version":3,"file":"LabelProps.interface.jsx","sourceRoot":"","sources":["../../../../../src/Components/Atoms/Label/LabelProps.interface.tsx"],"names":[],"mappings":"","sourcesContent":["export interface LabelProps {\n  children: React.ReactNode;\n  htmlFor: string;\n  className?: string;\n}\n"]}
