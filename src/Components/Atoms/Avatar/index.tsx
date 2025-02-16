@@ -1,14 +1,11 @@
-import React from 'react';
-import { AvatarProps } from './AvatarProps.interface';
-import { classNames } from '@/Components/Utilities/componentsMethods';
-import './Avatar.css';
 import UDSImage from '../Image';
+import { AvatarProps } from './AvatarProps.interface';
 
 const Avatar: React.FC<AvatarProps> = ({
   src,
   alt,
   size = 16,
-  className,
+  className = '',
   width = 105,
   height = 105,
   circle = false,
@@ -16,19 +13,15 @@ const Avatar: React.FC<AvatarProps> = ({
   initials,
   status,
 }) => {
-  const dynamicClasses =
-    `overflow-hidden ${rounded ? 'rounded' : circle && 'rounded-full'} ${className ? className : ''}`.trim();
-  const containerClasses = classNames(
-    `w-${size} h-${size} relative`,
-    dynamicClasses
-  );
-  const imgClasses = 'w-full h-full object-cover';
+  const containerClasses = `w-${size} h-${size} relative overflow-hidden ${
+    rounded ? 'rounded' : ''
+  } ${circle ? 'rounded-full' : ''} ${className}`;
 
-  const showImage = src;
+  const imgClasses = 'w-full h-full object-cover';
 
   return (
     <div className={containerClasses}>
-      {showImage ? (
+      {src ? (
         <UDSImage
           className={imgClasses}
           src={src}
@@ -37,26 +30,9 @@ const Avatar: React.FC<AvatarProps> = ({
           height={height}
         />
       ) : (
-        <div
-          className="flex h-full w-full items-center justify-center bg-atom-avatar-background font-semibold text-atom-avatar-text"
-          role="img"
-          aria-label={alt}
-        >
-          {initials}
-        </div>
+        <div className="... bg-atom-avatar-background">{initials}</div>
       )}
-      {status && (
-        <div
-          data-testid="avatar-status"
-          className={classNames(
-            `absolute h-3 w-3 rounded-full border-2 border-white ${circle ? 'right-2 top-2' : 'right-1 top-1'}`,
-            status === 'online' && 'bg-success',
-            status === 'offline' && 'bg-neutral',
-            status === 'away' && 'bg-warning',
-            status === 'busy' && 'bg-error'
-          )}
-        />
-      )}
+      {status && <div className={`... absolute`} />}
     </div>
   );
 };
