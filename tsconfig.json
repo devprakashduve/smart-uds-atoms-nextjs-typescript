@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,9 +12,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "outDir": "dist/src",
+    "outDir": "dist",
     "declaration": true,
-    "declarationDir": "dist/types",
+    "declarationDir": "dist",
     "jsx": "preserve",
     "plugins": [
       {
@@ -26,9 +22,7 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -39,8 +33,5 @@
     "next-env.d.ts",
     "dist/types/**/*.ts"
   ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  "exclude": ["dist", "node_modules"]
 }
