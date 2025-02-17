@@ -1,3 +1,4 @@
+import { Background } from '@/Components/Atoms/Tooltip/Tooltip.stories';
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
@@ -27,6 +28,10 @@ const darkPinkWhitePalette = {
     },
     progressBar: {
       background: '#9D174D',
+    },
+    list: {
+      background: '#fff',
+      text: '#000',
     },
   },
   btn: {
