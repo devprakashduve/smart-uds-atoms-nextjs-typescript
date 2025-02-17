@@ -1,60 +1,64 @@
-import React, { useState } from 'react';
-import { AvatarProps } from './AvatarProps.interface';
-import { classNames } from '@/Components/Utilities/componentsMethods';
-import './Avatar.css';
 import UDSImage from '../Image';
+import { AvatarProps } from './AvatarProps.interface';
 
-const Avatar: React.FC<AvatarProps> = ({
+const Avatar = ({
   src,
-  alt,
-  size = 16,
-  className = '',
-  width = 105,
-  height = 105,
-  circle = false,
-  rounded = false,
-  initials,
+  alt = 'Avatar',
+  size = 'md',
   status,
-}) => {
-  const [imageError, setImageError] = useState(false);
-  const containerClasses = classNames(
-    `w-${size} h-${size} relative`,
-    `overflow-hidden ${rounded ? 'rounded' : ''} ${circle ? 'rounded-full' : ''} ${className}`
-  );
-  const imgClasses = 'w-full h-full object-cover';
+  notification,
+  rounded = true,
+  className = '',
+  initials,
+}: AvatarProps) => {
+  const sizeClasses = {
+    sm: 'w-8 h-8',
+    md: 'w-12 h-12',
+    lg: 'w-16 h-16',
+    xl: 'w-20 h-20',
+  };
 
-  const showImage = src && !imageError;
+  const statusClasses = {
+    online: 'bg-success',
+    offline: 'bg-gray-500/50',
+    busy: 'bg-error',
+    away: 'bg-warning',
+  };
 
   return (
-    <div className={containerClasses}>
-      {showImage ? (
+    <div className={`relative inline-block ${sizeClasses[size]} ${className}`}>
+      {src ? (
         <UDSImage
-          className={imgClasses}
           src={src}
           alt={alt}
-          width={width}
-          height={height}
-          onError={() => setImageError(true)}
+          className={`h-full w-full object-cover ${
+            rounded ? 'rounded-full' : 'rounded-lg'
+          } border-2 border-atom-avatar-background`}
         />
       ) : (
         <div
-          className="flex h-full w-full items-center justify-center bg-atom-avatar-background font-semibold text-atom-avatar-text"
-          role="img"
-          aria-label={alt}
+          className={`bg-atom-avatar-background ${
+            rounded ? 'rounded-full' : 'rounded-lg'
+          } flex h-full w-full items-center justify-center border-2 border-atom-avatar-background`}
         >
-          {initials}
+          <span className="text-lg font-medium text-atom-avatar-text">
+            {initials || 'UA'}
+          </span>
         </div>
       )}
+
       {status && (
-        <div
-          className={classNames(
-            `absolute h-3 w-3 rounded-full border-2 border-atom-avatar-background ${circle ? 'right-2 top-2' : 'right-1 top-1'}`,
-            status === 'online' && 'bg-success',
-            status === 'offline' && 'bg-neutral',
-            status === 'away' && 'bg-warning',
-            status === 'busy' && 'bg-error'
-          )}
+        <span
+          className={`absolute bottom-0 right-0 block animate-pulse rounded-full ring-2 ring-atom-avatar-text ${
+            size === 'sm' ? 'h-2 w-2' : 'h-3 w-3'
+          } ${statusClasses[status]}`}
         />
+      )}
+
+      {notification && (
+        <span className="absolute -right-1 -top-1 rounded-full bg-atom-avatar-background px-2 py-1 text-xs font-bold text-atom-avatar-text">
+          {notification}
+        </span>
       )}
     </div>
   );

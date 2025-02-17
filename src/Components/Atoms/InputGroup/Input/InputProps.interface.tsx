@@ -8,7 +8,7 @@ export interface InputProps {
   /** The current value of the input */
   value: string;
   /** Callback for when the input value changes */
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   /** Placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */

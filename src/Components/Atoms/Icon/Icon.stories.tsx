@@ -30,6 +30,7 @@ const iconOptions = [
   'arrowRight',
   'chevronLeft',
   'chevronRight',
+  'arrowUpRight',
 ];
 
 export default {

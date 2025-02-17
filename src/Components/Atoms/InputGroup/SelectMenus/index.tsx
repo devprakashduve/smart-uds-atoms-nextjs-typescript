@@ -81,8 +81,8 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
               <Avatar
                 alt={selected.name}
                 src={selected.avatar}
-                size={5}
-                circle
+                size={'sm'}
+                rounded={true}
               />
             )}
             <span className="block truncate">
@@ -109,7 +109,12 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
               >
                 <div className="flex items-center">
                   {item.avatar && (
-                    <Avatar src={item.avatar} alt={item.name} size={5} circle />
+                    <Avatar
+                      src={item.avatar}
+                      alt={item.name}
+                      size={'sm'}
+                      rounded
+                    />
                   )}
                   <span className="ml-3 block truncate font-normal">
                     {item.name}

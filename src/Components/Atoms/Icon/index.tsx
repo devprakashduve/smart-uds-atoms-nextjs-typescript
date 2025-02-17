@@ -1,4 +1,3 @@
-import React from 'react';
 import { IconProps } from './IconProps.interface';
 import './Icon.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
@@ -20,6 +19,7 @@ import {
   ExclamationTriangleIcon as OutlineWarningIcon,
   Bars3Icon as OutlineBars3Icon,
   ArrowRightIcon as OutlineArrowRightIcon,
+  ArrowUpRightIcon as OutlineArrowUpRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@heroicons/react/24/outline';
@@ -40,6 +40,7 @@ import {
   ExclamationTriangleIcon as SolidWarningIcon,
   Bars3Icon as SolidBars3Icon,
   ArrowRightIcon as SolidArrowRightIcon,
+  ArrowUpRightIcon as SolidArrowUpRightIcon,
 } from '@heroicons/react/24/solid';
 
 import {
@@ -84,6 +85,7 @@ const iconMap = {
     arrowRight: OutlineArrowRightIcon,
     chevronLeft: ChevronLeftIcon,
     chevronRight: ChevronRightIcon,
+    arrowUpRight: OutlineArrowUpRightIcon,
   },
   solid: {
     search: SolidSearchIcon,
@@ -105,6 +107,7 @@ const iconMap = {
     chatBubbleLeftRight: ChatBubbleLeftRightIcon,
     bars3: SolidBars3Icon,
     arrowRight: SolidArrowRightIcon,
+    arrowUpRight: SolidArrowUpRightIcon,
   },
 };
 
@@ -114,7 +117,10 @@ const Icon: React.FC<IconProps> = ({
   className = 'right-3',
   children,
 }) => {
-  const iconClass = classNames('text-atom-input-text', className);
+  const iconClass = classNames(
+    'text-atom-icon-text hover:text-atom-icon-text/40',
+    className
+  );
 
   if (name === 'facebook') {
     return (
