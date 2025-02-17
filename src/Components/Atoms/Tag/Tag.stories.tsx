@@ -11,7 +11,13 @@ export const DefaultTag = {
   args: {
     label: 'Tag 1',
     removable: true,
-    icon: <Icon name={'close'} variant="outline" />,
+    icon: (
+      <Icon
+        name={'close'}
+        variant="outline"
+        className="text-atom-tag-text hover:text-atom-tag-text/60"
+      />
+    ),
   },
 };
 
@@ -20,7 +26,13 @@ export const InteractiveTag = {
     label: 'Click Me',
 
     onClick: () => console.log('Tag clicked'),
-    icon: <Icon name={'check'} variant="outline" />,
+    icon: (
+      <Icon
+        name={'check'}
+        variant="outline"
+        className="text-atom-tag-text hover:text-atom-tag-text/60"
+      />
+    ),
   },
 };
 
@@ -30,7 +42,13 @@ export const RemovableTag = {
 
     removable: true,
     onRemove: () => console.log('Remove clicked'),
-    icon: <Icon name={'close'} variant="outline" />,
+    icon: (
+      <Icon
+        name={'close'}
+        variant="outline"
+        className="text-atom-tag-text hover:text-atom-tag-text/60"
+      />
+    ),
   },
 };
 
@@ -40,6 +58,12 @@ export const ComparisonTag = {
 
     removable: false,
     onCompare: () => console.log('Compare clicked'),
-    icon: <Icon name={'close'} variant="outline" />,
+    icon: (
+      <Icon
+        name={'close'}
+        variant="outline"
+        className="text-atom-tag-text hover:text-atom-tag-text/60"
+      />
+    ),
   },
 };

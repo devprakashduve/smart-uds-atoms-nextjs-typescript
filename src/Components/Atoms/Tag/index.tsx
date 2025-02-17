@@ -18,7 +18,7 @@ const Tag: React.FC<TagProps> = ({ label, onClick, onRemove, icon }) => {
       {icon && (
         <Button
           variant="icon"
-          className={`text-atom-tag-text`}
+          className={`text-atom-tag-text pr-0`}
           onClick={() => handleRemove}
         >
           {icon}
