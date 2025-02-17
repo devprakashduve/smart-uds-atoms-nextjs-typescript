@@ -2,11 +2,18 @@ import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
   atom: {
+    spinner: {
+      background: '#9D174D',
+    },
     avatar: {
       background: '#9CA3AF',
       text: '#fff',
     },
     icon: {
+      text: '#9D174D',
+    },
+    badge: {
+      background: '#ccc',
       text: '#9D174D',
     },
     input: {

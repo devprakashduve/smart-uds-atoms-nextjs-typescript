@@ -126,9 +126,15 @@ export const VariantsComparison = () => (
     <div className="flex flex-col gap-4">
       <h2 className="text-xl font-bold">Size Comparison</h2>
       <div className="flex items-end gap-4">
-        {[8, 16, 24, 32].map((size) => (
+        {[8, 16, 24].map((size) => (
           <div key={size} className="flex flex-col items-center gap-2">
-            <Avatar initials="JD" alt={`Size ${size}`} size={size} circle />
+            <Avatar
+              initials="JD"
+              alt={`Size ${size}`}
+              size={size}
+              circle
+              status="online"
+            />
             <span>Size {size}</span>
           </div>
         ))}

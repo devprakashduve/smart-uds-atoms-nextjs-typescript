@@ -5,8 +5,6 @@ const testProps = {
   alt: 'Test Avatar',
   src: '/images/avatar.jpg',
   size: 16,
-  width: 105,
-  height: 105,
 };
 
 describe('Avatar Component', () => {

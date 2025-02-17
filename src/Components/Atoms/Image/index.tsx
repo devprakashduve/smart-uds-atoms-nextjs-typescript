@@ -12,7 +12,7 @@ const UDSImage: React.FC<ImageProps> = ({
   height = 300,
   className,
 }) => {
-  const imageClasses = classNames('object-cover', className);
+  const imageClasses = classNames('', className);
 
   return (
     <Image

@@ -1,0 +1,50 @@
+/* Loader Component Styles */
+
+/* Base loader styles */
+.loader {
+  @apply flex items-center justify-center;
+}
+
+/* Loader Circle */
+.loader-circle {
+  @apply animate-spin rounded-full border-4 border-t-4;
+}
+
+/* Size Variants */
+.loader-small {
+  @apply h-6 w-6;
+}
+
+.loader-medium {
+  @apply h-12 w-12;
+}
+
+.loader-large {
+  @apply h-16 w-16;
+}
+
+/* Speed Variants */
+/* .loader-slow {
+  @apply animation-spin 2s linear infinite;
+} */
+
+/* .loader-normal {
+  @apply animation-spin 1s linear infinite;
+} */
+
+/* .loader-fast {
+  @apply animation-spin 0.5s linear infinite;
+} */
+
+/* Custom Color */
+.text-blue {
+  @apply text-blue-500;
+}
+
+.text-red {
+  @apply text-red-500;
+}
+
+.text-green {
+  @apply text-green-500;
+}

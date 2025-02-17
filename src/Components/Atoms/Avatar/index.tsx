@@ -19,9 +19,9 @@ const Avatar: React.FC<AvatarProps> = ({
   const [imageError, setImageError] = useState(false);
   const containerClasses = classNames(
     `w-${size} h-${size} relative`,
-    `overflow-hidden  ${rounded ? 'rounded' : ''} ${circle ? 'rounded-full' : ''} ${className}`
+    `overflow-hidden ${rounded && 'rounded'} ${circle && 'rounded-full'} ${className}`
   );
-  const imgClasses = 'w-full h-full object-cover';
+  const imgClasses = `w-${size} h-${size} `;
 
   const showImage = src && !imageError;
 
@@ -38,7 +38,7 @@ const Avatar: React.FC<AvatarProps> = ({
         />
       ) : (
         <div
-          className="flex h-full w-full items-center justify-center bg-atom-avatar-background font-semibold text-atom-avatar-text"
+          className={`flex w-${size} h-${size} items-center justify-center bg-atom-avatar-background font-semibold text-atom-avatar-text`}
           role="img"
           aria-label={alt}
         >
@@ -48,7 +48,7 @@ const Avatar: React.FC<AvatarProps> = ({
       {status && (
         <div
           className={classNames(
-            `absolute h-3 w-3 rounded-full border-2 border-atom-avatar-background ${circle ? 'right-2 top-2' : 'right-1 top-1'}`,
+            `absolute bottom-0 right-0 m-1 h-3 w-3 animate-pulse rounded-full border-2`,
             status === 'online' && 'bg-success',
             status === 'offline' && 'bg-neutral',
             status === 'away' && 'bg-warning',
