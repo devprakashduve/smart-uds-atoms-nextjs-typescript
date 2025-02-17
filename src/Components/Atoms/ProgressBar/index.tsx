@@ -1,22 +1,19 @@
-import React from 'react';
-
 import { ProgressBarProps } from './ProgressBarProps.interface';
-
-import './ProgressBar.css';
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   value,
   max,
-  color,
   height = 8,
-  striped = false,
+  striped = true,
 }) => {
   const progress = (value / max) * 100;
-  const bgColog = color ? `bg-${color}` : 'bg-line-dark';
+  const bgColog = 'bg-atom-progressBar-background';
   return (
-    <div className={`progress-bar-container bg-line-light w-full h-${height}`}>
+    <div
+      className={`bg-atom-progressBar-background/20 w-full overflow-hidden rounded-input h-${height}`}
+    >
       <div
-        className={`progress-bar ${striped ? 'progress-striped' : ''} ${bgColog}`}
+        className={`h-full transition-all duration-300 ease-in-out ${striped ? 'animate-progress-stripes bg-gradient-to-r from-transparent via-white to-transparent' : ''} ${bgColog}`}
         style={{ width: `${progress}%` }}
       ></div>
     </div>

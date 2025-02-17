@@ -25,6 +25,9 @@ const darkPinkWhitePalette = {
       text: '#ccc',
       background: '#9D174D',
     },
+    progressBar: {
+      background: '#9D174D',
+    },
   },
   btn: {
     light: '#FBCFE8', // Light Pink

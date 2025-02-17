@@ -10,7 +10,7 @@ const Tag: React.FC<TagProps> = ({ label, onClick, onRemove, icon }) => {
 
   return (
     <div
-      className={`bg-atom-tag-background inline-flex items-center rounded-full px-4 py-1 text-sm font-medium transition-colors ${onClick ? 'cursor-pointer hover:opacity-80' : ''}`}
+      className={`inline-flex items-center rounded-full bg-atom-tag-background px-4 py-1 text-sm font-medium transition-colors ${onClick ? 'cursor-pointer hover:opacity-80' : ''}`}
       onClick={onClick}
       onKeyDown={(e) => onClick && e.key === 'Enter' && onClick()}
     >
@@ -18,7 +18,7 @@ const Tag: React.FC<TagProps> = ({ label, onClick, onRemove, icon }) => {
       {icon && (
         <Button
           variant="icon"
-          className={`text-atom-tag-text pr-0`}
+          className={`pr-0 text-atom-tag-text`}
           onClick={() => handleRemove}
         >
           {icon}

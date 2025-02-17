@@ -1,4 +1,4 @@
-import ProgressBar from './index';
+import ProgressBar from '.';
 
 export default {
   title: 'Components/Atoms/ProgressBar',
@@ -8,36 +8,34 @@ export default {
 
 export const Default = {
   args: {
-    value: 50,
+    value: 20,
     max: 100,
-    height: 0.5,
+    height: 2,
+    striped: false,
   },
 };
 export const BasicProgressBar = {
   args: {
     value: 50,
     max: 100,
-    color: 'primary-dark',
     height: 3,
     striped: false,
   },
 };
 
-export const StripedProgressBar = {
+export const StripedprogressBar = {
   args: {
     value: 70,
     max: 100,
-    color: 'primary-dark',
     height: 6,
     striped: true,
   },
 };
 
-export const FullProgressBar = {
+export const FullprogressBar = {
   args: {
     value: 80,
     max: 100,
-    color: 'primary-dark',
     height: 8,
     striped: false,
   },
