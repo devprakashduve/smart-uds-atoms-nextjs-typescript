@@ -21,6 +21,10 @@ const darkPinkWhitePalette = {
       DEFAULT: '#9D174D', // Dark Pink
       text: '#000',
     },
+    tag: {
+      text: '#ccc',
+      background: '#9D174D',
+    },
   },
   btn: {
     light: '#FBCFE8', // Light Pink
