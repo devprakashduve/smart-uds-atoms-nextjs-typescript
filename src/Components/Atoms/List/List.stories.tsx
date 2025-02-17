@@ -4,6 +4,7 @@ import List from '.';
 export default {
   title: 'Components/Atoms/List',
   component: List,
+  tags: ['autodocs'],
 } as Meta<typeof List>;
 
 const Template: StoryFn<typeof List> = (args) => <List {...args} />;
