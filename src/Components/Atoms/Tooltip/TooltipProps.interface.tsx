@@ -1,4 +1,4 @@
-interface TooltipProps {
+export interface TooltipProps {
   content: string;
   children: React.ReactNode;
   setBackground?: string;

@@ -18,7 +18,8 @@ export interface TypographyProps {
     | '4xl'
     | '5xl'
     | '6xl'
-    | '7xl';
+    | '7xl'
+    | string;
   weight?: 'light' | 'normal' | 'medium' | 'bold' | 'black';
   color?:
     | 'primary-light'

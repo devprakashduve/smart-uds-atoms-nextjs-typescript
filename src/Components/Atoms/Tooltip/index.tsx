@@ -1,5 +1,6 @@
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import './Tooltip.css';
+import { TooltipProps } from './TooltipProps.interface';
 
 export default function Tooltip({
   content,

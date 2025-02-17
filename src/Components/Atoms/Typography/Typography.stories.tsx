@@ -175,7 +175,7 @@ export const ResponsiveSizes = {
         '5xl',
         '6xl',
         '7xl',
-      ].map((size: any) => (
+      ].map((size: string) => (
         <Typography key={size} size={size}>
           {size.toUpperCase()} Text Size
         </Typography>

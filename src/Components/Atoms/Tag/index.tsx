@@ -32,7 +32,6 @@ const Tag: React.FC<TagProps> = ({
   label,
   color = 'primary',
   onClick,
-  removable = false,
   onRemove,
   icon,
 }) => {
