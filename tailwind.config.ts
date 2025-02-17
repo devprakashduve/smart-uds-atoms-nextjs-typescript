@@ -6,7 +6,7 @@ const darkPinkWhitePalette = {
       background: '#9D174D',
     },
     avatar: {
-      background: '#9CA3AF',
+      background: '#9D174D',
       text: '#fff',
     },
     icon: {

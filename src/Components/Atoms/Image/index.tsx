@@ -1,7 +1,6 @@
 import React from 'react';
 import { ImageProps } from './ImageProps.interface';
 
-import './Image.css';
 import Image from 'next/image';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 
@@ -12,7 +11,7 @@ const UDSImage: React.FC<ImageProps> = ({
   height = 300,
   className,
 }) => {
-  const imageClasses = classNames('', className);
+  const imageClasses = classNames('object-cover', className);
 
   return (
     <Image
