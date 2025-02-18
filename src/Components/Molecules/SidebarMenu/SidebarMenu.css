@@ -1,0 +1,52 @@
+/* Sidebar Container */
+.sidebar-menu {
+  @apply flex min-h-screen w-64 flex-col bg-gray-800 text-white transition-all duration-300;
+}
+
+.sidebar-menu.collapsed {
+  @apply w-16;
+}
+
+/* Menu List */
+.menu-list {
+  @apply flex flex-col gap-1;
+}
+
+/* Menu Item */
+.menu-item {
+  @apply cursor-pointer text-sm font-medium;
+}
+
+/* Menu Header */
+.menu-item-header {
+  @apply flex items-center px-4 py-2 transition-all hover:bg-gray-700;
+}
+
+.menu-item-header.active {
+  @apply bg-gray-700;
+}
+
+/* Menu Icon */
+.menu-icon {
+  @apply mr-2 text-lg;
+}
+
+/* Menu Label */
+.menu-label {
+  @apply flex-1 truncate;
+}
+
+/* Submenu List */
+.submenu-list {
+  @apply mt-1 flex flex-col pl-8;
+}
+
+/* Submenu Item */
+.submenu-item {
+  @apply px-4 py-1 text-sm hover:bg-gray-700;
+}
+
+/* Menu Arrow */
+.menu-arrow {
+  @apply ml-2 rotate-90 text-sm;
+}

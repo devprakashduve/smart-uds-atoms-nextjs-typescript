@@ -1,9 +1,3 @@
-export enum InputSize {
-  SM = 'sm',
-  MD = 'md',
-  LG = 'lg',
-}
-
 export interface InputProps {
   /** The current value of the input */
   value: string;
@@ -24,7 +18,7 @@ export interface InputProps {
   /** Additional custom class names */
   className?: string;
   /** Input size; defaults to MD */
-  size?: InputSize;
+  size?: 'sm' | 'md' | 'lg';
   /** Whether the input is required */
   isRequired?: boolean;
   /** Whether to show an icon inside the input (e.g., for password toggling) */

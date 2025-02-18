@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Input from '.';
-import { InputProps, InputSize } from './InputProps.interface';
+import { InputProps } from './InputProps.interface';
 
 export default {
   title: 'Components/Atoms/InputGroup/Input',
@@ -16,7 +16,7 @@ export default {
       description: 'HTML input type as a string',
     },
     size: {
-      control: { type: 'select', options: Object.values(InputSize) },
+      control: { type: 'select', options: Object.values('') },
       description: 'Input size',
     },
     disabled: { control: 'boolean', description: 'Disables the input' },

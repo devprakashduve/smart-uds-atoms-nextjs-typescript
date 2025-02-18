@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { InputProps, InputSize } from './InputProps.interface';
+import { InputProps } from './InputProps.interface';
 import './Input.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Label from '../../Label';
@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = ({
   id,
   name,
   className,
-  size = InputSize.MD,
+  size = 'md',
   isRequired,
   isBorder,
   showIcon = false,
@@ -29,9 +29,9 @@ const Input: React.FC<InputProps> = ({
 
   // Determine size classes (this might be more elaborate in your actual implementation)
   const sizeClasses = {
-    [InputSize.SM]: 'py-1 px-2',
-    [InputSize.MD]: 'py-2 px-3',
-    [InputSize.LG]: 'py-3 px-4',
+    sm: 'py-1 px-2',
+    md: 'py-2 px-3',
+    lg: 'py-3 px-4',
   }[size];
 
   // Set default icon based on input type (using string comparisons)

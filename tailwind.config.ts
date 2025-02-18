@@ -33,6 +33,27 @@ const darkPinkWhitePalette = {
       text: '#000',
     },
   },
+  rating: {
+    light: '#FDE047', // Yellow
+    DEFAULT: '#FACC15', // Yellow
+    dark: '#ccc', // Dark Yellow
+  },
+  card: {
+    background: '#FFF',
+    to_background: '#FBCFE8',
+    light: '#FBCFE8', // Light Pink
+    DEFAULT: '#DB2777', // Dark Pink
+    dark: '#9D174D', // Deep Magenta
+  },
+  menu: {
+    background: '#FBCFE8',
+    from_background: '', // Light Pink
+    to_background: '#FBCFE8', // Dark Pink
+    hover: '#f2f2f2', // Deep Magenta
+    light: '#FBCFE8', // Light Pink
+    DEFAULT: '#DB2777', // Dark Pink
+    dark: '#9D174D', // Deep Magenta
+  },
   btn: {
     light: '#FBCFE8', // Light Pink
     DEFAULT: '#DB2777', // Dark Pink
@@ -51,7 +72,7 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './.storybook/**/*.{js,ts,jsx,tsx,mdx}',
-    './node_modules/atomic-uds-next-app/\*\*/\_.{js,ts,jsx,tsx,mdx,css}',
+    './node_modules/atomic-uds-next-app/**/*.{js,ts,jsx,tsx,mdx,css}',
   ],
   theme: {
     extend: {
@@ -60,21 +81,10 @@ export default {
         auto: 'auto', // Add a custom `z-auto` class
         '-9': '-9', // Add a custom `z-[-9]` class
       },
-
       borderRadius: {
         input: '20px',
         checkbox: '5px',
         radio: '5px',
-      },
-
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
-        // Custom breakpoints for more flexibility
-        '3xl': '1800px', // Custom breakpoint for larger screens
       },
     },
   },

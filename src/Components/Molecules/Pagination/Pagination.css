@@ -1,0 +1,4 @@
+/* Pagination Container */
+.pagination-container {
+  @apply mt-4 flex items-center justify-center gap-2;
+}

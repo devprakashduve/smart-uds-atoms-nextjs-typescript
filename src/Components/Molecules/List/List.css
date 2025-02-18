@@ -1,0 +1,9 @@
+/* List Container */
+.list-container {
+  @apply list-none space-y-2 p-0;
+}
+
+/* List Item */
+.list-item {
+  @apply rounded-md border border-gray-300 p-2;
+}
