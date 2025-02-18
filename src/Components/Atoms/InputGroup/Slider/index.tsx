@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { SliderProps } from './SliderProps.interface';
-import './Slider.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 
 const Slider: React.FC<SliderProps> = ({
@@ -21,8 +20,9 @@ const Slider: React.FC<SliderProps> = ({
     const newValue = Number(event.target.value);
     setValue(newValue);
     onChange(newValue);
-    setStep(newValue); // Update step based on the new value
+    setStep(newValue);
   };
+
   const borderColor =
     'border border-atom-input-/40 hover:border-atom-input focus:border-atom-input';
   const sliderClass = classNames(
@@ -32,7 +32,7 @@ const Slider: React.FC<SliderProps> = ({
   );
 
   return (
-    <div className="slider-container">
+    <div className="flex w-full flex-col items-center">
       <input
         title="slider"
         type="range"
@@ -41,10 +41,27 @@ const Slider: React.FC<SliderProps> = ({
         value={value}
         step={step}
         onChange={handleChange}
-        className={`slider-thumb ${disabled ? 'slider-disabled' : ''} ${sliderClass}`}
+        className={`w-full appearance-none rounded-full ${
+          disabled ? 'cursor-not-allowed bg-atom-input-text/30' : ''
+        } outline-none ring-atom-input ring-offset-2 ${sliderClass}`}
         disabled={disabled}
+        style={{
+          WebkitAppearance: 'none',
+          MozAppearance: 'none',
+          appearance: 'none',
+        }}
       />
-      <div className="slider-value">{value}</div>
+      <style>{`
+        input[type='range']::-webkit-slider-thumb {
+          background: #ccc;
+          width: 20px;
+          height: 20px;
+          appearance: none;
+          border-radius: 50%;
+          cursor: pointer;
+        }
+      `}</style>
+      <div className="mt-2 text-lg font-medium">{value}</div>
     </div>
   );
 };

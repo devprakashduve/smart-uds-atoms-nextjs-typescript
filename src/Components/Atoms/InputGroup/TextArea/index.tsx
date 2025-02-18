@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { TextAreaProps } from './TextAreaProps.interface';
-import './TextArea.css';
 
 const TextArea: React.FC<TextAreaProps> = ({
   value = '',
@@ -49,7 +48,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
         aria-describedby={showCharCount ? `${id}-char-count` : undefined}
-        className={`textarea-base ${disabled ? 'textarea-disabled' : ''} ${className}`}
+        className={`h-36 w-full rounded border border-atom-input/40 bg-atom-input-background px-4 py-2 text-atom-input-text placeholder:text-atom-input-text/30 hover:border-atom-input focus:border-atom-input focus:outline-none ${disabled && 'cursor-not-allowed opacity-50'} ${className}`}
       />
 
       {showCharCount && maxLength !== undefined && (

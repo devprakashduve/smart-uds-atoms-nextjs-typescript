@@ -1,4 +1,3 @@
-import { Background } from '@/Components/Atoms/Tooltip/Tooltip.stories';
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
@@ -52,6 +51,7 @@ export default {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './.storybook/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/atomic-uds-next-app/\*\*/\_.{js,ts,jsx,tsx,mdx,css}',
   ],
   theme: {
     extend: {

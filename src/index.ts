@@ -11,8 +11,9 @@ import SelectMenus from './Components/Atoms/InputGroup/SelectMenus';
 import Slider from './Components/Atoms/InputGroup/Slider';
 import Switch from './Components/Atoms/InputGroup/Switch';
 import TextArea from './Components/Atoms/InputGroup/TextArea';
+import List from './Components/Atoms/List';
 
-export default {
+export {
   Avatar,
   Button,
   Icon,
@@ -26,4 +27,5 @@ export default {
   Slider,
   Switch,
   TextArea,
+  List,
 };
