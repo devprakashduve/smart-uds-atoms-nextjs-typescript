@@ -27,7 +27,7 @@ const Template: StoryFn<typeof ModalDialogs> = (args) => {
     <div>
       <button
         onClick={() => setIsOpen(true)}
-        className="rounded bg-primary-dark px-4 py-2 hover:bg-primary-dark/90"
+        className="bg-primary-dark hover:bg-primary-dark/90 rounded px-4 py-2"
       >
         Open Modal
       </button>
@@ -53,5 +53,4 @@ WithCustomContent.args = {
     'This is a custom message for the modal dialog. You can customize all aspects of this component.',
   confirmText: 'Confirm Action',
   cancelText: 'Abort',
-  icon: 'warning',
 };

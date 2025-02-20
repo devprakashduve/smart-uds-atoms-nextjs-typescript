@@ -40,7 +40,7 @@ export default function ModalDialogs({
   return (
     <div className="fixed inset-0 z-10 overflow-y-auto">
       <div
-        className={`bg-line-light/75 fixed inset-0 transition-opacity duration-300 ease-out ${
+        className={`from-atom-modelBox-background fixed inset-0 transition-opacity duration-300 ease-out ${
           isActive ? 'opacity-75' : 'opacity-0'
         }`}
         aria-hidden="true"
@@ -57,11 +57,11 @@ export default function ModalDialogs({
           aria-labelledby="modal-title"
           aria-describedby="modal-description"
         >
-          <div className="bg-line-dark/75 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+          <div className="bg-atom-modelBox-to_background/40 text-atom-modelBox-text px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
             <div className="sm:flex sm:items-start">
               {icon && (
                 <div className="mx-auto flex h-12 w-12 shrink-0 items-center justify-center sm:mx-0 sm:h-10 sm:w-10">
-                  <Icon name={icon} className="h-6 w-6" variant={'outline'} />
+                  <Icon name={'close'} variant={'outline'} />
                 </div>
               )}
 
@@ -77,7 +77,7 @@ export default function ModalDialogs({
               </div>
             </div>
           </div>
-          <div className="bg-line-dark/75 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+          <div className="bg-atom-modelBox-to_background/40 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
             {confirmText && (
               <Button
                 type="button"

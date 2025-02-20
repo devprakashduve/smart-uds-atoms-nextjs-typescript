@@ -45,6 +45,11 @@ const darkPinkWhitePalette = {
       DEFAULT: '#DB2777',
       dark: '#9D174D',
     },
+    modelBox: {
+      background: '#FFF',
+      to_background: '#FBCFE8',
+      text: '#9D174D',
+    },
     rating: {
       light: '#FDE047', // Yellow
       DEFAULT: '#FACC15', // Yellow
