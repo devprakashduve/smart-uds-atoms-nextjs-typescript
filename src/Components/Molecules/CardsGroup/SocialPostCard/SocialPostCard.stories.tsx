@@ -8,12 +8,12 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: StoryFn<typeof SocialPostCard> = (args: any) => (
+const Template: StoryFn<typeof SocialPostCard> = (args) => (
   <SocialPostCard {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
+export const DefaultPost = Template.bind({});
+DefaultPost.args = {
   user: {
     name: 'Alex Johnson',
     avatar: '/images/avatar.jpg',
@@ -24,8 +24,8 @@ Default.args = {
   comments: 45,
 };
 
-export const NoLikesOrComments = Template.bind({});
-NoLikesOrComments.args = {
+export const NoLikesOrCommentsPost = Template.bind({});
+NoLikesOrCommentsPost.args = {
   user: {
     name: 'Jane Doe',
     avatar: '/images/avatar.jpg',
@@ -36,8 +36,8 @@ NoLikesOrComments.args = {
   comments: 0,
 };
 
-export const AnonymousUser = Template.bind({});
-AnonymousUser.args = {
+export const AnonymousUserPost = Template.bind({});
+AnonymousUserPost.args = {
   user: {
     name: 'Anonymous',
     avatar: '/images/default-avatar.jpg',

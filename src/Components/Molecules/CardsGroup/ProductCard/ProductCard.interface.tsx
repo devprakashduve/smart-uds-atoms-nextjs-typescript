@@ -1,8 +1,9 @@
 export interface ProductCardProps {
-  imageUrl: string;
+  imageUrl?: string;
   productName: string;
-  price: string;
+  price?: string;
   onAddToCart: () => void;
-  addToCartText: string;
-  ratingText: string;
+  addToCartButtonText?: string;
+  ratingText?: string;
+  addToCartText?: string;
 }

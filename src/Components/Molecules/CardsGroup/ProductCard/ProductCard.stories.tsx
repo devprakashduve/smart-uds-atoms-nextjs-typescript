@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import ProductCard from './index';
+import ProductCard from '.';
 
 export default {
   title: 'Components/Molecules/CardsGroup/ProductCard',
@@ -8,26 +8,16 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: StoryFn = (args) => (
-  <ProductCard
-    ratingText={'3.4'}
-    addToCartText={' Add to Cart'}
-    imageUrl={''}
-    productName={''}
-    price={''}
-    onAddToCart={function (): void {
-      throw new Error('Function not implemented.');
-    }}
-    {...args}
-  />
+const Template: StoryFn<typeof ProductCard> = (args) => (
+  <ProductCard {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
   ratingText: '3.4',
-  addToCartText: ' Add to Cart',
+  addToCartText: 'Add to Cart',
   imageUrl: '/images/avatar.jpg',
-  productName: 'Product Name',
+  productName: 'Sample Product',
   price: '₹999',
   onAddToCart: () => alert('Added to cart'),
 };

@@ -93,7 +93,7 @@ export default {
         checkbox: '5px',
         radio: '5px',
         button: '20px',
-        card: '30px',
+        card: '5px',
       },
     },
   },

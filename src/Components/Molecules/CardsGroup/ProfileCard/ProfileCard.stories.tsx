@@ -8,12 +8,14 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: StoryFn = (args: any) => <ProfileCard {...args} />;
+const Template: StoryFn<typeof ProfileCard> = (args) => (
+  <ProfileCard {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
-  coverImage: '/images//avatar.jpg',
-  profileImage: '/images//avatar.jpg',
-  name: 'Dubey Dev',
-  title: 'Software Engineer',
+  coverImageUrl: '/images/avatar.jpg',
+  profileImageUrl: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userTitle: 'Software Engineer',
 };

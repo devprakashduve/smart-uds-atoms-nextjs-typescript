@@ -1,36 +1,33 @@
 import Avatar from '@/Components/Atoms/Avatar';
 import UDSImage from '@/Components/Atoms/Image';
-
-interface ProfileCardProps {
-  coverImage: string;
-  profileImage: string;
-  name: string;
-  title: string;
-  height?: number;
-}
+import { ProfileCardProps } from './types';
 
 export default function ProfileCard({
-  coverImage,
-  profileImage,
-  name,
-  title,
-  height = 36,
+  coverImageUrl,
+  profileImageUrl,
+  userName,
+  userTitle,
+  imageHeight = 36,
 }: ProfileCardProps) {
   return (
-    <div className="w-full overflow-hidden rounded-lg bg-white shadow-lg">
-      <UDSImage src={coverImage} alt="Cover" className={`w-full h-${height}`} />
+    <div className="from-atom-card-background to-atom-card-to_background rounded-card w-full overflow-hidden bg-gradient-to-r shadow-lg">
+      <UDSImage
+        src={coverImageUrl}
+        alt="Cover"
+        className={`w-full h-${imageHeight}`}
+      />
       <div className="-mt-10 flex justify-center">
         <Avatar
           alt="Profile"
-          className="border-4 border-white object-cover shadow-lg"
-          initials="CD"
+          className="object-cover shadow-lg"
+          initials={userName.charAt(0)}
           status="online"
-          src={profileImage}
+          src={profileImageUrl}
         />
       </div>
       <div className="p-4 text-center">
-        <h2 className="text-xl font-semibold">{name}</h2>
-        <p className="text-gray-600">{title}</p>
+        <h2 className="text-xl font-semibold">{userName}</h2>
+        <p className="">{userTitle}</p>
       </div>
     </div>
   );

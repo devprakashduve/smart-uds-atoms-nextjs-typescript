@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ProductCard from './index';
+import ProductCardWithRating from './index';
 
 const mockProps = {
   imageUrl: 'test-image-url',
@@ -11,8 +11,8 @@ const mockProps = {
   onAddToCart: jest.fn(),
 };
 
-test('renders ProductCard with props', () => {
-  render(<ProductCard {...mockProps} />);
+test('renders ProductCardWithRating with props', () => {
+  render(<ProductCardWithRating {...mockProps} />);
 
   expect(screen.getByAltText(mockProps.productName)).toBeInTheDocument();
   expect(screen.getByText(mockProps.productName)).toBeInTheDocument();
@@ -23,7 +23,7 @@ test('renders ProductCard with props', () => {
 });
 
 test('calls onAddToCart when button is clicked', () => {
-  render(<ProductCard {...mockProps} />);
+  render(<ProductCardWithRating {...mockProps} />);
 
   fireEvent.click(screen.getByText('Add to Cart'));
   expect(mockProps.onAddToCart).toHaveBeenCalled();

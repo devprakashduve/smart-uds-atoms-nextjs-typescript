@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import SocialPostCard from './index';
 
-const mockProps = {
+const mockPostProps = {
   user: {
     name: 'Alex Johnson',
     avatar: '/images/avatar.jpg',
@@ -13,14 +13,16 @@ const mockProps = {
 };
 
 test('renders SocialPostCard with props', () => {
-  render(<SocialPostCard {...mockProps} />);
+  render(<SocialPostCard {...mockPostProps} />);
 
-  expect(screen.getByText(mockProps.user.name)).toBeInTheDocument();
-  expect(screen.getByText(mockProps.timeAgo)).toBeInTheDocument();
-  expect(screen.getByText(mockProps.content)).toBeInTheDocument();
-  expect(screen.getByText(`👍 ${mockProps.likes} Likes`)).toBeInTheDocument();
+  expect(screen.getByText(mockPostProps.user.name)).toBeInTheDocument();
+  expect(screen.getByText(mockPostProps.timeAgo)).toBeInTheDocument();
+  expect(screen.getByText(mockPostProps.content)).toBeInTheDocument();
   expect(
-    screen.getByText(`💬 ${mockProps.comments} Comments`)
+    screen.getByText(`👍 ${mockPostProps.likes} Likes`)
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText(`💬 ${mockPostProps.comments} Comments`)
   ).toBeInTheDocument();
 });
 
