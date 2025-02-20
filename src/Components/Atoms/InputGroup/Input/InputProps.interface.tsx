@@ -34,4 +34,6 @@ export interface InputProps {
   requiredErrorMessage?: string;
   validationErrorMessage?: string;
   validationOnFocus?: boolean;
+  /** Whether to enable autocomplete for the input */
+  autoComplete?: string;
 }

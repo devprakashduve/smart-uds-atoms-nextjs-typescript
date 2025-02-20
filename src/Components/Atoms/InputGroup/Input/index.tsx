@@ -23,6 +23,7 @@ const Input: React.FC<InputProps> = ({
   requiredErrorMessage,
   validationErrorMessage,
   validationOnFocus,
+  autoComplete,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState('');
@@ -129,6 +130,7 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           disabled={disabled}
           required={isRequired}
+          autoComplete={autoComplete}
           className={`${inputClass} ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
         />
         {showIcon && (

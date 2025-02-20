@@ -29,11 +29,14 @@ export default {
       control: 'boolean',
       description: 'Marks the input as required',
     },
-
     showIcon: {
       control: 'boolean',
       description:
         'Shows an icon inside the input (for toggling password visibility)',
+    },
+    autoComplete: {
+      control: 'text',
+      description: 'Autocomplete attribute for the input',
     },
   },
 } as Meta<typeof Input>;

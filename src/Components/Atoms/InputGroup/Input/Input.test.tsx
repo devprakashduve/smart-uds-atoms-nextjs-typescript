@@ -29,7 +29,11 @@ describe('Input Component', () => {
     );
     const inputElement = screen.getByRole('textbox'); // For email, input type usually becomes "textbox"
     fireEvent.change(inputElement, { target: { value: 'test@example.com' } });
-    expect(handleChange).toHaveBeenCalledWith('test@example.com');
+    expect(handleChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({ value: 'test@example.com' }),
+      })
+    );
   });
 
   it('displays error for invalid email', () => {
