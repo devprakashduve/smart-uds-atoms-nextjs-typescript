@@ -11,4 +11,5 @@ export interface RadioButtonProps {
   value?: string;
   checked?: boolean;
   className?: string;
+  style?: React.CSSProperties; // New prop for custom inline styles
 }
