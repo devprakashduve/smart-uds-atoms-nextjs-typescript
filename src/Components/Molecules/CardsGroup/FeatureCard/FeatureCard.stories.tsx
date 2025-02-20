@@ -17,4 +17,8 @@ Default.args = {
   iconName: 'home',
   title: 'Feature Title',
   description: 'A short description of this amazing feature.',
+  titleClassName: '',
+  descriptionClassName: '',
+  containerClassName: '',
+  iconClassName: '',
 };

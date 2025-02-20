@@ -9,13 +9,14 @@ export default {
   tags: ['autodocs'],
 } as Meta;
 
-const Template: StoryFn<JobCardProps> = (args) => <JobCard {...args} />;
+const JobCardTemplate: StoryFn<JobCardProps> = (args) => <JobCard {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const DefaultJobCard = JobCardTemplate.bind({});
+DefaultJobCard.args = {
   title: 'Frontend Developer',
   company: 'TechCorp',
   description: 'Looking for a React.js expert with 3+ years of experience.',
   location: 'Remote',
   salary: '₹12LPA',
+  btnText: 'Apply Now',
 };

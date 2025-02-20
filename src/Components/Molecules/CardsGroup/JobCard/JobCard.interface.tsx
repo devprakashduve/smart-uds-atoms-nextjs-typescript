@@ -4,4 +4,5 @@ export interface JobCardProps {
   description: string;
   location: string;
   salary: string;
+  btnText: string;
 }
