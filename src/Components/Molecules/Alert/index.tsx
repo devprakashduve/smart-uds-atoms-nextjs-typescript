@@ -1,5 +1,4 @@
 import React from 'react';
-import './Alert.css';
 import { AlertProps } from './AlertProps.interface';
 import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
@@ -33,9 +32,9 @@ const Alert: React.FC<AlertProps> = ({
             <p className="text-sm font-medium">{message}</p>
           </div>
           {dismissible && (
-            <Button onClick={handleClose} variant="icon">
-              <Icon name="close" className="text-letter" />
-            </Button>
+            <span onClick={handleClose} className="p-l-1 cursor-pointer">
+              <Icon name="close" className="text-letter" variant={'outline'} />
+            </span>
           )}
         </div>
       )}
