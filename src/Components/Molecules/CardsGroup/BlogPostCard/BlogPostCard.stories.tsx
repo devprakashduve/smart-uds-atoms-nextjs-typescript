@@ -1,11 +1,13 @@
 import BlogPostCard from './index';
 import { BlogPostCardProps } from './BlogPostCard.interface';
 import { StoryFn } from '@storybook/react';
+
 export default {
   title: 'Components/Molecules/CardsGroup/BlogPostCard',
   component: BlogPostCard,
   tags: ['autodocs'],
 };
+
 const Template: StoryFn<BlogPostCardProps> = (args) => (
   <BlogPostCard {...args} />
 );
@@ -36,6 +38,13 @@ WithoutAuthorImage.args = {
   title: 'Understanding Micro Frontends',
   description:
     'Learn how to break down monolithic applications using micro frontend architecture.',
-  authorImage: '/images/avatar.jpg',
   authorName: 'Dubey Dev',
+};
+
+export const WithoutOptionalProps = Template.bind({});
+WithoutOptionalProps.args = {
+  imageSrc: '/images/avatar.jpg',
+  title: 'Understanding Micro Frontends',
+  description:
+    'Learn how to break down monolithic applications using micro frontend architecture.',
 };
