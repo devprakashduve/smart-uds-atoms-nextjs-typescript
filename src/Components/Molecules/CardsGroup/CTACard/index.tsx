@@ -1,46 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@/Components/Atoms/Button';
 import Input from '@/Components/Atoms/InputGroup/Input';
-import {
-  InputSize,
-  InputType,
-} from '@/Components/Atoms/InputGroup/Input/InputProps.interface';
 import { CTACardProps } from './CTACardProps.interface';
 
 export default function CTACard({
   email,
-  onEmailChange,
+  onChange,
   onSubscribe,
+  title,
+  btnText,
+  paraText,
 }: CTACardProps) {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onEmailChange(event.target.value);
+  const [userEmail, setUserEmail] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = onChange?.(e);
+    value && setUserEmail(value);
   };
-  const handleSubscribe = () => {
-    if (email) {
-      onSubscribe && onSubscribe();
-    } else {
-      alert('Please enter a valid email address.');
+
+  const handleSubscribe = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (userEmail && onSubscribe) {
+      onSubscribe?.(userEmail);
     }
   };
 
   return (
     <div className="from-card-background to-card-to_background text-card-dark max-w-sm rounded-lg bg-gradient-to-r p-6 text-center shadow-lg">
-      <h3 className="text-2xl font-semibold">Join Our Newsletter</h3>
-      <p className="mt-2 text-sm">
-        Get the latest updates straight to your inbox.
-      </p>
-      <Input
-        id="email"
-        label="Email Input"
-        name="email"
-        onChange={(e: any) => handleInputChange(e)}
-        placeholder="Enter email"
-        value={email}
-        type={InputType.EMAIL}
-      />
-      <Button className="mt-3" onClick={() => handleSubscribe}>
-        Subscribe
-      </Button>
+      {title && <h3 className="text-2xl font-semibold">{title}</h3>}
+      {paraText && <p className="m-2 text-sm">{paraText}</p>}
+      <form onSubmit={(e) => handleSubscribe(e)}>
+        <Input
+          id="email"
+          name="email"
+          onChange={(e) => handleInputChange(e)}
+          placeholder="Enter email"
+          value={userEmail}
+          type={'email'}
+          isRequired={true}
+          showIcon={true}
+          validationOnFocus={true}
+        />
+        {btnText && (
+          <Button type="submit" className="mt-3">
+            {btnText}
+          </Button>
+        )}
+      </form>
     </div>
   );
 }

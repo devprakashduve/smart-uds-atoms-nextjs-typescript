@@ -2,7 +2,7 @@ export interface InputProps {
   /** The current value of the input */
   value: string;
   /** Callback for when the input value changes */
-  onChange?: (value: string) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** Placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */
@@ -28,4 +28,10 @@ export interface InputProps {
   /** Optional custom icon name (if not provided, a default is chosen based on the input type) */
   customIconName?: string;
   isBorder?: boolean;
+  min?: string;
+  max?: string;
+  step?: string;
+  requiredErrorMessage?: string;
+  validationErrorMessage?: string;
+  validationOnFocus?: boolean;
 }

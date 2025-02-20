@@ -1,12 +1,22 @@
-import React from 'react';
 import AccordionItem from '../AccordionItem';
 import { AccordionProps } from './AccordionProps.interface';
-import './Accordion.css';
-const Accordion: React.FC<AccordionProps> = ({ items, icon }) => {
+
+const Accordion: React.FC<AccordionProps> = ({
+  items,
+  icon,
+  isRounded,
+  size,
+}) => {
   return (
     <div className="accordion-container w-full">
       {items.map((item, index) => (
-        <AccordionItem key={index} {...item} icon={icon} />
+        <AccordionItem
+          key={index}
+          {...item}
+          icon={icon ? icon : ''}
+          isRounded={isRounded ? true : false}
+          size={size ? size : 'md'}
+        />
       ))}
     </div>
   );

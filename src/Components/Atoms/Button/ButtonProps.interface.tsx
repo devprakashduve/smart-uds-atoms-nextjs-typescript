@@ -15,7 +15,7 @@ export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type ButtonRounded = 'none' | 'sm' | 'md' | 'lg' | 'full';
 
 export interface ButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClick?: () => void;
   href?: string;
   target?: string;

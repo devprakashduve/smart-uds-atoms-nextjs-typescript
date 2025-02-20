@@ -30,6 +30,8 @@ const iconOptions = [
   'arrowRight',
   'chevronLeft',
   'chevronRight',
+  'chevronUp',
+  'chevronDown',
   'arrowUpRight',
 ];
 

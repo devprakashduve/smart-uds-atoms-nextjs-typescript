@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { InputProps } from './InputProps.interface';
-import './Input.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Label from '../../Label';
 import Icon from '../../Icon';
@@ -21,18 +20,14 @@ const Input: React.FC<InputProps> = ({
   showIcon = false,
   customIconSVG,
   customIconName,
+  requiredErrorMessage,
+  validationErrorMessage,
+  validationOnFocus,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState('');
   const [iconName, setIconName] = useState('');
   const [inputType, setInputType] = useState(type);
-
-  // Determine size classes (this might be more elaborate in your actual implementation)
-  const sizeClasses = {
-    sm: 'py-1 px-2',
-    md: 'py-2 px-3',
-    lg: 'py-3 px-4',
-  }[size];
 
   // Set default icon based on input type (using string comparisons)
   useEffect(() => {
@@ -57,19 +52,23 @@ const Input: React.FC<InputProps> = ({
   // Validate input value (this logic remains unchanged)
   const validateInput = useCallback(
     (value: string) => {
-      if (isRequired && !value) return 'This field is required.';
+      if (isRequired && !value)
+        return requiredErrorMessage || 'This field is required.';
       switch (type) {
         case 'email': {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(value)) return 'Invalid email address.';
+          if (!emailRegex.test(value))
+            return validationErrorMessage || 'Invalid email address.';
           break;
         }
         case 'number':
-          if (isNaN(Number(value))) return 'Must be a number.';
+          if (isNaN(Number(value)))
+            return validationErrorMessage || 'Must be a number.';
           break;
         case 'tel': {
           const telRegex = /^\+?[1-9]\d{1,14}$/;
-          if (!telRegex.test(value)) return 'Invalid phone number.';
+          if (!telRegex.test(value))
+            return validationErrorMessage || 'Invalid phone number.';
           break;
         }
         case 'password': {
@@ -94,7 +93,7 @@ const Input: React.FC<InputProps> = ({
       setValue(newValue);
       const errorMessage = validateInput(newValue);
       setError(errorMessage);
-      onChange?.(newValue);
+      onChange?.(e);
     },
     [onChange, validateInput]
   );
@@ -103,7 +102,9 @@ const Input: React.FC<InputProps> = ({
   const inputClass = classNames(
     `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border hover:border-atom-input/40 focus:border-atom-input/50' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
     className,
-    sizeClasses,
+    size === 'sm' && 'py-1 px-2',
+    size === 'md' && 'py-2 px-3',
+    size === 'lg' && 'py-3 px-4',
     error && 'border-error',
     isBorder && 'border-atom-input '
   );
@@ -124,6 +125,7 @@ const Input: React.FC<InputProps> = ({
           name={name}
           value={value}
           onChange={handleChange}
+          onFocus={validationOnFocus ? handleChange : () => {}}
           placeholder={placeholder}
           disabled={disabled}
           required={isRequired}

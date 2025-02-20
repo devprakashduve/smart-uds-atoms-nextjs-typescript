@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { VideoPlayerProps } from './VideoPlayerProps.interface';
 import './VideoPlayer.css';
+import Input from '@/Components/Atoms/InputGroup/Input';
+import Button from '@/Components/Atoms/Button';
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
   src,
@@ -45,10 +47,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     }
   };
 
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = (value: string) => {
     if (videoRef.current) {
-      videoRef.current.volume = Number(event.target.value);
-      setVolume(Number(event.target.value));
+      videoRef.current.volume = Number(value);
+      setVolume(Number(value));
     }
   };
 
@@ -79,20 +81,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       />
       {!controls && (
         <div className="custom-controls">
-          <button onClick={togglePlayPause} className="play-pause-button">
+          <Button onClick={togglePlayPause} className="play-pause-button">
             {isPlaying ? 'Pause' : 'Play'}
-          </button>
+          </Button>
           <div className="progress-bar" onClick={handleProgressClick}>
             <div className="progress" style={{ width: `${progress}%` }}></div>
           </div>
-          <input
+          <Input
             type="range"
             className="volume-control"
             min="0"
             max="1"
             step="0.01"
-            value={volume}
-            onChange={handleVolumeChange}
+            value={String(volume)}
+            onChange={(value: string) => handleVolumeChange(value)}
+            name={'range'}
           />
         </div>
       )}

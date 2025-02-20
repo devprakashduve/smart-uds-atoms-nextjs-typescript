@@ -1,6 +1,4 @@
-import React from 'react';
 import { BreadcrumbProps } from './BreadcrumbProps.interface';
-import './Breadcrumb.css';
 import CustomLink from '@/Components/Atoms/CustomLink';
 
 const Breadcrumbs: React.FC<BreadcrumbProps> = ({
@@ -11,17 +9,24 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({
   if (!items || items.length === 0) return null;
 
   return (
-    <nav aria-label="Breadcrumb" className={`breadcrumbs-nav ${className}`}>
+    <nav aria-label="Breadcrumb" className={`px-4 py-2 text-sm ${className}`}>
       <ol className="flex space-x-1">
         {items.map((item, index) => (
-          <li key={index} className="breadcrumb-item flex items-center">
+          <li key={index} className="inline-flex items-center">
             {item.href ? (
               <CustomLink href={item.href} target="_self" text={item.label} />
             ) : (
-              <CustomLink href={'#'} target="_self" text={item.label} />
+              <CustomLink
+                href={'#'}
+                target="_self"
+                text={item.label}
+                className="text-primary-dark cursor-auto font-semibold hover:no-underline"
+              />
             )}
             {index < items.length - 1 && (
-              <span className="mx-2 text-letter">{separator}</span>
+              <span className="text-letter text-primary-dark mx-2">
+                {separator}
+              </span>
             )}
           </li>
         ))}

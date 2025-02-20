@@ -31,6 +31,11 @@ export default {
       options: ['default', 'filled'],
       description: 'The variant style of the accordion item',
     },
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+      description: 'accordion item size',
+    },
     icon: {
       control: 'text',
       description: 'The icon to display in the accordion header',
@@ -49,7 +54,7 @@ export const DefaultAccordionItem = {
     isOpen: false,
     disabled: false,
     variant: 'default',
-    icon: <Icon name="plus" />,
+    icon: <Icon name="plus" variant={'outline'} />,
     isRounded: false,
   },
 };
@@ -61,7 +66,9 @@ export const FilledAccordionItem = {
     isOpen: false,
     disabled: false,
     variant: 'filled',
-    icon: <Icon name="plus" className="h-3 font-extrabold" />,
+    icon: (
+      <Icon name="plus" className="h-3 font-extrabold" variant={'outline'} />
+    ),
     isRounded: true,
   },
 };
@@ -84,6 +91,6 @@ export const DisabledAccordionItem = {
     isOpen: false,
     disabled: true,
     variant: 'default',
-    icon: <Icon name="close" />,
+    icon: <Icon name="close" variant={'outline'} />,
   },
 };

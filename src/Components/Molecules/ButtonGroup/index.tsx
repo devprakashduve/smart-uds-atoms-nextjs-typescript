@@ -16,7 +16,7 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttons }) => {
 
         return (
           <Button
-            label={''}
+            key={`button${index}`}
             disabled={button.disabled}
             onClick={button.onClick}
             className={`btn ${

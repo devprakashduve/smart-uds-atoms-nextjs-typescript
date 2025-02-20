@@ -25,6 +25,10 @@ export default {
       control: 'boolean',
       description: 'Marks the input as required',
     },
+    validationOnFocus: {
+      control: 'boolean',
+      description: 'Marks the input as required',
+    },
 
     showIcon: {
       control: 'boolean',

@@ -21,6 +21,11 @@ const darkPinkWhitePalette = {
       DEFAULT: '#9D174D', // Dark Pink
       text: '#000',
     },
+    accordion: {
+      background: '#9CA3AF',
+      DEFAULT: '#9D174D', // Dark Pink
+      text: '#000',
+    },
     tag: {
       text: '#ccc',
       background: '#9D174D',
@@ -85,6 +90,7 @@ export default {
         input: '20px',
         checkbox: '5px',
         radio: '5px',
+        button: '20px',
       },
     },
   },

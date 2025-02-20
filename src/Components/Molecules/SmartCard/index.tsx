@@ -1,10 +1,10 @@
 import React from 'react';
-import { CardProps } from './CardProps.interface';
-import './Card.css';
+import { CardProps } from './SmartCard.interface';
+import UDSImage from '@/Components/Atoms/Image';
 
-const Card: React.FC<CardProps> = ({
+const SmartCard: React.FC<CardProps> = ({
   title,
-  description,
+  bodyContent,
   imageUrl,
   footerContent,
   onClick,
@@ -15,19 +15,21 @@ const Card: React.FC<CardProps> = ({
       onClick={onClick}
     >
       {imageUrl && (
-        <img src={imageUrl} alt={title} className="h-48 w-full object-cover" />
+        <UDSImage
+          src={imageUrl}
+          alt={title}
+          className="h-48 w-full object-cover"
+        />
       )}
       <div className="p-4">
         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-        <p className="mt-2 text-gray-600">{description}</p>
+        {bodyContent && bodyContent}
       </div>
       {footerContent && (
-        <div className="card-footer border-t bg-gray-100 p-4">
-          {footerContent}
-        </div>
+        <div className="card-footer border-t p-4">{footerContent}</div>
       )}
     </div>
   );
 };
 
-export default Card;
+export default SmartCard;
