@@ -5,15 +5,15 @@
 
 /* Star Icon */
 .rating-star {
-  @apply text-rating-dark cursor-default text-xl;
+  @apply text-atom-rating-dark cursor-default text-xl;
 }
 
 /* Filled Star */
 .rating-star.filled {
-  @apply text-rating-light;
+  @apply text-atom-rating-light;
 }
 
 /* Interactive Star */
 .rating-star.interactive {
-  @apply hover:text-rating cursor-pointer;
+  @apply hover:text-atom-rating cursor-pointer;
 }

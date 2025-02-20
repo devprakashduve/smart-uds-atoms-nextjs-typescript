@@ -1,3 +1,4 @@
+import Breadcrumbs from '@/Components/Molecules/Breadcrumb';
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
@@ -37,38 +38,39 @@ const darkPinkWhitePalette = {
       background: '#fff',
       text: '#000',
     },
+    rating: {
+      light: '#FDE047', // Yellow
+      DEFAULT: '#FACC15', // Yellow
+      dark: '#ccc', // Dark Yellow
+    },
+    card: {
+      background: '#FFF',
+      to_background: '#FBCFE8',
+      light: '#FBCFE8', // Light Pink
+      DEFAULT: '#DB2777', // Dark Pink
+      dark: '#9D174D', // Deep Magenta
+    },
+    breadcrumbs: { text: '#DB2777', background: '#FBCFE8' },
+    menu: {
+      background: '#FBCFE8',
+      from_background: '', // Light Pink
+      to_background: '#FBCFE8', // Dark Pink
+      hover: '#f2f2f2', // Deep Magenta
+      light: '#FBCFE8', // Light Pink
+      DEFAULT: '#DB2777', // Dark Pink
+      dark: '#9D174D', // Deep Magenta
+    },
+    btn: {
+      light: '#FBCFE8', // Light Pink
+      DEFAULT: '#DB2777', // Dark Pink
+      dark: '#9D174D', // Dark Magenta
+    },
+    neutral: '#F3F4F6', // Neutral Gray
+    info: '#3b82f6', // Soft Blue
+    success: '#22c55e', // Light Green
+    warning: '#eab308', // Yellow
+    error: '#ef4444', // Soft Red
   },
-  rating: {
-    light: '#FDE047', // Yellow
-    DEFAULT: '#FACC15', // Yellow
-    dark: '#ccc', // Dark Yellow
-  },
-  card: {
-    background: '#FFF',
-    to_background: '#FBCFE8',
-    light: '#FBCFE8', // Light Pink
-    DEFAULT: '#DB2777', // Dark Pink
-    dark: '#9D174D', // Deep Magenta
-  },
-  menu: {
-    background: '#FBCFE8',
-    from_background: '', // Light Pink
-    to_background: '#FBCFE8', // Dark Pink
-    hover: '#f2f2f2', // Deep Magenta
-    light: '#FBCFE8', // Light Pink
-    DEFAULT: '#DB2777', // Dark Pink
-    dark: '#9D174D', // Deep Magenta
-  },
-  btn: {
-    light: '#FBCFE8', // Light Pink
-    DEFAULT: '#DB2777', // Dark Pink
-    dark: '#9D174D', // Dark Magenta
-  },
-  neutral: '#F3F4F6', // Neutral Gray
-  info: '#3b82f6', // Soft Blue
-  success: '#22c55e', // Light Green
-  warning: '#eab308', // Yellow
-  error: '#ef4444', // Soft Red
 };
 
 export default {

@@ -13,18 +13,23 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({
       <ol className="flex space-x-1">
         {items.map((item, index) => (
           <li key={index} className="inline-flex items-center">
-            {item.href ? (
-              <CustomLink href={item.href} target="_self" text={item.label} />
+            {item.href !== '#' ? (
+              <CustomLink
+                href={item.href}
+                target="_self"
+                text={item.label}
+                className="text-atom-breadcrumbs-text/70 cursor-pointer hover:no-underline"
+              />
             ) : (
               <CustomLink
                 href={'#'}
                 target="_self"
                 text={item.label}
-                className="text-primary-dark cursor-auto font-semibold hover:no-underline"
+                className="text-atom-breadcrumbs-text font-semibold hover:no-underline"
               />
             )}
             {index < items.length - 1 && (
-              <span className="text-letter text-primary-dark mx-2">
+              <span className="text-atom-breadcrumbs-text text-primary-dark mx-2">
                 {separator}
               </span>
             )}

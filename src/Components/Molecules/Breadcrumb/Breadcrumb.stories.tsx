@@ -21,24 +21,37 @@ const Template: StoryFn<BreadcrumbProps> = (args) => <Breadcrumbs {...args} />;
 export const DefaultBreadcrumbs = Template.bind({});
 DefaultBreadcrumbs.args = {
   items: [
-    { label: 'Home', href: '/' },
+    { label: 'Home', href: '/home' },
     { label: 'Category', href: '/category' },
-    { label: 'Subcategory', href: '/subcategory' },
+    { label: 'Subcategory', href: '#' },
   ],
   separator: '>',
 };
 
 export const WithoutCustomLinks = Template.bind({});
 WithoutCustomLinks.args = {
-  items: [{ label: 'Home' }, { label: 'Category' }, { label: 'Subcategory' }],
+  items: [
+    {
+      label: 'Home',
+      href: '/#',
+    },
+    {
+      label: 'Category',
+      href: '/#',
+    },
+    {
+      label: 'Subcategory',
+      href: '#',
+    },
+  ],
 };
 
 export const CustomSeparator = Template.bind({});
 CustomSeparator.args = {
   items: [
-    { label: 'Dashboard', href: '/' },
+    { label: 'Dashboard', href: '/board' },
     { label: 'Users', href: '/users' },
-    { label: 'Profile', href: '/users/profile' },
+    { label: 'Profile', href: '#' },
   ],
   separator: '/',
 };
@@ -46,17 +59,17 @@ CustomSeparator.args = {
 export const WithCustomClass = Template.bind({});
 WithCustomClass.args = {
   items: [
-    { label: 'Dashboard', href: '/' },
-    { label: 'Settings', href: '/settings' },
+    { label: 'Dashboard', href: '/board' },
+    { label: 'Settings', href: '#' },
   ],
   className: 'text-red-500',
 };
 export const Comparison = Template.bind({});
 Comparison.args = {
   items: [
-    { label: 'Overview', href: '/' },
+    { label: 'Overview', href: '/view' },
     { label: 'Reports', href: '/reports' },
-    { label: 'Comparison', href: '/reports/comparison' },
+    { label: 'Comparison', href: '#' },
   ],
   separator: '>',
 };
