@@ -36,4 +36,8 @@ export interface InputProps {
   validationOnFocus?: boolean;
   /** Whether to enable autocomplete for the input */
   autoComplete?: string;
+  /** Custom regex pattern for validation */
+  pattern?: string;
+  /** Maximum length of the input value */
+  maxLength?: number;
 }

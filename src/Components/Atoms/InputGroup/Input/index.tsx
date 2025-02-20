@@ -24,6 +24,8 @@ const Input: React.FC<InputProps> = ({
   validationErrorMessage,
   validationOnFocus,
   autoComplete,
+  pattern,
+  maxLength,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState('');
@@ -55,6 +57,8 @@ const Input: React.FC<InputProps> = ({
     (value: string) => {
       if (isRequired && !value)
         return requiredErrorMessage || 'This field is required.';
+      if (pattern && !new RegExp(pattern).test(value))
+        return validationErrorMessage || 'Invalid input.';
       switch (type) {
         case 'email': {
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -84,19 +88,20 @@ const Input: React.FC<InputProps> = ({
       }
       return '';
     },
-    [type, isRequired]
+    [type, isRequired, pattern, validationErrorMessage, requiredErrorMessage]
   );
 
   // Handle input changes and validations
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
+      if (maxLength && newValue.length > maxLength) return;
       setValue(newValue);
       const errorMessage = validateInput(newValue);
       setError(errorMessage);
       onChange?.(e);
     },
-    [onChange, validateInput]
+    [onChange, validateInput, maxLength]
   );
 
   // Merge classes for the input element
@@ -131,6 +136,7 @@ const Input: React.FC<InputProps> = ({
           disabled={disabled}
           required={isRequired}
           autoComplete={autoComplete}
+          maxLength={maxLength}
           className={`${inputClass} ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
         />
         {showIcon && (

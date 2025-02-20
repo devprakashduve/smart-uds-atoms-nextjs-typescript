@@ -111,6 +111,23 @@ PillInput.args = {
   placeholder: 'Fully rounded',
 };
 
+export const PatternInput = Template.bind({});
+PatternInput.args = {
+  type: 'text',
+  label: 'Pattern Input',
+  placeholder: 'Only letters...',
+  pattern: '^[A-Za-z]+$',
+  validationErrorMessage: 'Only letters are allowed.',
+};
+
+export const MaxLengthInput = Template.bind({});
+MaxLengthInput.args = {
+  type: 'text',
+  label: 'Max Length Input',
+  placeholder: 'Max 5 characters...',
+  maxLength: 5,
+};
+
 export const ComparisonOfInputs = () => {
   return (
     <div className="space-y-6">
