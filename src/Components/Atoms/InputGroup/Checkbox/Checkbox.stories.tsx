@@ -30,6 +30,7 @@ export const SmallSize = {
     checked: true,
     size: 'sm',
     label: 'Small Checkbox',
+    toggleChecked: (value: boolean) => console.log(value),
   },
 };
 
@@ -38,6 +39,7 @@ export const Disabled = {
     checked: false,
     label: 'Disabled Checkbox',
     disabled: true,
+    toggleChecked: (value: boolean) => console.log(value),
   },
 };
 

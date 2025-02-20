@@ -12,22 +12,23 @@ const Checkbox = ({
   disabled = false,
   indeterminate = false,
 }: CheckboxProps) => {
-  const boxSize = {
+  const { [size]: boxSize } = {
     sm: 'h-4 w-4',
     md: 'h-6 w-6',
     lg: 'h-8 w-8',
-  }[size];
+  };
 
-  const textSize = {
+  const { [size]: textSize } = {
     sm: 'text-sm',
     md: 'text-base',
     lg: 'text-lg',
-  }[size];
+  };
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   const setTitle = title || name;
   const inputId = `${name}-checkbox`;
   const [isChecked, setIsChecked] = React.useState(checked);
+
   React.useEffect(() => {
     if (inputRef.current) {
       inputRef.current.indeterminate = indeterminate;
