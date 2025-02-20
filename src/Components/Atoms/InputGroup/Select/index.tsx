@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { SelectProps } from './SelectProps.interface';
-import './Select.css';
 
 const sizeClasses = {
   sm: 'py-1.5 pl-2 pr-6 text-sm',
@@ -23,7 +22,7 @@ const Select: React.FC<SelectProps> = ({
   disabled = false,
   required = false,
   error = false,
-
+  placeholder = 'Select an option',
   className = '',
   onChange,
 }) => {
@@ -84,7 +83,7 @@ const Select: React.FC<SelectProps> = ({
             <>
               {!required && (
                 <option value="" disabled={required}>
-                  {defaultValue || 'Select an option'}
+                  {placeholder}
                 </option>
               )}
               {options.map((option) => (
