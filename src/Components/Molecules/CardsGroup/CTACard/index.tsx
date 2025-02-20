@@ -43,7 +43,7 @@ export default function CTACard({
           validationOnFocus={true}
         />
         {btnText && (
-          <Button type="submit" className="mt-3">
+          <Button variant="default" type="submit" className="mt-3">
             {btnText}
           </Button>
         )}

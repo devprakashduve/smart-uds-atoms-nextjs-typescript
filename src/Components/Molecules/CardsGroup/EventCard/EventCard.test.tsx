@@ -6,10 +6,10 @@ describe('EventCard', () => {
   it('renders correctly', () => {
     const { getByText, getByAltText } = render(
       <EventCard
-        title="Tech Conference 2025"
-        description="Join us for a day of networking and insightful talks on the future of technology."
-        date="March 20, 2025"
-        imageUrl="/images/avatar.jpg"
+        eventTitle="Tech Conference 2025"
+        eventDescription="Join us for a day of networking and insightful talks on the future of technology."
+        eventDate="March 20, 2025"
+        eventImageUrl="/images/avatar.jpg"
       />
     );
 

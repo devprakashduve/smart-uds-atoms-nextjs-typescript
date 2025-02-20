@@ -17,7 +17,7 @@ export default function BlogPostCard({
       />
       <div className="p-4">
         <h3 className="text-lg font-bold">{title}</h3>
-        <p className="mt-2 text-sm text-gray-600">{description}</p>
+        <p className="text-atom-card-dark mt-2 text-sm">{description}</p>
         <div className="mt-4 flex items-center">
           {authorImage && (
             <UDSImage
@@ -26,7 +26,7 @@ export default function BlogPostCard({
               alt="Author"
             />
           )}
-          <p className="text-line ml-2 text-sm">By {authorName || 'Unknown'}</p>
+          <p className="text-line ml-2 text-sm"> {authorName || 'Unknown'}</p>
         </div>
       </div>
     </div>

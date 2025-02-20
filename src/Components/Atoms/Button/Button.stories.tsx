@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '.';
-import { ButtonSize, ButtonRounded } from './ButtonProps.interface';
+import { ButtonSize } from './ButtonProps.interface';
 import { ArrowDownIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 import { ArrowDownTrayIcon } from '@heroicons/react/24/solid';
 
@@ -29,10 +29,6 @@ export default {
       control: { type: 'select' },
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
     },
-    rounded: {
-      control: { type: 'select' },
-      options: ['none', 'sm', 'md', 'lg', 'full'],
-    },
   },
 };
 
@@ -43,16 +39,6 @@ export const Sizes = () => (
     {(['xs', 'sm', 'md', 'lg', 'xl'] as ButtonSize[]).map((size) => (
       <Button key={size} size={size} variant="default">
         {size.toUpperCase()}
-      </Button>
-    ))}
-  </div>
-);
-
-export const RoundedVariants = () => (
-  <div className="space-x-2">
-    {(['none', 'sm', 'md', 'lg', 'full'] as ButtonRounded[]).map((rounded) => (
-      <Button key={rounded} rounded={rounded} variant="default">
-        {rounded}
       </Button>
     ))}
   </div>
@@ -102,7 +88,7 @@ export const Comparison = () => (
     <div className="space-x-2">
       <Button size="xs">Extra Small</Button>
       <Button size="lg">Large</Button>
-      <Button rounded="full">Rounded Full</Button>
+
       <Button disabled>Disabled</Button>
     </div>
     <div className="space-x-2">

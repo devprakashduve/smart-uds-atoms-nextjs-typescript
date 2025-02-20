@@ -1,18 +1,6 @@
 import React from 'react';
-import {
-  ButtonProps,
-  ButtonSize,
-  ButtonRounded,
-} from './ButtonProps.interface';
+import { ButtonProps } from './ButtonProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
-
-const sizeClasses: Record<ButtonSize, string> = {
-  xs: 'py-1 px-2.5 text-xs',
-  sm: 'py-1.5 px-3 text-sm',
-  md: 'py-2 px-4 text-sm',
-  lg: 'py-2.5 px-5 text-base',
-  xl: 'py-3.5 px-6 text-base',
-};
 
 const Button: React.FC<ButtonProps> = ({
   onClick,
@@ -23,7 +11,6 @@ const Button: React.FC<ButtonProps> = ({
   loading = false,
   variant = 'default',
   children,
-  rounded = 'md',
   size = 'md',
   type = 'button',
   icon,
@@ -36,14 +23,14 @@ const Button: React.FC<ButtonProps> = ({
   switch (variant) {
     case 'default':
       extraClasses =
-        'bg-btn-dark text-btn-light hover:border hover:bg-btn-dark/70 focus:border';
+        'bg-atom-btn-dark text-atom-btn-light hover:border hover:bg-atom-btn-dark/70 focus:border';
       break;
     case 'outline':
-      extraClasses = 'border border-btn-dark bg-transparent';
+      extraClasses = 'border border-atom-btn-dark bg-transparent';
       break;
     case 'pill-outline':
       extraClasses =
-        'border border-btn-dark bg-transparent text-btn-dark hover:border-transparent';
+        'border border-atom-btn-dark bg-transparent text-atom-btn-dark hover:border-transparent';
       break;
     case 'three-d':
       extraClasses =
@@ -54,13 +41,14 @@ const Button: React.FC<ButtonProps> = ({
       break;
     case 'link':
       extraClasses =
-        'bg-transparent text-btn-dark underline-offset-4 shadow-none transition-all hover:bg-transparent hover:text-btn-dark/80 hover:shadow-none focus:shadow-none active:shadow-none';
+        'bg-transparent text-atom-btn-dark underline-offset-4 shadow-none transition-all hover:bg-transparent hover:text-atom-btn-dark/80 hover:shadow-none focus:shadow-none active:shadow-none';
       break;
     case 'icon':
       extraClasses = 'p-2 hover:shadow-none !important';
       break;
     case 'disabled':
-      extraClasses = 'cursor-not-allowed bg-btn-dark text-btn-light opacity-50';
+      extraClasses =
+        'cursor-not-allowed bg-atom-btn-dark text-atom-btn-light opacity-50';
       break;
     case 'groups':
       extraClasses = 'border-r-0 last:border-r hover:relative hover:z-10';
