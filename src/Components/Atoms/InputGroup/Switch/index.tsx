@@ -39,6 +39,14 @@ const Switch = (props: SwitchProps) => {
     },
   };
 
+  const handleToggle = () => {
+    const newChecked = !isChecked;
+    setIsChecked(newChecked);
+    if (props.onChange) {
+      props.onChange(newChecked);
+    }
+  };
+
   return (
     <label className="flex cursor-pointer items-center">
       <div className="relative">
@@ -46,7 +54,7 @@ const Switch = (props: SwitchProps) => {
           type="checkbox"
           className="sr-only"
           checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
+          onChange={handleToggle}
           disabled={disabled}
         />
         {/* Switch Background */}
