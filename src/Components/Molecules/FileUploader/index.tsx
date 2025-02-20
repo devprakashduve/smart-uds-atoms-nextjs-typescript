@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { FileUploaderProps } from './FileUploaderProps.interface';
-import './FileUploader.css';
 
 const FileUploader: React.FC<FileUploaderProps> = ({
   onFileChange,
   label,
   acceptedFileTypes = [],
   maxFileSize = Infinity,
+  uploadButtonText = 'Choose a file',
+  errorMessageFileType = 'Invalid file type',
+  errorMessageFileSize = 'File is too large',
 }) => {
   const [error, setError] = useState<string | null>(null);
 
@@ -14,21 +16,21 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     const files = event.target.files;
     if (!files) return;
 
-    const file = files[0];
+    const selectedFile = files[0];
 
     // Check file type
     if (
       acceptedFileTypes.length > 0 &&
-      !acceptedFileTypes.includes(file.type)
+      !acceptedFileTypes.includes(selectedFile.type)
     ) {
-      setError('Invalid file type');
+      setError(errorMessageFileType);
       onFileChange(null); // Clear the selected file
       return;
     }
 
     // Check file size
-    if (file.size > maxFileSize) {
-      setError('File is too large');
+    if (selectedFile.size > maxFileSize) {
+      setError(errorMessageFileSize);
       onFileChange(null); // Clear the selected file
       return;
     }
@@ -40,15 +42,13 @@ const FileUploader: React.FC<FileUploaderProps> = ({
 
   return (
     <div className="file-uploader space-y-4">
-      <label className="block text-sm font-semibold text-letter-dark">
-        {label}
-      </label>
+      <label className="block text-sm font-semibold">{label}</label>
       <input
         type="file"
         onChange={handleFileChange}
-        className="w-full rounded-md border border-line-light p-3 hover:border-line-dark focus:outline-none"
-        title="Upload file"
-        placeholder="Choose a file"
+        className="w-full rounded-md border border-atom-input-text/40 p-3 hover:border-atom-input-text/80 focus:outline-none"
+        title={uploadButtonText}
+        placeholder={uploadButtonText}
       />
       {error && <p className="text-sm text-red-600">{error}</p>}
     </div>

@@ -6,30 +6,31 @@ import {
   ActionItemProps,
 } from './FlyoutMenus.interface';
 import CustomLink from '@/Components/Atoms/CustomLink';
+import Link from 'next/link';
 
 function ListItem(props: ListItemProps) {
   return (
     <div
       key={props.name}
-      className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50"
+      className="group relative flex gap-x-6 rounded-lg p-4"
     >
-      <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+      <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg">
         {props.icon && (
           <Icon
             name={props.icon}
             variant={'outline'}
-            className="text-primary-dark transition-all hover:text-primary"
+            className="transition-all"
           />
         )}
       </div>
       <div>
-        <div className="font-semibold text-gray-900">
+        <div className="font-semibold">
           <CustomLink href={props.href} underlineHover={false}>
             {props.name}
             <span className="absolute inset-0" />
           </CustomLink>
         </div>
-        <p className="mt-1 text-gray-600">{props.description}</p>
+        <p className="mt-1">{props.description}</p>
       </div>
     </div>
   );
@@ -37,18 +38,18 @@ function ListItem(props: ListItemProps) {
 
 function ActionItem(props: ActionItemProps) {
   return (
-    <a
+    <Link
       key={props.name}
       href={props.href}
-      className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
+      className="flex items-center justify-center gap-x-2.5 p-3 font-semibold"
     >
       <Icon
         name={props.icon}
-        className="h-5 w-5 flex-none text-primary-dark"
+        className="text-primary-dark h-5 w-5 flex-none"
         variant={'solid'}
       />
       {props.name}
-    </a>
+    </Link>
   );
 }
 
@@ -62,13 +63,13 @@ export default function FlyoutMenus({
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-x-1 text-sm font-semibold text-gray-900"
+        className="inline-flex items-center gap-x-1 text-sm font-semibold"
       >
         <span>Solutions</span>
         <Icon
           name={'chevronDown'}
           variant="solid"
-          className="text-primary-dark transition-all hover:text-primary"
+          className="text-primary-dark hover:text-primary transition-all"
         />
       </button>
 

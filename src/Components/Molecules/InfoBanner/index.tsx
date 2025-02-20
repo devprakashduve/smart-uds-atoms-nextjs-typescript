@@ -25,7 +25,7 @@ export default function InfoBanner({
 
   return (
     <div
-      className={`bg-primary relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1 ${className}`}
+      className={`from-atom-card-background to-atom-card-to_background rounded-infoBanner relative isolate flex items-center gap-x-6 overflow-hidden bg-gradient-to-r px-6 py-3 shadow-lg sm:px-3.5 sm:before:flex-1 ${className}`}
     >
       {/* Background elements */}
       <div aria-hidden="true" className="banner-bg-gradient-left" />
@@ -50,12 +50,16 @@ export default function InfoBanner({
             variant="body"
             size="sm"
             weight="medium"
-            className="text-letter-drk"
+            className="text-atom-infoBanner-dark"
           >
             {title}
           </Typography>
           {subtitle && (
-            <Typography variant="body" size="xs" className="text-letter-drk/80">
+            <Typography
+              variant="body"
+              size="xs"
+              className="text-atom-infoBanner-dark/80"
+            >
               {subtitle}
             </Typography>
           )}
@@ -63,7 +67,6 @@ export default function InfoBanner({
 
         <Button
           href={linkUrl}
-          rounded="full"
           className="shadow-xs transition-transform hover:scale-105"
         >
           Register now <span aria-hidden="true">&rarr;</span>
@@ -80,7 +83,7 @@ export default function InfoBanner({
         >
           <Icon
             name="close"
-            className="text-letter-light"
+            className="text-atom-infoBanner-dark"
             variant={'outline'}
           />
         </Button>

@@ -38,6 +38,13 @@ const darkPinkWhitePalette = {
       background: '#fff',
       text: '#000',
     },
+    infoBanner: {
+      background: '#FFF',
+      to_background: '#FBCFE8',
+      light: '#FBCFE8',
+      DEFAULT: '#DB2777',
+      dark: '#9D174D',
+    },
     rating: {
       light: '#FDE047', // Yellow
       DEFAULT: '#FACC15', // Yellow
@@ -94,6 +101,7 @@ export default {
         radio: '5px',
         button: '20px',
         card: '5px',
+        infoBanner: '5px',
       },
     },
   },

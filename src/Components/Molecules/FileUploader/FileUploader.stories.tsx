@@ -6,6 +6,7 @@ import { FileUploaderProps } from './FileUploaderProps.interface';
 export default {
   title: 'Components/Molecules/FileUploader',
   component: FileUploader,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: StoryFn<FileUploaderProps> = (args) => (
@@ -22,6 +23,9 @@ DefaultFileUploader.args = {
       console.log('No file selected or invalid file');
     }
   },
+  uploadButtonText: 'Choose a file',
+  errorMessageFileType: 'Invalid file type',
+  errorMessageFileSize: 'File is too large',
 };
 
 export const FileUploaderWithError = Template.bind({});
@@ -36,4 +40,7 @@ FileUploaderWithError.args = {
       console.log('No file selected or invalid file');
     }
   },
+  uploadButtonText: 'Choose a file',
+  errorMessageFileType: 'Invalid file type',
+  errorMessageFileSize: 'File is too large',
 };
