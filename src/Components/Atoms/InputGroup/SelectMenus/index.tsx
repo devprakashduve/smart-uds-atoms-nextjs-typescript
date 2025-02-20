@@ -24,10 +24,9 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
   disabled = false,
   required = false,
   error = false,
-
   className = '',
   onChange,
-  placeholder = 'Select an option', // New default value
+  placeholder = 'Select an option',
 }) => {
   const [selected, setSelected] = useState<Item>(defaultSelected || items[0]);
   const [isOpen, setIsOpen] = useState(false);
