@@ -15,14 +15,14 @@ const Slider: React.FC<SliderProps> = ({
   background,
 }) => {
   const [value, setValue] = useState(initialValue);
-
+  const thumbColor = '#fff';
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
     setValue(newValue);
     onChange(newValue);
     setStep(newValue);
   };
-
+  // thumbColor = 'bg-atom-input';
   const borderColor =
     'border border-atom-input-/40 hover:border-atom-input focus:border-atom-input';
   const sliderClass = classNames(
@@ -53,12 +53,13 @@ const Slider: React.FC<SliderProps> = ({
       />
       <style>{`
         input[type='range']::-webkit-slider-thumb {
-          background: #ccc;
+          background: ${thumbColor} !important;
           width: 20px;
           height: 20px;
           appearance: none;
           border-radius: 50%;
           cursor: pointer;
+          border: 2px solid #ccc;
         }
       `}</style>
       <div className="mt-2 text-lg font-medium">{value}</div>
