@@ -18,4 +18,9 @@ Default.args = {
   title: 'Card Title',
   description: 'This is a simple card description with an image and title.',
   imageUrl: '/images/avatar.jpg',
+  altText: 'Avatar Image',
+  containerClassName: '',
+  imageClassName: '',
+  titleClassName: 'this is test',
+  descriptionClassName: 'this test',
 };

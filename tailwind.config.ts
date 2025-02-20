@@ -85,14 +85,15 @@ export default {
     extend: {
       colors: darkPinkWhitePalette,
       zIndex: {
-        auto: 'auto', // Add a custom `z-auto` class
-        '-9': '-9', // Add a custom `z-[-9]` class
+        auto: 'auto',
+        '-9': '-9',
       },
       borderRadius: {
         input: '20px',
         checkbox: '5px',
         radio: '5px',
         button: '20px',
+        card: '30px',
       },
     },
   },
