@@ -1,15 +1,10 @@
 import React from 'react';
-
-interface NotificationCardProps {
-  icon: React.ReactNode;
-  title: string;
-  message: string;
-}
+import { NotificationCardProps } from './NotificationCard.interface';
 
 const NotificationCard: React.FC<NotificationCardProps> = ({
   icon,
-  title,
-  message,
+  titleText,
+  messageText,
 }) => {
   return (
     <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card flex max-w-sm items-center space-x-4 bg-gradient-to-r p-4 shadow-lg">
@@ -17,8 +12,8 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
         {icon}
       </div>
       <div>
-        <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-sm">{message}</p>
+        <h3 className="text-lg font-semibold">{titleText}</h3>
+        <p className="text-sm">{messageText}</p>
       </div>
     </div>
   );
