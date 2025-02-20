@@ -9,7 +9,7 @@ const EventCard: React.FC<EventCardProps> = ({
   eventImageUrl,
 }) => {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background max-w-sm rounded-lg bg-gradient-to-r shadow-lg">
+    <div className="from-atom-card-background to-atom-card-to_background rounded-card max-w-sm bg-gradient-to-r shadow-lg">
       <UDSImage
         className="h-40 w-full object-cover"
         src={eventImageUrl}

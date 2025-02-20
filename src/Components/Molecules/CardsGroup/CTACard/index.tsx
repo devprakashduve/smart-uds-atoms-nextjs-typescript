@@ -27,7 +27,7 @@ export default function CTACard({
   };
 
   return (
-    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark max-w-sm rounded-lg bg-gradient-to-r p-6 text-center shadow-lg">
+    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card max-w-sm bg-gradient-to-r p-6 text-center shadow-lg">
       {title && <h3 className="text-2xl font-semibold">{title}</h3>}
       {paraText && <p className="m-2 text-sm">{paraText}</p>}
       <form onSubmit={(e) => handleSubscribe(e)}>

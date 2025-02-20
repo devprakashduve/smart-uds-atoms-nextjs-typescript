@@ -12,7 +12,7 @@ export default function FeatureCard({
 }: FeatureCardProps) {
   return (
     <div
-      className={`from-atom-card-background to-atom-card-to_background text-atom-card-dark flex max-w-sm space-x-4 overflow-hidden rounded-lg bg-gradient-to-r p-4 shadow-lg ${containerClassName}`}
+      className={`from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card flex max-w-sm space-x-4 overflow-hidden bg-gradient-to-r p-4 shadow-lg ${containerClassName}`}
     >
       {iconName && (
         <Icon

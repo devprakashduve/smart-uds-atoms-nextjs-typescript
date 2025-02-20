@@ -10,7 +10,7 @@ export default function JobCard({
   btnText,
 }: JobCardProps) {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background max-w-sm rounded-lg bg-gradient-to-r p-6 shadow-lg">
+    <div className="from-atom-card-background to-atom-card-to_background rounded-card max-w-sm bg-gradient-to-r p-6 shadow-lg">
       <h3 className="text-atom-card-dark text-lg font-semibold">{title}</h3>
       <p className="text-sm">Company: {company}</p>
       <p className="mt-2 text-sm">{description}</p>

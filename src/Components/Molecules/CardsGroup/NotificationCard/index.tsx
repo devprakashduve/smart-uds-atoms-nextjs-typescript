@@ -12,13 +12,13 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
   message,
 }) => {
   return (
-    <div className="flex max-w-sm items-center space-x-4 rounded-lg bg-white p-4 shadow-lg">
-      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary">
+    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card flex max-w-sm items-center space-x-4 bg-gradient-to-r p-4 shadow-lg">
+      <div className="flex h-12 w-12 items-center justify-center rounded-full">
         {icon}
       </div>
       <div>
         <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-sm text-gray-600">{message}</p>
+        <p className="text-sm">{message}</p>
       </div>
     </div>
   );
