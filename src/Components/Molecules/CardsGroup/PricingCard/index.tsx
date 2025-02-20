@@ -1,13 +1,5 @@
 import Button from '@/Components/Atoms/Button';
-import React from 'react';
-
-interface PricingCardProps {
-  title: string;
-  description: string;
-  price: string;
-  features: string[];
-  buttonText: string;
-}
+import { PricingCardProps } from './PricingCard.types';
 
 const PricingCard: React.FC<PricingCardProps> = ({
   title,
@@ -17,13 +9,13 @@ const PricingCard: React.FC<PricingCardProps> = ({
   buttonText,
 }) => {
   return (
-    <div className="max-w-sm rounded-lg border border-gray-200 bg-white p-6 text-center text-line-dark shadow-lg">
+    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card max-w-sm bg-gradient-to-r p-6 text-center shadow-lg">
       <h3 className="text-2xl font-bold">{title}</h3>
-      <p className="mt-2 text-line">{description}</p>
-      <p className="mt-4 text-3xl font-bold text-line-dark">{price}</p>
-      <ul className="mt-4 text-sm text-line">
-        {features.map((feature, index) => (
-          <li key={index}>✔ {feature}</li>
+      <p className="text-line mt-2">{description}</p>
+      <p className="text-line-dark mt-4 text-3xl font-bold">{price}</p>
+      <ul className="text-line mt-4 text-sm">
+        {features.map((feature, featureIndex) => (
+          <li key={featureIndex}>✔ {feature}</li>
         ))}
       </ul>
       <Button className="mt-6 w-full rounded-lg">{buttonText}</Button>

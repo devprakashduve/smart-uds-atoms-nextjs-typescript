@@ -12,8 +12,8 @@ const Template: StoryFn<typeof PricingCard> = (args) => (
   <PricingCard {...args} />
 );
 
-export const ProPlan = Template.bind({});
-ProPlan.args = {
+export const ProPlanStory = Template.bind({});
+ProPlanStory.args = {
   title: 'Pro Plan',
   description: 'Best for growing businesses',
   price: '₹1,499/mo',
@@ -21,8 +21,8 @@ ProPlan.args = {
   buttonText: 'Get Started',
 };
 
-export const BasicPlan = Template.bind({});
-BasicPlan.args = {
+export const BasicPlanStory = Template.bind({});
+BasicPlanStory.args = {
   title: 'Basic Plan',
   description: 'Best for individuals',
   price: '₹499/mo',
