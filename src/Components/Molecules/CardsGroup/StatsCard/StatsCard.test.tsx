@@ -5,9 +5,9 @@ import StatsCard from './index';
 test('renders StatsCard with props', () => {
   const { getByText } = render(
     <StatsCard
-      title="Total Sales"
-      value="₹ 1,20,500"
-      lastUpdated="1 hour ago"
+      cardTitle="Total Sales"
+      cardValue="₹ 1,20,500"
+      cardLastUpdated="1 hour ago"
     />
   );
 

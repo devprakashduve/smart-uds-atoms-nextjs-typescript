@@ -10,14 +10,16 @@ describe('TeamMemberCard', () => {
         role="Frontend Developer"
         imageUrl="/images/avatar.jpg"
         linkedInUrl="https://linkedin.com"
+        linkedInText="LinkedIn"
         gitHubUrl="https://github.com"
+        gitHubText="GitHub"
       />
     );
 
     expect(getByAltText('John Smith')).toBeInTheDocument();
     expect(getByText('John Smith')).toBeInTheDocument();
     expect(getByText('Frontend Developer')).toBeInTheDocument();
-    expect(getByText('CustomLinkedIn')).toBeInTheDocument();
+    expect(getByText('LinkedIn')).toBeInTheDocument();
     expect(getByText('GitHub')).toBeInTheDocument();
   });
 });

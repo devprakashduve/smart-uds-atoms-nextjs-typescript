@@ -1,8 +1,8 @@
 export interface TestimonialCardProps {
-  testimonial: string;
-  imageSrc: string;
-  name: string;
-  position: string;
-  alignment?: 'left' | 'right' | 'center';
-  design: 'inline' | 'default';
+  testimonialText: string;
+  imageSource: string;
+  userName: string;
+  userPosition: string;
+  textAlignment?: 'left' | 'right' | 'center';
+  cardDesign: 'inline' | 'default';
 }

@@ -14,75 +14,75 @@ const Template: StoryFn<typeof TestimonialCard> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  design: 'default',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  cardDesign: 'default',
 };
 
 export const CenterAligned = Template.bind({});
 CenterAligned.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  alignment: 'center',
-  design: 'default',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  textAlignment: 'center',
+  cardDesign: 'default',
 };
 
 export const LeftAligned = Template.bind({});
 LeftAligned.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  alignment: 'left',
-  design: 'default',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  textAlignment: 'left',
+  cardDesign: 'default',
 };
 
 export const RightAligned = Template.bind({});
 RightAligned.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  alignment: 'right',
-  design: 'default',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  textAlignment: 'right',
+  cardDesign: 'default',
 };
 
 export const InlineDesign = Template.bind({});
 InlineDesign.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  design: 'inline',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  cardDesign: 'inline',
 };
 
 export const InlineLeftAligned = Template.bind({});
 InlineLeftAligned.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  alignment: 'left',
-  design: 'inline',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  textAlignment: 'left',
+  cardDesign: 'inline',
 };
 
 export const InlineRightAligned = Template.bind({});
 InlineRightAligned.args = {
-  testimonial:
+  testimonialText:
     'This service has completely transformed the way I work. Highly recommended!',
-  imageSrc: '/images/avatar.jpg',
-  name: 'Dubey Dev',
-  position: 'CEO, Example Corp',
-  alignment: 'right',
-  design: 'inline',
+  imageSource: '/images/avatar.jpg',
+  userName: 'Dubey Dev',
+  userPosition: 'CEO, Example Corp',
+  textAlignment: 'right',
+  cardDesign: 'inline',
 };

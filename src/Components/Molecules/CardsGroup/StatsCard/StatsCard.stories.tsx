@@ -12,7 +12,7 @@ const Template: StoryFn<typeof StatsCard> = (args) => <StatsCard {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  title: 'Total Sales',
-  value: '₹ 1,20,500',
-  lastUpdated: '1 hour ago',
+  cardTitle: 'Total Sales',
+  cardValue: '₹ 1,20,500',
+  cardLastUpdated: '1 hour ago',
 };

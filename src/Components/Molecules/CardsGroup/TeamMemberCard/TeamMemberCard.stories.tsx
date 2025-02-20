@@ -18,5 +18,7 @@ Default.args = {
   role: 'Full Stack Developer',
   imageUrl: '/images/avatar.jpg',
   linkedInUrl: 'https://linkedin.com',
+  linkedInText: 'LinkedIn',
   gitHubUrl: 'https://github.com',
+  gitHubText: 'GitHub',
 };
