@@ -1,6 +1,5 @@
 import React from 'react';
 import { PaginationProps } from './PaginationProps.interface';
-import './Pagination.css';
 import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 
@@ -10,7 +9,12 @@ const PaginationButton: React.FC<{
   className: string;
   children: React.ReactNode;
 }> = ({ onClick, disabled, className, children }) => (
-  <Button className={className} onClick={onClick} disabled={disabled}>
+  <Button
+    variant="elevated"
+    className={className}
+    onClick={onClick}
+    disabled={disabled}
+  >
     {children}
   </Button>
 );
@@ -22,8 +26,8 @@ const PageNumberButton: React.FC<{
 }> = ({ page, currentPage, onClick }) => (
   <Button
     key={page}
-    variant="outline"
-    className={`${page === currentPage ? 'active' : ''}`}
+    variant="elevated"
+    className={`${page === currentPage ? 'active bg-atom-btn' : ''}`}
     onClick={() => onClick(page)}
   >
     {page}
@@ -99,7 +103,9 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className={`pagination-container ${className || ''}`}>
+    <div
+      className={`mt-4 flex items-center justify-center gap-2 ${className || ''}`}
+    >
       <PaginationButton
         className="pagination-button previous"
         onClick={() => handleClick(currentPage - 1)}
@@ -108,8 +114,8 @@ const Pagination: React.FC<PaginationProps> = ({
         <span className="sr-only">Previous</span>
         <Icon
           aria-hidden="true"
-          className="text-primary-light"
           name={'chevronLeft'}
+          className="#ccc"
           variant={'outline'}
         />
       </PaginationButton>
@@ -122,8 +128,8 @@ const Pagination: React.FC<PaginationProps> = ({
         <span className="sr-only">Next</span>
         <Icon
           aria-hidden="true"
-          className="text-primary-light"
           name={'chevronRight'}
+          className="#ccc"
           variant={'outline'}
         />
       </PaginationButton>
