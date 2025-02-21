@@ -15,7 +15,6 @@ import List from './Components/Atoms/List';
 import Badge from './Components/Atoms/Badge';
 import CustomLink from './Components/Atoms/CustomLink';
 import Divider from './Components/Atoms/Divider';
-import Loader from './Components/Atoms/Loader';
 import Paragraph from './Components/Atoms/Paragraph';
 import ProgressBar from './Components/Atoms/ProgressBar';
 import Spinner from './Components/Atoms/Spinner';
@@ -66,7 +65,6 @@ export {
   Image,
   Label,
   List,
-  Loader,
   Paragraph,
   ProgressBar,
   Spinner,
