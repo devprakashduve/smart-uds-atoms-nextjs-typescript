@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { CheckboxProps } from './CheckboxProps.interface';
 import Icon from '../../Icon';
 
@@ -24,12 +24,16 @@ const Checkbox = ({
     lg: 'text-lg',
   };
 
-  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const setTitle = title || name;
   const inputId = `${name}-checkbox`;
-  const [isChecked, setIsChecked] = React.useState(checked);
+  const [isChecked, setIsChecked] = useState(checked);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    setIsChecked(checked);
+  }, [checked]);
+
+  useEffect(() => {
     if (inputRef.current) {
       inputRef.current.indeterminate = indeterminate;
     }
