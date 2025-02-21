@@ -1,22 +1,5 @@
 import ProductCard from '../CardsGroup/ProductCard';
-
-interface Product {
-  id: number;
-  name: string;
-  href: string;
-  imageSrc: string;
-  imageAlt: string;
-  price: string;
-  color: string;
-  description?: string;
-  rating: string;
-}
-
-interface ProductListProps {
-  products: Product[];
-  title: string;
-  addToCartText: string;
-}
+import { ProductListProps } from './ProductList.interface';
 
 export default function ProductList({
   products,

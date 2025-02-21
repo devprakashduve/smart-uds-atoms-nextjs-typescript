@@ -1,10 +1,11 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import ProductList from './index';
+import ProductList from '.';
 
 export default {
   title: 'Components/Molecules/ProductList',
   component: ProductList,
+  tags: ['autodocs'],
 } as Meta<typeof ProductList>;
 
 const Template: StoryFn<typeof ProductList> = (args) => (
