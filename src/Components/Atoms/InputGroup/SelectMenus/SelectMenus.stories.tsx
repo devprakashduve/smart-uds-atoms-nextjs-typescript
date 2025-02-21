@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import SelectMenus from '.';
-import { SelectMenusProps } from './SelectMenus.interface';
+import { Item, SelectMenusProps } from './SelectMenus.interface';
 
 const items = [
   {
@@ -97,7 +97,7 @@ export default {
     disabled: false,
     required: false,
     error: false,
-    onChange: (item: any) => console.log('Selected Item:', item),
+    onChange: (item: Item) => console.log('Selected Item:', item),
   },
 } as Meta;
 

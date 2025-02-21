@@ -22,7 +22,9 @@ const Accordion: React.FC<AccordionProps> = ({
       newOpenIndexes = openIndexes.includes(index) ? [] : [index];
     }
     setOpenIndexes(newOpenIndexes);
-    onToggle && onToggle(newOpenIndexes.includes(index));
+    if (onToggle) {
+      onToggle(newOpenIndexes.includes(index));
+    }
   };
 
   return (
