@@ -30,50 +30,48 @@ const Stepper = ({
     }
   };
 
-  const getSizeClass = () => {
-    switch (size) {
-      case 'sm':
-        return 'h-8 w-8';
-      case 'md':
-        return 'h-10 w-10';
-      case 'lg':
-      default:
-        return 'h-14 w-14';
-    }
+  const sizeClasses = {
+    sm: 'h-8 w-8',
+    md: 'h-10 w-10',
+    lg: 'h-14 w-14',
   };
+
   const progressPercentage = Math.min(
     ((currentStep - 1) / (steps - 1)) * 100,
     100
   );
+
   return (
     <div
-      className={`w-full ${orientation === 'vertical' ? 'flex flex-col' : ''}`}
+      className={`flex justify-between ${orientation === 'vertical' ? 'flex-col' : 'flex-row'}`}
     >
       <div
         className={`flex ${orientation === 'vertical' ? 'absolute h-full flex-col' : 'relative w-full'} items-center justify-between`}
       >
         <div
-          className={`absolute ${orientation === 'vertical' ? 'left-2/4 top-0 h-full w-0.5' : 'left-0 top-2/4 h-0.5 w-full'} -translate-${orientation === 'vertical' ? 'x' : 'y'}-2/4 bg-atom-stepTracker-light`}
-        ></div>
+          className={`absolute bg-atom-stepTracker-light ${orientation === 'vertical' ? 'left-1/2 top-0 h-full w-1' : 'left-0 top-1/2 h-1 w-full'}`}
+        />
         <div
-          className={`absolute ${orientation === 'vertical' ? 'left-2/4 top-0 h-full w-0.5' : 'left-0 top-2/4 h-0.5 w-full'} -translate-${orientation === 'vertical' ? 'x' : 'y'}-2/4 bg-atom-stepTracker-dark transition-all duration-500`}
+          className={`from-atom-stepTracker-background to-atom-stepTracker-to_background absolute bg-gradient-to-r text-atom-stepTracker-text shadow-lg ${orientation === 'vertical' ? 'left-1/2 top-0 w-1' : 'left-0 top-1/2 h-1'} transition-all duration-300`}
           style={{
             [orientation === 'vertical' ? 'height' : 'width']:
               `${progressPercentage}%`,
           }}
-        ></div>
-        {Array.from({ length: steps }, (_, index) => {
-          const step = index + 1;
-          const isActive = step <= currentStep;
-          return (
-            <div
-              key={step}
-              className={`relative z-10 grid ${getSizeClass()} place-items-center rounded-full font-bold transition-all duration-300 ${isActive ? 'bg-atom-stepTracker-dark text-atom-stepTracker-text' : 'bg-atom-stepTracker-light'} `}
-            >
-              {showCounter && step}
-            </div>
-          );
-        })}
+        />
+        {Array.from({ length: steps }, (_, index) => (
+          <div
+            key={index}
+            className={`relative flex ${sizeClasses[size]} items-center justify-center rounded-full ${
+              index < currentStep
+                ? 'from-atom-stepTracker-background to-atom-stepTracker-to_background bg-gradient-to-r text-atom-stepTracker-text shadow-lg'
+                : index === currentStep
+                  ? 'bg-atom-stepTracker-light text-atom-stepTracker-text'
+                  : 'bg-atom-stepTracker-light text-atom-stepTracker-text'
+            }`}
+          >
+            {showCounter && <span>{index + 1}</span>}
+          </div>
+        ))}
       </div>
       {nextButtonText && prevButtonText && (
         <div

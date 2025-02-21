@@ -15,6 +15,12 @@ export default {
         options: ['horizontal', 'vertical'],
       },
     },
+    size: {
+      control: {
+        type: 'select',
+        options: ['sm', 'md', 'lg'],
+      },
+    },
   },
 } as Meta;
 
@@ -46,6 +52,7 @@ Default.args = {
   totalStepsCount: 5,
   nextButtonText: 'Next Step',
   orientation: 'horizontal',
+  size: 'md',
 };
 
 export const Horizontal = Template.bind({});
@@ -54,6 +61,7 @@ Horizontal.args = {
   totalStepsCount: 5,
   nextButtonText: 'Next Step',
   orientation: 'horizontal',
+  size: 'md',
 };
 
 export const Vertical = Template.bind({});
@@ -62,4 +70,32 @@ Vertical.args = {
   totalStepsCount: 5,
   nextButtonText: 'Next Step',
   orientation: 'vertical',
+  size: 'md',
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  currentStepIndex: 1,
+  totalStepsCount: 5,
+  nextButtonText: 'Next Step',
+  orientation: 'horizontal',
+  size: 'sm',
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  currentStepIndex: 1,
+  totalStepsCount: 5,
+  nextButtonText: 'Next Step',
+  orientation: 'horizontal',
+  size: 'md',
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  currentStepIndex: 1,
+  totalStepsCount: 5,
+  nextButtonText: 'Next Step',
+  orientation: 'horizontal',
+  size: 'lg',
 };

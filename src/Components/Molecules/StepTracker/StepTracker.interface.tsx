@@ -5,4 +5,5 @@ export interface StepTrackerProps {
   nextButtonText?: string; // Optional text for the next button
   onNextStep?: () => void; // Optional callback for next step button click
   orientation?: 'horizontal' | 'vertical'; // Optional orientation property
+  size?: 'sm' | 'md' | 'lg'; // Optional size property
 }
