@@ -90,9 +90,9 @@ describe('RadioButton Component', () => {
     const radioInput = screen.getByRole('radio') as HTMLInputElement;
     expect(radioInput.checked).toBe(true);
 
-    const parentLabel = radioInput.closest('label');
-    expect(parentLabel).toBeInTheDocument();
-    const indicator = parentLabel?.querySelector('span.absolute');
+    const parentDiv = radioInput.closest('div');
+    expect(parentDiv).toBeInTheDocument();
+    const indicator = parentDiv?.querySelector('span.absolute');
     expect(indicator).toBeInTheDocument();
   });
 
