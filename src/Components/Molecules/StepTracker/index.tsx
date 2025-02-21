@@ -8,7 +8,7 @@ const StepTracker: React.FC<StepTrackerProps> = ({
   orientation = 'horizontal',
 }) => {
   const progressPercentage = Math.min(
-    (currentStepIndex / (totalStepsCount - 1)) * 100,
+    ((currentStepIndex - 1) / (totalStepsCount - 1)) * 100,
     100
   );
 
@@ -23,7 +23,7 @@ const StepTracker: React.FC<StepTrackerProps> = ({
           className={`absolute bg-atom-stepTracker-light ${orientation === 'vertical' ? 'left-1/2 top-0 h-full w-1' : 'left-0 top-1/2 h-1 w-full'}`}
         />
         <div
-          className={`absolute bg-atom-stepTracker-dark ${orientation === 'vertical' ? 'left-1/2 top-0 w-1' : 'left-0 top-1/2 h-1'}`}
+          className={`absolute bg-atom-stepTracker-dark ${orientation === 'vertical' ? 'left-1/2 top-0 w-1' : 'left-0 top-1/2 h-1'} transition-all duration-300`}
           style={{
             [orientation === 'vertical' ? 'height' : 'width']:
               `${progressPercentage}%`,
