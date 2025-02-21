@@ -2,6 +2,7 @@ export interface Tab {
   id: string; // Unique identifier for the tab
   label: string; // Label for the tab
   content: React.ReactNode; // Content to render when the tab is active
+  disabled?: boolean; // Optional flag to disable the tab
 }
 
 export interface TabsProps {
