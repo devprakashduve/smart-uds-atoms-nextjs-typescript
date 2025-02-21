@@ -1,16 +1,20 @@
 {
-  "name": "atomic-uds-next-app",
+  "name": "@dev/nextjs-smart-uds",
   "version": "0.0.20",
   "repository": {
     "type": "git",
     "url": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript.git"
   },
-  "author": "Dev Prakash Duve",
+  "bugs": {
+    "url": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/issues"
+  },
+  "homepage": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript#readme",
+  "author": "Dev Prakash Duve <dev786.1@gmail.com>",
   "license": "MIT",
   "files": [
     "dist"
   ],
-  "description": "Reusable UDS library",
+  "description": "A collection of reusable React components (atoms and molecules) built with Next.js and TypeScript.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -25,7 +29,8 @@
     "build:lib": " rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
     "prepublishOnly": "npm run build",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "postinstall": "npm install"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
@@ -36,9 +41,26 @@
       "prettier --write"
     ]
   },
+  "keywords": [
+    "react",
+    "nextjs",
+    "typescript",
+    "atomic-design",
+    "components",
+    "ui-library",
+    "smart-UDS",
+    "UDS library",
+    "atomic-uds",
+    "next-uds"
+  ],
   "peerDependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "@heroicons/react": "^2.2.0",
+    "@storybook/addon-links": "^8.5.8",
+    "@storybook/addon-mdx-gfm": "^8.5.8",
+    "ajv": "^8.17.1",
+    "enzyme": "^3.11.0"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
