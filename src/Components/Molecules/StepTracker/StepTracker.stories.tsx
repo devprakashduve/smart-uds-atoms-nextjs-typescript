@@ -5,7 +5,7 @@ import { StepTrackerProps } from './StepTracker.interface';
 import Button from '@/Components/Atoms/Button';
 
 export default {
-  title: 'Components/Molecules/ProgressIndicator',
+  title: 'Components/Molecules/StepTracker',
   component: StepTracker,
 } as Meta;
 
@@ -31,8 +31,8 @@ const Template: StoryFn<StepTrackerProps> = (args) => {
   );
 };
 
-export const DefaultProgressIndicator = Template.bind({});
-DefaultProgressIndicator.args = {
+export const Default = Template.bind({});
+Default.args = {
   currentStepIndex: 1,
   totalStepsCount: 5,
   nextButtonText: 'Next Step',
