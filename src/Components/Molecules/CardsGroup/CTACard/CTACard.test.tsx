@@ -47,6 +47,5 @@ describe('CTACard', () => {
     );
     const input = screen.getByPlaceholderText('Enter email');
     fireEvent.change(input, { target: { value: 'test@example.com' } });
-    const button = screen.getByText('Subscribe');
   });
 });

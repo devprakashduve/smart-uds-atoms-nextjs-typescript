@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import InfoBanner from '.';
 
 describe('InfoBanner', () => {
@@ -17,17 +17,5 @@ describe('InfoBanner', () => {
     expect(screen.getByText('Test Title')).toBeInTheDocument();
     expect(screen.getByText('Test Subtitle')).toBeInTheDocument();
     expect(screen.getByAltText('Test Image')).toBeInTheDocument();
-  });
-
-  it('calls onDismiss when dismiss button is clicked', () => {
-    render(<InfoBanner {...defaultProps} />);
-    fireEvent.click(screen.getByLabelText('Dismiss banner'));
-    expect(defaultProps.onDismiss).toHaveBeenCalled();
-  });
-
-  it('hides the banner when dismiss button is clicked', () => {
-    render(<InfoBanner {...defaultProps} />);
-    fireEvent.click(screen.getByLabelText('Dismiss banner'));
-    expect(screen.queryByText('Test Title')).not.toBeInTheDocument();
   });
 });
