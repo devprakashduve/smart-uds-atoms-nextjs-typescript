@@ -29,8 +29,7 @@
     "build:lib": " rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
     "prepublishOnly": "npm run build",
-    "test": "jest --coverage",
-    "postinstall": "npm install"
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
