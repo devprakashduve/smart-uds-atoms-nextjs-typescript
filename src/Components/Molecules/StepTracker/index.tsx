@@ -1,10 +1,9 @@
 import React from 'react';
-import { ProgressIndicatorProps } from './ProgressIndicatorProps.interface';
+import { StepTrackerProps } from './StepTracker.interface';
 
-const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
+const StepTracker: React.FC<StepTrackerProps> = ({
   currentStepIndex,
   totalStepsCount,
-  stepLabels,
   containerClassName,
 }) => {
   return (
@@ -12,23 +11,21 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
       className={`flex w-full flex-col items-center ${containerClassName || ''}`}
     >
       <div className="relative flex w-full items-center justify-between">
-        <div className={`absolute left-0 top-1/2 h-1 w-full bg-gray-500`} />
+        <div
+          className={`bg-atom-stepTracker-dark absolute left-0 top-1/2 h-1 w-full`}
+        />
         {Array.from({ length: totalStepsCount }, (_, index) => (
           <div
             key={index}
             className={`relative flex h-8 w-8 items-center justify-center rounded-full ${
               index < currentStepIndex
-                ? 'bg-blue-500'
+                ? 'bg-atom-stepTracker-dark text-atom-stepTracker-text'
                 : index === currentStepIndex
-                  ? 'bg-gray-900'
-                  : 'bg-gray-900'
+                  ? 'bg-atom-stepTracker-light text-atom-stepTracker-dark'
+                  : 'bg-atom-stepTracker-light text-atom-stepTracker-dark'
             }`}
           >
-            {stepLabels && stepLabels[index] && (
-              <span className="absolute mt-10 w-20 text-center text-xs">
-                {stepLabels[index]}
-              </span>
-            )}
+            <span className="">{index + 1}</span>
           </div>
         ))}
       </div>
@@ -36,4 +33,4 @@ const ProgressIndicator: React.FC<ProgressIndicatorProps> = ({
   );
 };
 
-export default ProgressIndicator;
+export default StepTracker;

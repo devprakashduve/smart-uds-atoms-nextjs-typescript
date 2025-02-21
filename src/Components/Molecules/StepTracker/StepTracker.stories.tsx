@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import ProgressIndicator from '.';
-import { ProgressIndicatorProps } from './ProgressIndicatorProps.interface';
+import StepTracker from '.';
+import { StepTrackerProps } from './StepTracker.interface';
+import Button from '@/Components/Atoms/Button';
 
 export default {
   title: 'Components/Molecules/ProgressIndicator',
-  component: ProgressIndicator,
+  component: StepTracker,
 } as Meta;
 
-const Template: StoryFn<ProgressIndicatorProps> = (args) => {
+const Template: StoryFn<StepTrackerProps> = (args) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(
     args.currentStepIndex
   );
@@ -22,13 +23,10 @@ const Template: StoryFn<ProgressIndicatorProps> = (args) => {
 
   return (
     <div>
-      <ProgressIndicator {...args} currentStepIndex={currentStepIndex} />
-      <button
-        className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white"
-        onClick={handleNextStep}
-      >
+      <StepTracker {...args} currentStepIndex={currentStepIndex} />
+      <Button onClick={handleNextStep} className="my-4">
         {args.nextButtonText || 'Next Step'}
-      </button>
+      </Button>
     </div>
   );
 };
@@ -37,6 +35,5 @@ export const DefaultProgressIndicator = Template.bind({});
 DefaultProgressIndicator.args = {
   currentStepIndex: 1,
   totalStepsCount: 5,
-  stepLabels: ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
   nextButtonText: 'Next Step',
 };
