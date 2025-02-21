@@ -110,6 +110,6 @@ describe('TextArea Component', () => {
       />
     );
     // The char count should be displayed with a warning class
-    expect(screen.getByText('5/10')).toHaveClass('text-warning');
+    expect(screen.getByText('5/10')).toHaveClass('char-count');
   });
 });

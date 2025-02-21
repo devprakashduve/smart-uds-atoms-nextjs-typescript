@@ -9,8 +9,9 @@ describe('CTACard', () => {
     render(
       <CTACard
         email=""
-        onEmailChange={mockOnEmailChange}
+        onChange={mockOnEmailChange}
         onSubscribe={mockOnSubscribe}
+        title={''}
       />
     );
     expect(screen.getByText('Join Our Newsletter')).toBeInTheDocument();
@@ -22,8 +23,9 @@ describe('CTACard', () => {
     render(
       <CTACard
         email=""
-        onEmailChange={mockOnEmailChange}
+        onChange={mockOnEmailChange}
         onSubscribe={mockOnSubscribe}
+        title={''}
       />
     );
     const input = screen.getByPlaceholderText('Enter email');
@@ -35,8 +37,9 @@ describe('CTACard', () => {
     render(
       <CTACard
         email=""
-        onEmailChange={mockOnEmailChange}
+        onChange={mockOnEmailChange}
         onSubscribe={mockOnSubscribe}
+        title={''}
       />
     );
     const button = screen.getByText('Subscribe');

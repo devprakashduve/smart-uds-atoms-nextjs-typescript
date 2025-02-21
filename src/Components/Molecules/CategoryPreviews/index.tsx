@@ -1,14 +1,6 @@
 import CustomLink from '@/Components/Atoms/CustomLink';
 import UDSImage from '@/Components/Atoms/Image';
 import { CategoryPreviewsProps, Category } from './CategoryPreviews.interface';
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  AwaitedReactNode,
-  Key,
-  ReactPortal,
-} from 'react';
 
 export default function CategoryPreviews({
   title,
