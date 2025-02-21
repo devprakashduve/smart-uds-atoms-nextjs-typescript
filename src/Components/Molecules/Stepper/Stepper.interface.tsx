@@ -4,4 +4,5 @@ export interface StepperProps {
   onChange?: (step: number) => void;
   showCounter?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  orientation?: 'horizontal' | 'vertical';
 }

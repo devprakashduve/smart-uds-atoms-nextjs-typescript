@@ -30,6 +30,15 @@ export default {
       },
     },
     showCounter: { control: { type: 'boolean' } },
+    orientation: {
+      control: { type: 'radio' },
+      options: ['horizontal', 'vertical'],
+      description: 'Orientation of the stepper.',
+      table: {
+        type: { summary: 'horizontal | vertical' },
+        defaultValue: { summary: 'horizontal' },
+      },
+    },
   },
 };
 
@@ -38,6 +47,7 @@ export const DefaultStepper = {
     steps: 4,
     value: 2,
     showCounter: true,
+    orientation: 'horizontal',
   },
 };
 
@@ -46,6 +56,7 @@ export const TwoSteps = {
     steps: 2,
     value: 1,
     showCounter: true,
+    orientation: 'horizontal',
   },
 };
 
@@ -54,6 +65,7 @@ export const FiveSteps = {
     steps: 5,
     value: 1,
     showCounter: true,
+    orientation: 'horizontal',
   },
 };
 
@@ -62,5 +74,6 @@ export const WithoutCounter = {
     steps: 5,
     value: 3,
     showCounter: false,
+    orientation: 'horizontal',
   },
 };
