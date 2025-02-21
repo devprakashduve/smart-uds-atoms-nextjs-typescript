@@ -23,7 +23,7 @@ export default function CTACard({
     event.preventDefault();
 
     if (userEmail && onSubscribe) {
-      onSubscribe?.(userEmail);
+      onSubscribe(userEmail);
     }
   };
 
@@ -31,11 +31,11 @@ export default function CTACard({
     <div className="max-w-sm rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-6 text-center text-atom-card-dark shadow-lg">
       {title && <h3 className="text-2xl font-semibold">{title}</h3>}
       {paraText && <p className="m-2 text-sm">{paraText}</p>}
-      <form onSubmit={(e) => handleSubscribe(e)}>
+      <form onSubmit={handleSubscribe}>
         <Input
           id="email"
           name="email"
-          onChange={(e) => handleInputChange(e)}
+          onChange={handleInputChange}
           placeholder="Enter email"
           value={userEmail}
           type={'email'}
