@@ -1,14 +1,10 @@
 {
-  "name": "@dev/nextjs-smart-uds",
+  "name": "atomic-uds-next-app",
   "version": "0.0.21",
   "repository": {
     "type": "git",
     "url": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript.git"
   },
-  "bugs": {
-    "url": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/issues"
-  },
-  "homepage": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript#readme",
   "author": "Dev Prakash Duve <dev786.1@gmail.com>",
   "license": "MIT",
   "files": [
@@ -26,7 +22,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:lib": " rollup -c --bundleConfigAsCjs --clearCache",
+    "build:lib": "rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
     "prepublishOnly": "npm run build",
     "test": "jest --coverage"
