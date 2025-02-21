@@ -5,7 +5,7 @@
 
 /* Star Icon */
 .rating-star {
-  @apply text-atom-rating-dark cursor-default text-xl;
+  @apply;
 }
 
 /* Filled Star */
@@ -15,5 +15,5 @@
 
 /* Interactive Star */
 .rating-star.interactive {
-  @apply hover:text-atom-rating cursor-pointer;
+  @apply cursor-pointer hover:text-atom-rating;
 }

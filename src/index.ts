@@ -36,7 +36,6 @@ import FlyoutMenus from './Components/Molecules/FlyoutMenus';
 import InfoBanner from './Components/Molecules/InfoBanner';
 import ProductList from './Components/Molecules/ProductList';
 import Rating from './Components/Molecules/Rating';
-import SidebarMenu from './Components/Molecules/SidebarMenu';
 import SmartCard from './Components/Molecules/SmartCard';
 import Stepper from './Components/Molecules/Stepper';
 import ToastNotification from './Components/Molecules/ToastNotification';
@@ -92,7 +91,6 @@ export {
   ProductList,
   Rating,
   SearchBar,
-  SidebarMenu,
   SmartCard,
   Stepper,
   Table,

@@ -1,6 +1,5 @@
 import React from 'react';
 import { RatingProps } from './RatingProps.interface';
-import './Rating.css';
 import Button from '@/Components/Atoms/Button';
 
 const Rating: React.FC<RatingProps> = ({
@@ -17,11 +16,11 @@ const Rating: React.FC<RatingProps> = ({
   };
 
   return (
-    <div className={`rating-container ${className || ''}`}>
+    <div className={`flex items-center ${className || ''}`}>
       {Array.from({ length: maxRating }, (_, index) => (
         <Button
           key={index}
-          className={`rating-star ${index < rating ? 'filled' : ''} ${isInteractive ? 'interactive' : ''}`}
+          className={`cursor-default text-xl text-atom-rating-dark ${index < rating ? 'text-atom-rating-light' : ''} ${isInteractive ? 'cursor-pointer hover:text-atom-rating' : ''}`}
           onClick={() => handleRatingClick(index)}
           variant="icon"
         >
