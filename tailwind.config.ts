@@ -63,7 +63,7 @@ const darkPinkWhitePalette = {
       dark: '#9D174D', // Deep Magenta
     },
     breadcrumbs: { text: '#DB2777', background: '#FBCFE8' },
-    stepTracker: { text: '#fff', dark: '#9D174D', light: '#FBCFE8' },
+    stepTracker: { text: '#fff', dark: '#22c55e', light: '#ccc' },
     menu: {
       background: '#FBCFE8',
       from_background: '', // Light Pink

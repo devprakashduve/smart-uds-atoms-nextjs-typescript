@@ -6,13 +6,20 @@ const StepTracker: React.FC<StepTrackerProps> = ({
   totalStepsCount,
   containerClassName,
 }) => {
+  const progressPercentage = Math.min(
+    (currentStepIndex / (totalStepsCount - 1)) * 100,
+    100
+  );
+
   return (
     <div
       className={`flex w-full flex-col items-center ${containerClassName || ''}`}
     >
       <div className="relative flex w-full items-center justify-between">
+        <div className="bg-atom-stepTracker-light absolute left-0 top-1/2 h-1 w-full" />
         <div
-          className={`bg-atom-stepTracker-dark absolute left-0 top-1/2 h-1 w-full`}
+          className="bg-atom-stepTracker-dark absolute left-0 top-1/2 h-1"
+          style={{ width: `${progressPercentage}%` }}
         />
         {Array.from({ length: totalStepsCount }, (_, index) => (
           <div
@@ -21,11 +28,11 @@ const StepTracker: React.FC<StepTrackerProps> = ({
               index < currentStepIndex
                 ? 'bg-atom-stepTracker-dark text-atom-stepTracker-text'
                 : index === currentStepIndex
-                  ? 'bg-atom-stepTracker-light text-atom-stepTracker-dark'
-                  : 'bg-atom-stepTracker-light text-atom-stepTracker-dark'
+                  ? 'text-atom-stepTracker-text bg-atom-stepTracker-light'
+                  : 'text-atom-stepTracker-text bg-atom-stepTracker-light'
             }`}
           >
-            <span className="">{index + 1}</span>
+            <span>{index + 1}</span>
           </div>
         ))}
       </div>
