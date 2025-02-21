@@ -1,6 +1,11 @@
 import { classNames } from '@/Components/Utilities/componentsMethods';
-import './Tooltip.css';
 import { TooltipProps } from './TooltipProps.interface';
+
+const styles = {
+  clipBottom: {
+    clipPath: 'polygon(100% 0, 50% 100%, 0 100%)',
+  },
+};
 
 export default function Tooltip({
   content,
@@ -11,12 +16,12 @@ export default function Tooltip({
 }: TooltipProps) {
   const tooltipClasses = classNames(
     'p-2 text-center text-xs ',
-    `${isBackground ? 'bg-btn-dark text-btn-light' : 'border border-btn-dark text-btn-dark'}`,
+    `${isBackground ? 'bg-atom-btn-dark text-atom-btn-light' : 'border border-atom-btn-dark text-atom-btn-dark'}`,
     setBackground,
     ` ${isRounded ? 'rounded' : ''}`
   );
   const tipClasses = classNames(
-    'clip-bottom h-5 w-4 bg-btn-dark text-btn-light ',
+    'h-5 w-4 bg-atom-btn-dark text-atom-btn-light',
     setBackground
   );
   return (
@@ -24,7 +29,7 @@ export default function Tooltip({
       {children}
       <span className="absolute left-1/2 top-8 ml-auto mr-auto min-w-max -translate-x-1/2 scale-0 transform rounded-lg px-3 py-2 text-xs font-medium transition-all duration-500 group-hover:scale-100">
         <span className="flex max-w-xs flex-col items-center">
-          <span className={tipClasses}></span>
+          <span className={tipClasses} style={styles.clipBottom}></span>
           <span className={tooltipClasses}>{content}</span>
         </span>
       </span>

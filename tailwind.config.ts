@@ -83,12 +83,12 @@ const darkPinkWhitePalette = {
       DEFAULT: '#DB2777', // Dark Pink
       dark: '#9D174D', // Dark Magenta
     },
-    neutral: '#F3F4F6', // Neutral Gray
-    info: '#3b82f6', // Soft Blue
-    success: '#22c55e', // Light Green
-    warning: '#eab308', // Yellow
-    error: '#ef4444', // Soft Red
   },
+  neutral: '#F3F4F6', // Neutral Gray
+  info: '#3b82f6', // Soft Blue
+  success: '#22c55e', // Light Green
+  warning: '#eab308', // Yellow
+  error: '#ef4444', // Soft Red
 };
 
 export default {
