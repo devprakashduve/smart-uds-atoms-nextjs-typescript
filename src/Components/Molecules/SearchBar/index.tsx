@@ -17,9 +17,7 @@ const dummyData = [
 
 const SearchBar: React.FC<SearchBarProps> = ({
   value = '',
-  placeholder = 'Search...',
   onChange,
-  onSearch,
   className,
   noResultText = 'No result found',
 }) => {
@@ -39,7 +37,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   }, [inputValue]);
 
-  const handleInputChange = (value: string) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
     setInputValue(value);
     if (onChange) {
       onChange(value);
@@ -51,8 +50,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       <Input
         type={'text'}
         value={inputValue}
-        placeholder={placeholder}
-        onChange={(val?: string) => handleInputChange(val || '')}
+        onChange={handleInputChange}
         name={'search'}
         showIcon={true}
         customIconName="search"
@@ -61,7 +59,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <ul className="bg-white">
           {filteredData.length > 0 ? (
             filteredData.map((item, index) => (
-              <CustomLink href={item.href} underlineHover={false}>
+              <CustomLink href={item.href} underlineHover={false} key={index}>
                 <li
                   className="border-b-menu-dark hover:bg-menu-light hover:text-menu-dark border-b p-2 hover:cursor-pointer"
                   key={index}

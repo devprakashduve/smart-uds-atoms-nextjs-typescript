@@ -55,13 +55,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   };
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.addEventListener('timeupdate', handleTimeUpdate);
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.addEventListener('timeupdate', handleTimeUpdate);
     }
 
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('timeupdate', handleTimeUpdate);
+      if (videoElement) {
+        videoElement.removeEventListener('timeupdate', handleTimeUpdate);
       }
     };
   }, []);
@@ -94,7 +95,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
             max="1"
             step="0.01"
             value={String(volume)}
-            onChange={(value: string) => handleVolumeChange(value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              handleVolumeChange(e.target.value)
+            }
             name={'range'}
           />
         </div>

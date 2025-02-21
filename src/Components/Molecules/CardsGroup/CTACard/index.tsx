@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '@/Components/Atoms/Button';
 import Input from '@/Components/Atoms/InputGroup/Input';
 import { CTACardProps } from './CTACardProps.interface';
 
 export default function CTACard({
-  email,
   onChange,
   onSubscribe,
   title,
@@ -15,7 +14,9 @@ export default function CTACard({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = onChange?.(e);
-    value && setUserEmail(value);
+    if (value) {
+      setUserEmail(value);
+    }
   };
 
   const handleSubscribe = (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,7 +28,7 @@ export default function CTACard({
   };
 
   return (
-    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card max-w-sm bg-gradient-to-r p-6 text-center shadow-lg">
+    <div className="max-w-sm rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-6 text-center text-atom-card-dark shadow-lg">
       {title && <h3 className="text-2xl font-semibold">{title}</h3>}
       {paraText && <p className="m-2 text-sm">{paraText}</p>}
       <form onSubmit={(e) => handleSubscribe(e)}>

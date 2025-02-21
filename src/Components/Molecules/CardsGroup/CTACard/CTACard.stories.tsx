@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import CTACard from '.';
 import { CTACardProps } from './CTACardProps.interface';

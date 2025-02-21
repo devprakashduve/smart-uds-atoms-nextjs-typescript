@@ -1,6 +1,5 @@
 import React from 'react';
 import { AlertProps } from './AlertProps.interface';
-import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 
 const Alert: React.FC<AlertProps> = ({
