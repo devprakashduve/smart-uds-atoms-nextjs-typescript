@@ -12,6 +12,7 @@ export default {
       options: ['sm', 'md', 'lg'],
     },
     onChange: { action: 'changed' },
+    className: { control: 'text' },
   },
 };
 
@@ -22,6 +23,7 @@ export const DefaultSwitch = {
     disabled: false,
     textForOn: 'On',
     textForOff: 'Off',
+    className: 'custom-class',
   },
 };
 

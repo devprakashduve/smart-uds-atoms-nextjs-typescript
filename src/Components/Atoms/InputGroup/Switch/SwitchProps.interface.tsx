@@ -7,4 +7,5 @@ export interface SwitchProps {
   disableIcons?: boolean;
   noBackground?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  className?: string; // Custom class for additional styling
 }

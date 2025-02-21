@@ -47,7 +47,7 @@ describe('Checkbox Component', () => {
     const checkbox = screen.getByRole('checkbox');
 
     rerender(<Checkbox {...baseProps} checked={true} />);
-    expect(checkbox).not.toBeChecked();
+    expect(checkbox).toBeChecked();
   });
 
   it('renders different sizes correctly', () => {

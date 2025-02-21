@@ -1,5 +1,4 @@
 import { IconProps } from './IconProps.interface';
-import './Icon.css';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 
 import {
@@ -44,6 +43,7 @@ import {
 } from '@heroicons/react/24/solid';
 
 import {
+  ChevronUpIcon,
   ChevronDownIcon,
   PlayCircleIcon,
   ChatBubbleLeftRightIcon,
@@ -86,6 +86,8 @@ const iconMap = {
     chevronLeft: ChevronLeftIcon,
     chevronRight: ChevronRightIcon,
     arrowUpRight: OutlineArrowUpRightIcon,
+    chevronUp: ChevronUpIcon,
+    chevronDown: ChevronDownIcon,
   },
   solid: {
     search: SolidSearchIcon,
@@ -108,6 +110,7 @@ const iconMap = {
     bars3: SolidBars3Icon,
     arrowRight: SolidArrowRightIcon,
     arrowUpRight: SolidArrowUpRightIcon,
+    chevronUp: ChevronUpIcon,
   },
 };
 

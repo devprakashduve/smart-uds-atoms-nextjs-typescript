@@ -63,6 +63,11 @@ export default {
       control: { type: 'select' },
       options: ['left', 'center', 'right'],
     },
+    as: {
+      control: { type: 'select' },
+      options: ['span', 'p', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description: 'HTML tag to render the typography component as',
+    },
   },
 };
 
@@ -74,6 +79,7 @@ export const Default = {
     weight: 'normal',
     color: 'neutral',
     align: 'left',
+    as: 'span',
   },
 };
 
@@ -192,6 +198,7 @@ export const InteractiveExample = {
     weight: 'normal',
     color: 'neutral',
     align: 'left',
+    as: 'span',
   },
   parameters: {
     docs: {

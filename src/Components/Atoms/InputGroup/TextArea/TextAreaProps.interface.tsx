@@ -15,4 +15,5 @@ export interface TextAreaProps {
   id?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  charCountWarningThreshold?: number;
 }

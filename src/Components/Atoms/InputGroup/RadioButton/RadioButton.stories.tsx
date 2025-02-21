@@ -5,7 +5,7 @@ export default {
   component: RadioButton,
   tags: ['autodocs'],
   argTypes: {
-    initialChecked: { control: 'boolean' },
+    checked: { control: 'boolean' },
     onChange: { action: 'changed' },
     label: { control: 'text' },
     name: { control: 'text' },
@@ -15,12 +15,13 @@ export default {
     },
     disabled: { control: 'boolean' },
     title: { control: 'text' },
+    style: { control: 'object' },
   },
 };
 
 export const SizeSM = {
   args: {
-    initialChecked: false,
+    checked: false,
     label: 'Small Radio',
     name: 'radio-group',
     size: 'sm' as const,
@@ -29,7 +30,7 @@ export const SizeSM = {
 
 export const SizeMD = {
   args: {
-    initialChecked: false,
+    checked: false,
     label: 'Medium Radio',
     name: 'radio-group',
     size: 'md' as const,
@@ -38,7 +39,7 @@ export const SizeMD = {
 
 export const SizeLG = {
   args: {
-    initialChecked: false,
+    checked: false,
     label: 'Large Radio',
     name: 'radio-group',
     size: 'lg' as const,
@@ -63,7 +64,7 @@ export const StateComparison = {
         {...SizeMD.args}
         label="Checked"
         name="fruit-group01"
-        initialChecked={true}
+        checked={true}
       />
       <RadioButton
         {...SizeMD.args}
@@ -74,7 +75,7 @@ export const StateComparison = {
       <RadioButton
         {...SizeMD.args}
         label="Disabled Checked"
-        initialChecked={true}
+        checked={true}
         disabled={true}
         name="fruit-group03"
       />
@@ -90,7 +91,7 @@ export const RadioGroupExample = {
         name="fruit-group1"
         label="Orange"
         size="md"
-        initialChecked={true}
+        checked={true}
       />
       <RadioButton
         name="fruit-group2"
@@ -100,4 +101,13 @@ export const RadioGroupExample = {
       />
     </div>
   ),
+};
+
+export const CustomStyleExample = {
+  args: {
+    checked: false,
+    label: 'Styled Radio',
+    name: 'styled-radio',
+    style: { color: 'red' },
+  },
 };

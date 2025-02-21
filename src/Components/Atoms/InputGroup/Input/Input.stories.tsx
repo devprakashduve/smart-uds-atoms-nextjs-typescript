@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Input from '.';
-import { InputProps, InputSize } from './InputProps.interface';
+import { InputProps } from './InputProps.interface';
 
 export default {
   title: 'Components/Atoms/InputGroup/Input',
@@ -16,7 +16,7 @@ export default {
       description: 'HTML input type as a string',
     },
     size: {
-      control: { type: 'select', options: Object.values(InputSize) },
+      control: { type: 'select', options: Object.values('') },
       description: 'Input size',
     },
     disabled: { control: 'boolean', description: 'Disables the input' },
@@ -25,11 +25,18 @@ export default {
       control: 'boolean',
       description: 'Marks the input as required',
     },
-
+    validationOnFocus: {
+      control: 'boolean',
+      description: 'Marks the input as required',
+    },
     showIcon: {
       control: 'boolean',
       description:
         'Shows an icon inside the input (for toggling password visibility)',
+    },
+    autoComplete: {
+      control: 'text',
+      description: 'Autocomplete attribute for the input',
     },
   },
 } as Meta<typeof Input>;
@@ -102,6 +109,23 @@ PillInput.args = {
   type: 'text',
   label: 'Pill Input',
   placeholder: 'Fully rounded',
+};
+
+export const PatternInput = Template.bind({});
+PatternInput.args = {
+  type: 'text',
+  label: 'Pattern Input',
+  placeholder: 'Only letters...',
+  pattern: '^[A-Za-z]+$',
+  validationErrorMessage: 'Only letters are allowed.',
+};
+
+export const MaxLengthInput = Template.bind({});
+MaxLengthInput.args = {
+  type: 'text',
+  label: 'Max Length Input',
+  placeholder: 'Max 5 characters...',
+  maxLength: 5,
 };
 
 export const ComparisonOfInputs = () => {

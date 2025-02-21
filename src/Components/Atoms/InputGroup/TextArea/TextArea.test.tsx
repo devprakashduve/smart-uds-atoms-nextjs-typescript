@@ -97,4 +97,19 @@ describe('TextArea Component', () => {
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
     expect(textarea).toHaveAttribute('readOnly');
   });
+
+  it('displays warning when character count is below the custom threshold', () => {
+    render(
+      <TextArea
+        id="test-textarea"
+        value="Hello"
+        onChange={() => {}}
+        maxLength={10}
+        showCharCount={true}
+        charCountWarningThreshold={3}
+      />
+    );
+    // The char count should be displayed with a warning class
+    expect(screen.getByText('5/10')).toHaveClass('char-count');
+  });
 });

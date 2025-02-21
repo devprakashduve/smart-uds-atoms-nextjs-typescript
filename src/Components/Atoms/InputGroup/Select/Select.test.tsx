@@ -96,4 +96,16 @@ describe('Select Component', () => {
     fireEvent.change(selectElement, { target: { value: '' } });
     expect(screen.getByText('This field is required')).toBeInTheDocument();
   });
+
+  it('renders the placeholder when provided', () => {
+    render(
+      <Select
+        options={options}
+        name="testSelect"
+        placeholder="Select an option"
+        onChange={() => {}}
+      />
+    );
+    expect(screen.getByText('Select an option')).toBeInTheDocument();
+  });
 });

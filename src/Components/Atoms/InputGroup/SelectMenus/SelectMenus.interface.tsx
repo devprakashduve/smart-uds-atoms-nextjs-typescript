@@ -13,7 +13,6 @@ export interface SelectMenusProps {
   disabled?: boolean;
   required?: boolean;
   error?: boolean;
-
   className?: string;
   onChange?: (item: Item) => void;
   placeholder?: string; // New property

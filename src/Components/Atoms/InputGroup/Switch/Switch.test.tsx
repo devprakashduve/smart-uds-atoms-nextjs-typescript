@@ -39,6 +39,20 @@ describe('Switch Component', () => {
     expect(screen.getByText(defaultProps.textForOff)).toBeInTheDocument();
   });
 
+  it('calls onChange callback with the correct value when toggled', () => {
+    const onChangeMock = jest.fn();
+    render(<Switch {...defaultProps} onChange={onChangeMock} />);
+    const checkbox = screen.getByRole('checkbox') as HTMLInputElement;
+
+    // Click to toggle on
+    fireEvent.click(checkbox);
+    expect(onChangeMock).toHaveBeenCalledWith(true);
+
+    // Click again to toggle off
+    fireEvent.click(checkbox);
+    expect(onChangeMock).toHaveBeenCalledWith(false);
+  });
+
   it('renders as disabled when disabled prop is true', () => {
     render(<Switch {...defaultProps} disabled={true} />);
     const checkbox = screen.getByRole('checkbox') as HTMLInputElement;

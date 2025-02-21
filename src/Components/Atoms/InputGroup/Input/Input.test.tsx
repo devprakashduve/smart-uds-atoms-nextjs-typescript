@@ -29,7 +29,11 @@ describe('Input Component', () => {
     );
     const inputElement = screen.getByRole('textbox'); // For email, input type usually becomes "textbox"
     fireEvent.change(inputElement, { target: { value: 'test@example.com' } });
-    expect(handleChange).toHaveBeenCalledWith('test@example.com');
+    expect(handleChange).toHaveBeenCalledWith(
+      expect.objectContaining({
+        target: expect.objectContaining({ value: 'test@example.com' }),
+      })
+    );
   });
 
   it('displays error for invalid email', () => {
@@ -44,7 +48,7 @@ describe('Input Component', () => {
         isRequired={true}
       />
     );
-    const inputElement = screen.getByRole('textbox');
+    const inputElement = screen.getByRole('textbox') as HTMLInputElement;
     fireEvent.change(inputElement, { target: { value: 'invalid-email' } });
     // Assuming your component shows error text "Invalid email address." for an invalid email.
     expect(screen.getByText(/Invalid email address/i)).toBeInTheDocument();
@@ -100,5 +104,23 @@ describe('Input Component', () => {
     );
     const inputElement = screen.getByRole('textbox');
     expect(inputElement).toBeDisabled();
+  });
+
+  it('validates input against custom pattern', () => {
+    const handleChange = jest.fn();
+    render(
+      <Input
+        name="custom"
+        label="Custom Pattern"
+        type="text"
+        value=""
+        onChange={handleChange}
+        pattern="^[A-Za-z]+$"
+        validationErrorMessage="Only letters are allowed."
+      />
+    );
+    const inputElement = screen.getByRole('textbox');
+    fireEvent.change(inputElement, { target: { value: '123' } });
+    expect(screen.getByText(/Only letters are allowed/i)).toBeInTheDocument();
   });
 });

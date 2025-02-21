@@ -78,7 +78,7 @@ export const Background = {
   },
 };
 
-export const setBackgroundColor = {
+export const BackgroundColor = {
   args: {
     children: <Button>touch Me</Button>,
     content: 'This is a bottom tooltip',

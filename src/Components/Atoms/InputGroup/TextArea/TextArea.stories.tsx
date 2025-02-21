@@ -18,6 +18,7 @@ const meta: Meta<typeof TextArea> = {
     autoFocus: { control: 'boolean' },
     maxLength: { control: 'number' },
     rows: { control: 'number' },
+    charCountWarningThreshold: { control: 'number' },
   },
 };
 
@@ -95,6 +96,18 @@ export const ErrorState = {
     maxLength: 200,
     showCharCount: true,
     placeholder: 'Exceeded character limit',
+  },
+};
+
+export const WithCustomWarningThreshold = {
+  ...Template,
+  args: {
+    ...Template.args,
+    maxLength: 100,
+    showCharCount: true,
+    charCountWarningThreshold: 10,
+    value: 'A'.repeat(90),
+    placeholder: 'Custom warning threshold',
   },
 };
 

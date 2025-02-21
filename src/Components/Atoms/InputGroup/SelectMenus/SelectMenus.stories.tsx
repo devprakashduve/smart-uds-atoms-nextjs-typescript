@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import SelectMenus from '.';
-import { SelectMenusProps } from './SelectMenus.interface';
+import { Item, SelectMenusProps } from './SelectMenus.interface';
 
 const items = [
   {
@@ -91,21 +91,13 @@ export default {
     },
   },
   args: {
-    options: [
-      { value: '', label: 'Select an option' },
-      { value: 'option1', label: 'Option 1' },
-      { value: 'option2', label: 'Option 2' },
-      { value: 'option3', label: 'Option 3' },
-    ],
-    label: 'Basic Select',
-    defaultValue: '',
+    items,
+    placeholder: 'Select an option',
     size: 'md',
     disabled: false,
     required: false,
     error: false,
-
-    onChange: (event: { target: { value: string | number } }) =>
-      console.log('Select Value:', event.target.value),
+    onChange: (item: Item) => console.log('Selected Item:', item),
   },
 } as Meta;
 
@@ -113,118 +105,53 @@ const Template: StoryFn<SelectMenusProps> = (args) => <SelectMenus {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  items,
   defaultSelected: items[3],
-  placeholder: 'Select an option', // New property
 };
 
 export const WithOptions = Template.bind({});
 WithOptions.args = {
-  items,
   defaultSelected: items[0],
-  placeholder: 'Select an option', // New property
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  items,
   defaultSelected: items[1],
-  placeholder: 'Select an option',
   disabled: true,
 };
 
 export const ErrorState = Template.bind({});
 ErrorState.args = {
-  items,
   defaultSelected: items[2],
-  placeholder: 'Select an option',
   error: true,
 };
 
 export const Required = Template.bind({});
 Required.args = {
-  items,
   defaultSelected: items[4],
-  placeholder: 'Select an option',
   required: true,
 };
 
 export const RoundedFull = Template.bind({});
 RoundedFull.args = {
-  items,
   defaultSelected: items[5],
-  placeholder: 'Select an option',
 };
 
 export const VariantsComparison = () => (
   <div>
-    <h3>Default</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[3]}
-      placeholder="Select an option"
-    />
-    <h3>Disabled</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[1]}
-      placeholder="Select an option"
-      disabled
-    />
-    <h3>Error State</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[2]}
-      placeholder="Select an option"
-      error
-    />
-    <h3>Required</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[4]}
-      placeholder="Select an option"
-      required
-    />
-    <h3>Rounded Full</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[5]}
-      placeholder="Select an option"
-    />
-    <h3>Small Size</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[6]}
-      placeholder="Select an option"
-      size="sm"
-    />
-    <h3>Medium Size</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[7]}
-      placeholder="Select an option"
-      size="md"
-    />
-    <h3>Large Size</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[8]}
-      placeholder="Select an option"
-      size="lg"
-    />
-    <SelectMenus
-      items={items}
-      defaultSelected={items[8]}
-      placeholder="Select an option"
-      size="lg"
-      label="Large rounded full"
-      required
-    />
-    <h3>Rounded</h3>
-    <SelectMenus
-      items={items}
-      defaultSelected={items[9]}
-      placeholder="Select an option"
-    />
+    {['Default', 'Disabled', 'Error State', 'Required', 'Rounded Full'].map(
+      (variant, index) => (
+        <div key={index}>
+          <h3>{variant}</h3>
+          <SelectMenus
+            items={items}
+            defaultSelected={items[index]}
+            placeholder="Select an option"
+            {...(variant === 'Disabled' && { disabled: true })}
+            {...(variant === 'Error State' && { error: true })}
+            {...(variant === 'Required' && { required: true })}
+          />
+        </div>
+      )
+    )}
   </div>
 );

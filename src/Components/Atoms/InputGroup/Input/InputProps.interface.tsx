@@ -1,14 +1,8 @@
-export enum InputSize {
-  SM = 'sm',
-  MD = 'md',
-  LG = 'lg',
-}
-
 export interface InputProps {
   /** The current value of the input */
   value: string;
   /** Callback for when the input value changes */
-  onChange?: (value: string) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /** Placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */
@@ -24,7 +18,7 @@ export interface InputProps {
   /** Additional custom class names */
   className?: string;
   /** Input size; defaults to MD */
-  size?: InputSize;
+  size?: 'sm' | 'md' | 'lg';
   /** Whether the input is required */
   isRequired?: boolean;
   /** Whether to show an icon inside the input (e.g., for password toggling) */
@@ -34,4 +28,16 @@ export interface InputProps {
   /** Optional custom icon name (if not provided, a default is chosen based on the input type) */
   customIconName?: string;
   isBorder?: boolean;
+  min?: string;
+  max?: string;
+  step?: string;
+  requiredErrorMessage?: string;
+  validationErrorMessage?: string;
+  validationOnFocus?: boolean;
+  /** Whether to enable autocomplete for the input */
+  autoComplete?: string;
+  /** Custom regex pattern for validation */
+  pattern?: string;
+  /** Maximum length of the input value */
+  maxLength?: number;
 }

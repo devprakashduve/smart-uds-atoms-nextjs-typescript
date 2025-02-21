@@ -1,0 +1,44 @@
+import React, { useEffect, useState } from 'react';
+import { ToastNotificationProps } from './ToastNotificationProps.interface';
+import Button from '@/Components/Atoms/Button';
+import Icon from '@/Components/Atoms/Icon';
+
+const ToastNotification: React.FC<ToastNotificationProps> = ({
+  message,
+  type,
+  duration = 3000,
+  onClose,
+  isVisible = true,
+}) => {
+  const [visible, setVisible] = useState(isVisible);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVisible(false);
+      onClose?.();
+    }, duration);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [duration, onClose]);
+
+  return (
+    <>
+      {visible && (
+        <div
+          className={`absolute right-4 top-4 mb-4 flex w-full max-w-xs items-center justify-between rounded-lg font-medium text-white shadow-md transition-opacity duration-500 ease-in-out ${type === 'success' && 'bg-atom-success'} ${type === 'warning' && 'bg-atom-warning'} ${type === 'info' && 'bg-atom-info'} ${type === 'error' && 'bg-atom-error'}`}
+          role="alert"
+        >
+          <div className="toast-message p-4">{message}</div>
+          <Button
+            variant="icon"
+            onClick={onClose}
+            icon={<Icon name={'close'} variant={'outline'} />}
+            className="px-0 text-white"
+          />
+        </div>
+      )}
+    </>
+  );
+};
+
+export default ToastNotification;

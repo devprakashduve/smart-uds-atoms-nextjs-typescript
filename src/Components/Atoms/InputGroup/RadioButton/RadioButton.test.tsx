@@ -14,7 +14,7 @@ describe('RadioButton Component', () => {
       <RadioButton
         label="Test Radio"
         name="test-radio"
-        initialChecked={false}
+        checked={false}
         onChange={onChangeMock}
       />
     );
@@ -32,7 +32,7 @@ describe('RadioButton Component', () => {
       <RadioButton
         label="Toggle Radio"
         name="toggle-radio"
-        initialChecked={false}
+        checked={false}
         onChange={onChangeMock}
       />
     );
@@ -52,7 +52,7 @@ describe('RadioButton Component', () => {
       <RadioButton
         label="Disabled Radio"
         name="disabled-radio"
-        initialChecked={false}
+        checked={false}
         onChange={onChangeMock}
         disabled={true}
       />
@@ -62,12 +62,12 @@ describe('RadioButton Component', () => {
     expect(radioInput).toBeDisabled();
   });
 
-  it('applies initialChecked false', () => {
+  it('applies checked false', () => {
     render(
       <RadioButton
         label="Indeterminate Radio"
         name="indeterminate-radio"
-        initialChecked={false}
+        checked={false}
         onChange={onChangeMock}
       />
     );
@@ -82,7 +82,7 @@ describe('RadioButton Component', () => {
       <RadioButton
         label="Indicator Test"
         name="indicator-radio"
-        initialChecked={true}
+        checked={true}
         onChange={onChangeMock}
       />
     );
@@ -90,12 +90,24 @@ describe('RadioButton Component', () => {
     const radioInput = screen.getByRole('radio') as HTMLInputElement;
     expect(radioInput.checked).toBe(true);
 
-    // The indicator is rendered as an absolute positioned span.
-    // We can query it via its role in the DOM structure, e.g., checking that the parent label contains an SVG or a div.
-    const parentLabel = radioInput.parentElement;
-    expect(parentLabel).toBeInTheDocument();
-    // Query the indicator element; our implementation renders a <span> as a sibling of the input inside the same container.
-    const indicator = parentLabel?.querySelector('span.absolute');
+    const parentDiv = radioInput.closest('div');
+    expect(parentDiv).toBeInTheDocument();
+    const indicator = parentDiv?.querySelector('span.absolute');
     expect(indicator).toBeInTheDocument();
+  });
+
+  it('applies custom styles', () => {
+    render(
+      <RadioButton
+        label="Styled Radio"
+        name="styled-radio"
+        checked={false}
+        onChange={onChangeMock}
+        style={{ color: 'red' }}
+      />
+    );
+
+    const radioInput = screen.getByRole('radio');
+    expect(radioInput).toHaveStyle('color: red');
   });
 });

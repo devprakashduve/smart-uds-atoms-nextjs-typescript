@@ -36,6 +36,7 @@ const Typography: React.FC<TypographyProps> = ({
   color,
   align,
   className = '',
+  as: Component = 'span', // Default to 'span' if not provided
 }) => {
   const sizeClass = size ? `text-${size}` : `text-${variantSizeMap[variant]}`;
   const weightClass = weight
@@ -55,7 +56,7 @@ const Typography: React.FC<TypographyProps> = ({
     .filter(Boolean)
     .join(' ');
 
-  return <span className={classNames}>{children}</span>;
+  return <Component className={classNames}>{children}</Component>;
 };
 
 export default Typography;

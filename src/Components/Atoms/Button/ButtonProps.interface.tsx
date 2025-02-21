@@ -12,10 +12,9 @@ export type ButtonVariant =
   | 'disabled';
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export type ButtonRounded = 'none' | 'sm' | 'md' | 'lg' | 'full';
 
 export interface ButtonProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClick?: () => void;
   href?: string;
   target?: string;
@@ -23,7 +22,6 @@ export interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   variant?: ButtonVariant;
-  rounded?: ButtonRounded;
   size?: ButtonSize;
   type?: 'button' | 'submit' | 'reset';
   icon?: React.ReactElement;

@@ -13,5 +13,6 @@ export interface SelectProps {
   error?: boolean;
   name?: string;
   className?: string;
+  placeholder?: string;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }

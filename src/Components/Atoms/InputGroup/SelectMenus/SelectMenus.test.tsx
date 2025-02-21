@@ -54,27 +54,30 @@ const items = [
 ];
 
 describe('SelectMenus', () => {
+  const renderComponent = (props = {}) =>
+    render(<SelectMenus items={items} {...props} />);
+
   it('opens the dropdown when button is clicked', () => {
-    render(<SelectMenus items={items} defaultSelected={items[3]} />);
+    renderComponent({ defaultSelected: items[3] });
     fireEvent.click(screen.getByRole('button'));
     expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
   it('selects an option when clicked', () => {
-    render(<SelectMenus items={items} defaultSelected={items[3]} />);
+    renderComponent({ defaultSelected: items[3] });
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByText('Wade Cooper'));
     expect(screen.getByText('Wade Cooper')).toBeInTheDocument();
   });
 
   it('renders SelectMenus with default selected item', () => {
-    render(<SelectMenus items={items} defaultSelected={items[1]} />);
+    renderComponent({ defaultSelected: items[1] });
     expect(screen.getByText('Arlene Mccoy')).toBeInTheDocument();
   });
 
   it('calls onChange when an item is selected', () => {
     const handleChange = jest.fn();
-    render(<SelectMenus items={items} onChange={handleChange} />);
+    renderComponent({ onChange: handleChange });
     fireEvent.click(screen.getByText('Wade Cooper'));
     fireEvent.click(screen.getByText('Arlene Mccoy'));
     expect(handleChange).toHaveBeenCalledWith(items[1]);

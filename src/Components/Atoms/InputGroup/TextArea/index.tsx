@@ -16,6 +16,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   id,
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
+  charCountWarningThreshold = 10,
 }) => {
   const [text, setText] = useState(value);
   const remainingChars = maxLength ? maxLength - text.length : 0;
@@ -54,7 +55,7 @@ const TextArea: React.FC<TextAreaProps> = ({
       {showCharCount && maxLength !== undefined && (
         <div
           id={`${id}-char-count`}
-          className={`char-count ${remainingChars <= 10 ? 'text-warning' : ''} ${remainingChars <= 0 ? 'text-error' : ''}`}
+          className={`char-count ${remainingChars <= charCountWarningThreshold ? 'text-warning' : ''} ${remainingChars <= 0 ? 'text-error' : ''}`}
         >
           {text.length}/{maxLength}
         </div>
