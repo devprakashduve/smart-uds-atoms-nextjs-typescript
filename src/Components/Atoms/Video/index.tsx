@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './Video.css';
 import { VideoProps } from './VideoProps.interface';
 
 const Video: React.FC<VideoProps> = ({

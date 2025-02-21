@@ -10,7 +10,7 @@ export default function ProfileCard({
   imageHeight = 36,
 }: ProfileCardProps) {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background rounded-card w-full overflow-hidden bg-gradient-to-r shadow-lg">
+    <div className="w-full overflow-hidden rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background shadow-lg">
       <UDSImage
         src={coverImageUrl}
         alt="Cover"

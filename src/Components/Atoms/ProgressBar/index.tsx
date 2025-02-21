@@ -10,7 +10,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const bgColog = 'bg-atom-progressBar-background';
   return (
     <div
-      className={`bg-atom-progressBar-background/20 w-full overflow-hidden rounded-input h-${height}`}
+      className={`w-full overflow-hidden rounded-input bg-atom-progressBar-background/20 h-${height}`}
     >
       <div
         className={`h-full transition-all duration-300 ease-in-out ${striped ? 'animate-progress-stripes bg-gradient-to-r from-transparent via-white to-transparent' : ''} ${bgColog}`}

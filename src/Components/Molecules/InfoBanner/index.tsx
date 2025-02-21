@@ -25,7 +25,7 @@ export default function InfoBanner({
 
   return (
     <div
-      className={`from-atom-card-background to-atom-card-to_background rounded-infoBanner relative isolate flex items-center gap-x-6 overflow-hidden bg-gradient-to-r px-6 py-3 shadow-lg sm:px-3.5 sm:before:flex-1 ${className}`}
+      className={`relative isolate flex items-center gap-x-6 overflow-hidden rounded-infoBanner bg-gradient-to-r from-atom-card-background to-atom-card-to_background px-6 py-3 shadow-lg sm:px-3.5 sm:before:flex-1 ${className}`}
     >
       {/* Background elements */}
       <div aria-hidden="true" className="banner-bg-gradient-left" />

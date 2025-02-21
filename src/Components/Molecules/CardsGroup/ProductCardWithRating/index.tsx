@@ -12,7 +12,7 @@ export default function ProductCardWithRating({
   onAddToCart,
 }: ProductCardWithRatingProps) {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background rounded-card max-w-sm overflow-hidden bg-gradient-to-r shadow-lg">
+    <div className="max-w-sm overflow-hidden rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background shadow-lg">
       <UDSImage className="w-full" src={imageUrl} alt={productName} />
       <div className="p-4">
         <h3 className="text-lg font-semibold">{productName}</h3>

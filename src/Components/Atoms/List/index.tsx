@@ -9,7 +9,7 @@ const List: React.FC<ListProps> = ({
   return (
     <ul
       role="list"
-      className={`divide-atom-list-text/40 divide-y ${className}`}
+      className={`divide-y divide-atom-list-text/40 ${className}`}
     >
       {items.map(({ avatar, name, subText, role, status, lastSeen }, index) => (
         <li
@@ -31,12 +31,12 @@ const List: React.FC<ListProps> = ({
 
               <div className="min-w-0 flex-auto">
                 {name && (
-                  <p className="text-atom-list-text text-sm font-semibold leading-6">
+                  <p className="text-sm font-semibold leading-6 text-atom-list-text">
                     {name}
                   </p>
                 )}
                 {subText && (
-                  <p className="text-atom-list-text/50 mt-1 truncate text-xs leading-5">
+                  <p className="mt-1 truncate text-xs leading-5 text-atom-list-text/50">
                     {subText}
                   </p>
                 )}
@@ -46,7 +46,7 @@ const List: React.FC<ListProps> = ({
             {/* Right Section */}
             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
               {role && (
-                <p className="text-atom-list-text/70 text-sm leading-6">
+                <p className="text-sm leading-6 text-atom-list-text/70">
                   {role}
                 </p>
               )}
@@ -68,13 +68,13 @@ const List: React.FC<ListProps> = ({
                       }`}
                     ></div>
                   </div>
-                  <p className="text-atom-list-text/70 text-xs leading-5">
+                  <p className="text-xs leading-5 text-atom-list-text/70">
                     {status}
                   </p>
                 </div>
               ) : (
                 lastSeen && (
-                  <p className="text-atom-list-text/70 mt-1 text-xs leading-5">
+                  <p className="mt-1 text-xs leading-5 text-atom-list-text/70">
                     Last seen <time dateTime={lastSeen}>{lastSeen}</time>
                   </p>
                 )

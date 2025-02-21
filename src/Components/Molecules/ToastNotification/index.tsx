@@ -25,7 +25,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
     <>
       {visible && (
         <div
-          className={`absolute right-4 top-4 mb-4 flex w-full max-w-xs items-center justify-between rounded-lg font-medium text-white shadow-md transition-opacity duration-500 ease-in-out ${type === 'success' && 'bg-atom-success'} ${type === 'warning' && 'bg-atom-warning'} ${type === 'info' && 'bg-atom-info'} ${type === 'error' && 'bg-atom-error'}`}
+          className={`absolute right-4 top-4 mb-4 flex w-full max-w-xs items-center justify-between rounded-lg font-medium text-white shadow-md transition-opacity duration-500 ease-in-out ${type === 'success' && 'bg-success'} ${type === 'warning' && 'bg-warning'} ${type === 'info' && 'bg-info'} ${type === 'error' && 'bg-error'}`}
           role="alert"
         >
           <div className="toast-message p-4">{message}</div>

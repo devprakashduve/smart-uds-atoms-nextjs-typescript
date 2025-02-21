@@ -52,7 +52,7 @@ const Stepper = ({
           className={`absolute bg-atom-stepTracker-light ${orientation === 'vertical' ? 'left-1/2 top-0 h-full w-1' : 'left-0 top-1/2 h-1 w-full'}`}
         />
         <div
-          className={`from-atom-stepTracker-background to-atom-stepTracker-to_background absolute bg-gradient-to-r text-atom-stepTracker-text shadow-lg ${orientation === 'vertical' ? 'left-1/2 top-0 w-1' : 'left-0 top-1/2 h-1'} transition-all duration-300`}
+          className={`absolute bg-gradient-to-r from-atom-stepTracker-background to-atom-stepTracker-to_background text-atom-stepTracker-text shadow-lg ${orientation === 'vertical' ? 'left-1/2 top-0 w-1' : 'left-0 top-1/2 h-1'} transition-all duration-300`}
           style={{
             [orientation === 'vertical' ? 'height' : 'width']:
               `${progressPercentage}%`,
@@ -63,7 +63,7 @@ const Stepper = ({
             key={index}
             className={`relative flex ${sizeClasses[size]} items-center justify-center rounded-full ${
               index < currentStep
-                ? 'from-atom-stepTracker-background to-atom-stepTracker-to_background bg-gradient-to-r text-atom-stepTracker-text shadow-lg'
+                ? 'bg-gradient-to-r from-atom-stepTracker-background to-atom-stepTracker-to_background text-atom-stepTracker-text shadow-lg'
                 : index === currentStep
                   ? 'bg-atom-stepTracker-light text-atom-stepTracker-text'
                   : 'bg-atom-stepTracker-light text-atom-stepTracker-text'
