@@ -31,9 +31,9 @@ const Template: StoryFn<StepTrackerProps> = (args) => {
   };
 
   return (
-    <div>
+    <div className="">
       <StepTracker {...args} currentStepIndex={currentStepIndex} />
-      <Button onClick={handleNextStep} className="my-4">
+      <Button onClick={handleNextStep} className="m-10">
         {args.nextButtonText || 'Next Step'}
       </Button>
     </div>

@@ -14,10 +14,10 @@ const StepTracker: React.FC<StepTrackerProps> = ({
 
   return (
     <div
-      className={`flex ${orientation === 'vertical' ? 'flex-col' : 'flex-row'} w-full items-center ${containerClassName || ''}`}
+      className={`flex justify-between ${orientation === 'vertical' ? 'flex-col' : 'flex-row'} ${containerClassName || ''}`}
     >
       <div
-        className={`relative flex ${orientation === 'vertical' ? 'h-full flex-col' : 'w-full'} items-center justify-between`}
+        className={`flex ${orientation === 'vertical' ? 'absolute h-full flex-col' : 'relative w-full'} items-center justify-between`}
       >
         <div
           className={`absolute bg-atom-stepTracker-light ${orientation === 'vertical' ? 'left-1/2 top-0 h-full w-1' : 'left-0 top-1/2 h-1 w-full'}`}
