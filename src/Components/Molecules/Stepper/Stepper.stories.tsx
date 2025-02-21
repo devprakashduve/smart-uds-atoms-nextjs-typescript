@@ -3,6 +3,7 @@ import Stepper from './index';
 export default {
   title: 'Components/Molecules/Stepper',
   component: Stepper,
+  tags: ['autodocs'],
   argTypes: {
     steps: {
       control: { type: 'number', min: 2 },

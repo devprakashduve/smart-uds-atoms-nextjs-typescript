@@ -41,9 +41,9 @@ const Stepper = ({
   return (
     <div className="w-full">
       <div className="relative flex w-full items-center justify-between">
-        <div className="bg-line absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4"></div>
+        <div className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-atom-stepTracker-light"></div>
         <div
-          className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-success transition-all duration-500"
+          className="absolute left-0 top-2/4 h-0.5 w-full -translate-y-2/4 bg-atom-stepTracker-dark transition-all duration-500"
           style={{ width: `${((currentStep - 1) / (steps - 1)) * 100}%` }}
         ></div>
         {Array.from({ length: steps }, (_, index) => {
@@ -53,7 +53,9 @@ const Stepper = ({
             <div
               key={step}
               className={`relative z-10 grid h-10 w-10 place-items-center rounded-full font-bold transition-all duration-300 ${
-                isActive ? 'bg-success text-white' : 'text- bg-line'
+                isActive
+                  ? 'bg-atom-stepTracker-dark text-white'
+                  : 'text- bg-atom-stepTracker-light'
               }`}
             >
               {showCounter && step}
