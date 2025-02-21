@@ -9,7 +9,7 @@ export default function SocialPostCard({
   comments,
 }: SocialPostCardProps) {
   return (
-    <div className="bg-atom-card-background from-atom-card-background to-atom-card-to_background rounded-card max-w-sm bg-gradient-to-r p-4">
+    <div className="max-w-sm rounded-card bg-atom-card-background bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-4">
       <div className="flex items-center">
         <UDSImage
           className="h-10 w-10 rounded-full"
@@ -18,11 +18,11 @@ export default function SocialPostCard({
         />
         <div className="ml-3">
           <h4 className="font-semibold">{user.name}</h4>
-          <p className="text-atom-card-dark/80 text-sm">{timeAgo}</p>
+          <p className="text-sm text-atom-card-dark/80">{timeAgo}</p>
         </div>
       </div>
-      <p className="text-atom-card-dark/90 mt-2">{content}</p>
-      <div className="text-atom-card-dark mt-4 flex justify-between text-sm">
+      <p className="mt-2 text-atom-card-dark/90">{content}</p>
+      <div className="mt-4 flex justify-between text-sm text-atom-card-dark">
         <span className="text-line-dark">👍 {likes} Likes</span>
         <span className="text-line-dark">💬 {comments} Comments</span>
       </div>

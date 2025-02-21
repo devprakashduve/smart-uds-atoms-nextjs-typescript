@@ -18,18 +18,18 @@ const Breadcrumbs: React.FC<BreadcrumbProps> = ({
                 href={item.href}
                 target="_self"
                 text={item.label}
-                className="text-atom-breadcrumbs-text/70 cursor-pointer hover:no-underline"
+                className="cursor-pointer text-atom-breadcrumbs-text/70 hover:no-underline"
               />
             ) : (
               <CustomLink
                 href={'#'}
                 target="_self"
                 text={item.label}
-                className="text-atom-breadcrumbs-text font-semibold hover:no-underline"
+                className="font-semibold text-atom-breadcrumbs-text hover:no-underline"
               />
             )}
             {index < items.length - 1 && (
-              <span className="text-atom-breadcrumbs-text text-primary-dark mx-2">
+              <span className="text-primary-dark mx-2 text-atom-breadcrumbs-text">
                 {separator}
               </span>
             )}

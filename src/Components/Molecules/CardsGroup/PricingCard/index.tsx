@@ -9,7 +9,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
   buttonText,
 }) => {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card max-w-sm bg-gradient-to-r p-6 text-center shadow-lg">
+    <div className="max-w-sm rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-6 text-center text-atom-card-dark shadow-lg">
       <h3 className="text-2xl font-bold">{title}</h3>
       <p className="text-line mt-2">{description}</p>
       <p className="text-line-dark mt-4 text-3xl font-bold">{price}</p>

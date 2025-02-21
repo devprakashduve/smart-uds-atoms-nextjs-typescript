@@ -12,13 +12,13 @@ export default function TestimonialCard({
   const displayCard =
     cardDesign === 'default' ? (
       <div
-        className={`p-6 text-${textAlignment} from-atom-card-background to-atom-card-to_background rounded-card bg-gradient-to-r shadow-lg`}
+        className={`p-6 text-${textAlignment} rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background shadow-lg`}
       >
         <div
           className={`mt-4 flex ${textAlignment === 'center' ? 'justify-center' : textAlignment === 'left' ? 'justify-start' : 'justify-end'}`}
         >
           {textAlignment === 'center' ? (
-            <p className="text-atom-card-dark italic">{testimonialText}</p>
+            <p className="italic text-atom-card-dark">{testimonialText}</p>
           ) : (
             <UDSImage
               className={`h-12 w-12 rounded-full border-2 ${textAlignment === 'left' ? 'justify-start' : 'justify-end'}`}
@@ -31,7 +31,7 @@ export default function TestimonialCard({
           className={`mt-4 flex ${textAlignment === 'center' ? 'justify-center' : textAlignment === 'left' ? 'justify-start' : 'justify-end'}`}
         >
           {textAlignment !== 'center' ? (
-            <p className="text-atom-card-dark italic">{testimonialText}</p>
+            <p className="italic text-atom-card-dark">{testimonialText}</p>
           ) : (
             <UDSImage
               className="h-12 w-12 rounded-full border-2"
@@ -41,11 +41,11 @@ export default function TestimonialCard({
           )}
         </div>
         <h4 className="mt-2 font-semibold">{userName}</h4>
-        <p className="text-atom-card-dark/80 text-sm">{userPosition}</p>
+        <p className="text-sm text-atom-card-dark/80">{userPosition}</p>
       </div>
     ) : (
       <div
-        className={`from-atom-card-background to-atom-card-to_background rounded-card bg-gradient-to-r p-6 shadow-lg text-${textAlignment} shadow-lg`}
+        className={`rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-6 shadow-lg text-${textAlignment} shadow-lg`}
       >
         <div
           className={`mt-4 flex ${textAlignment === 'center' ? 'justify-center' : textAlignment === 'left' ? 'justify-start' : 'flex-row-reverse'} items-center`}
@@ -56,13 +56,13 @@ export default function TestimonialCard({
             alt={userName}
           />
           <p
-            className={`text-atom-card-dark italic ${textAlignment === 'center' ? 'mt-4' : textAlignment === 'left' ? 'ml-4' : 'mr-4'}`}
+            className={`italic text-atom-card-dark ${textAlignment === 'center' ? 'mt-4' : textAlignment === 'left' ? 'ml-4' : 'mr-4'}`}
           >
             {testimonialText}
           </p>
         </div>
         <h4 className="mt-2 font-semibold">{userName}</h4>
-        <p className="text-atom-card-dark/80 text-sm">{userPosition}</p>
+        <p className="text-sm text-atom-card-dark/80">{userPosition}</p>
       </div>
     );
   return displayCard;

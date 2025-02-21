@@ -7,7 +7,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
   messageText,
 }) => {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background text-atom-card-dark rounded-card flex max-w-sm items-center space-x-4 bg-gradient-to-r p-4 shadow-lg">
+    <div className="flex max-w-sm items-center space-x-4 rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-4 text-atom-card-dark shadow-lg">
       <div className="flex h-12 w-12 items-center justify-center rounded-full">
         {icon}
       </div>

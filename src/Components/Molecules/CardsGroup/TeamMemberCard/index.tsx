@@ -13,7 +13,7 @@ const TeamMemberCard: React.FC<TeamMemberCardProps> = ({
   gitHubText,
 }) => {
   return (
-    <div className="from-atom-card-background to-atom-card-to_background rounded-card max-w-sm bg-gradient-to-r p-6 text-center shadow-lg">
+    <div className="max-w-sm rounded-card bg-gradient-to-r from-atom-card-background to-atom-card-to_background p-6 text-center shadow-lg">
       <UDSImage
         className="mx-auto h-24 w-24 rounded-full border-2"
         src={imageUrl}
