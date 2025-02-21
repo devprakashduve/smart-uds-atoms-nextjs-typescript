@@ -7,6 +7,15 @@ import Button from '@/Components/Atoms/Button';
 export default {
   title: 'Components/Molecules/StepTracker',
   component: StepTracker,
+  tags: ['autodocs'],
+  argTypes: {
+    orientation: {
+      control: {
+        type: 'select',
+        options: ['horizontal', 'vertical'],
+      },
+    },
+  },
 } as Meta;
 
 const Template: StoryFn<StepTrackerProps> = (args) => {
@@ -36,4 +45,21 @@ Default.args = {
   currentStepIndex: 1,
   totalStepsCount: 5,
   nextButtonText: 'Next Step',
+  orientation: 'horizontal',
+};
+
+export const Horizontal = Template.bind({});
+Horizontal.args = {
+  currentStepIndex: 1,
+  totalStepsCount: 5,
+  nextButtonText: 'Next Step',
+  orientation: 'horizontal',
+};
+
+export const Vertical = Template.bind({});
+Vertical.args = {
+  currentStepIndex: 1,
+  totalStepsCount: 5,
+  nextButtonText: 'Next Step',
+  orientation: 'vertical',
 };
