@@ -8,9 +8,6 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
 import pkg from './package.json';
 import terser from '@rollup/plugin-terser';
-import livereload from 'rollup-plugin-livereload';
-import serve from 'rollup-plugin-serve';
-import autoInstall from 'rollup-plugin-auto-install';
 
 export default [
   {
@@ -58,16 +55,6 @@ export default [
       postcss({
         extract: true, // or false if you prefer inline styles
       }),
-      // Enable live reloading in development
-      livereload(),
-      // Serve the bundle in development
-      serve({
-        open: true,
-        contentBase: ['dist'],
-        port: 3000,
-      }),
-      // Automatically install missing dependencies
-      autoInstall(),
     ],
     // Externalize dependencies that should not be bundled
     external: ['react', 'react-dom'],
