@@ -39,15 +39,33 @@ export default {
         defaultValue: { summary: 'horizontal' },
       },
     },
+    prevButtonText: {
+      control: { type: 'text' },
+      description: 'Text for the previous button.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Prev' },
+      },
+    },
+    nextButtonText: {
+      control: { type: 'text' },
+      description: 'Text for the next button.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Next' },
+      },
+    },
   },
 };
 
 export const DefaultStepper = {
   args: {
-    steps: 4,
-    value: 2,
+    steps: 5,
+    value: 1,
     showCounter: true,
     orientation: 'horizontal',
+    prevButtonText: 'Previous',
+    nextButtonText: 'Next',
   },
 };
 
@@ -57,6 +75,8 @@ export const TwoSteps = {
     value: 1,
     showCounter: true,
     orientation: 'horizontal',
+    prevButtonText: 'Previous',
+    nextButtonText: 'Next',
   },
 };
 
@@ -66,6 +86,8 @@ export const FiveSteps = {
     value: 1,
     showCounter: true,
     orientation: 'horizontal',
+    prevButtonText: 'Previous',
+    nextButtonText: 'Next',
   },
 };
 
@@ -75,5 +97,29 @@ export const WithoutCounter = {
     value: 3,
     showCounter: false,
     orientation: 'horizontal',
+    prevButtonText: 'Previous',
+    nextButtonText: 'Next',
+  },
+};
+
+export const VerticalStepper = {
+  args: {
+    steps: 4,
+    value: 2,
+    showCounter: true,
+    orientation: 'vertical',
+    prevButtonText: 'Previous',
+    nextButtonText: 'Next',
+  },
+};
+
+export const VerticalWithoutCounter = {
+  args: {
+    steps: 5,
+    value: 3,
+    showCounter: false,
+    orientation: 'vertical',
+    prevButtonText: 'Previous',
+    nextButtonText: 'Next',
   },
 };

@@ -5,4 +5,6 @@ export interface StepperProps {
   showCounter?: boolean;
   size?: 'sm' | 'md' | 'lg';
   orientation?: 'horizontal' | 'vertical';
+  prevButtonText?: string;
+  nextButtonText?: string;
 }
