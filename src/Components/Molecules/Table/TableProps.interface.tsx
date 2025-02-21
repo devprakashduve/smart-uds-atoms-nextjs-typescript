@@ -2,6 +2,7 @@ export interface TableColumn<T> {
   key: keyof T; // Key to access the data in a row
   header: string; // Header text for the column
   render?: (value: T[keyof T], row: T) => React.ReactNode; // Optional custom rendering for the column
+  className?: string; // Optional additional className for the column
 }
 
 export interface TableProps<T> {
@@ -9,4 +10,7 @@ export interface TableProps<T> {
   columns: TableColumn<T>[]; // Array of column definitions
   onRowClick?: (row: T) => void; // Callback for when a row is clicked
   className?: string; // Optional additional className for the table
+  currentPage: number; // Current page number
+  pageSize: number; // Number of rows per page
+  onPageChange: (page: number) => void; // Callback for when the page changes
 }
