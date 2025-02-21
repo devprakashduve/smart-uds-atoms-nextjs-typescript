@@ -1,4 +1,4 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, useEffect } from 'react';
 import { RadioButtonProps } from './RadioButtonProps.interface';
 import Label from '../../Label';
 import { classNames } from '@/Components/Utilities/componentsMethods';
@@ -14,16 +14,24 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   id,
   className,
   labelClassNames = '',
+  checked: controlledChecked,
   ...props
 }) => {
   const [checked, setChecked] = useState(initialChecked);
   const generatedId = useId();
   const radioId = id || generatedId;
 
+  useEffect(() => {
+    if (controlledChecked !== undefined) {
+      setChecked(controlledChecked);
+    }
+  }, [controlledChecked]);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
     onChange?.(event.target.checked);
   };
+
   const radioClass = classNames(className);
   const getSizeClasses = () => {
     switch (size) {

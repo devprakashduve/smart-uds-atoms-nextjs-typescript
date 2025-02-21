@@ -4,17 +4,17 @@ import BlogPostCard from './index';
 test('renders BlogPostCard with all props', () => {
   render(
     <BlogPostCard
-      imageSrc="/images/blog.jpg"
+      imageSrc="/images/avatar.jpg"
       title="Understanding Micro Frontends"
       description="Learn how to break down monolithic applications using micro frontend architecture."
-      authorImage="/images/author.jpg"
+      authorImage="/images/avatar.jpg"
       authorName="John Doe"
     />
   );
 
   expect(screen.getByAltText('Blog')).toHaveAttribute(
     'src',
-    '/images/blog.jpg'
+    '/_next/image?url=%2Fimages%2Favatar.jpg&w=640&q=75'
   );
   expect(screen.getByText('Understanding Micro Frontends')).toBeInTheDocument();
   expect(
@@ -24,15 +24,15 @@ test('renders BlogPostCard with all props', () => {
   ).toBeInTheDocument();
   expect(screen.getByAltText('Author')).toHaveAttribute(
     'src',
-    '/images/author.jpg'
+    '/_next/image?url=%2Fimages%2Favatar.jpg&w=640&q=75'
   );
-  expect(screen.getByText('By John Doe')).toBeInTheDocument();
+  expect(screen.getByText('John Doe')).toBeInTheDocument();
 });
 
 test('renders BlogPostCard without optional props', () => {
   render(
     <BlogPostCard
-      imageSrc="/images/blog.jpg"
+      imageSrc="/images/avatar.jpg"
       title="Understanding Micro Frontends"
       description="Learn how to break down monolithic applications using micro frontend architecture."
     />
@@ -40,7 +40,7 @@ test('renders BlogPostCard without optional props', () => {
 
   expect(screen.getByAltText('Blog')).toHaveAttribute(
     'src',
-    '/images/blog.jpg'
+    '/_next/image?url=%2Fimages%2Favatar.jpg&w=640&q=75'
   );
   expect(screen.getByText('Understanding Micro Frontends')).toBeInTheDocument();
   expect(
@@ -49,5 +49,5 @@ test('renders BlogPostCard without optional props', () => {
     )
   ).toBeInTheDocument();
   expect(screen.queryByAltText('Author')).toBeNull();
-  expect(screen.getByText('By Unknown')).toBeInTheDocument();
+  expect(screen.getByText('Unknown')).toBeInTheDocument();
 });

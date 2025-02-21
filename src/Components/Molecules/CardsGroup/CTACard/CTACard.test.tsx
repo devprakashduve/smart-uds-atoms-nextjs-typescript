@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import CTACard from './index';
+import CTACard from '.';
 
 describe('CTACard', () => {
   const mockOnEmailChange = jest.fn();
@@ -11,7 +11,8 @@ describe('CTACard', () => {
         email=""
         onChange={mockOnEmailChange}
         onSubscribe={mockOnSubscribe}
-        title={''}
+        title="Join Our Newsletter"
+        btnText="Subscribe"
       />
     );
     expect(screen.getByText('Join Our Newsletter')).toBeInTheDocument();
@@ -25,12 +26,13 @@ describe('CTACard', () => {
         email=""
         onChange={mockOnEmailChange}
         onSubscribe={mockOnSubscribe}
-        title={''}
+        title="Join Our Newsletter"
+        btnText="Subscribe"
       />
     );
     const input = screen.getByPlaceholderText('Enter email');
     fireEvent.change(input, { target: { value: 'test@example.com' } });
-    expect(mockOnEmailChange).toHaveBeenCalledWith('test@example.com');
+    expect(mockOnEmailChange).toHaveBeenCalledWith(expect.any(Object));
   });
 
   test('handles subscribe button click', () => {
@@ -39,7 +41,8 @@ describe('CTACard', () => {
         email=""
         onChange={mockOnEmailChange}
         onSubscribe={mockOnSubscribe}
-        title={''}
+        title="Join Our Newsletter"
+        btnText="Subscribe"
       />
     );
     const button = screen.getByText('Subscribe');

@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import ProductCardWithRating from './index';
 
 const mockProps = {
-  imageUrl: 'test-image-url',
+  imageUrl: '/test-image-url', // Updated to use a leading slash
   productName: 'Test Product',
   description: 'Test Description',
   rating: 4,
