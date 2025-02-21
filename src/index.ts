@@ -1,6 +1,3 @@
-import { TeamMemberCardProps } from './Components/Molecules/CardsGroup/TeamMemberCard/types';
-import { FeatureCardProps } from './Components/Molecules/CardsGroup/FeatureCard/FeatureCard.interface';
-import { BlogPostCardProps } from './Components/Molecules/CardsGroup/BlogPostCard/BlogPostCard.interface';
 import Avatar from './Components/Atoms/Avatar';
 import Button from './Components/Atoms/Button';
 import Icon from './Components/Atoms/Icon';
