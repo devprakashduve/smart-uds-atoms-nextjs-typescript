@@ -31,6 +31,7 @@ const ContactFormFields = ({
         requiredErrorMessage={field.requiredErrorMessage}
         validationOnFocus={true}
         onChange={handleChange}
+        maxLength={field.type === 'phone' ? 17 : 50}
       />
     ))}
     <TextArea
