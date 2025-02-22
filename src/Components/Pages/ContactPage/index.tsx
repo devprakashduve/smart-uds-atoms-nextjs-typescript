@@ -23,7 +23,13 @@ const ContactHeader = ({
 );
 
 // Form Fields Component
-const ContactFormFields = ({ formData }: { formData: any }) => (
+const ContactFormFields = ({
+  formData,
+  handleChange,
+}: {
+  formData: any;
+  handleChange: any;
+}) => (
   <div className="grid gap-4">
     {formData.map((field: any) => (
       <Input
@@ -38,20 +44,23 @@ const ContactFormFields = ({ formData }: { formData: any }) => (
         placeholder={field.placeholder}
         isRequired={true}
         requiredErrorMessage={field.requiredErrorMessage}
-        validationOnFocus={true} // Added validationOnFocus attribute
+        validationOnFocus={true}
+        onChange={handleChange}
       />
     ))}
     <TextArea
       charCountWarningThreshold={10}
       maxLength={100}
-      onChange={() => {}}
+      onChange={handleChange}
       placeholder="Enter your message here"
       showCharCount
-      value=""
+      value={
+        formData.find((field: any) => field.name === 'message')?.value || ''
+      }
       label="Message"
       isRequired={true}
       requiredErrorMessage="Message is required"
-      validationOnFocus={true} // Added validationOnFocus attribute
+      validationOnFocus={true}
     />
   </div>
 );
@@ -60,16 +69,34 @@ const ContactFormFields = ({ formData }: { formData: any }) => (
 export default function ContactPage({
   headerTitle,
   headerDescription,
-  formData,
+  formData: initialFormData,
   submitButtonText,
 }: ContactPageProps) {
-  const [agreed, setAgreed] = useState(true);
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData: any) =>
+      prevFormData.map((field: any) =>
+        field.name === name ? { ...field, value } : field
+      )
+    );
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log('Form Data:', formData);
+    return formData;
+  };
 
   return (
     <div className="isolate px-6 py-24 sm:py-32 lg:px-8">
       <ContactHeader title={headerTitle} description={headerDescription} />
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20">
-        <ContactFormFields formData={formData} />
+      <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleSubmit}>
+        <ContactFormFields formData={formData} handleChange={handleChange} />
         <div className="mt-10">
           <Button type="submit" className="w-full">
             {submitButtonText}
