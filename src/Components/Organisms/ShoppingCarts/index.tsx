@@ -1,12 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const products = [
@@ -39,25 +33,18 @@ export default function ShoppingCarts() {
   const [open, setOpen] = useState(true);
 
   return (
-    <Dialog open={open} onClose={setOpen} className="relative z-10">
-      <DialogBackdrop
-        transition
-        className="data-closed:opacity-0 fixed inset-0 bg-gray-500/75 transition-opacity duration-500 ease-in-out"
-      />
-
+    <div className={`fixed inset-0 z-10 ${open ? 'block' : 'hidden'}`}>
+      <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <DialogPanel
-              transition
-              className="data-closed:translate-x-full pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out sm:duration-700"
-            >
+            <div className="pointer-events-auto w-screen max-w-md transform transition duration-500 ease-in-out sm:duration-700">
               <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                   <div className="flex items-start justify-between">
-                    <DialogTitle className="text-lg font-medium text-gray-900">
+                    <h2 className="text-lg font-medium text-gray-900">
                       Shopping cart
-                    </DialogTitle>
+                    </h2>
                     <div className="ml-3 flex h-7 items-center">
                       <button
                         type="button"
@@ -152,10 +139,10 @@ export default function ShoppingCarts() {
                   </div>
                 </div>
               </div>
-            </DialogPanel>
+            </div>
           </div>
         </div>
       </div>
-    </Dialog>
+    </div>
   );
 }

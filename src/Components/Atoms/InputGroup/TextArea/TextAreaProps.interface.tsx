@@ -16,4 +16,9 @@ export interface TextAreaProps {
   'aria-label'?: string;
   'aria-labelledby'?: string;
   charCountWarningThreshold?: number;
+  label?: string;
+  isRequired?: boolean;
+  requiredErrorMessage?: string;
+  validationErrorMessage?: string;
+  pattern?: string;
 }

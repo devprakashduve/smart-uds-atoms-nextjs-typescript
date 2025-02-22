@@ -121,7 +121,7 @@ const Icon: React.FC<IconProps> = ({
   children,
 }) => {
   const iconClass = classNames(
-    'text-atom-icon-text hover:text-atom-icon-text/40',
+    'text-atom-icon-text/60 hover:text-atom-icon-text/80',
     className
   );
 

@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
 import { NavBarLogoLinksProps } from './NavBarLogoLinks.interface';
-import Img from '@/Components/Atoms/Img';
 import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 import Input from '@/Components/Atoms/InputGroup/Input';
-import { InputType } from '@/Components/Atoms/InputGroup/Input/InputProps.interface';
 import CustomLink from '@/Components/Atoms/CustomLink';
+import UDSImage from '@/Components/Atoms/Image';
 
 const dummyData = [
   { id: 1, name: 'Home', href: '/xyz' },
@@ -31,32 +30,34 @@ const NavBarLogoLinks: React.FC<NavBarLogoLinksProps> = ({
 
   return (
     <nav
-      className={`w-full ${backgroundColor || 'bg-menu-background bg-gradient-to-r from-menu-from_background to-menu-to_background'}`}
+      className={`w-full ${backgroundColor || 'bg-menu-background from-menu-from_background to-menu-to_background bg-gradient-to-r'}`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <CustomLink href="/">
-            <Img src={logo} alt="Logo" className="h-8 w-auto" />
+            <UDSImage src={logo} alt="Logo" className="h-8 w-auto" />
           </CustomLink>
 
           {/* Search Bar */}
           <div className="w-1/3 shadow-md">
             <Input
               placeholder={searchPlaceHolder || ''}
-              className="w-full bg-menu-hover text-menu-dark"
+              className="bg-menu-hover text-menu-dark w-full"
               value={searchValue}
               name="search"
-              onChange={(value: string) => setSearchValue(value)}
-              type={InputType.TEXT}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchValue(e.target.value)
+              }
+              type={'text'}
               showIcon={true}
               customIconName="search"
             />
             {searchValue && (
-              <div className="absolute w-2/6 bg-menu-hover text-menu-dark shadow-lg">
+              <div className="bg-menu-hover text-menu-dark absolute w-2/6 shadow-lg">
                 {filteredData.map((item) => (
                   <CustomLink target="_blank" key={item.id} href={item.href}>
-                    <div className="p-3 hover:bg-menu-light"> {item.name}</div>
+                    <div className="hover:bg-menu-light p-3"> {item.name}</div>
                   </CustomLink>
                 ))}
               </div>
@@ -91,12 +92,12 @@ const NavBarLogoLinks: React.FC<NavBarLogoLinksProps> = ({
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="bg-menu-background bg-gradient-to-r from-menu-from_background to-menu-to_background p-4 text-menu-dark">
+        <div className="bg-menu-background from-menu-from_background to-menu-to_background text-menu-dark bg-gradient-to-r p-4">
           {links.map((link) => (
             <CustomLink
               key={link.name}
               href={link.href}
-              className="block py-2 text-menu-dark hover:text-menu-hover"
+              className="text-menu-dark hover:text-menu-hover block py-2"
             >
               {link.name}
             </CustomLink>

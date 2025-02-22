@@ -1,20 +1,6 @@
 'use client';
 
-import { Fragment, useState } from 'react';
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-} from '@headlessui/react';
+import { useState } from 'react';
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -149,108 +135,99 @@ const navigation = {
 };
 
 export default function Navigation() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(navigation.categories[0].name);
 
   return (
     <div className="bg-white">
       {/* Mobile menu */}
-      <Dialog open={open} onClose={setOpen} className="relative z-40 lg:hidden">
-        <DialogBackdrop
-          transition
-          className="data-closed:opacity-0 fixed inset-0 bg-black/25 transition-opacity duration-300 ease-linear"
-        />
-
-        <div className="fixed inset-0 z-40 flex">
-          <DialogPanel
-            transition
-            className="data-closed:-translate-x-full relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out"
-          >
+      {open && (
+        <div className="fixed inset-0 z-40 flex lg:hidden">
+          <div
+            className="fixed inset-0 bg-black/25"
+            onClick={() => setOpen(false)}
+          />
+          <div className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
             <div className="flex px-4 pb-2 pt-5">
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
               >
-                <span className="absolute -inset-0.5" />
                 <span className="sr-only">Close menu</span>
                 <XMarkIcon aria-hidden="true" className="size-6" />
               </button>
             </div>
 
             {/* CustomLinks */}
-            <TabGroup className="mt-2">
+            <div className="mt-2">
               <div className="border-b border-gray-200">
-                <TabList className="-mb-px flex space-x-8 px-4">
+                <div className="-mb-px flex space-x-8 px-4">
                   {navigation.categories.map((category) => (
-                    <Tab
+                    <button
                       key={category.name}
-                      className="data-selected:border-indigo-600 data-selected:text-indigo-600 flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900"
+                      onClick={() => setActiveTab(category.name)}
+                      className={`flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium ${
+                        activeTab === category.name
+                          ? 'border-indigo-600 text-indigo-600'
+                          : 'border-transparent text-gray-900'
+                      }`}
                     >
                       {category.name}
-                    </Tab>
+                    </button>
                   ))}
-                </TabList>
+                </div>
               </div>
-              <TabPanels as={Fragment}>
-                {navigation.categories.map((category) => (
-                  <TabPanel
-                    key={category.name}
-                    className="space-y-10 px-4 pb-8 pt-10"
-                  >
-                    <div className="grid grid-cols-2 gap-x-4">
-                      {category.featured.map((item) => (
-                        <div key={item.name} className="group relative text-sm">
-                          <img
-                            alt={item.imageAlt}
-                            src={item.imageSrc}
-                            className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                          />
-                          <a
-                            href={item.href}
-                            className="mt-6 block font-medium text-gray-900"
-                          >
-                            <span
-                              aria-hidden="true"
-                              className="absolute inset-0 z-10"
-                            />
-                            {item.name}
-                          </a>
-                          <p aria-hidden="true" className="mt-1">
-                            Shop now
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    {category.sections.map((section) => (
-                      <div key={section.name}>
-                        <p
-                          id={`${category.id}-${section.id}-heading-mobile`}
-                          className="font-medium text-gray-900"
-                        >
-                          {section.name}
-                        </p>
-                        <ul
-                          role="list"
-                          aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                          className="mt-6 flex flex-col space-y-6"
-                        >
-                          {section.items.map((item) => (
-                            <li key={item.name} className="flow-root">
+              <div className="space-y-10 px-4 pb-8 pt-10">
+                {navigation.categories.map(
+                  (category) =>
+                    activeTab === category.name && (
+                      <div key={category.name}>
+                        <div className="grid grid-cols-2 gap-x-4">
+                          {category.featured.map((item) => (
+                            <div
+                              key={item.name}
+                              className="group relative text-sm"
+                            >
+                              <img
+                                alt={item.imageAlt}
+                                src={item.imageSrc}
+                                className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
+                              />
                               <a
                                 href={item.href}
-                                className="-m-2 block p-2 text-gray-500"
+                                className="mt-6 block font-medium text-gray-900"
                               >
                                 {item.name}
                               </a>
-                            </li>
+                              <p className="mt-1">Shop now</p>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
+                        {category.sections.map((section) => (
+                          <div key={section.name}>
+                            <p className="font-medium text-gray-900">
+                              {section.name}
+                            </p>
+                            <ul className="mt-6 flex flex-col space-y-6">
+                              {section.items.map((item) => (
+                                <li key={item.name} className="flow-root">
+                                  <a
+                                    href={item.href}
+                                    className="-m-2 block p-2 text-gray-500"
+                                  >
+                                    {item.name}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </TabPanel>
-                ))}
-              </TabPanels>
-            </TabGroup>
+                    )
+                )}
+              </div>
+            </div>
 
             <div className="space-y-6 border-t border-gray-200 px-4 py-6">
               {navigation.pages.map((page) => (
@@ -297,9 +274,9 @@ export default function Navigation() {
                 <span className="sr-only">, change currency</span>
               </a>
             </div>
-          </DialogPanel>
+          </div>
         </div>
-      </Dialog>
+      )}
 
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
@@ -317,7 +294,6 @@ export default function Navigation() {
                 onClick={() => setOpen(true)}
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
               >
-                <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon aria-hidden="true" className="size-6" />
               </button>
@@ -335,89 +311,74 @@ export default function Navigation() {
               </div>
 
               {/* Flyout menus */}
-              <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
+              <div className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
-                    <Popover key={category.name} className="flex">
-                      <div className="relative flex">
-                        <PopoverButton className="data-open:border-indigo-600 data-open:text-indigo-600 relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800">
-                          {category.name}
-                        </PopoverButton>
-                      </div>
-
-                      <PopoverPanel
-                        transition
-                        className="data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in absolute inset-x-0 top-full text-sm text-gray-500 transition"
+                    <div key={category.name} className="flex">
+                      <button
+                        onClick={() => setActiveTab(category.name)}
+                        className={`relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium ${
+                          activeTab === category.name
+                            ? 'border-indigo-600 text-indigo-600'
+                            : 'border-transparent text-gray-700'
+                        }`}
                       >
-                        {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                        <div
-                          aria-hidden="true"
-                          className="absolute inset-0 top-1/2 bg-white shadow-sm"
-                        />
-
-                        <div className="relative bg-white">
-                          <div className="mx-auto max-w-7xl px-8">
-                            <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                              <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                {category.featured.map((item) => (
-                                  <div
-                                    key={item.name}
-                                    className="group relative text-base sm:text-sm"
-                                  >
-                                    <img
-                                      alt={item.imageAlt}
-                                      src={item.imageSrc}
-                                      className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
-                                    />
-                                    <a
-                                      href={item.href}
-                                      className="mt-6 block font-medium text-gray-900"
+                        {category.name}
+                      </button>
+                      {activeTab === category.name && (
+                        <div className="absolute inset-x-0 top-full text-sm text-gray-500">
+                          <div className="absolute inset-0 top-1/2 bg-white shadow-sm" />
+                          <div className="relative bg-white">
+                            <div className="mx-auto max-w-7xl px-8">
+                              <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                                <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                  {category.featured.map((item) => (
+                                    <div
+                                      key={item.name}
+                                      className="group relative text-base sm:text-sm"
                                     >
-                                      <span
-                                        aria-hidden="true"
-                                        className="absolute inset-0 z-10"
+                                      <img
+                                        alt={item.imageAlt}
+                                        src={item.imageSrc}
+                                        className="aspect-square w-full rounded-lg bg-gray-100 object-cover group-hover:opacity-75"
                                       />
-                                      {item.name}
-                                    </a>
-                                    <p aria-hidden="true" className="mt-1">
-                                      Shop now
-                                    </p>
-                                  </div>
-                                ))}
-                              </div>
-                              <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {category.sections.map((section) => (
-                                  <div key={section.name}>
-                                    <p
-                                      id={`${section.name}-heading`}
-                                      className="font-medium text-gray-900"
-                                    >
-                                      {section.name}
-                                    </p>
-                                    <ul
-                                      role="list"
-                                      aria-labelledby={`${section.name}-heading`}
-                                      className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                    >
-                                      {section.items.map((item) => (
-                                        <li key={item.name} className="flex">
-                                          <a
-                                            href={item.href}
-                                            className="hover:text-gray-800"
-                                          >
-                                            {item.name}
-                                          </a>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                ))}
+                                      <a
+                                        href={item.href}
+                                        className="mt-6 block font-medium text-gray-900"
+                                      >
+                                        {item.name}
+                                      </a>
+                                      <p className="mt-1">Shop now</p>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                  {category.sections.map((section) => (
+                                    <div key={section.name}>
+                                      <p className="font-medium text-gray-900">
+                                        {section.name}
+                                      </p>
+                                      <ul className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                        {section.items.map((item) => (
+                                          <li key={item.name} className="flex">
+                                            <a
+                                              href={item.href}
+                                              className="hover:text-gray-800"
+                                            >
+                                              {item.name}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </PopoverPanel>
-                    </Popover>
+                      )}
+                    </div>
                   ))}
 
                   {navigation.pages.map((page) => (
@@ -430,7 +391,7 @@ export default function Navigation() {
                     </a>
                   ))}
                 </div>
-              </PopoverGroup>
+              </div>
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">

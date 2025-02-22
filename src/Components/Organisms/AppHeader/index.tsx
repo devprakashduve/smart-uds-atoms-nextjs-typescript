@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppHeaderProps } from './AppHeaderProps.interface';
 import './AppHeader.css';
+import UDSImage from '@/Components/Atoms/Image';
 
 const AppHeader: React.FC<AppHeaderProps> = ({
   logo,
@@ -9,11 +10,15 @@ const AppHeader: React.FC<AppHeaderProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setSearchQuery(event.target.value);
   };
 
-  const handleSearchSubmit = (event: React.FormEvent) => {
+  const handleSearchSubmit = (
+    event: React.FormEvent<HTMLFormElement>
+  ): void => {
     event.preventDefault();
     if (onSearch) {
       onSearch(searchQuery);
@@ -25,7 +30,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="logo">
-          <img src={logo} alt="Logo" className="h-8" />
+          <UDSImage src={logo} alt="Logo" className="h-8" />
         </div>
 
         {/* Navigation CustomLinks */}
@@ -53,8 +58,9 @@ const AppHeader: React.FC<AppHeaderProps> = ({
               onChange={handleSearchChange}
               placeholder="Search..."
               className="rounded-lg px-4 py-2"
+              aria-label="Search"
             />
-            <button type="submit" className="ml-2 text-white">
+            <button type="submit" className="search-button ml-2 text-white">
               Search
             </button>
           </form>

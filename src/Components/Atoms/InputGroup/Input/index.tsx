@@ -106,7 +106,7 @@ const Input: React.FC<InputProps> = ({
 
   // Merge classes for the input element
   const inputClass = classNames(
-    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border hover:border-atom-input/40 focus:border-atom-input/50' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
+    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border border-atom-input/40  hover:border-atom-input/80 focus:border-atom-input/80' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
     className,
     size === 'sm' && 'py-1 px-2',
     size === 'md' && 'py-2 px-3',
@@ -151,11 +151,19 @@ const Input: React.FC<InputProps> = ({
             }}
           >
             {customIconSVG ? (
-              <Icon name={''} variant="outline">
+              <Icon
+                name={''}
+                variant="outline"
+                className="bg-atom-input-background p-1"
+              >
                 {customIconSVG}
               </Icon>
             ) : (
-              <Icon name={iconName} variant="outline" />
+              <Icon
+                name={iconName}
+                variant="outline"
+                className="bg-atom-input-background p-0.5"
+              />
             )}
           </span>
         )}

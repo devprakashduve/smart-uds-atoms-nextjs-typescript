@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { StarIcon } from '@heroicons/react/20/solid';
-import { Radio, RadioGroup } from '@headlessui/react';
 
 /*
   This example requires some changes to your config:
@@ -199,33 +198,31 @@ export default function ProductOverviews() {
               <div>
                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
-                <fieldset aria-label="Choose a color" className="mt-4">
-                  <RadioGroup
-                    value={selectedColor}
-                    onChange={setSelectedColor}
-                    className="flex items-center gap-x-3"
-                  >
-                    {product.colors.map((color) => (
-                      <Radio
-                        key={color.name}
-                        value={color}
-                        aria-label={color.name}
+                <div className="mt-4 flex items-center gap-x-3">
+                  {product.colors.map((color) => (
+                    <button
+                      key={color.name}
+                      type="button"
+                      onClick={() => setSelectedColor(color)}
+                      className={classNames(
+                        color.selectedClass,
+                        selectedColor.name === color.name
+                          ? 'ring-2 ring-offset-1'
+                          : '',
+                        'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5'
+                      )}
+                      aria-label={color.name}
+                    >
+                      <span
+                        aria-hidden="true"
                         className={classNames(
-                          color.selectedClass,
-                          'focus:outline-hidden data-checked:ring-2 data-focus:data-checked:ring-3 data-focus:data-checked:ring-offset-1 relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5'
+                          color.class,
+                          'size-8 rounded-full border border-black/10'
                         )}
-                      >
-                        <span
-                          aria-hidden="true"
-                          className={classNames(
-                            color.class,
-                            'size-8 rounded-full border border-black/10'
-                          )}
-                        />
-                      </Radio>
-                    ))}
-                  </RadioGroup>
-                </fieldset>
+                      />
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Sizes */}
@@ -240,55 +237,53 @@ export default function ProductOverviews() {
                   </a>
                 </div>
 
-                <fieldset aria-label="Choose a size" className="mt-4">
-                  <RadioGroup
-                    value={selectedSize}
-                    onChange={setSelectedSize}
-                    className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
-                  >
-                    {product.sizes.map((size) => (
-                      <Radio
-                        key={size.name}
-                        value={size}
-                        disabled={!size.inStock}
-                        className={classNames(
-                          size.inStock
-                            ? 'shadow-xs cursor-pointer bg-white text-gray-900'
-                            : 'cursor-not-allowed bg-gray-50 text-gray-200',
-                          'focus:outline-hidden data-focus:ring-2 data-focus:ring-indigo-500 group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-6'
-                        )}
-                      >
-                        <span>{size.name}</span>
-                        {size.inStock ? (
-                          <span
-                            aria-hidden="true"
-                            className="group-data-checked:border-indigo-500 group-data-focus:border pointer-events-none absolute -inset-px rounded-md border-2 border-transparent"
-                          />
-                        ) : (
-                          <span
-                            aria-hidden="true"
-                            className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                <div className="mt-4 grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size.name}
+                      type="button"
+                      onClick={() => setSelectedSize(size)}
+                      disabled={!size.inStock}
+                      className={classNames(
+                        size.inStock
+                          ? 'shadow-xs cursor-pointer bg-white text-gray-900'
+                          : 'cursor-not-allowed bg-gray-50 text-gray-200',
+                        selectedSize.name === size.name
+                          ? 'ring-2 ring-indigo-500'
+                          : '',
+                        'group relative flex items-center justify-center rounded-md border px-4 py-3 text-sm font-medium uppercase hover:bg-gray-50 sm:flex-1 sm:py-6'
+                      )}
+                    >
+                      <span>{size.name}</span>
+                      {size.inStock ? (
+                        <span
+                          aria-hidden="true"
+                          className="group-data-checked:border-indigo-500 pointer-events-none absolute -inset-px rounded-md border-2 border-transparent"
+                        />
+                      ) : (
+                        <span
+                          aria-hidden="true"
+                          className="pointer-events-none absolute -inset-px rounded-md border-2 border-gray-200"
+                        >
+                          <svg
+                            stroke="currentColor"
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            className="absolute inset-0 size-full stroke-2 text-gray-200"
                           >
-                            <svg
-                              stroke="currentColor"
-                              viewBox="0 0 100 100"
-                              preserveAspectRatio="none"
-                              className="absolute inset-0 size-full stroke-2 text-gray-200"
-                            >
-                              <line
-                                x1={0}
-                                x2={100}
-                                y1={100}
-                                y2={0}
-                                vectorEffect="non-scaling-stroke"
-                              />
-                            </svg>
-                          </span>
-                        )}
-                      </Radio>
-                    ))}
-                  </RadioGroup>
-                </fieldset>
+                            <line
+                              x1={0}
+                              x2={100}
+                              y1={100}
+                              y2={0}
+                              vectorEffect="non-scaling-stroke"
+                            />
+                          </svg>
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <button

@@ -18,7 +18,7 @@ const darkPinkWhitePalette = {
       text: '#9D174D',
     },
     input: {
-      background: '#9CA3AF',
+      background: '#fff',
       DEFAULT: '#9D174D', // Dark Pink
       text: '#000',
     },
@@ -107,10 +107,10 @@ export default {
         '-9': '-9',
       },
       borderRadius: {
-        input: '20px',
+        input: '5px',
         checkbox: '5px',
         radio: '5px',
-        button: '20px',
+        button: '5px',
         card: '5px',
         infoBanner: '5px',
       },
