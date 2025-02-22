@@ -35,9 +35,24 @@ const ContactFormFields = ({ formData }: { formData: any }) => (
         value={field.value}
         type={field.type}
         showIcon={field.showIcon}
+        placeholder={field.placeholder}
+        isRequired={true}
+        requiredErrorMessage={field.requiredErrorMessage}
+        validationOnFocus={true} // Added validationOnFocus attribute
       />
     ))}
-    <TextArea id="message" label="Message" />
+    <TextArea
+      charCountWarningThreshold={10}
+      maxLength={100}
+      onChange={() => {}}
+      placeholder="Enter your message here"
+      showCharCount
+      value=""
+      label="Message"
+      isRequired={true}
+      requiredErrorMessage="Message is required"
+      validationOnFocus={true} // Added validationOnFocus attribute
+    />
   </div>
 );
 

@@ -21,4 +21,5 @@ export interface TextAreaProps {
   requiredErrorMessage?: string;
   validationErrorMessage?: string;
   pattern?: string;
+  validationOnFocus?: boolean;
 }

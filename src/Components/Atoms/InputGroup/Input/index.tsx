@@ -137,7 +137,7 @@ const Input: React.FC<InputProps> = ({
           required={isRequired}
           autoComplete={autoComplete}
           maxLength={maxLength}
-          className={`${inputClass} ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+          className={`${inputClass} ${disabled ? 'cursor-not-allowed border border-atom-input-text/10 bg-atom-input-text/10 opacity-80' : 'cursor-pointer'}`}
         />
         {showIcon && (
           <span

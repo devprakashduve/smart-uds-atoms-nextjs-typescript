@@ -208,28 +208,45 @@ export const ComparisonOfInputs = () => {
           />
         </div>
         <div>
-          <p>Rounded Input</p>
+          <p>LG size Input</p>
           <Input
             type="text"
-            label="Rounded Input"
+            label="lg Input"
             placeholder="Rounded corners"
             name="rounded-input"
             id="rounded-input"
             value={''}
+            size="lg"
             onChange={function (): void {
               throw new Error('Function not implemented.');
             }}
           />
         </div>
         <div>
-          <p>Pill Input</p>
+          <p>md size Input</p>
           <Input
             type="text"
-            label="Pill Input"
-            placeholder="Fully rounded"
-            name="pill-input"
-            id="pill-input"
+            label="md Input"
+            placeholder="Rounded corners"
+            name="rounded-input"
+            id="rounded-input"
             value={''}
+            size="md"
+            onChange={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+        <div>
+          <p>sm size Input</p>
+          <Input
+            type="text"
+            label="sm Input"
+            placeholder="Rounded corners"
+            name="rounded-input"
+            id="rounded-input"
+            value={''}
+            size="sm"
             onChange={function (): void {
               throw new Error('Function not implemented.');
             }}

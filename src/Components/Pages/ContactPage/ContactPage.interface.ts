@@ -9,6 +9,10 @@ export interface ContactPageProps {
     value: string;
     type: string;
     showIcon: boolean;
+    placeholder: string;
+    isRequired: boolean;
+    requiredErrorMessage: string;
+    validationOnFocus: boolean; // Added validationOnFocus property
   }>;
   submitButtonText: string;
 }

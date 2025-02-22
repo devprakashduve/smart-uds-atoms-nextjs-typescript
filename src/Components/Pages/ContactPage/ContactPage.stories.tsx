@@ -24,6 +24,10 @@ Default.args = {
       value: '',
       type: 'text',
       showIcon: true,
+      placeholder: 'Enter your first name',
+      isRequired: true,
+      requiredErrorMessage: 'First name is required',
+      validationOnFocus: true, // Added validationOnFocus property
     },
     {
       id: 'last-name',
@@ -33,6 +37,10 @@ Default.args = {
       value: '',
       type: 'text',
       showIcon: true,
+      placeholder: 'Enter your last name',
+      isRequired: true,
+      requiredErrorMessage: 'Last name is required',
+      validationOnFocus: true, // Added validationOnFocus property
     },
     {
       id: 'company',
@@ -42,6 +50,10 @@ Default.args = {
       value: '',
       type: 'text',
       showIcon: true,
+      placeholder: 'Enter your company name',
+      isRequired: true,
+      requiredErrorMessage: 'Company name is required',
+      validationOnFocus: true, // Added validationOnFocus property
     },
     {
       id: 'email',
@@ -51,6 +63,10 @@ Default.args = {
       value: '',
       type: 'email',
       showIcon: true,
+      placeholder: 'Enter your email address',
+      isRequired: true,
+      requiredErrorMessage: 'Email is required',
+      validationOnFocus: true, // Added validationOnFocus property
     },
     {
       id: 'phone',
@@ -60,6 +76,10 @@ Default.args = {
       value: '',
       type: 'phone',
       showIcon: true,
+      placeholder: 'Enter your phone number',
+      isRequired: true,
+      requiredErrorMessage: 'Phone number is required',
+      validationOnFocus: true, // Added validationOnFocus property
     },
   ],
   submitButtonText: 'Submit',

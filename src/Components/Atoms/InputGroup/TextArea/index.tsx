@@ -23,6 +23,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
   charCountWarningThreshold = 10,
+  validationOnFocus = false,
 }) => {
   const [text, setText] = useState(value);
   const [error, setError] = useState('');
@@ -63,6 +64,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         id={id}
         value={text}
         onChange={handleTextChange}
+        onFocus={validationOnFocus ? handleTextChange : () => {}}
         placeholder={placeholder}
         disabled={disabled}
         maxLength={maxLength}
