@@ -71,6 +71,7 @@ export default function ContactPage({
   headerDescription,
   formData: initialFormData,
   submitButtonText,
+  onSubmit,
 }: ContactPageProps) {
   const [formData, setFormData] = useState(initialFormData);
 
@@ -87,9 +88,7 @@ export default function ContactPage({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    console.log('Form Data:', formData);
-    return formData;
+    onSubmit?.(formData);
   };
 
   return (

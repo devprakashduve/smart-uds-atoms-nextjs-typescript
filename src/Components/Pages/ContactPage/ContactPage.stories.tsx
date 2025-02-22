@@ -27,7 +27,7 @@ Default.args = {
       placeholder: 'Enter your first name',
       isRequired: true,
       requiredErrorMessage: 'First name is required',
-      validationOnFocus: true, // Added validationOnFocus property
+      validationOnFocus: true,
     },
     {
       id: 'last-name',
@@ -40,7 +40,7 @@ Default.args = {
       placeholder: 'Enter your last name',
       isRequired: true,
       requiredErrorMessage: 'Last name is required',
-      validationOnFocus: true, // Added validationOnFocus property
+      validationOnFocus: true,
     },
     {
       id: 'company',
@@ -53,7 +53,7 @@ Default.args = {
       placeholder: 'Enter your company name',
       isRequired: true,
       requiredErrorMessage: 'Company name is required',
-      validationOnFocus: true, // Added validationOnFocus property
+      validationOnFocus: true,
     },
     {
       id: 'email',
@@ -66,7 +66,7 @@ Default.args = {
       placeholder: 'Enter your email address',
       isRequired: true,
       requiredErrorMessage: 'Email is required',
-      validationOnFocus: true, // Added validationOnFocus property
+      validationOnFocus: true,
     },
     {
       id: 'phone',
@@ -79,8 +79,9 @@ Default.args = {
       placeholder: 'Enter your phone number',
       isRequired: true,
       requiredErrorMessage: 'Phone number is required',
-      validationOnFocus: true, // Added validationOnFocus property
+      validationOnFocus: true,
     },
   ],
   submitButtonText: 'Submit',
+  onSubmit: (data) => console.log('Submitted Data:', data),
 };
