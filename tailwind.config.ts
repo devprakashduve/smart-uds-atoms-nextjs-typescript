@@ -1,4 +1,5 @@
 import Breadcrumbs from '@/Components/Molecules/Breadcrumb';
+import { text } from 'stream/consumers';
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
@@ -83,6 +84,46 @@ const darkPinkWhitePalette = {
       DEFAULT: '#DB2777', // Dark Pink
       dark: '#9D174D', // Dark Magenta
     },
+  },
+  h1: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h2: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h3: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h4: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h5: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h6: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  p: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  a: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
   },
   neutral: '#F3F4F6', // Neutral Gray
   info: '#3b82f6', // Soft Blue

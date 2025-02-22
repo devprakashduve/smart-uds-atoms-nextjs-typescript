@@ -11,10 +11,10 @@ export interface formDataProps {
   requiredErrorMessage: string;
   validationOnFocus: boolean; // Added validationOnFocus property
 }
-export interface ContactPageProps {
-  headerTitle: string;
-  headerDescription: string;
+export interface ContactFormProps {
+  headerTitle?: string;
+  headerDescription?: string;
   formData: formDataProps[];
-  submitButtonText: string;
+  submitButtonText?: string;
   onSubmit: (value: formDataProps[]) => void;
 }

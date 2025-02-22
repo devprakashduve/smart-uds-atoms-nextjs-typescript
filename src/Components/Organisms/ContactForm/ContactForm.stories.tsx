@@ -1,14 +1,14 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import ContactPage from '.';
-import { ContactPageProps } from './ContactPage.interface';
+import ContactForm from '.';
+import { ContactFormProps } from './ContactForm.interface';
 
 export default {
-  title: 'Components/Pages/ContactPage',
-  component: ContactPage,
+  title: 'Components/Pages/ContactForm',
+  component: ContactForm,
 } as Meta;
 
-const Template: StoryFn<ContactPageProps> = (args) => <ContactPage {...args} />;
+const Template: StoryFn<ContactFormProps> = (args) => <ContactForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
