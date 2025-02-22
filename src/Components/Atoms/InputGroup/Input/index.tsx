@@ -45,6 +45,9 @@ const Input: React.FC<InputProps> = ({
       case 'tel':
         defaultIcon = customIconName || 'phone';
         break;
+      case 'phone':
+        defaultIcon = customIconName || 'phone';
+        break;
       default:
         defaultIcon = customIconName || '';
         break;
@@ -118,7 +121,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="relative w-full">
       {label && (
-        <Label className="mb-2 block text-atom-input-text" htmlFor={name}>
+        <Label className="mb-2" htmlFor={name}>
           {label}
           {isRequired && <span className="ml-1 text-error">*</span>}
         </Label>

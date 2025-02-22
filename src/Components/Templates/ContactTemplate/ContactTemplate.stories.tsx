@@ -2,8 +2,6 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ContactTemplate from '.';
 import { ContactTemplateProps } from './ContactTemplateProps.interface';
-import ContactForm from '@/Components/Organisms/ContactForm';
-import { formDataProps } from '@/Components/Organisms/ContactForm/ContactForm.interface';
 
 export default {
   title: 'Components/Templates/ContactTemplate',
@@ -14,10 +12,7 @@ const Template: StoryFn<ContactTemplateProps> = (args) => (
   <ContactTemplate {...args} />
 );
 
-const formData = {
-  headerTitle: 'Contact sales',
-  headerDescription:
-    'Aute magna irure deserunt veniam aliqua magna enim voluptate. this i test',
+const ContactFormTempData = {
   formData: [
     {
       id: 'first-name',
@@ -85,6 +80,15 @@ const formData = {
       validationOnFocus: true,
     },
   ],
+  contactInfo: {
+    title: 'Contact Information',
+    phoneLabel: 'Phone',
+    emailLabel: 'Email',
+    addressLabel: 'Address',
+    phone: '+1234567890',
+    email: 'example@example.com',
+    address: '123 Example Street, Example City, EX 12345',
+  },
   submitButtonText: 'Submit',
   onSubmit: (data: any) => console.log('Submitted Data:', data),
 };
@@ -94,14 +98,6 @@ DefaultContactTemplate.args = {
   title: 'Contact Us',
   description:
     'Have any questions? We are here to help. Get in touch with us via the contact information below.',
-  contactInfo: {
-    phone: '123-456-7890',
-    email: 'contact@company.com',
-    address: '123 Main St, City, Country',
-  },
-  children: (
-    <div className="contact-form">
-      <ContactForm {...formData} />
-    </div>
-  ),
+
+  contactFormData: ContactFormTempData,
 };

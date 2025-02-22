@@ -10,8 +10,8 @@ export default {
   argTypes: {
     type: {
       control: {
-        type: 'select',
-        options: ['text', 'password', 'email', 'number', 'tel'],
+        control: 'text',
+        description: 'text',
       },
       description: 'HTML input type as a string',
     },

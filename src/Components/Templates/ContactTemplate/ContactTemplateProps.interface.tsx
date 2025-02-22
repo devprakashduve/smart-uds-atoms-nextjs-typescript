@@ -1,10 +1,9 @@
+import { ContactFormProps } from '@/Components/Organisms/ContactForm/ContactForm.interface';
+import { ContactInformationProps } from '@/Components/Organisms/ContactInformation/types';
+
 export interface ContactTemplateProps {
   title: string;
   description: string;
-  contactInfo: {
-    phone: string;
-    email: string;
-    address: string;
-  };
-  children: React.ReactNode; // Main content of the contact form or other sections
+  contactInfo?: ContactInformationProps;
+  contactFormData: ContactFormProps;
 }

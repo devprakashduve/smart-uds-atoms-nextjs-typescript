@@ -5,20 +5,7 @@ import TextArea from '@/Components/Atoms/InputGroup/TextArea';
 import { useState } from 'react';
 import { ContactFormProps } from './ContactForm.interface';
 import Button from '@/Components/Atoms/Button';
-
-// Header Component
-const ContactHeader = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => (
-  <div className="mx-auto max-w-2xl text-center">
-    {title && <h2>{title}</h2>}
-    {description && <p className="mt-2 text-lg">{description}</p>}
-  </div>
-);
+import ContactInformation from '../ContactInformation';
 
 // Form Fields Component
 const ContactFormFields = ({
@@ -65,9 +52,8 @@ const ContactFormFields = ({
 
 // ContactPage Component
 export default function ContactForm({
-  headerTitle,
-  headerDescription,
   formData: initialFormData,
+  contactInfo,
   submitButtonText,
   onSubmit,
 }: ContactFormProps) {
@@ -90,14 +76,9 @@ export default function ContactForm({
   };
 
   return (
-    <div className="isolate px-6 py-24 sm:py-32 lg:px-8">
-      {
-        <ContactHeader
-          title={headerTitle || ''}
-          description={headerDescription || ''}
-        />
-      }
-      <form className="mx-auto mt-16 max-w-xl sm:mt-20" onSubmit={handleSubmit}>
+    <div>
+      {contactInfo && <ContactInformation {...contactInfo} />}
+      <form onSubmit={handleSubmit}>
         <ContactFormFields formData={formData} handleChange={handleChange} />
         <div className="mt-10">
           <Button type="submit" className="w-full">

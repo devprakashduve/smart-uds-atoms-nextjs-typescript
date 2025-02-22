@@ -1,3 +1,5 @@
+import { ContactInformationProps } from '../ContactInformation/types';
+
 export interface formDataProps {
   id: string;
   name: string;
@@ -12,9 +14,8 @@ export interface formDataProps {
   validationOnFocus: boolean; // Added validationOnFocus property
 }
 export interface ContactFormProps {
-  headerTitle?: string;
-  headerDescription?: string;
   formData: formDataProps[];
   submitButtonText?: string;
+  contactInfo?: ContactInformationProps;
   onSubmit: (value: formDataProps[]) => void;
 }

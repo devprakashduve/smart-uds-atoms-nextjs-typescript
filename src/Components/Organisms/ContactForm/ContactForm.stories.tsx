@@ -12,9 +12,6 @@ const Template: StoryFn<ContactFormProps> = (args) => <ContactForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  headerTitle: 'Contact sales',
-  headerDescription:
-    'Aute magna irure deserunt veniam aliqua magna enim voluptate. this i test',
   formData: [
     {
       id: 'first-name',
