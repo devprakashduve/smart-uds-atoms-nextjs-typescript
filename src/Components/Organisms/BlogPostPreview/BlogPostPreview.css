@@ -1,0 +1,16 @@
+/* Blog Post Preview */
+.blog-post-preview {
+  @apply mb-6 border-b border-gray-200 pb-6;
+}
+
+.blog-post-preview h2 {
+  @apply text-xl font-semibold text-gray-800;
+}
+
+.blog-post-preview p {
+  @apply mt-2 text-base text-gray-700;
+}
+
+.blog-post-preview a {
+  @apply text-blue-500 hover:underline;
+}

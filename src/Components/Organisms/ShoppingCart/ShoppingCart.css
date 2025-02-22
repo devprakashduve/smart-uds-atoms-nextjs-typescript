@@ -1,0 +1,52 @@
+/* ShoppingCart Styles */
+.shopping-cart {
+  @apply p-4;
+}
+
+.shopping-cart .cart-items {
+  @apply mt-4;
+}
+
+.shopping-cart .cart-item {
+  @apply flex items-center justify-between border-b py-4;
+}
+
+.shopping-cart .cart-item-image img {
+  @apply h-16 w-16 rounded-lg object-cover;
+}
+
+.shopping-cart .cart-item-details {
+  @apply flex-1 pl-4;
+}
+
+.shopping-cart .cart-item-title {
+  @apply text-lg font-semibold;
+}
+
+.shopping-cart .cart-item-price {
+  @apply text-sm text-gray-500;
+}
+
+.shopping-cart .cart-item-quantity {
+  @apply mt-2 flex items-center space-x-2;
+}
+
+.shopping-cart .cart-item-quantity button {
+  @apply rounded border bg-gray-200 px-2 py-1;
+}
+
+.shopping-cart .remove-item {
+  @apply mt-2 cursor-pointer text-red-500;
+}
+
+.shopping-cart .cart-summary {
+  @apply mt-6 text-right;
+}
+
+.shopping-cart .total-price {
+  @apply text-xl font-bold;
+}
+
+.shopping-cart .checkout-btn {
+  @apply mt-4 rounded bg-blue-600 px-4 py-2 text-white;
+}

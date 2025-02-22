@@ -1,0 +1,32 @@
+/* ProductDetailsTemplate Styles */
+.product-details-template {
+  @apply flex h-auto flex-col bg-gray-50 md:flex-row;
+}
+
+.sidebar {
+  @apply w-full bg-gray-800 p-4 text-white md:w-64;
+}
+
+.sidebar h2 {
+  @apply text-xl font-semibold;
+}
+
+.sidebar .related-products {
+  @apply mt-4;
+}
+
+.main-content {
+  @apply flex-1 p-6;
+}
+
+.main-content header {
+  @apply mb-8;
+}
+
+.main-content .product-image img {
+  @apply h-auto w-full rounded-lg;
+}
+
+.main-content .content {
+  @apply mt-6;
+}

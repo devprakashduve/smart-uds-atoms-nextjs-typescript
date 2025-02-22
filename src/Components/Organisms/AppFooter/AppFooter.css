@@ -1,0 +1,12 @@
+/* App Footer */
+.app-footer {
+  @apply bg-gray-800 py-6 text-white;
+}
+
+.app-footer a {
+  @apply text-sm text-white hover:text-blue-400;
+}
+
+.app-footer .container {
+  @apply mx-auto flex items-center justify-between;
+}

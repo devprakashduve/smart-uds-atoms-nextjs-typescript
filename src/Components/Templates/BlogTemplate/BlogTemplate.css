@@ -1,0 +1,24 @@
+/* BlogTemplate Styles */
+.blog-template {
+  @apply bg-gray-50 px-6 py-12;
+}
+
+.blog-header {
+  @apply mb-8 text-center;
+}
+
+.blog-title {
+  @apply text-3xl font-semibold text-gray-800;
+}
+
+.blog-date {
+  @apply text-sm text-gray-500;
+}
+
+.blog-description {
+  @apply mt-4 text-lg text-gray-600;
+}
+
+.blog-content {
+  @apply mt-8;
+}

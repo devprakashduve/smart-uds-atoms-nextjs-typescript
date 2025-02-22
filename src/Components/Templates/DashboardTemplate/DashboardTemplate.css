@@ -1,0 +1,28 @@
+/* DashboardTemplate Styles */
+.dashboard-template {
+  @apply flex h-screen bg-gray-50;
+}
+
+.sidebar {
+  @apply w-64 bg-gray-800 p-4 text-white;
+}
+
+.sidebar h2 {
+  @apply text-xl font-semibold;
+}
+
+.sidebar nav {
+  @apply mt-6;
+}
+
+.main-content {
+  @apply flex-1 overflow-auto p-6;
+}
+
+.main-content header {
+  @apply mb-8;
+}
+
+.main-content .content {
+  @apply mt-4;
+}

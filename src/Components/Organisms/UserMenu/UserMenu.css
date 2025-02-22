@@ -1,0 +1,16 @@
+/* UserMenu Styles */
+.user-menu-btn {
+  @apply cursor-pointer rounded-full bg-blue-500 px-4 py-2 text-white;
+}
+
+.user-menu-dropdown {
+  @apply rounded-lg bg-white shadow-lg;
+}
+
+.user-menu-item {
+  @apply block w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-100;
+}
+
+.user-menu-item:hover {
+  @apply bg-gray-200;
+}

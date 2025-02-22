@@ -1,0 +1,24 @@
+/* ContactTemplate Styles */
+.contact-template {
+  @apply bg-gray-50 px-6 py-12;
+}
+
+.contact-header {
+  @apply mb-8 text-center;
+}
+
+.contact-title {
+  @apply text-3xl font-semibold text-gray-800;
+}
+
+.contact-description {
+  @apply mt-4 text-lg text-gray-600;
+}
+
+.contact-info {
+  @apply mt-8;
+}
+
+.contact-form {
+  @apply mt-8;
+}
