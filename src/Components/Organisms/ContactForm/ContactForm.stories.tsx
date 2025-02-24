@@ -4,7 +4,7 @@ import ContactForm from '.';
 import { ContactFormProps } from './ContactForm.interface';
 
 export default {
-  title: 'Components/Pages/ContactForm',
+  title: 'Components/Organisms/ContactForm',
   component: ContactForm,
 } as Meta;
 
@@ -76,6 +76,19 @@ Default.args = {
       placeholder: 'Enter your phone number',
       isRequired: true,
       requiredErrorMessage: 'Phone number is required',
+      validationOnFocus: true,
+    },
+    {
+      id: 'message',
+      name: 'message',
+      label: 'Message',
+      autoComplete: 'off',
+      value: '',
+      type: 'textarea',
+      showIcon: false,
+      placeholder: 'Enter your message',
+      isRequired: true,
+      requiredErrorMessage: 'Message is required',
       validationOnFocus: true,
     },
   ],

@@ -3,7 +3,7 @@ import { TextAreaProps } from './TextAreaProps.interface';
 import Label from '../../Label';
 
 const TextArea: React.FC<TextAreaProps> = ({
-  value = '',
+  value: initialValue,
   onChange,
   placeholder = '',
   disabled = false,
@@ -25,7 +25,7 @@ const TextArea: React.FC<TextAreaProps> = ({
   charCountWarningThreshold = 10,
   validationOnFocus = false,
 }) => {
-  const [text, setText] = useState(value);
+  const [text, setText] = useState(initialValue || '');
   const [error, setError] = useState('');
   const remainingChars = maxLength ? maxLength - text.length : 0;
 
@@ -38,19 +38,18 @@ const TextArea: React.FC<TextAreaProps> = ({
     },
     [isRequired, pattern, requiredErrorMessage, validationErrorMessage]
   );
-  useEffect(() => {
-    setText(value);
-  }, [value]);
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = event.target.value;
-    if (maxLength && newValue.length > maxLength) return;
-    const errorMessage = validateInput(newValue);
-    setError(errorMessage || '');
-    setText(newValue);
-
-    onChange?.(event);
-  };
+  const handleTextChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+      if (maxLength && newValue.length > maxLength) return;
+      const errorMessage = validateInput(newValue);
+      setError(errorMessage || '');
+      setText(newValue);
+      onChange?.(event);
+    },
+    [onChange, validateInput, maxLength]
+  );
 
   return (
     <div className="relative">

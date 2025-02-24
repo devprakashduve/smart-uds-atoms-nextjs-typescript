@@ -16,38 +16,42 @@ const ContactFormFields = ({
   handleChange: any;
 }) => (
   <div className="grid gap-4">
-    {formData.map((field: any) => (
-      <Input
-        key={field.id}
-        id={field.id}
-        name={field.name}
-        label={field.label}
-        autoComplete={field.autoComplete}
-        value={field.value}
-        type={field.type}
-        showIcon={field.showIcon}
-        placeholder={field.placeholder}
-        isRequired={true}
-        requiredErrorMessage={field.requiredErrorMessage}
-        validationOnFocus={true}
-        onChange={handleChange}
-        maxLength={field.type === 'phone' ? 17 : 50}
-      />
-    ))}
-    <TextArea
-      charCountWarningThreshold={10}
-      maxLength={100}
-      onChange={handleChange}
-      placeholder="Enter your message here"
-      showCharCount
-      value={
-        formData.find((field: any) => field.name === 'message')?.value || ''
-      }
-      label="Message"
-      isRequired={true}
-      requiredErrorMessage="Message is required"
-      validationOnFocus={true}
-    />
+    {formData.map((field: any) =>
+      field.type === 'textarea' ? (
+        <TextArea
+          key={field.id}
+          charCountWarningThreshold={field.charCountWarningThreshold || 10}
+          maxLength={field.maxLength || 100}
+          onChange={handleChange}
+          placeholder={field.placeholder || 'Enter your message here'}
+          showCharCount={field.showCharCount || true}
+          value={field.value || ''}
+          label={field.label || 'Message'}
+          isRequired={field.isRequired || true}
+          requiredErrorMessage={
+            field.requiredErrorMessage || 'Message is required'
+          }
+          validationOnFocus={field.validationOnFocus || true}
+        />
+      ) : (
+        <Input
+          key={field.id}
+          id={field.id}
+          name={field.name}
+          label={field.label}
+          autoComplete={field.autoComplete}
+          value={field.value}
+          type={field.type}
+          showIcon={field.showIcon}
+          placeholder={field.placeholder}
+          isRequired={true}
+          requiredErrorMessage={field.requiredErrorMessage}
+          validationOnFocus={true}
+          onChange={handleChange}
+          maxLength={field.type === 'phone' ? 17 : 50}
+        />
+      )
+    )}
   </div>
 );
 
