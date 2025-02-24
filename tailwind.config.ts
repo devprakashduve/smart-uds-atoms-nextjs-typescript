@@ -1,4 +1,5 @@
 import Breadcrumbs from '@/Components/Molecules/Breadcrumb';
+import { link } from 'fs';
 import { text } from 'stream/consumers';
 import type { Config } from 'tailwindcss';
 
@@ -124,6 +125,13 @@ const darkPinkWhitePalette = {
     from_color: '#9D174D',
     via_color: '#DB2777',
     to_color: '#DB2777',
+  },
+  footer: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+    text: '#fff',
+    link: '#fff',
   },
   neutral: '#F3F4F6', // Neutral Gray
   info: '#3b82f6', // Soft Blue

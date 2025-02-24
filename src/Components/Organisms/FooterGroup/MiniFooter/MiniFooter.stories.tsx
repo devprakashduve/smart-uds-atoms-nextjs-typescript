@@ -1,14 +1,14 @@
 import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
-import { AppFooterProps } from './AppFooterProps.interface';
-import AppFooter from '.';
+import MiniFooter from '.';
 
 export default {
-  title: 'Components/Organisms/AppFooter',
-  component: AppFooter,
+  title: 'Components/Organisms/FooterGroup/MiniFooter',
+  component: MiniFooter,
+  tags: ['autodocs'],
 } as Meta;
 
-const Template: StoryFn<AppFooterProps> = (args) => <AppFooter {...args} />;
+const Template: StoryFn<typeof MiniFooter> = (args) => <MiniFooter {...args} />;
 
 export const DefaultFooter = Template.bind({});
 DefaultFooter.args = {

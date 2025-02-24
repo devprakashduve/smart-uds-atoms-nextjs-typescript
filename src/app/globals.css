@@ -4,7 +4,7 @@
 
 @layer components {
   .h1-style {
-    @apply from-h1-from_color via-h1-via_color to-h1-to_color bg-gradient-to-r bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-h1-from_color via-h1-via_color to-h1-to_color bg-clip-text text-transparent;
     font-size: 2.25rem;
     font-weight: bold;
     letter-spacing: -0.025em;
@@ -13,7 +13,7 @@
   }
 
   .h2-style {
-    @apply from-h2-from_color via-h2-via_color to-h2-to_color bg-gradient-to-r bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-h2-from_color via-h2-via_color to-h2-to_color bg-clip-text text-transparent;
     font-size: 1.875rem;
     font-weight: bold;
     letter-spacing: -0.025em;
@@ -22,7 +22,7 @@
   }
 
   .h3-style {
-    @apply from-h3-from_color via-h3-via_color to-h3-to_color bg-gradient-to-r bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-h3-from_color via-h3-via_color to-h3-to_color bg-clip-text text-transparent;
     font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: -0.025em;
@@ -31,7 +31,7 @@
   }
 
   .h4-style {
-    @apply from-h4-from_color via-h4-via_color to-h4-to_color bg-gradient-to-r bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-h4-from_color via-h4-via_color to-h4-to_color bg-clip-text text-transparent;
     font-size: 1.25rem;
     font-weight: bold;
     letter-spacing: -0.025em;
@@ -40,7 +40,7 @@
   }
 
   .h5-style {
-    @apply from-h5-from_color via-h5-via_color to-h5-to_color bg-gradient-to-r bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-h5-from_color via-h5-via_color to-h5-to_color bg-clip-text text-transparent;
     font-size: 1rem;
     font-weight: bold;
     letter-spacing: -0.025em;
@@ -49,7 +49,7 @@
   }
 
   .h6-style {
-    @apply from-h6-from_color via-h6-via_color to-h6-to_color bg-gradient-to-r bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-h6-from_color via-h6-via_color to-h6-to_color bg-clip-text text-transparent;
     font-size: 0.875rem;
     font-weight: bold;
     letter-spacing: -0.025em;
@@ -82,7 +82,7 @@ h6 {
   @apply h6-style;
 }
 p {
-  @apply from-p-from_color via-p-via_color to-p-to_color bg-gradient-to-r bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-p-from_color via-p-via_color to-p-to_color bg-clip-text text-transparent;
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -90,12 +90,12 @@ p {
 }
 
 a {
-  @apply from-a-from_color via-a-via_color to-a-to_color bg-gradient-to-r bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-a-from_color via-a-via_color to-a-to_color bg-clip-text text-transparent;
   text-decoration: underline;
   font-family: sans-serif;
 }
 
 a:hover {
-  @apply from-a-to_color via-a-via_color to-a-from_color bg-gradient-to-r bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-a-to_color via-a-via_color to-a-from_color bg-clip-text text-transparent;
   text-decoration: none;
 }
