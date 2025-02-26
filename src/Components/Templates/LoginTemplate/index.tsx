@@ -7,6 +7,19 @@ export default function LoginTemplate({
   email: initialEmail,
   password: initialPassword,
   onSubmit,
+  emailPlaceholder,
+  passwordPlaceholder,
+  emailRequiredErrorMessage,
+  passwordRequiredErrorMessage,
+  emailId,
+  emailName,
+  emailLabel,
+  emailType,
+  passwordId,
+  passwordName,
+  passwordLabel,
+  passwordType,
+  buttonChild,
 }: LoginTemplateProps) {
   const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState(initialPassword);
@@ -21,35 +34,35 @@ export default function LoginTemplate({
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <Input
-            id="email"
-            name="email"
-            label="Email"
-            type="email"
+            id={emailId}
+            name={emailName}
+            label={emailLabel}
+            type={emailType}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder={emailPlaceholder}
             isRequired={true}
-            requiredErrorMessage="Email is required"
+            requiredErrorMessage={emailRequiredErrorMessage}
             autoComplete="off"
           />
         </div>
         <div className="mb-4">
           <Input
-            id="password"
-            name="password"
-            label="Password"
-            type="password"
+            id={passwordId}
+            name={passwordName}
+            label={passwordLabel}
+            type={passwordType}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
+            placeholder={passwordPlaceholder}
             isRequired={true}
-            requiredErrorMessage="Password is required!!"
+            requiredErrorMessage={passwordRequiredErrorMessage}
             autoComplete="off"
           />
         </div>
         <div className="mt-6">
           <Button type="submit" className="w-full">
-            Login
+            {buttonChild}
           </Button>
         </div>
       </form>

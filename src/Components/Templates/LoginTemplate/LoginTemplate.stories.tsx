@@ -18,4 +18,17 @@ Default.args = {
   onSubmit: (data) => {
     console.log('Form submitted:', data);
   },
+  emailPlaceholder: 'Enter your email',
+  passwordPlaceholder: 'Enter your password',
+  emailRequiredErrorMessage: 'Email is required',
+  passwordRequiredErrorMessage: 'Password is required!!',
+  emailId: 'email',
+  emailName: 'email',
+  emailLabel: 'Email',
+  emailType: 'email',
+  passwordId: 'password',
+  passwordName: 'password',
+  passwordLabel: 'Password',
+  passwordType: 'password',
+  buttonChild: 'Login',
 };
