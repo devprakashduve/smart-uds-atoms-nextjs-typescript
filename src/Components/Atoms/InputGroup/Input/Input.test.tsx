@@ -66,6 +66,7 @@ describe('Input Component', () => {
         value="password123"
         onChange={() => {}}
         showIcon={true}
+        autoComplete="new-password"
       />
     );
     const inputElement = screen.getByTitle('password') as HTMLInputElement;

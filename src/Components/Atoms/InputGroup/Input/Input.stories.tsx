@@ -68,6 +68,7 @@ PasswordInput.args = {
   disabled: false,
   isRequired: true,
   showIcon: true,
+  autoComplete: 'new-password',
 };
 
 export const EmailInput = Template.bind({});

@@ -58,6 +58,7 @@ export default function LoginTemplate({
             isRequired={true}
             requiredErrorMessage={passwordRequiredErrorMessage}
             autoComplete="off"
+            disablePasswordHint={true}
           />
         </div>
         <div className="mt-6">

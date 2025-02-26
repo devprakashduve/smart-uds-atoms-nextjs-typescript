@@ -26,6 +26,7 @@ const Input: React.FC<InputProps> = ({
   autoComplete,
   pattern,
   maxLength,
+  disablePasswordHint = false,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState('');
@@ -79,7 +80,9 @@ const Input: React.FC<InputProps> = ({
           const passwordRegex =
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
           if (!passwordRegex.test(value))
-            return 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+            return disablePasswordHint
+              ? ''
+              : 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
           break;
         }
         default:
@@ -87,7 +90,14 @@ const Input: React.FC<InputProps> = ({
       }
       return '';
     },
-    [type, isRequired, pattern, validationErrorMessage, requiredErrorMessage]
+    [
+      type,
+      isRequired,
+      pattern,
+      validationErrorMessage,
+      requiredErrorMessage,
+      disablePasswordHint,
+    ]
   );
 
   const handleChange = useCallback(

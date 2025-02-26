@@ -47,4 +47,5 @@ export interface InputProps {
   pattern?: string;
   /** Maximum length of the input value */
   maxLength?: number;
+  disablePasswordHint?: boolean;
 }
