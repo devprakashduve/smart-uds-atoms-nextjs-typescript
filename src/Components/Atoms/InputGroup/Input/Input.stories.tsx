@@ -9,25 +9,22 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     type: {
-      control: {
-        control: 'text',
-        description: 'text',
-      },
+      control: 'text',
       description: 'HTML input type as a string',
     },
     size: {
-      control: { type: 'select', options: Object.values('') },
+      control: { type: 'select', options: ['sm', 'md', 'lg'] },
       description: 'Input size',
     },
     disabled: { control: 'boolean', description: 'Disables the input' },
-    isBorder: { control: 'boolean', description: 'enable border' },
+    isBorder: { control: 'boolean', description: 'Enable border' },
     isRequired: {
       control: 'boolean',
       description: 'Marks the input as required',
     },
     validationOnFocus: {
       control: 'boolean',
-      description: 'Marks the input as required',
+      description: 'Validates the input on focus',
     },
     showIcon: {
       control: 'boolean',
@@ -42,11 +39,12 @@ export default {
 } as Meta<typeof Input>;
 
 const Template: StoryFn<InputProps> = (args) => {
-  const [value] = useState(args.value);
+  const [value, setValue] = useState(args.value);
   return (
     <Input
       {...args}
       value={value}
+      onChange={(e) => setValue(e.target.value)}
       name="storybook-input"
       id="storybook-input"
     />
@@ -70,6 +68,7 @@ PasswordInput.args = {
   disabled: false,
   isRequired: true,
   showIcon: true,
+  autoComplete: 'new-password',
 };
 
 export const EmailInput = Template.bind({});
@@ -141,10 +140,8 @@ export const ComparisonOfInputs = () => {
             placeholder="Enter text..."
             name="basic-input"
             id="basic-input"
-            value={''}
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            value=""
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -157,10 +154,8 @@ export const ComparisonOfInputs = () => {
             id="password-input"
             showIcon={true}
             isRequired={true}
-            value={''}
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            value=""
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -172,10 +167,8 @@ export const ComparisonOfInputs = () => {
             name="email-input"
             id="email-input"
             isRequired={true}
-            value={''}
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            value=""
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -186,10 +179,8 @@ export const ComparisonOfInputs = () => {
             placeholder="Enter a number..."
             name="number-input"
             id="number-input"
-            value={''}
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            value=""
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -201,10 +192,8 @@ export const ComparisonOfInputs = () => {
             name="disabled-input"
             id="disabled-input"
             disabled={true}
-            value={''}
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            value=""
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -215,11 +204,9 @@ export const ComparisonOfInputs = () => {
             placeholder="Rounded corners"
             name="rounded-input"
             id="rounded-input"
-            value={''}
+            value=""
             size="lg"
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -230,11 +217,9 @@ export const ComparisonOfInputs = () => {
             placeholder="Rounded corners"
             name="rounded-input"
             id="rounded-input"
-            value={''}
+            value=""
             size="md"
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            onChange={() => {}}
           />
         </div>
         <div>
@@ -245,11 +230,9 @@ export const ComparisonOfInputs = () => {
             placeholder="Rounded corners"
             name="rounded-input"
             id="rounded-input"
-            value={''}
+            value=""
             size="sm"
-            onChange={function (): void {
-              throw new Error('Function not implemented.');
-            }}
+            onChange={() => {}}
           />
         </div>
       </div>

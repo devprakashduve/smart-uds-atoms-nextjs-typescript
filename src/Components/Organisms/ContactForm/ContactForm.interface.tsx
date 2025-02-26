@@ -1,5 +1,5 @@
 import { ContactInformationProps } from '../ContactInformation/types';
-import { TextAreaProps } from '@/Components/Atoms/InputGroup/TextArea/TextAreaProps.interface';
+import { TextAreaProps } from '../../../Components/Atoms/InputGroup/TextArea/TextAreaProps.interface';
 
 export interface formDataProps {
   id?: string;

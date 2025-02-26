@@ -1,5 +1,3 @@
-'use client';
-
 import Input from '@/Components/Atoms/InputGroup/Input';
 import TextArea from '@/Components/Atoms/InputGroup/TextArea';
 import { useState } from 'react';
@@ -42,7 +40,7 @@ const ContactFormFields = ({
 
     {textAreaData?.map((field: TextAreaProps) => (
       <TextArea
-        key={field.id || field.name}
+        key={field?.id || field.name}
         charCountWarningThreshold={field.charCountWarningThreshold || 10}
         maxLength={field.maxLength || 100}
         onChange={handleChange}
@@ -55,6 +53,7 @@ const ContactFormFields = ({
           field.requiredErrorMessage || 'Message is required'
         }
         validationOnFocus={field.validationOnFocus || true}
+        name={field.name}
       />
     ))}
   </div>
@@ -89,7 +88,10 @@ export default function ContactForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit?.({ formData, textAreaData });
+    onSubmit?.({
+      formData: formData.map(({ ...rest }) => rest),
+      textAreaData: textAreaData.map(({ ...rest }) => rest),
+    });
   };
 
   return (
