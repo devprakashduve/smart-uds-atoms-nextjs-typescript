@@ -1,4 +1,8 @@
 # smart-uds-atoms-nextjs-typescript
+<img width="405" alt="Screenshot 2025-02-27 at 1 40 19 AM" src="https://github.com/user-attachments/assets/74239156-c49a-4358-bce0-6199d08d803e" />
+
+<img width="400" alt="Screenshot 2025-02-27 at 1 40 37 AM" src="https://github.com/user-attachments/assets/696039fb-a18e-451c-9ada-46ed2f961a27" />
+
 
 # Overview
 
