@@ -10,6 +10,7 @@ describe('TextArea Component', () => {
         value="Initial text"
         placeholder="Enter text here..."
         onChange={() => {}}
+        name={''}
       />
     );
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -20,7 +21,9 @@ describe('TextArea Component', () => {
 
   it('updates value and calls onChange when text changes', () => {
     const handleChange = jest.fn();
-    render(<TextArea id="test-textarea" value="" onChange={handleChange} />);
+    render(
+      <TextArea id="test-textarea" value="" onChange={handleChange} name={''} />
+    );
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
     fireEvent.change(textarea, { target: { value: 'Hello World' } });
     expect(textarea.value).toBe('Hello World');
@@ -35,6 +38,7 @@ describe('TextArea Component', () => {
         value=""
         onChange={handleChange}
         maxLength={5}
+        name={''}
       />
     );
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -52,6 +56,7 @@ describe('TextArea Component', () => {
         onChange={() => {}}
         maxLength={10}
         showCharCount={true}
+        name={''}
       />
     );
     // The char count should be displayed as "5/10"
@@ -66,6 +71,7 @@ describe('TextArea Component', () => {
         onChange={() => {}}
         maxLength={10}
         showCharCount={false}
+        name={''}
       />
     );
     // No element with "5/10" should be rendered
@@ -79,6 +85,7 @@ describe('TextArea Component', () => {
         value="Disabled text"
         onChange={() => {}}
         disabled={true}
+        name={''}
       />
     );
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -92,6 +99,7 @@ describe('TextArea Component', () => {
         value="Read only text"
         onChange={() => {}}
         readOnly={true}
+        name={''}
       />
     );
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement;
@@ -107,6 +115,7 @@ describe('TextArea Component', () => {
         maxLength={10}
         showCharCount={true}
         charCountWarningThreshold={3}
+        name={''}
       />
     );
     // The char count should be displayed with a warning class
