@@ -1,4 +1,5 @@
 export interface LoginTemplateProps {
+  title?: string;
   email: string;
   password: string;
   onSubmit: (data: { email: string; password: string }) => void;
