@@ -6,7 +6,6 @@
 
 <img width="1079" alt="Screenshot 2025-02-27 at 1 57 33 AM" src="https://github.com/user-attachments/assets/33a4f30c-6dfa-4cc4-a79d-464f11ba6da2" />
 
-
 # Overview
 
 Smart UDS Atoms is a component library built with Next.js and TypeScript, following atomic design principles. It provides reusable UI components (atoms, molecules, organisms, etc.) to streamline development and maintain consistency across projects. This repository serves as a foundation for building scalable web applications with modern tooling.
@@ -29,9 +28,13 @@ ProgressBar Visual progress indicator value, max, variant (linear/circular)
 
 # Setup
 
-step:1- npm i atomic-uds-next-app
-step:2- npm i @heroicons/react ajv enzyme next react react-dom
-step:3- replace your tailwind.config.ts with https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/tailwind.config.ts
+# step:1- npm i atomic-uds-next-app
+
+# step:2- npm i @heroicons/react ajv enzyme next react react-dom
+
+# step:3- replace your tailwind.config.ts with https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/tailwind.config.ts
+
+# step:4- replace https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/src/app/globals.css
 
 you can start using components
 

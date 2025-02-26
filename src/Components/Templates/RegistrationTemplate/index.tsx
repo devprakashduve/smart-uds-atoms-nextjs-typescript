@@ -48,7 +48,6 @@ export default function RegistrationTemplate({
   return (
     <div className="registration-template">
       <h2>{title}</h2>
-
       <form onSubmit={handleSubmit}>
         {inputFields.map((field) => (
           <div className="mb-4" key={field.id}>

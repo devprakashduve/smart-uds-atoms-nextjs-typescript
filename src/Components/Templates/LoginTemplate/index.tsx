@@ -20,6 +20,7 @@ export default function LoginTemplate({
   passwordLabel,
   passwordType,
   buttonChild,
+  title,
 }: LoginTemplateProps) {
   const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState(initialPassword);
@@ -31,6 +32,7 @@ export default function LoginTemplate({
 
   return (
     <div className="login-template">
+      <h2>{title}</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <Input

@@ -76,6 +76,7 @@ const Template: StoryFn<typeof LoginTemplate> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  title: 'Login',
   email: '',
   password: '',
   onSubmit: (data) => {
