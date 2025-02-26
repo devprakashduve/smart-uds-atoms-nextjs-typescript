@@ -8,6 +8,12 @@ import { TextAreaProps } from '@/Components/Atoms/InputGroup/TextArea/TextAreaPr
 export default {
   title: 'Components/Templates/ContactTemplate',
   component: ContactTemplate,
+  tags: ['autodocs'],
+  argTypes: {
+    title: { control: 'text' },
+    description: { control: 'text' },
+    contactFormData: { control: 'object' },
+  },
 } as Meta;
 
 const Template: StoryFn<ContactTemplateProps> = (args) => (

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Input from '@/Components/Atoms/InputGroup/Input';
-import Button from '@/Components/Atoms/Button';
+import Input from '../../../Components/Atoms/InputGroup/Input';
+import Button from '../../../Components/Atoms/Button';
 import { LoginTemplateProps } from './LoginTemplate.interface';
 
 export default function LoginTemplate({
@@ -44,6 +44,8 @@ export default function LoginTemplate({
             isRequired={true}
             requiredErrorMessage={emailRequiredErrorMessage}
             autoComplete="off"
+            showIcon={true}
+            customIconName="user"
           />
         </div>
         <div className="mb-4">
@@ -59,6 +61,7 @@ export default function LoginTemplate({
             requiredErrorMessage={passwordRequiredErrorMessage}
             autoComplete="off"
             disablePasswordHint={true}
+            showIcon={true}
           />
         </div>
         <div className="mt-6">
