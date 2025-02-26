@@ -3,7 +3,7 @@ import { TextAreaProps } from './TextAreaProps.interface';
 import Label from '../../Label';
 
 const TextArea: React.FC<TextAreaProps> = ({
-  value: initialValue,
+  value: initialValue = '',
   onChange,
   placeholder = '',
   disabled = false,
@@ -24,8 +24,9 @@ const TextArea: React.FC<TextAreaProps> = ({
   'aria-labelledby': ariaLabelledby,
   charCountWarningThreshold = 10,
   validationOnFocus = false,
+  name = 'text-area',
 }) => {
-  const [text, setText] = useState(initialValue || '');
+  const [text, setText] = useState(initialValue);
   const [error, setError] = useState('');
   const remainingChars = maxLength ? maxLength - text.length : 0;
 
@@ -35,6 +36,7 @@ const TextArea: React.FC<TextAreaProps> = ({
         return requiredErrorMessage || 'This field is required.';
       if (pattern && !new RegExp(pattern).test(value))
         return validationErrorMessage || 'Invalid input.';
+      return '';
     },
     [isRequired, pattern, requiredErrorMessage, validationErrorMessage]
   );
@@ -60,15 +62,16 @@ const TextArea: React.FC<TextAreaProps> = ({
         </Label>
       )}
       <textarea
-        id={id}
+        id={id || label || name}
         value={text}
         onChange={handleTextChange}
-        onFocus={validationOnFocus ? handleTextChange : () => {}}
+        onFocus={validationOnFocus ? handleTextChange : undefined}
         placeholder={placeholder}
         disabled={disabled}
         maxLength={maxLength}
         rows={rows}
         required={isRequired}
+        name={name}
         cols={cols}
         autoFocus={autoFocus}
         readOnly={readOnly}

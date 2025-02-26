@@ -27,12 +27,19 @@ export interface InputProps {
   customIconSVG?: React.ReactNode;
   /** Optional custom icon name (if not provided, a default is chosen based on the input type) */
   customIconName?: string;
+  /** Whether to show a border around the input */
   isBorder?: boolean;
+  /** Minimum value for the input (for number inputs) */
   min?: string;
+  /** Maximum value for the input (for number inputs) */
   max?: string;
+  /** Step value for the input (for number inputs) */
   step?: string;
+  /** Error message to display when the input is required but not filled */
   requiredErrorMessage?: string;
+  /** Error message to display when the input value does not match the pattern */
   validationErrorMessage?: string;
+  /** Whether to validate the input on focus */
   validationOnFocus?: boolean;
   /** Whether to enable autocomplete for the input */
   autoComplete?: string;

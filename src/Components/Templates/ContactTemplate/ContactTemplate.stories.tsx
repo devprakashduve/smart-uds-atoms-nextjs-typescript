@@ -81,19 +81,6 @@ const ContactFormTempData = {
       requiredErrorMessage: 'Phone number is required',
       validationOnFocus: true,
     },
-    {
-      id: 'message',
-      name: 'message',
-      label: 'Message',
-      autoComplete: 'off',
-      value: '',
-      type: 'textarea',
-      showIcon: false,
-      placeholder: 'Enter your message',
-      isRequired: true,
-      requiredErrorMessage: 'Message is required',
-      validationOnFocus: true,
-    },
   ],
   contactInfo: {
     title: 'Contact Information',
@@ -131,6 +118,5 @@ DefaultContactTemplate.args = {
   title: 'Contact Us',
   description:
     'Have any questions? We are here to help. Get in touch with us via the contact information below.',
-
   contactFormData: ContactFormTempData,
 };

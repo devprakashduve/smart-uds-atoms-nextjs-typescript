@@ -5,7 +5,7 @@ import Label from '../../Label';
 import Icon from '../../Icon';
 
 const Input: React.FC<InputProps> = ({
-  value: initialValue,
+  value: initialValue = '',
   onChange,
   placeholder = '',
   disabled = false,
@@ -32,7 +32,6 @@ const Input: React.FC<InputProps> = ({
   const [iconName, setIconName] = useState('');
   const [inputType, setInputType] = useState(type);
 
-  // Set default icon based on input type (using string comparisons)
   useEffect(() => {
     let defaultIcon = '';
     switch (type) {
@@ -43,8 +42,6 @@ const Input: React.FC<InputProps> = ({
         defaultIcon = customIconName || 'envelop';
         break;
       case 'tel':
-        defaultIcon = customIconName || 'phone';
-        break;
       case 'phone':
         defaultIcon = customIconName || 'phone';
         break;
@@ -55,7 +52,6 @@ const Input: React.FC<InputProps> = ({
     setIconName(defaultIcon);
   }, [type, customIconName]);
 
-  // Validate input value (this logic remains unchanged)
   const validateInput = useCallback(
     (value: string) => {
       if (isRequired && !value)
@@ -94,7 +90,6 @@ const Input: React.FC<InputProps> = ({
     [type, isRequired, pattern, validationErrorMessage, requiredErrorMessage]
   );
 
-  // Handle input changes and validations
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = e.target.value;
@@ -107,15 +102,14 @@ const Input: React.FC<InputProps> = ({
     [onChange, validateInput, maxLength]
   );
 
-  // Merge classes for the input element
   const inputClass = classNames(
-    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border border-atom-input/40  hover:border-atom-input/80 focus:border-atom-input/80' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
+    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border border-atom-input/40  hover:border-atom-input/80 focus:border-atom-input/80' : ''} placeholder-atom-input-text/40 text-atom-input-text rounded-input transition duration-300 ease focus:outline-none`,
     className,
     size === 'sm' && 'py-1 px-2',
     size === 'md' && 'py-2 px-3',
     size === 'lg' && 'py-3 px-4',
     error && 'border-error',
-    isBorder && 'border-atom-input '
+    isBorder && 'border-atom-input'
   );
 
   return (
@@ -147,7 +141,6 @@ const Input: React.FC<InputProps> = ({
             className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-3"
             onClick={() => {
               if (type === 'password') {
-                // Toggle password visibility
                 setIconName(iconName === 'openEye' ? 'closeEye' : 'openEye');
                 setInputType(inputType === 'password' ? 'text' : 'password');
               }
@@ -155,7 +148,7 @@ const Input: React.FC<InputProps> = ({
           >
             {customIconSVG ? (
               <Icon
-                name={''}
+                name=""
                 variant="outline"
                 className="bg-atom-input-background p-1"
               >

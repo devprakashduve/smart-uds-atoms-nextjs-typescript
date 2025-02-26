@@ -116,16 +116,18 @@ export const CompareStates: StoryObj<typeof TextArea> = {
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Basic Variations</h3>
-        <TextArea placeholder="Default state" />
+        <TextArea placeholder="Default state" name={''} />
         <TextArea
           placeholder="Disabled state"
           disabled
           value="Disabled content"
+          name={''}
         />
         <TextArea
           placeholder="Read-only state"
           readOnly
           value="Read-only content"
+          name={''}
         />
       </div>
 
@@ -136,26 +138,29 @@ export const CompareStates: StoryObj<typeof TextArea> = {
           maxLength={100}
           showCharCount
           value="Initial value"
+          name={''}
         />
         <TextArea
           placeholder="Warning state (10 remaining)"
           maxLength={100}
           showCharCount
           value={'A'.repeat(90)}
+          name={''}
         />
         <TextArea
           placeholder="Error state (over limit)"
           maxLength={100}
           showCharCount
           value={'A'.repeat(101)}
+          name={''}
         />
       </div>
 
       <div className="space-y-4">
         <h3 className="text-lg font-semibold">Sizing</h3>
-        <TextArea placeholder="Small (3 rows)" rows={3} />
-        <TextArea placeholder="Large (8 rows)" rows={8} />
-        <TextArea placeholder="Fixed width" className="w-64" />
+        <TextArea placeholder="Small (3 rows)" rows={3} name={''} />
+        <TextArea placeholder="Large (8 rows)" rows={8} name={''} />
+        <TextArea placeholder="Fixed width" className="w-64" name={''} />
       </div>
 
       <div className="space-y-4">
@@ -164,15 +169,18 @@ export const CompareStates: StoryObj<typeof TextArea> = {
           placeholder="Auto-focused"
           autoFocus
           className="ring-primary-dark ring-2"
+          name={''}
         />
         <TextArea
           placeholder="Custom styled"
           className="rounded-lg border-2 border-green-500"
+          name={''}
         />
         <TextArea
           placeholder="With aria labels"
           aria-label="Description input field"
           id="description-field"
+          name={''}
         />
       </div>
     </div>
