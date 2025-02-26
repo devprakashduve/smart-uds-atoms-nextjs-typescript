@@ -1,4 +1,6 @@
 import Breadcrumbs from '@/Components/Molecules/Breadcrumb';
+import { link } from 'fs';
+import { text } from 'stream/consumers';
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
@@ -18,7 +20,7 @@ const darkPinkWhitePalette = {
       text: '#9D174D',
     },
     input: {
-      background: '#9CA3AF',
+      background: '#fff',
       DEFAULT: '#9D174D', // Dark Pink
       text: '#000',
     },
@@ -84,6 +86,53 @@ const darkPinkWhitePalette = {
       dark: '#9D174D', // Dark Magenta
     },
   },
+  h1: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h2: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h3: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h4: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h5: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  h6: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  p: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  a: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+  },
+  footer: {
+    from_color: '#9D174D',
+    via_color: '#DB2777',
+    to_color: '#DB2777',
+    text: '#fff',
+    link: '#fff',
+  },
   neutral: '#F3F4F6', // Neutral Gray
   info: '#3b82f6', // Soft Blue
   success: '#22c55e', // Light Green
@@ -107,10 +156,10 @@ export default {
         '-9': '-9',
       },
       borderRadius: {
-        input: '20px',
+        input: '5px',
         checkbox: '5px',
         radio: '5px',
-        button: '20px',
+        button: '5px',
         card: '5px',
         infoBanner: '5px',
       },

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { TextAreaProps } from './TextAreaProps.interface';
+import Label from '../../Label';
 
 const TextArea: React.FC<TextAreaProps> = ({
-  value = '',
+  value: initialValue,
   onChange,
   placeholder = '',
   disabled = false,
@@ -13,43 +14,68 @@ const TextArea: React.FC<TextAreaProps> = ({
   autoFocus = false,
   readOnly = false,
   className = '',
+  label,
+  isRequired = false,
+  requiredErrorMessage,
+  validationErrorMessage,
+  pattern,
   id,
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledby,
   charCountWarningThreshold = 10,
+  validationOnFocus = false,
 }) => {
-  const [text, setText] = useState(value);
+  const [text, setText] = useState(initialValue || '');
+  const [error, setError] = useState('');
   const remainingChars = maxLength ? maxLength - text.length : 0;
 
-  useEffect(() => {
-    setText(value);
-  }, [value]);
+  const validateInput = useCallback(
+    (value: string) => {
+      if (isRequired && !value)
+        return requiredErrorMessage || 'This field is required.';
+      if (pattern && !new RegExp(pattern).test(value))
+        return validationErrorMessage || 'Invalid input.';
+    },
+    [isRequired, pattern, requiredErrorMessage, validationErrorMessage]
+  );
 
-  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = event.target.value;
-    if (maxLength && newValue.length > maxLength) return;
-
-    setText(newValue);
-    onChange?.(event);
-  };
+  const handleTextChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+      if (maxLength && newValue.length > maxLength) return;
+      const errorMessage = validateInput(newValue);
+      setError(errorMessage || '');
+      setText(newValue);
+      onChange?.(event);
+    },
+    [onChange, validateInput, maxLength]
+  );
 
   return (
     <div className="relative">
+      {label && (
+        <Label className="mb-2 block text-atom-input-text" htmlFor={label}>
+          {label}
+          {isRequired && <span className="ml-1 text-error">*</span>}
+        </Label>
+      )}
       <textarea
         id={id}
         value={text}
         onChange={handleTextChange}
+        onFocus={validationOnFocus ? handleTextChange : () => {}}
         placeholder={placeholder}
         disabled={disabled}
         maxLength={maxLength}
         rows={rows}
+        required={isRequired}
         cols={cols}
         autoFocus={autoFocus}
         readOnly={readOnly}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledby}
         aria-describedby={showCharCount ? `${id}-char-count` : undefined}
-        className={`h-36 w-full rounded border border-atom-input/40 bg-atom-input-background px-4 py-2 text-atom-input-text placeholder:text-atom-input-text/30 hover:border-atom-input focus:border-atom-input focus:outline-none ${disabled && 'cursor-not-allowed opacity-50'} ${className}`}
+        className={`h-36 w-full rounded border border-atom-input/40 bg-atom-input-background px-4 py-2 text-atom-input-text placeholder:text-atom-input-text/30 hover:border-atom-input/80 focus:border-atom-input/80 focus:outline-none ${disabled && 'cursor-not-allowed opacity-50'} ${className}`}
       />
 
       {showCharCount && maxLength !== undefined && (
@@ -60,6 +86,7 @@ const TextArea: React.FC<TextAreaProps> = ({
           {text.length}/{maxLength}
         </div>
       )}
+      {error && <p className="mt-1 text-sm text-error">{error}</p>}
     </div>
   );
 };

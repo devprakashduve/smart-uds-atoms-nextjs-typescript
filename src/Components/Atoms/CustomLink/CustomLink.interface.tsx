@@ -7,4 +7,5 @@ export interface CustomLinkProps {
   underlineHover?: boolean;
   className?: string;
   onClick?: () => void;
+  rel?: string;
 }

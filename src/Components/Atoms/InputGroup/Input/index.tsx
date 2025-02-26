@@ -45,6 +45,9 @@ const Input: React.FC<InputProps> = ({
       case 'tel':
         defaultIcon = customIconName || 'phone';
         break;
+      case 'phone':
+        defaultIcon = customIconName || 'phone';
+        break;
       default:
         defaultIcon = customIconName || '';
         break;
@@ -106,7 +109,7 @@ const Input: React.FC<InputProps> = ({
 
   // Merge classes for the input element
   const inputClass = classNames(
-    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border hover:border-atom-input/40 focus:border-atom-input/50' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
+    `w-full bg-atom-input-background ${isBorder !== false ? !disabled && 'border border-atom-input/40  hover:border-atom-input/80 focus:border-atom-input/80' : ''} placeholder-atom-input-text/40 text-atom-input-text   rounded-input transition duration-300 ease focus:outline-none`,
     className,
     size === 'sm' && 'py-1 px-2',
     size === 'md' && 'py-2 px-3',
@@ -118,7 +121,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="relative w-full">
       {label && (
-        <Label className="mb-2 block text-atom-input-text" htmlFor={name}>
+        <Label className="mb-2" htmlFor={name}>
           {label}
           {isRequired && <span className="ml-1 text-error">*</span>}
         </Label>
@@ -137,7 +140,7 @@ const Input: React.FC<InputProps> = ({
           required={isRequired}
           autoComplete={autoComplete}
           maxLength={maxLength}
-          className={`${inputClass} ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+          className={`${inputClass} ${disabled ? 'cursor-not-allowed border border-atom-input-text/10 bg-atom-input-text/10 opacity-80' : 'cursor-pointer'}`}
         />
         {showIcon && (
           <span
@@ -151,11 +154,19 @@ const Input: React.FC<InputProps> = ({
             }}
           >
             {customIconSVG ? (
-              <Icon name={''} variant="outline">
+              <Icon
+                name={''}
+                variant="outline"
+                className="bg-atom-input-background p-1"
+              >
                 {customIconSVG}
               </Icon>
             ) : (
-              <Icon name={iconName} variant="outline" />
+              <Icon
+                name={iconName}
+                variant="outline"
+                className="bg-atom-input-background p-0.5"
+              />
             )}
           </span>
         )}

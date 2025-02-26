@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface TextAreaProps {
+  name?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
@@ -16,4 +17,10 @@ export interface TextAreaProps {
   'aria-label'?: string;
   'aria-labelledby'?: string;
   charCountWarningThreshold?: number;
+  label?: string;
+  isRequired?: boolean;
+  requiredErrorMessage?: string;
+  validationErrorMessage?: string;
+  pattern?: string;
+  validationOnFocus?: boolean;
 }
