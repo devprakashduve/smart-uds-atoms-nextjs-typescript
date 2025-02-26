@@ -3,6 +3,7 @@ import { Meta, StoryFn } from '@storybook/react';
 import ContactTemplate from '.';
 import { ContactTemplateProps } from './ContactTemplateProps.interface';
 import { formDataProps } from '@/Components/Organisms/ContactForm/ContactForm.interface';
+import { TextAreaProps } from '@/Components/Atoms/InputGroup/TextArea/TextAreaProps.interface';
 
 export default {
   title: 'Components/Templates/ContactTemplate',
@@ -103,8 +104,26 @@ const ContactFormTempData = {
     email: 'example@example.com',
     address: '123 Example Street, Example City, EX 12345',
   },
+  textAreaData: [
+    {
+      id: 'message',
+      name: 'message',
+      label: 'Message',
+      autoComplete: 'off',
+      value: '',
+      type: 'textarea',
+      showIcon: false,
+      placeholder: 'Enter your message',
+      isRequired: true,
+      requiredErrorMessage: 'Message is required',
+      validationOnFocus: true,
+    },
+  ],
   submitButtonText: 'Submit',
-  onSubmit: (data: formDataProps[]) => console.log('Submitted Data:', data),
+  onSubmit: (data: {
+    formData: formDataProps[];
+    textAreaData: TextAreaProps[];
+  }) => console.log('Submitted Data:', data),
 };
 
 export const DefaultContactTemplate = Template.bind({});

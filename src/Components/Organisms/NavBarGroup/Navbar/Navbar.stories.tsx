@@ -12,7 +12,8 @@ const Template: StoryFn<typeof Navbar> = (args) => <Navbar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  logo: '/images/avatar.jpg', // Custom logo URL
+  logo: '/images/avatar.jpg',
+  altText: 'User Avatar', // Added altText
   links: [
     { name: 'Dashboard', href: '/dashboard' },
     { name: 'Profile', href: '/profile' },
@@ -23,7 +24,8 @@ Default.args = {
 
 export const NavBarWithDropdown = Template.bind({});
 NavBarWithDropdown.args = {
-  logo: '/images/avatar.jpg', // Dropdown logo URL
+  logo: '/images/avatar.jpg',
+  altText: 'Dropdown Avatar', // Added altText
   links: [
     { name: 'Home', href: '/' },
     {

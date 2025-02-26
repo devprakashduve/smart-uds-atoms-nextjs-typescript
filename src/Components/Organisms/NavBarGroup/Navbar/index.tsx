@@ -3,27 +3,11 @@ import Icon from '@/Components/Atoms/Icon';
 import CustomLink from '@/Components/Atoms/CustomLink';
 import React, { useState } from 'react';
 import UDSImage from '@/Components/Atoms/Image';
-
-interface CustomLink {
-  name: string;
-  href: string;
-  subCustomLinks?: CustomLink[];
-}
-
-interface NavbarProps {
-  logo: string;
-  links: CustomLink[];
-}
-
-interface DropdownMenuProps {
-  isOpen: boolean;
-  subCustomLinks: CustomLink[];
-}
-
-interface MobileMenuProps {
-  isOpen: boolean;
-  links: CustomLink[];
-}
+import {
+  DropdownMenuProps,
+  MobileMenuProps,
+  NavbarProps,
+} from './NavbarProps.interface';
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({
   isOpen,
@@ -86,7 +70,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, links }) => {
   return Elements;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ logo, links }) => {
+const Navbar: React.FC<NavbarProps> = ({ logo, altText, links }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeCustomLink, setActiveCustomLink] = useState<string | null>(null);
@@ -105,7 +89,8 @@ const Navbar: React.FC<NavbarProps> = ({ logo, links }) => {
           {/* Logo Section */}
           <div className="flex items-center">
             <CustomLink href="/" className="text-2xl font-bold">
-              <UDSImage src={logo} alt="Logo" className="h-8 w-auto" />
+              <UDSImage src={logo} alt={altText} className="h-8 w-auto" />{' '}
+              {/* Updated to use altText */}
             </CustomLink>
           </div>
 

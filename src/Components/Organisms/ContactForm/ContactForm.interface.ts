@@ -1,7 +1,8 @@
 import { ContactInformationProps } from '../ContactInformation/types';
+import { TextAreaProps } from '@/Components/Atoms/InputGroup/TextArea/TextAreaProps.interface';
 
 export interface formDataProps {
-  id: string;
+  id?: string;
   name: string;
   label: string;
   autoComplete: string;
@@ -11,11 +12,16 @@ export interface formDataProps {
   placeholder: string;
   isRequired: boolean;
   requiredErrorMessage: string;
-  validationOnFocus: boolean; // Added validationOnFocus property
+  validationOnFocus: boolean;
 }
+
 export interface ContactFormProps {
   formData: formDataProps[];
-  submitButtonText?: string;
+  textAreaData: TextAreaProps[];
+  submitButtonText: string;
   contactInfo?: ContactInformationProps;
-  onSubmit: (value: formDataProps[]) => void;
+  onSubmit: (data: {
+    formData: formDataProps[];
+    textAreaData: TextAreaProps[];
+  }) => void;
 }
