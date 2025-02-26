@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import ContactTemplate from '.';
 import { ContactTemplateProps } from './ContactTemplateProps.interface';
+import { formDataProps } from '@/Components/Organisms/ContactForm/ContactForm.interface';
 
 export default {
   title: 'Components/Templates/ContactTemplate',
@@ -103,7 +104,7 @@ const ContactFormTempData = {
     address: '123 Example Street, Example City, EX 12345',
   },
   submitButtonText: 'Submit',
-  onSubmit: (data: any) => console.log('Submitted Data:', data),
+  onSubmit: (data: formDataProps[]) => console.log('Submitted Data:', data),
 };
 
 export const DefaultContactTemplate = Template.bind({});
