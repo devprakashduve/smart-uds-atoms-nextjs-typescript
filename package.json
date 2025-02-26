@@ -49,13 +49,13 @@
     "next-uds"
   ],
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "@heroicons/react": "^2.2.0",
     "@storybook/addon-links": "^8.5.8",
     "@storybook/addon-mdx-gfm": "^8.5.8",
     "ajv": "^8.17.1",
-    "enzyme": "^3.11.0"
+    "enzyme": "^3.11.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
