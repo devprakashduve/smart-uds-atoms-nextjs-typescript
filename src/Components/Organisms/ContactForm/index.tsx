@@ -1,5 +1,3 @@
-'use client';
-
 import Input from '@/Components/Atoms/InputGroup/Input';
 import TextArea from '@/Components/Atoms/InputGroup/TextArea';
 import { useState } from 'react';
