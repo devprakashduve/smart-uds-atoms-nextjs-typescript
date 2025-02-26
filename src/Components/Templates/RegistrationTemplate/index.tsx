@@ -6,7 +6,6 @@ import { RegistrationTemplateProps } from './RegistrationTemplate.interface';
 export default function RegistrationTemplate({
   inputFields,
   error: initialError,
-  setError: propSetError,
   handleSubmit: propHandleSubmit,
   title,
   registerButtonText,

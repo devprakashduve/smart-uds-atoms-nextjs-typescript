@@ -4,7 +4,7 @@ import RegistrationTemplate from './index';
 import { InputFieldProps } from './RegistrationTemplate.interface';
 
 export default {
-  title: 'Templates/RegistrationTemplate',
+  title: 'Components/Templates/RegistrationTemplate',
   component: RegistrationTemplate,
 } as Meta<typeof RegistrationTemplate>;
 

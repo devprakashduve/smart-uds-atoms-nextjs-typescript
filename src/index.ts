@@ -57,6 +57,7 @@ import ContactForm from './Components/Organisms/ContactForm';
 import ContactInformation from './Components/Organisms/ContactInformation';
 import ContactTemplate from './Components/Templates/ContactTemplate';
 import LoginTemplate from './Components/Templates/LoginTemplate';
+import RegistrationTemplate from './Components/Templates/RegistrationTemplate';
 
 export {
   Avatar,
@@ -118,4 +119,5 @@ export {
   ContactInformation,
   ContactTemplate,
   LoginTemplate,
+  RegistrationTemplate,
 };
