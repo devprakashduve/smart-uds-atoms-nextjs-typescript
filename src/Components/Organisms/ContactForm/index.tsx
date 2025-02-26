@@ -1,5 +1,3 @@
-'use client';
-
 import Input from '@/Components/Atoms/InputGroup/Input';
 import TextArea from '@/Components/Atoms/InputGroup/TextArea';
 import { useState } from 'react';
@@ -91,8 +89,8 @@ export default function ContactForm({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit?.({
-      formData: formData.map(({ id, ...rest }) => rest),
-      textAreaData: textAreaData.map(({ id, ...rest }) => rest),
+      formData: formData.map(({ ...rest }) => rest),
+      textAreaData: textAreaData.map(({ ...rest }) => rest),
     });
   };
 
