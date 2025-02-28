@@ -48,12 +48,13 @@ const Checkbox = ({
         <input
           ref={inputRef}
           id={inputId}
+          name={name}
           title={setTitle}
           type="checkbox"
           checked={isChecked}
           onChange={() => {
             setIsChecked(!isChecked);
-            toggleChecked(!isChecked);
+            toggleChecked?.(!isChecked);
           }}
           disabled={disabled}
           className={`peer appearance-none rounded-checkbox border border-atom-input/40 bg-atom-input-background/40 shadow transition-all checked:bg-atom-input-background hover:border-atom-input hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input' : ''}`}

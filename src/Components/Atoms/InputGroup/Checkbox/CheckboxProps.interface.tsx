@@ -1,6 +1,6 @@
 export interface CheckboxProps {
   checked: boolean;
-  toggleChecked: (checked: boolean) => void;
+  toggleChecked?: (checked: boolean) => void;
   label: string;
   size?: 'sm' | 'md' | 'lg';
   title?: string;
