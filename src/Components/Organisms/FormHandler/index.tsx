@@ -40,7 +40,9 @@ const FormHandler: React.FC<FormHandlerProps> = ({
         isRequired={field.isRequired}
         requiredErrorMessage={field.requiredErrorMessage}
         validationOnFocus={field.validationOnFocus}
+        disablePasswordHint={field.disablePasswordHint}
         onChange={field.onChange}
+        size={field.size}
         maxLength={field.type === 'phone' ? 17 : 50}
       />
     ));
