@@ -4,7 +4,7 @@ import ContactForm from '.';
 import { ContactFormProps } from './ContactForm.interface';
 
 export default {
-  title: 'Components/Organisms/ContactForm',
+  title: 'Components/Templates/ContactForm',
   component: ContactForm,
 } as Meta;
 
@@ -12,6 +12,8 @@ const Template: StoryFn<ContactFormProps> = (args) => <ContactForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  pageTitle: 'Let’s Make Something Great Together!',
+  pageSubTitle: 'Let’s Connect – Drop Us a Message',
   formHandlerData: {
     inputFields: [
       {
@@ -100,6 +102,7 @@ Default.args = {
     className: 'gap-8',
   },
   contactInfo: {
+    title: 'Contact details',
     email: {
       emailLabel: 'Email',
       emailAddress: 'contact@example.com',
