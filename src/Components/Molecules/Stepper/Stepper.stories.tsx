@@ -75,8 +75,6 @@ export const TwoSteps = {
     value: 1,
     showCounter: true,
     orientation: 'horizontal',
-    prevButtonText: 'Previous',
-    nextButtonText: 'Next',
   },
 };
 
@@ -86,7 +84,7 @@ export const FiveSteps = {
     value: 1,
     showCounter: true,
     orientation: 'horizontal',
-    prevButtonText: 'Previous',
+
     nextButtonText: 'Next',
   },
 };
@@ -98,7 +96,6 @@ export const WithoutCounter = {
     showCounter: false,
     orientation: 'horizontal',
     prevButtonText: 'Previous',
-    nextButtonText: 'Next',
   },
 };
 
@@ -108,8 +105,6 @@ export const VerticalStepper = {
     value: 2,
     showCounter: true,
     orientation: 'vertical',
-    prevButtonText: 'Previous',
-    nextButtonText: 'Next',
   },
 };
 

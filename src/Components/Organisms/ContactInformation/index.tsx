@@ -1,11 +1,9 @@
 import React from 'react';
 import { ContactInformationProps } from './types';
+import CustomLink from '@/Components/Atoms/CustomLink';
 
 const ContactInformation: React.FC<ContactInformationProps> = ({
   title,
-  phoneLabel,
-  emailLabel,
-  addressLabel,
   phone,
   email,
   address,
@@ -16,22 +14,22 @@ const ContactInformation: React.FC<ContactInformationProps> = ({
       <ul className="mt-4 space-y-2 text-lg">
         {phone && (
           <li>
-            <strong>{phoneLabel}:</strong> {phone}
+            <strong>{phone.phoneLabel}:</strong> {phone.phoneNumber}
           </li>
         )}
 
         {email && (
           <li>
-            <strong>{emailLabel}:</strong>
-            <a target="_blank" href={`mailto:${email}`}>
-              {email}
-            </a>
+            <strong>{email.emailLabel}:</strong>
+            <CustomLink target="_blank" href={`mailto:${email.emailAddress}`}>
+              {email.emailAddress}
+            </CustomLink>
           </li>
         )}
 
         {address && (
           <li>
-            <strong>{addressLabel}:</strong> {address}
+            <strong>{address.addressLabel}:</strong> {address.AddressDetails}
           </li>
         )}
       </ul>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SelectProps } from './SelectProps.interface';
+import Label from '../../Label';
 
 const sizeClasses = {
   sm: 'py-1.5 pl-2 pr-6 text-sm',
@@ -25,6 +26,8 @@ const Select: React.FC<SelectProps> = ({
   placeholder = 'Select an option',
   className = '',
   onChange,
+  name,
+  id,
 }) => {
   const [internalValue, setInternalValue] = useState(value || defaultValue);
   const [isTouched, setIsTouched] = useState(false);
@@ -49,23 +52,19 @@ const Select: React.FC<SelectProps> = ({
   return (
     <div className={`min-w-[200px] ${className}`}>
       {label && (
-        <label
-          htmlFor="select-input"
-          className={`text-atom-input-text-default mb-1 block font-medium ${
-            size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base'
-          }`}
-        >
+        <Label className="mb-2" htmlFor={id || name || label}>
           {label}
           {required && <span className="ml-1 text-error">*</span>}
-        </label>
+        </Label>
       )}
 
       <div className="relative">
         <select
-          id="select-input"
+          id={id}
           required={required}
           disabled={disabled || !hasOptions}
           value={internalValue}
+          name={name}
           onChange={handleChange}
           className={`w-full appearance-none rounded-input border transition-all ${sizeClasses[size]} ${
             disabled || !hasOptions

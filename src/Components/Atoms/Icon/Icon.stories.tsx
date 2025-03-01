@@ -33,6 +33,8 @@ const iconOptions = [
   'chevronUp',
   'chevronDown',
   'arrowUpRight',
+  'lockClosed',
+  'lockOpen',
 ];
 
 export default {

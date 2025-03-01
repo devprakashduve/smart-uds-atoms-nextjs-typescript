@@ -2,15 +2,15 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Checkbox from '.';
 
 describe('Checkbox Component', () => {
-  const mockToggle = jest.fn();
+  const mockOnChange = jest.fn(); // Renamed from mockToggle
   const baseProps = {
     name: 'test-checkbox',
     label: 'Test Checkbox',
-    toggleChecked: mockToggle,
+    onChange: mockOnChange, // Renamed from toggleChecked
   };
 
   beforeEach(() => {
-    mockToggle.mockClear();
+    mockOnChange.mockClear(); // Renamed from mockToggle
   });
 
   it('renders with default props', () => {
@@ -24,7 +24,7 @@ describe('Checkbox Component', () => {
     const checkbox = screen.getByRole('checkbox');
     fireEvent.click(checkbox);
     expect(checkbox).toBeChecked();
-    expect(mockToggle).toHaveBeenCalledWith(true);
+    expect(mockOnChange).toHaveBeenCalledWith(true); // Renamed from mockToggle
   });
 
   it('displays checkmark when checked', () => {
@@ -77,6 +77,6 @@ describe('Checkbox Component', () => {
     render(<Checkbox checked={false} {...baseProps} disabled={true} />);
     const label = screen.getByText(baseProps.label);
     fireEvent.click(label);
-    expect(mockToggle).not.toHaveBeenCalled();
+    expect(mockOnChange).not.toHaveBeenCalled(); // Renamed from mockToggle
   });
 });

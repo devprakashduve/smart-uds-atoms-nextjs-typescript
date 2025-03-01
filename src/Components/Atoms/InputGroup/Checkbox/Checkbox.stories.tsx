@@ -12,7 +12,7 @@ export default {
 export const Checked = {
   args: {
     checked: true,
-    toggleChecked: (value: boolean) => console.log(value),
+    onChange: (value: boolean) => console.log(value),
     label: 'Checked State',
   },
 };
@@ -20,7 +20,7 @@ export const Checked = {
 export const Unchecked = {
   args: {
     checked: false,
-    toggleChecked: (value: boolean) => console.log(value),
+    onChange: (value: boolean) => console.log(value),
     label: 'Unchecked State',
   },
 };
@@ -30,7 +30,7 @@ export const SmallSize = {
     checked: true,
     size: 'sm',
     label: 'Small Checkbox',
-    toggleChecked: (value: boolean) => console.log(value),
+    onChange: (value: boolean) => console.log(value),
   },
 };
 
@@ -39,7 +39,7 @@ export const Disabled = {
     checked: false,
     label: 'Disabled Checkbox',
     disabled: true,
-    toggleChecked: (value: boolean) => console.log(value),
+    onChange: (value: boolean) => console.log(value),
   },
 };
 
@@ -48,6 +48,7 @@ export const WithCustomTitle = {
     checked: true,
     title: 'Custom Tooltip Text',
     label: 'Hover to see tooltip',
+    onChange: (value: boolean) => console.log(value),
   },
 };
 
@@ -61,21 +62,21 @@ export const Comparison = {
           size="sm"
           label="Small (sm)"
           checked
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
         <Checkbox
           name="size-md"
           size="md"
           label="Medium (md)"
           checked
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
         <Checkbox
           name="size-lg"
           size="lg"
           label="Large (lg)"
           checked
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
       </div>
 
@@ -85,27 +86,27 @@ export const Comparison = {
           name="state-checked"
           label="Checked"
           checked
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
         <Checkbox
           name="state-unchecked"
           label="Unchecked"
           checked={false}
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
         <Checkbox
           name="state-disabled"
           label="Disabled Checked"
           checked
           disabled
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
         <Checkbox
           name="state-disabled-unchecked"
           label="Disabled Unchecked"
           checked={false}
           disabled
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
       </div>
 
@@ -115,14 +116,14 @@ export const Comparison = {
           label="Default Tooltip"
           checked
           title="This is the default tooltip"
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
         <Checkbox
           name="tooltip-custom"
           label="Custom Tooltip"
           checked
           title="Custom help message"
-          toggleChecked={(value: boolean) => console.log(value)}
+          onChange={(value: boolean) => console.log(value)}
         />
       </div>
       <Checkbox
@@ -130,7 +131,7 @@ export const Comparison = {
         label="Large Unchecked"
         size="lg"
         checked={false}
-        toggleChecked={(value: boolean) => console.log(value)}
+        onChange={(value: boolean) => console.log(value)}
       />
       <Checkbox
         name="mixed-2"
@@ -138,7 +139,7 @@ export const Comparison = {
         size="md"
         checked
         disabled
-        toggleChecked={(value: boolean) => console.log(value)}
+        onChange={(value: boolean) => console.log(value)}
       />
       <Checkbox
         name="mixed-3"
@@ -146,7 +147,7 @@ export const Comparison = {
         size="sm"
         checked
         title="Small checkbox tooltip"
-        toggleChecked={(value: boolean) => console.log(value)}
+        onChange={(value: boolean) => console.log(value)}
       />
     </div>
   ),

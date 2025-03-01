@@ -9,8 +9,8 @@ const Stepper = ({
   showCounter = false,
   size = 'lg',
   orientation = 'horizontal',
-  prevButtonText = 'Prev',
-  nextButtonText = 'Next',
+  prevButtonText,
+  nextButtonText,
 }: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(value);
 
@@ -73,17 +73,21 @@ const Stepper = ({
           </div>
         ))}
       </div>
-      {nextButtonText && prevButtonText && (
+      {(nextButtonText || prevButtonText) && (
         <div
           className={`mt-16 flex ${orientation === 'vertical' ? 'flex-col' : 'justify-between'} max-w-sm items-center gap-2`}
         >
-          <Button onClick={handlePrev} disabled={currentStep === 1}>
-            {prevButtonText}
-          </Button>
+          {prevButtonText && (
+            <Button onClick={handlePrev} disabled={currentStep === 1}>
+              {prevButtonText}
+            </Button>
+          )}
 
-          <Button onClick={handleNext} disabled={currentStep === steps}>
-            {nextButtonText}
-          </Button>
+          {nextButtonText && (
+            <Button onClick={handleNext} disabled={currentStep === steps}>
+              {nextButtonText}
+            </Button>
+          )}
         </div>
       )}
     </div>

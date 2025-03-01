@@ -28,13 +28,21 @@ ProgressBar Visual progress indicator value, max, variant (linear/circular)
 
 # Setup
 
-# step:1- npm i atomic-uds-next-app
+# step 1:
 
-# step:2- npm i @heroicons/react ajv enzyme next react react-dom
+npm i atomic-uds-next-app
 
-# step:3- replace your tailwind.config.ts with https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/tailwind.config.ts
+# step 2:
 
-# step:4- replace https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/src/app/globals.css
+npm i @heroicons/react ajv enzyme next react react-dom
+
+# step 3:
+
+replace your tailwind.config.ts with https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/tailwind.config.ts
+
+# step 4:
+
+replace https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/src/app/globals.css
 
 you can start using components
 

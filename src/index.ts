@@ -53,11 +53,10 @@ import SocialPostCard from './Components/Molecules/CardsGroup/SocialPostCard';
 import StatsCard from './Components/Molecules/CardsGroup/StatsCard';
 import TeamMemberCard from './Components/Molecules/CardsGroup/TeamMemberCard';
 import TestimonialCard from './Components/Molecules/CardsGroup/TestimonialCard';
-import ContactForm from './Components/Organisms/ContactForm';
 import ContactInformation from './Components/Organisms/ContactInformation';
-import ContactTemplate from './Components/Templates/ContactTemplate';
-import LoginTemplate from './Components/Templates/LoginTemplate';
-import RegistrationTemplate from './Components/Templates/RegistrationTemplate';
+import ContactForm from './Components/Templates/ContactForm';
+import LoginForm from './Components/Templates/LoginForm';
+import RegistrationForm from './Components/Templates/RegistrationForm';
 
 export {
   Avatar,
@@ -115,9 +114,8 @@ export {
   StatsCard,
   TeamMemberCard,
   TestimonialCard,
-  ContactForm,
   ContactInformation,
-  ContactTemplate,
-  LoginTemplate,
-  RegistrationTemplate,
+  ContactForm,
+  LoginForm,
+  RegistrationForm,
 };
