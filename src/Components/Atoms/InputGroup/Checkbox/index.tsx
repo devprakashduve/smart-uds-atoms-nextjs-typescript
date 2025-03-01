@@ -2,28 +2,23 @@ import React, { useEffect, useState, useRef } from 'react';
 import { CheckboxProps } from './CheckboxProps.interface';
 import Icon from '../../Icon';
 
+const sizeMappings = {
+  sm: { box: 'h-4 w-4', text: 'text-sm' },
+  md: { box: 'h-6 w-6', text: 'text-base' },
+  lg: { box: 'h-8 w-8', text: 'text-lg' },
+};
+
 const Checkbox = ({
   checked,
   label,
-  toggleChecked,
+  onChange, // Renamed from toggleChecked
   size = 'md',
   title,
   name,
   disabled = false,
   indeterminate = false,
 }: CheckboxProps) => {
-  const { [size]: boxSize } = {
-    sm: 'h-4 w-4',
-    md: 'h-6 w-6',
-    lg: 'h-8 w-8',
-  };
-
-  const { [size]: textSize } = {
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg',
-  };
-
+  const { box: boxSize, text: textSize } = sizeMappings[size];
   const inputRef = useRef<HTMLInputElement>(null);
   const setTitle = title || name;
   const inputId = `${name}-checkbox`;
@@ -39,6 +34,12 @@ const Checkbox = ({
     }
   }, [indeterminate]);
 
+  const handleChange = () => {
+    const newChecked = !isChecked;
+    setIsChecked(newChecked);
+    onChange?.(newChecked); // Renamed from toggleChecked
+  };
+
   return (
     <div
       data-testid="checkmark-icon"
@@ -52,10 +53,7 @@ const Checkbox = ({
           title={setTitle}
           type="checkbox"
           checked={isChecked}
-          onChange={() => {
-            setIsChecked(!isChecked);
-            toggleChecked?.(!isChecked);
-          }}
+          onChange={handleChange}
           disabled={disabled}
           className={`peer appearance-none rounded-checkbox border border-atom-input/40 bg-atom-input-background/40 shadow transition-all checked:bg-atom-input-background hover:border-atom-input hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input' : ''}`}
           aria-labelledby={`${inputId}-label`}
@@ -69,7 +67,7 @@ const Checkbox = ({
             <Icon
               name={'check'}
               variant={'outline'}
-              className={`${boxSize} text-atom-input-text`}
+              className={`${boxSize} text-atom-input`}
             />
           )}
         </span>
