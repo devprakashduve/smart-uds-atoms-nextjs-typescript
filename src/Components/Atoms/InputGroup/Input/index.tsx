@@ -125,7 +125,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div className="relative w-full">
       {label && (
-        <Label className="mb-2" htmlFor={name}>
+        <Label className="mb-2" htmlFor={id || name || label}>
           {label}
           {isRequired && <span className="ml-1 text-error">*</span>}
         </Label>
