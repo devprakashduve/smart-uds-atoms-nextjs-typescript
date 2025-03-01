@@ -21,6 +21,8 @@ import {
   ArrowUpRightIcon as OutlineArrowUpRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  LockClosedIcon as OutlineLockClosedIcon,
+  LockOpenIcon as OutlineLockOpenIcon,
 } from '@heroicons/react/24/outline';
 import {
   MagnifyingGlassIcon as SolidSearchIcon,
@@ -40,6 +42,8 @@ import {
   Bars3Icon as SolidBars3Icon,
   ArrowRightIcon as SolidArrowRightIcon,
   ArrowUpRightIcon as SolidArrowUpRightIcon,
+  LockClosedIcon as SolidLockClosedIcon,
+  LockOpenIcon as SolidLockOpenIcon,
 } from '@heroicons/react/24/solid';
 
 import {
@@ -88,6 +92,8 @@ const iconMap = {
     arrowUpRight: OutlineArrowUpRightIcon,
     chevronUp: ChevronUpIcon,
     chevronDown: ChevronDownIcon,
+    lockClosed: OutlineLockClosedIcon,
+    lockOpen: OutlineLockOpenIcon,
   },
   solid: {
     search: SolidSearchIcon,
@@ -111,13 +117,15 @@ const iconMap = {
     arrowRight: SolidArrowRightIcon,
     arrowUpRight: SolidArrowUpRightIcon,
     chevronUp: ChevronUpIcon,
+    lockClosed: SolidLockClosedIcon,
+    lockOpen: SolidLockOpenIcon,
   },
 };
 
 const Icon: React.FC<IconProps> = ({
   name,
   variant = 'outline',
-  className = 'right-3',
+  className = ' h-6 ',
   children,
 }) => {
   const iconClass = classNames(
@@ -128,7 +136,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'facebook') {
     return (
       <svg
-        className="h-6"
+        className={`${iconClass}`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -147,7 +155,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'twitter') {
     return (
       <svg
-        className="h-6"
+        className={`${iconClass}`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -166,7 +174,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'instagram') {
     return (
       <svg
-        className="h-6"
+        className={`${iconClass}`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -185,7 +193,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'youtube') {
     return (
       <svg
-        className="h-6"
+        className={`${iconClass}`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -207,9 +215,7 @@ const Icon: React.FC<IconProps> = ({
 
   if (!IconComponent) return null;
 
-  return (
-    <IconComponent className={`h-6 ${iconClass}`}>{children}</IconComponent>
-  );
+  return <IconComponent className={`${iconClass}`}>{children}</IconComponent>;
 };
 
 export default Icon;

@@ -10,5 +10,5 @@ export interface FormHandlerProps {
   btnText: string;
   onSubmit: (data: object) => void;
   validationOnFocus?: boolean;
-  className: string;
+  className?: string;
 }

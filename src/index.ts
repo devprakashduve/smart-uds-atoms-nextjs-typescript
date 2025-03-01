@@ -54,9 +54,8 @@ import StatsCard from './Components/Molecules/CardsGroup/StatsCard';
 import TeamMemberCard from './Components/Molecules/CardsGroup/TeamMemberCard';
 import TestimonialCard from './Components/Molecules/CardsGroup/TestimonialCard';
 import ContactInformation from './Components/Organisms/ContactInformation';
-import LoginTemplate from './Components/Templates/LoginTemplate';
-import RegistrationTemplate from './Components/Templates/RegistrationTemplate';
 import ContactForm from './Components/Templates/ContactForm';
+import LoginForm from './Components/Templates/LoginForm';
 
 export {
   Avatar,
@@ -116,6 +115,5 @@ export {
   TestimonialCard,
   ContactInformation,
   ContactForm,
-  LoginTemplate,
-  RegistrationTemplate,
+  LoginForm,
 };

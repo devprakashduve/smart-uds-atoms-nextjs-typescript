@@ -160,7 +160,7 @@ const Input: React.FC<InputProps> = ({
               <Icon
                 name=""
                 variant="outline"
-                className="bg-atom-input-background p-1"
+                className="h-6 bg-atom-input-background p-1"
               >
                 {customIconSVG}
               </Icon>
@@ -168,7 +168,7 @@ const Input: React.FC<InputProps> = ({
               <Icon
                 name={iconName}
                 variant="outline"
-                className="bg-atom-input-background p-0.5"
+                className="h-6 bg-atom-input-background p-0.5"
               />
             )}
           </span>
