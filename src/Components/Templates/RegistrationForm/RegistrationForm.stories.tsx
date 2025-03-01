@@ -103,7 +103,7 @@ Default.args = {
     ],
     btnText: 'Register',
     onSubmit: (data) => {
-      console.log('Form submitted:', data);
+      console.log(data);
     },
     className: '',
   },
