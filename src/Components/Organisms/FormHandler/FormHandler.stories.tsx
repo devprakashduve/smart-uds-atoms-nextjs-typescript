@@ -62,10 +62,23 @@ Default.args = {
       },
     },
   ],
-  fieldOrder: ['input', 'textarea', 'checkbox'],
-  btnText: 'Submit',
-
-  onSubmit: (data) => {
-    console.log('Form submitted:', data);
-  },
+  selectFields: [
+    {
+      options: [
+        { value: '', label: 'Select an option' },
+        { value: 'option1', label: 'Option 1' },
+        { value: 'option2', label: 'Option 2' },
+        { value: 'option3', label: 'Option 3' },
+      ],
+      label: 'Basic Select',
+      defaultValue: '',
+      size: 'md',
+      disabled: false,
+      required: false,
+      error: false,
+      name: 'gender',
+      type: 'select',
+      placeholder: 'Select your gender',
+    },
+  ],
 };

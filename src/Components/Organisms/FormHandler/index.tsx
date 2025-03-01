@@ -7,12 +7,15 @@ import { FormHandlerProps } from './FormHandler.interface';
 import Checkbox from '../../../Components/Atoms/InputGroup/Checkbox';
 import { CheckboxProps } from '../../../Components/Atoms/InputGroup/Checkbox/CheckboxProps.interface';
 import Button from '../../../Components/Atoms/Button';
+import Select from '../../../Components/Atoms/InputGroup/Select';
+import { SelectProps } from '../../../Components/Atoms/InputGroup/Select/SelectProps.interface';
 
 const FormHandler: React.FC<FormHandlerProps> = ({
   inputFields = [],
   textAreaFields = [],
   checkboxFields = [],
-  fieldOrder = ['input', 'textarea', 'checkbox'],
+  selectFields = [],
+  fieldOrder = ['input', 'textarea', 'select', 'checkbox'],
   btnText,
   onSubmit,
 
@@ -43,7 +46,7 @@ const FormHandler: React.FC<FormHandlerProps> = ({
         disablePasswordHint={field.disablePasswordHint}
         onChange={field.onChange}
         size={field.size}
-        maxLength={field.type === 'phone' ? 17 : 50}
+        maxLength={field.maxLength}
       />
     ));
 
@@ -66,9 +69,9 @@ const FormHandler: React.FC<FormHandlerProps> = ({
     ));
 
   const renderCheckboxFields = () =>
-    checkboxFields.map((field: CheckboxProps) => (
+    checkboxFields.map((field: CheckboxProps, index) => (
       <Checkbox
-        key={field.name}
+        key={index}
         name={field.name}
         label={field.label}
         checked={field.checked}
@@ -80,6 +83,11 @@ const FormHandler: React.FC<FormHandlerProps> = ({
       />
     ));
 
+  const renderSelectFields = () =>
+    selectFields?.map((field: SelectProps, index) => (
+      <Select key={index} {...field} />
+    ));
+
   return (
     <form onSubmit={handleSubmit} className={`grid gap-4 ${className}`}>
       {fieldOrder.map((fieldType) => {
@@ -88,6 +96,8 @@ const FormHandler: React.FC<FormHandlerProps> = ({
             return renderInputFields();
           case 'textarea':
             return renderTextAreaFields();
+          case 'select':
+            return renderSelectFields();
           case 'checkbox':
             return renderCheckboxFields();
           default:
