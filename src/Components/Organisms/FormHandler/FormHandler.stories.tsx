@@ -57,8 +57,8 @@ Default.args = {
       name: 'rememberMe',
       label: 'Remember Me',
       checked: false,
-      toggleChecked: function (checked: boolean): void {
-        throw new Error('Function not implemented.');
+      onChange: function (checked: boolean): void {
+        console.log(checked);
       },
     },
   ],

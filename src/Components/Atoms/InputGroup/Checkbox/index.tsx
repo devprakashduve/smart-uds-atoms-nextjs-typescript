@@ -9,7 +9,7 @@ const sizeMappings = {
 };
 
 const Checkbox = ({
-  checked,
+  checked = false,
   label,
   onChange, // Renamed from toggleChecked
   size = 'md',
@@ -55,7 +55,7 @@ const Checkbox = ({
           checked={isChecked}
           onChange={handleChange}
           disabled={disabled}
-          className={`peer appearance-none rounded-checkbox border border-atom-input/40 bg-atom-input-background/40 shadow transition-all checked:bg-atom-input-background hover:border-atom-input hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input' : ''}`}
+          className={`peer appearance-none rounded-checkbox border border-atom-input/40 bg-atom-input-background/40 shadow transition-all checked:bg-atom-input-background hover:border-atom-input/40 hover:shadow-md focus:outline-none ${boxSize} ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'} ${indeterminate ? 'indeterminate:bg-atom-input' : ''}`}
           aria-labelledby={`${inputId}-label`}
         />
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-atom-input-text/60 opacity-0 peer-checked:opacity-100 peer-indeterminate:opacity-100">
@@ -67,7 +67,7 @@ const Checkbox = ({
             <Icon
               name={'check'}
               variant={'outline'}
-              className={`${boxSize} text-atom-input`}
+              className={`${boxSize} text-atom-input/40`}
             />
           )}
         </span>
