@@ -78,7 +78,7 @@ const FormHandler: React.FC<FormHandlerProps> = ({
     ));
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4">
+    <form onSubmit={handleSubmit}>
       {fieldOrder.map((fieldType) => {
         switch (fieldType) {
           case 'input':
