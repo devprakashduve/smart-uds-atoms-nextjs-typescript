@@ -1,7 +1,9 @@
+import { ReactNode } from 'react';
+
 export interface CheckboxProps {
   checked: boolean;
   onChange?: (checked: boolean) => void; // Renamed from toggleChecked
-  label: string;
+  label: ReactNode;
   size?: 'sm' | 'md' | 'lg';
   title?: string;
   name: string;

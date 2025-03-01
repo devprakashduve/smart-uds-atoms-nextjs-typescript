@@ -1,0 +1,110 @@
+import React from 'react';
+import { StoryFn, Meta } from '@storybook/react';
+import RegistrationForm from '.';
+import Icon from '@/Components/Atoms/Icon';
+import CustomLink from '@/Components/Atoms/CustomLink';
+
+export default {
+  title: 'Components/Templates/RegistrationForm',
+  component: RegistrationForm,
+  tags: ['autodocs'],
+  argTypes: {
+    pageTitle: {
+      control: 'text',
+      description: 'Page title',
+    },
+    pageSubTitle: {
+      control: 'text',
+      description: 'Page subtitle',
+    },
+    formHandlerData: {
+      control: 'object',
+      description: 'Form handler data',
+    },
+  },
+} as Meta<typeof RegistrationForm>;
+
+const Template: StoryFn<typeof RegistrationForm> = (args) => (
+  <RegistrationForm {...args} />
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  pageTitle: <Icon name={'user'} variant={'outline'} className="h-16" />,
+  pageSubTitle: 'Please enter your registration details',
+  formHandlerData: {
+    inputFields: [
+      {
+        id: 'username',
+        name: 'username',
+        label: 'Username',
+        type: 'text',
+        value: '',
+        placeholder: 'Enter your username',
+        isRequired: true,
+        requiredErrorMessage: 'Username is required',
+        showIcon: true,
+        validationOnFocus: true,
+      },
+      {
+        id: 'email',
+        name: 'email',
+        label: 'Email',
+        type: 'email',
+        value: '',
+        placeholder: 'Enter your email',
+        isRequired: true,
+        requiredErrorMessage: 'Email is required',
+        showIcon: true,
+        validationOnFocus: true,
+      },
+      {
+        id: 'password',
+        name: 'password',
+        label: 'Password',
+        type: 'password',
+        value: '',
+        placeholder: 'Enter your password',
+        isRequired: true,
+        requiredErrorMessage: 'Password is required',
+        showIcon: true,
+        validationOnFocus: true,
+      },
+      {
+        id: 'confirmPassword',
+        name: 'confirmPassword',
+        label: 'Confirm Password',
+        type: 'password',
+        value: '',
+        placeholder: 'Confirm your password',
+        isRequired: true,
+        requiredErrorMessage: 'Confirm Password is required',
+        showIcon: true,
+        validationOnFocus: true,
+        disablePasswordHint: true,
+      },
+    ],
+    checkboxFields: [
+      {
+        name: 'rememberMe',
+        label: (
+          <span>
+            Agree with Term and condition
+            <CustomLink target="_blank" href="/term-condition" underline={true}>
+              Terms
+            </CustomLink>
+          </span>
+        ),
+        checked: false,
+        onChange: function (checked: boolean): void {
+          console.log(checked);
+        },
+      },
+    ],
+    btnText: 'Register',
+    onSubmit: (data) => {
+      console.log('Form submitted:', data);
+    },
+    className: '',
+  },
+};

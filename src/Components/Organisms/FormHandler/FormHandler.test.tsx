@@ -43,7 +43,6 @@ const defaultProps: FormHandlerProps = {
   fieldOrder: ['input', 'textarea', 'checkbox'],
   btnText: 'Submit',
   onSubmit: jest.fn(),
-  validationOnFocus: true,
   className: '',
 };
 

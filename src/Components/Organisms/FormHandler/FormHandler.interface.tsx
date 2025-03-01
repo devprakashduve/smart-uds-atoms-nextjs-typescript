@@ -9,6 +9,5 @@ export interface FormHandlerProps {
   fieldOrder?: Array<'input' | 'textarea' | 'checkbox'>;
   btnText: string;
   onSubmit: (data: object) => void;
-  validationOnFocus?: boolean;
   className?: string;
 }

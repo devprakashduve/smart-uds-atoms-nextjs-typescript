@@ -15,7 +15,7 @@ const FormHandler: React.FC<FormHandlerProps> = ({
   fieldOrder = ['input', 'textarea', 'checkbox'],
   btnText,
   onSubmit,
-  validationOnFocus,
+
   className,
 }) => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -39,7 +39,7 @@ const FormHandler: React.FC<FormHandlerProps> = ({
         placeholder={field.placeholder}
         isRequired={field.isRequired}
         requiredErrorMessage={field.requiredErrorMessage}
-        validationOnFocus={validationOnFocus}
+        validationOnFocus={field.validationOnFocus}
         onChange={field.onChange}
         maxLength={field.type === 'phone' ? 17 : 50}
       />
@@ -58,7 +58,7 @@ const FormHandler: React.FC<FormHandlerProps> = ({
         label={field.label}
         isRequired={field.isRequired || true}
         requiredErrorMessage={field.requiredErrorMessage}
-        validationOnFocus={validationOnFocus}
+        validationOnFocus={field.validationOnFocus}
         name={field.name}
       />
     ));
