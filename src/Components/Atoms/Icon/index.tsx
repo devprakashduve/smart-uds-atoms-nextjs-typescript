@@ -125,7 +125,7 @@ const iconMap = {
 const Icon: React.FC<IconProps> = ({
   name,
   variant = 'outline',
-  className = ' h-6 ',
+  className = '',
   children,
 }) => {
   const iconClass = classNames(
@@ -136,7 +136,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'facebook') {
     return (
       <svg
-        className={`${iconClass}`}
+        className={`min-h-6`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -155,7 +155,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'twitter') {
     return (
       <svg
-        className={`${iconClass}`}
+        className={`min-h-6`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -174,7 +174,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'instagram') {
     return (
       <svg
-        className={`${iconClass}`}
+        className={`min-h-6`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -193,7 +193,7 @@ const Icon: React.FC<IconProps> = ({
   if (name === 'youtube') {
     return (
       <svg
-        className={`${iconClass}`}
+        className={`min-h-6`}
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -215,7 +215,9 @@ const Icon: React.FC<IconProps> = ({
 
   if (!IconComponent) return null;
 
-  return <IconComponent className={`${iconClass}`}>{children}</IconComponent>;
+  return (
+    <IconComponent className={`min-h-6 ${iconClass}`}>{children}</IconComponent>
+  );
 };
 
 export default Icon;

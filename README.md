@@ -26,21 +26,21 @@ Chip Compact element for tags/filters label, onDelete, color
 Divider Horizontal/vertical separator orientation, thickness, color
 ProgressBar Visual progress indicator value, max, variant (linear/circular)
 
-# Setup
+# Configuration
 
-# step 1:
+# Step 1:
 
 npm i atomic-uds-next-app
 
-# step 2:
+# Step 2:
 
 npm i @heroicons/react ajv enzyme next react react-dom
 
-# step 3:
+# Step 3:
 
 replace your tailwind.config.ts with https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/tailwind.config.ts
 
-# step 4:
+# Step 4:
 
 replace https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript/blob/main/src/app/globals.css
 
