@@ -1,9 +1,6 @@
 export interface ContactInformationProps {
   title?: string;
-  phoneLabel?: string;
-  emailLabel: string;
-  addressLabel?: string;
-  phone?: string;
-  email: string;
-  address?: string;
+  phone?: { phoneLabel: string; phoneNumber: string };
+  email: { emailLabel: string; emailAddress: string };
+  address?: { addressLabel: string; AddressDetails: string };
 }

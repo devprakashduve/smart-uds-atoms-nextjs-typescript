@@ -64,7 +64,7 @@ Default.args = {
   ],
   fieldOrder: ['input', 'textarea', 'checkbox'],
   btnText: 'Submit',
-  validationOnFocus: true,
+
   onSubmit: (data) => {
     console.log('Form submitted:', data);
   },

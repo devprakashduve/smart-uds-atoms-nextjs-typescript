@@ -44,6 +44,7 @@ const defaultProps: FormHandlerProps = {
   btnText: 'Submit',
   onSubmit: jest.fn(),
   validationOnFocus: true,
+  className: '',
 };
 
 describe('FormHandler', () => {

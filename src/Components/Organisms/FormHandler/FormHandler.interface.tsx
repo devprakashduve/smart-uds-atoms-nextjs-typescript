@@ -6,8 +6,9 @@ export interface FormHandlerProps {
   inputFields?: InputProps[];
   textAreaFields?: TextAreaProps[];
   checkboxFields?: CheckboxProps[];
-  fieldOrder: Array<'input' | 'textarea' | 'checkbox'>;
+  fieldOrder?: Array<'input' | 'textarea' | 'checkbox'>;
   btnText: string;
   onSubmit: (data: object) => void;
   validationOnFocus?: boolean;
+  className: string;
 }

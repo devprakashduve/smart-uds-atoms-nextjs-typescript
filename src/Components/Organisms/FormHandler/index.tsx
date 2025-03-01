@@ -12,10 +12,11 @@ const FormHandler: React.FC<FormHandlerProps> = ({
   inputFields = [],
   textAreaFields = [],
   checkboxFields = [],
-  fieldOrder,
+  fieldOrder = ['input', 'textarea', 'checkbox'],
   btnText,
   onSubmit,
   validationOnFocus,
+  className,
 }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +79,7 @@ const FormHandler: React.FC<FormHandlerProps> = ({
     ));
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={`grid gap-4 ${className}`}>
       {fieldOrder.map((fieldType) => {
         switch (fieldType) {
           case 'input':

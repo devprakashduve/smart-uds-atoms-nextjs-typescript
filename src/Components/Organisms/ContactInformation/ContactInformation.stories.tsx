@@ -15,10 +15,10 @@ const Template: StoryFn<ContactInformationProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   title: 'Contact Information',
-  phoneLabel: 'Phone',
-  emailLabel: 'Email',
-  addressLabel: 'Address',
-  phone: '+1234567890',
-  email: 'example@example.com',
-  address: '123 Example Street, Example City, EX 12345',
+  phone: { phoneLabel: 'Phone', phoneNumber: '+1234567890' },
+  email: { emailLabel: 'Email', emailAddress: 'example@example.com' },
+  address: {
+    addressLabel: 'Address',
+    AddressDetails: '123 Example Street, Example City, EX 12345',
+  },
 };
