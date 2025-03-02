@@ -81,4 +81,5 @@ Default.args = {
       placeholder: 'Select your gender',
     },
   ],
+  btnText: 'Submit',
 };
