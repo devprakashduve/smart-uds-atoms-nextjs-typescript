@@ -4,7 +4,7 @@ import CustomLink from '@/Components/Atoms/CustomLink';
 
 const MiniFooter: FC<MiniFooterProps> = ({ copyrightText, links }) => {
   return (
-    <footer className="from-footer-from_color via-footer-via_color to-footer-to_color text-footer-text bg-gradient-to-r p-7">
+    <footer className="bg-gradient-to-r from-footer-from_color via-footer-via_color to-footer-to_color p-7 text-footer-text">
       <div className="container mx-auto flex flex-col items-center justify-between md:flex-row">
         <div className="mb-4 text-sm md:mb-0">
           <p className="text-footer-text">{copyrightText}</p>
@@ -14,7 +14,7 @@ const MiniFooter: FC<MiniFooterProps> = ({ copyrightText, links }) => {
             <CustomLink
               key={index}
               href={link.url}
-              className="text-footer-link hover:text-footer-link/60 text-sm"
+              className="text-sm text-footer-link hover:text-footer-link/60"
               target="_blank"
               rel="noopener noreferrer"
             >

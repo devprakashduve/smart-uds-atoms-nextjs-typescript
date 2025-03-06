@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { HeroBannerProps } from './HeroBanner.interface';
-import CustomLink from '@/Components/Atoms/CustomLink';
 import Icon from '@/Components/Atoms/Icon';
 import Button from '@/Components/Atoms/Button';
 
@@ -11,14 +10,14 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
   buttonLink,
   backgroundImages = [],
   showOverlay = false,
-  overlayColor = 'red',
+  overlayColor = 'white',
   overlayOpacity = 0.5,
   autoSlide = false,
   slideInterval = 5000,
   minHeight = '600px',
   textAlign = 'center',
   verticalAlign = 'center',
-  textBackgroundColor = 'rgba(255, 255, 255, 0.5)', // Default semi-transparent black
+  textBackgroundColor = 'rgba(255, 255, 255, 0.5)',
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -59,7 +58,16 @@ const HeroBanner: React.FC<HeroBannerProps> = ({
             : 'none',
         }}
       />
-
+      {/* Overlay */}
+      {showOverlay && (
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundColor: overlayColor,
+            opacity: overlayOpacity,
+          }}
+        />
+      )}
       {/* Text Content with Background */}
       <div
         className="relative z-10 w-full max-w-3xl rounded-lg p-6 text-white"
