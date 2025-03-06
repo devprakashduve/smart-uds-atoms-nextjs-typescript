@@ -14,19 +14,19 @@ export default function FooterWithLinks({
   const secondHalf = links.slice(half);
 
   return (
-    <div className="from-footer-from_color via-footer-via_color to-footer-to_color text-footer-text relative isolate overflow-hidden bg-gradient-to-r py-16 sm:py-24 lg:py-32">
+    <div className="relative isolate overflow-hidden bg-gradient-to-r from-footer-from_color via-footer-via_color to-footer-to_color py-16 text-footer-text sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col justify-between lg:max-w-none lg:flex-row">
           <div className="mb-8 max-w-xl lg:mb-0 lg:max-w-lg">
             <h2 className="text-footer-text">{title}</h2>
-            <p className="text-footer-text mt-4 text-lg">{description}</p>
+            <p className="mt-4 text-lg text-footer-text">{description}</p>
             <div className="mt-6 flex space-x-4">
               {SocialMediaLinks?.map((social, index) => (
                 <CustomLink
                   key={index}
                   href={social.href}
                   target={social.target || '_self'}
-                  className="text-footer-text hover:text-footer-text/60 ring-footer-text/90 rounded-full p-2 ring-2 ring-offset-2"
+                  className="rounded-full p-2 text-footer-text ring-2 ring-footer-text/90 ring-offset-2 hover:text-footer-text/60"
                 >
                   <Icon name={social.iconName} variant={'outline'} />
                 </CustomLink>
