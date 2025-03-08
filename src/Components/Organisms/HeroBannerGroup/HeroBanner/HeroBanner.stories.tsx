@@ -4,7 +4,7 @@ import HeroBanner from '.';
 import { HeroBannerProps } from './HeroBanner.interface';
 
 export default {
-  title: 'Components/Organisms/HeroBanner',
+  title: 'Components/Organisms/HeroBannerGroup/HeroBanner',
   component: HeroBanner,
   argTypes: {
     title: { control: 'text' },

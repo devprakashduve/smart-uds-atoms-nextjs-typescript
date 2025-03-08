@@ -57,6 +57,7 @@ import ContactInformation from './Components/Organisms/ContactInformation';
 import ContactForm from './Components/Templates/ContactForm';
 import LoginForm from './Components/Templates/LoginForm';
 import RegistrationForm from './Components/Templates/RegistrationForm';
+import HeroBanner from './Components/Organisms/HeroBannerGroup/HeroBanner';
 
 export {
   Avatar,
@@ -100,6 +101,7 @@ export {
   Table,
   Tabs,
   ToastNotification,
+  HeroBanner,
   BlogPostCard,
   CTACard,
   EventCard,

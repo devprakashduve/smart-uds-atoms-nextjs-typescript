@@ -18,7 +18,7 @@ export default function FooterWithLinks({
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col justify-between lg:max-w-none lg:flex-row">
           <div className="mb-8 max-w-xl lg:mb-0 lg:max-w-lg">
-            <h2 className="text-footer-text">{title}</h2>
+            <h2 className="text-start text-footer-text">{title}</h2>
             <p className="mt-4 text-lg text-footer-text">{description}</p>
             <div className="mt-6 flex space-x-4">
               {SocialMediaLinks?.map((social, index) => (
@@ -26,9 +26,13 @@ export default function FooterWithLinks({
                   key={index}
                   href={social.href}
                   target={social.target || '_self'}
-                  className="rounded-full p-2 text-footer-text ring-2 ring-footer-text/90 ring-offset-2 hover:text-footer-text/60"
+                  className="rounded-full p-2 text-footer-text ring-1 ring-footer-text/90 ring-offset-1 hover:text-footer-text/60"
                 >
-                  <Icon name={social.iconName} variant={'outline'} />
+                  <Icon
+                    name={social.iconName}
+                    variant={'outline'}
+                    className="text-footer-text"
+                  />
                 </CustomLink>
               ))}
             </div>
@@ -44,9 +48,12 @@ export default function FooterWithLinks({
                   index: Key | null | undefined
                 ) => (
                   <li key={index}>
-                    <a href={link.href} className="text-footer-text underline">
+                    <CustomLink
+                      href={link.href}
+                      className="text-footer-text underline"
+                    >
                       {link.text}
-                    </a>
+                    </CustomLink>
                   </li>
                 )
               )}
@@ -61,9 +68,12 @@ export default function FooterWithLinks({
                   index: Key | null | undefined
                 ) => (
                   <li key={index}>
-                    <a href={link.href} className="text-footer-text underline">
+                    <CustomLink
+                      href={link.href}
+                      className="text-footer-text underline"
+                    >
                       {link.text}
-                    </a>
+                    </CustomLink>
                   </li>
                 )
               )}

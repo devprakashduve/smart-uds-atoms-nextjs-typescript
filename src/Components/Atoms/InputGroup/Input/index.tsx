@@ -123,7 +123,7 @@ const Input: React.FC<InputProps> = ({
   );
 
   return (
-    <div className="relative w-full">
+    <div className="relative">
       {label && (
         <Label className="mb-2" htmlFor={id || name || label}>
           {label}

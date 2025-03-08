@@ -7,7 +7,7 @@
 //   component: Layout,
 // } as Meta<typeof Layout>;
 
-// const Template: StoryFn<typeof Layout> = (args) => <Layout {...args} />;
+// const Template: any = (args: any) => <Layout {...args} />;
 
 // export const Default = Template.bind({});
 // Default.args = {
