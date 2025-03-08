@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HeroBannerProps } from './HeroBanner.interface';
-import Icon from '@/Components/Atoms/Icon';
-import Button from '@/Components/Atoms/Button';
+import Icon from '../../../../Components/Atoms/Icon';
+import Button from '../../../../Components/Atoms/Button';
 
 const HeroBanner: React.FC<HeroBannerProps> = ({
   title,
