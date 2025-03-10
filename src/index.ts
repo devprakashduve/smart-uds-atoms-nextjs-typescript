@@ -58,6 +58,8 @@ import ContactForm from './Components/Templates/ContactForm';
 import LoginForm from './Components/Templates/LoginForm';
 import RegistrationForm from './Components/Templates/RegistrationForm';
 import HeroBanner from './Components/Organisms/HeroBannerGroup/HeroBanner';
+import DisplayMap from './Components/Organisms/DisplayMap';
+import HeroBannerImageContent from './Components/Organisms/HeroBannerGroup/HeroBannerImageContent';
 
 export {
   Avatar,
@@ -120,4 +122,6 @@ export {
   ContactForm,
   LoginForm,
   RegistrationForm,
+  DisplayMap,
+  HeroBannerImageContent,
 };
