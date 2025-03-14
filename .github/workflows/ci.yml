@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: . # ✅ Ensures repo is checked out into root folder
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,6 +39,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: . # ✅ Ensures repo is checked out into root folder
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -47,6 +51,9 @@ jobs:
 
       - name: Authenticate with GitHub Packages
         run: echo "//npm.pkg.github.com/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Install dependencies
+        run: npm install # ✅ Ensures all dependencies are available before checking for `next`
 
       - name: Check installed packages
         run: npm list next
