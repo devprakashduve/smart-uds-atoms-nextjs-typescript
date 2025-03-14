@@ -75,7 +75,7 @@ jobs:
           scope: 'devprakashduve'
 
       - name: Authenticate with npmjs.com
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.MPNJS_TOKEN }}" > ~/.npmrc
 
       - name: Install dependencies
         run: npm install
@@ -83,4 +83,4 @@ jobs:
       - name: Publish to npmjs.com
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.MPNJS_TOKEN }}
