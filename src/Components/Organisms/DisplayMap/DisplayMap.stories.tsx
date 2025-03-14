@@ -3,7 +3,7 @@ import DisplayMap from '.';
 import { DisplayMapProps } from './DisplayMap.interface';
 
 export default {
-  title: 'Components/DisplayMap',
+  title: 'Components/Organisms/DisplayMap',
   component: DisplayMap,
   argTypes: {},
 } as Meta;
