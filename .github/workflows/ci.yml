@@ -46,7 +46,7 @@ jobs:
           scope: '@devprakashduve'
 
       - name: Authenticate with GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_PACKAGES_TOKEN }}" > ~/.npmrc
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Install dependencies
         run: npm install
@@ -54,7 +54,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGES_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-npm:
     needs: build
@@ -72,6 +72,7 @@ jobs:
         with:
           node-version: 20.x
           registry-url: https://registry.npmjs.org/
+          scope: 'devprakashduve'
 
       - name: Authenticate with npmjs.com
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
