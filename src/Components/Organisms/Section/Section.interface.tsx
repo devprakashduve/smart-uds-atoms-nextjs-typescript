@@ -1,4 +1,5 @@
 export interface SectionProps {
+  topHeading?: string;
   heading: string;
   subheading: string;
   border: boolean;
