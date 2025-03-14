@@ -1,0 +1,41 @@
+name: Tag and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get latest tag
+        id: latest-tag
+        run: echo "tag=$(git describe --tags --abbrev=0 || echo 'v0.0.0')" >> $GITHUB_ENV
+
+      - name: Calculate next version
+        id: next-version
+        run: |
+          latest_tag=${{ env.tag }}
+          IFS='.' read -r -a version_parts <<< "${latest_tag//v/}"
+          major=${version_parts[0]}
+          minor=${version_parts[1]}
+          patch=${version_parts[2]}
+          new_patch=$((patch + 1))
+          echo "new_tag=v$major.$minor.$new_patch" >> $GITHUB_ENV
+
+      - name: Create new tag
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git tag ${{ env.new_tag }}
+          git push origin ${{ env.new_tag }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.new_tag }}
+          generate_release_notes: true
