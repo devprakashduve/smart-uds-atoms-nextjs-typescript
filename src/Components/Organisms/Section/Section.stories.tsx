@@ -68,4 +68,6 @@ Default.args = {
   heading: 'Dynamic Section Title',
   subheading: 'This is a dynamically generated section with reusable content.',
   border: true,
+
+  className: 'bg-gradient-to-t from-yellow-100 via-lime-100 to-yellow-100',
 };
