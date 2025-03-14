@@ -12,33 +12,28 @@ jobs:
   publish-gpr:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # ✅ Allows pushing tags and commits
-      packages: write # ✅ Allows publishing to GitHub Packages
+      contents: write
+      packages: write # ✅ Ensure package write permissions
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }} # ✅ Use PAT for authentication
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-          scope: '@devprakashduve'
+
+      - name: Create .npmrc file
+        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}" > ~/.npmrc # ✅ Set auth token for npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Configure Git user
-        run: |
-          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git config --global user.name "$GITHUB_ACTOR"
-
-      - name: Bump version and push tags
-        run: |
-          npm version --minor
-          git push --tags && git push
-
-      - name: Publish package
+      - name: Publish to GitHub Packages
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }} # ✅ Use PAT for npm authentication
+
