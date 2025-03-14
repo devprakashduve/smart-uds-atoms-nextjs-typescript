@@ -59,10 +59,11 @@ jobs:
         run: npm list next
 
       - name: Publish to GitHub Packages
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   publish:
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
