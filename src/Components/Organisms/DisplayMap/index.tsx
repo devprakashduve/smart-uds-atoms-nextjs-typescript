@@ -12,7 +12,7 @@ const DisplayMap: React.FC<DisplayMapProps> = ({
   return (
     <section className="relative">
       {/* Map Background */}
-      <div className="absolute inset-0 bg-atom-menu/60">
+      <div className="absolute inset-0 bg-atom-menu/10">
         <iframe
           width="100%"
           height="100%"
