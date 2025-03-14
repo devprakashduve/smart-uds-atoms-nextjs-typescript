@@ -1,7 +1,7 @@
 import React from 'react';
 import FormHandler from '../../Organisms/FormHandler';
 import { LoginFormProps } from './LoginForm.interface';
-import Section from '@/Components/Organisms/Section';
+import Section from '../../../Components/Organisms/Section';
 
 const LoginForm: React.FC<LoginFormProps> = ({
   formHandlerData,

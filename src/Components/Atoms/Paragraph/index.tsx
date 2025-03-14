@@ -1,7 +1,6 @@
 import React from 'react';
 import { ParagraphProps } from './ParagraphProps.interface';
-import './Paragraph.css';
-import { classNames } from '@/Components/Utilities/componentsMethods';
+import { classNames } from '../../../Components/Utilities/componentsMethods';
 
 const Paragraph: React.FC<ParagraphProps> = ({
   children,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { SectionProps } from './Section.interface';
+import Paragraph from '@/Components/Atoms/Paragraph';
 
 const Section: React.FC<SectionProps> = ({
   heading,
@@ -8,6 +9,7 @@ const Section: React.FC<SectionProps> = ({
   children,
   textAlign = 'center',
   className,
+  topHeading,
 }) => {
   return (
     <section className={`${border && 'border-t border-gray-200'} ${className}`}>
@@ -16,19 +18,28 @@ const Section: React.FC<SectionProps> = ({
           <div
             className={`mb-20 flex w-full flex-col flex-wrap items-${textAlign} text-${textAlign}`}
           >
+            {topHeading && (
+              <Paragraph
+                className={`mb-2 text-${textAlign} font-semibold md:mb-3 lg:text-lg`}
+              >
+                {topHeading}
+              </Paragraph>
+            )}
             {heading && (
               <h2
                 className={`title-font mb-2 text-2xl font-medium sm:text-3xl text-${textAlign}`}
+                title={heading}
               >
                 {heading}
               </h2>
             )}
             {subheading && (
-              <p
+              <Paragraph
+                thin
                 className={`w-full text-base leading-relaxed text-${textAlign}`}
               >
                 {subheading}
-              </p>
+              </Paragraph>
             )}
           </div>
         )}

@@ -65,6 +65,7 @@ const Template: StoryFn<SectionProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
+  topHeading: 'Introducing',
   heading: 'Dynamic Section Title',
   subheading: 'This is a dynamically generated section with reusable content.',
   border: true,
