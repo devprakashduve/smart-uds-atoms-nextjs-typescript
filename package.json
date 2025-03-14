@@ -1,10 +1,6 @@
 {
   "name": "@devprakashduve/atomic-uds-next-app",
-  "version": "0.0.30.0.4",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  },
+  "version": "0.0.30.05",
   "repository": {
     "type": "git",
     "url": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript.git"
