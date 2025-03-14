@@ -11,3 +11,30 @@ jobs:
       - run: npm install
       - run: npm test # Add tests if applicable
       - run: npm run build
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write # ✅ Required for GitHub Packages
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+          scope: '@devprakashduve'
+
+      - name: Authenticate with GitHub Packages
+        run: echo "@devprakashduve:registry=https://npm.pkg.github.com/" > ~/.npmrc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }} # ✅ Use the Personal Access Token
