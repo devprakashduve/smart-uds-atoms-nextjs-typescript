@@ -6,7 +6,7 @@
     "url": "https://github.com/devprakashduve/smart-uds-atoms-nextjs-typescript.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@devprakashduve"
+    "registry": "https://npm.pkg.github.com/"
   },
   "author": "Dev Prakash Duve <dev786.1@gmail.com>",
   "license": "MIT",
