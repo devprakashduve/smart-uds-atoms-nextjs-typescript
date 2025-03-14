@@ -1,8 +1,8 @@
 {
   "name": "@devprakashduve/atomic-uds-next-app",
-  "version": "0.0.28",
+  "version": "0.0.30.01",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "repository": {
     "type": "git",
