@@ -48,6 +48,9 @@ jobs:
       - name: Authenticate with GitHub Packages
         run: echo "//npm.pkg.github.com/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
+      - name: Check installed packages
+        run: npm list next
+
       - name: Publish to GitHub Packages
         run: npm publish
         env:
