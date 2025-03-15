@@ -1,6 +1,6 @@
 {
   "name": "atomic-uds-next-app",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "A collection of reusable React components (atoms and molecules) built with Next.js and TypeScript.",
   "author": "Dev Prakash Duve <dev786.1@gmail.com>",
   "license": "MIT",
