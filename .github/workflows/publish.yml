@@ -11,14 +11,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-
       - run: npm install
       - run: npm test # Add tests if applicable
       - run: npm run build
@@ -31,15 +23,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js (GitHub Packages)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          registry-url: https://npm.pkg.github.com/
-
       - name: Authenticate with GitHub Packages
         run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
 
@@ -50,7 +33,7 @@ jobs:
         run: npm version patch --no-git-tag-version
 
       - name: Publish to GitHub Packages
-        run: npm  publish --access=public
+        run: npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
@@ -62,15 +45,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js (npmjs.com)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          registry-url: https://registry.npmjs.org/
-
       - name: Authenticate with npmjs.com
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
