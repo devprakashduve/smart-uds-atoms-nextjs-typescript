@@ -26,7 +26,7 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: github.event.action == 'published'
     permissions:
       contents: read
       packages: write
@@ -47,15 +47,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Bump Version (GitHub Packages)
+        run: npm version patch --no-git-tag-version
+
       - name: Publish to GitHub Packages
-        run: npm publish --access public
+        run: npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: github.event.action == 'published'
     permissions:
       contents: read
       packages: write
@@ -75,7 +78,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Bump Version (npm)
+        run: npm version patch --no-git-tag-version
+
       - name: Publish to npmjs.com
-        run: npm publish --access public
+        run: npm publish --registry=https://registry.npmjs.org/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
