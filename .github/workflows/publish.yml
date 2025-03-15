@@ -47,9 +47,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Check npm authentication
-        run: npm whoami
-
       - name: Bump Version (GitHub Packages)
         run: npm version patch --no-git-tag-version
 
@@ -83,9 +80,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Check npm authentication
-        run: npm whoami
 
       - name: Bump Version (npm)
         run: npm version patch --no-git-tag-version
