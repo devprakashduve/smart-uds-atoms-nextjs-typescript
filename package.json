@@ -28,7 +28,6 @@
     "build-storybook": "storybook build",
     "build:lib": "rollup -c --bundleConfigAsCjs --clearCache",
     "build": "next build && npm run build:lib",
-    "prepublishOnly": "npm run build",
     "test": "jest --coverage"
   },
   "lint-staged": {
