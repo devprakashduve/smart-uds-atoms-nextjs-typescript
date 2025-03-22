@@ -1,5 +1,5 @@
 import { BlogPostCardProps } from './BlogPostCard.interface';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 export default function BlogPostCard({
   imageSrc,

@@ -7,7 +7,7 @@ import {
 import CustomLink from '@/Components/Atoms/CustomLink';
 import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 function MobileMenu({
   open,

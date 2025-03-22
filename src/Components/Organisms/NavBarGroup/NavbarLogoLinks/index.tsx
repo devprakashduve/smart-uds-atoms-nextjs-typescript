@@ -5,7 +5,7 @@ import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 import Input from '@/Components/Atoms/InputGroup/Input';
 import CustomLink from '@/Components/Atoms/CustomLink';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 const dummyData = [
   { id: 1, name: 'Home', href: '/xyz' },

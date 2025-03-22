@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageProps } from './ImageProps.interface';
+import { ImageProps } from './UDSImage.interface';
 import Image from 'next/image';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardProps } from './SmartCard.interface';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 const SmartCard: React.FC<CardProps> = ({
   title,

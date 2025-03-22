@@ -2,6 +2,8 @@ import Button from '@/Components/Atoms/Button';
 import React, { useState } from 'react';
 import { MegaMenuProps } from './MegaMenu.interface';
 import CustomLink from '@/Components/Atoms/CustomLink';
+import Icon from '@/Components/Atoms/Icon';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 const MegaMenu: React.FC<MegaMenuProps> = ({
   home,
@@ -9,6 +11,17 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   marketplace,
   resources,
   contact,
+  onlineStores,
+  segmentation,
+  marketingCRM,
+  ourBlog,
+  termsConditions,
+  previewDashboard,
+  getStarted,
+  udsLogoAlt,
+  udsText,
+  backgroundImage,
+  logo,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
@@ -22,47 +35,42 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900">
+    <nav className="bg-atom-menu-background bg-gradient-to-r from-atom-menu-from_background to-atom-menu-to_background shadow-xl">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-3">
         <CustomLink
           href="https://uds.com"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src="https://uds.com/docs/images/logo.svg"
-            className="h-8"
-            alt="uds Logo"
-          />
-          <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
-            uds
-          </span>
+          {logo && (
+            <UDSImage
+              src={logo}
+              alt={udsLogoAlt}
+              className="size-12 rounded-full"
+            />
+          )}
+          {udsText && (
+            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+              {udsText}
+            </span>
+          )}
         </CustomLink>
         <Button
+          variant="icon"
           onClick={toggleMobileMenu}
-          data-collapse-toggle="mega-menu-full-image"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="mega-menu-full-image"
+          data-collapse-toggle="mega-atom-menu-full-image"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm md:hidden"
+          aria-controls="mega-atom-menu-full-image"
           aria-expanded={isMobileMenuOpen}
         >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="h-5 w-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
+          {isMobileMenuOpen ? (
+            <Icon name="close" className="size-8" variant={'outline'} />
+          ) : (
+            <Icon name="bars3" className="size-8" variant={'outline'} />
+          )}
         </Button>
+
         <div
-          id="mega-menu-full-image"
+          id="mega-atom-menu-full-image"
           className={`${
             isMobileMenuOpen ? 'block' : 'hidden'
           } w-full md:order-1 md:flex md:w-auto`}
@@ -76,26 +84,16 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             <li>
               <Button
                 variant="link"
+                size="null"
                 onClick={toggleCompanyDropdown}
-                data-collapse-toggle="mega-menu-full-image-dropdown"
-                className="flex w-full items-center justify-between border-b border-gray-100 px-3 py-2 font-medium text-gray-900 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
+                data-collapse-toggle="mega-atom-menu-full-image-dropdown"
               >
                 {company}
-                <svg
-                  className="ms-3 h-2.5 w-2.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="m1 1 4 4 4-4"
-                  />
-                </svg>
+                <Icon
+                  name="chevronDown"
+                  className="ms-2 size-6"
+                  variant={'outline'}
+                />
               </Button>
             </li>
             <li>
@@ -111,70 +109,55 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
         </div>
       </div>
       <div
-        id="mega-menu-full-image-dropdown"
-        className={`${
-          isCompanyDropdownOpen ? 'block' : 'hidden'
-        } mt-1 border-gray-200 bg-white shadow-sm dark:border-gray-600 dark:bg-gray-800`}
+        id="mega-atom-menu-full-image-dropdown"
+        className={`${isCompanyDropdownOpen ? 'block' : 'hidden'} mt-1`}
       >
-        <div className="mx-auto grid max-w-screen-xl px-4 py-5 text-sm text-gray-500 md:grid-cols-3 md:px-6 dark:text-gray-400">
+        <div className="mx-auto grid max-w-screen-xl px-4 py-5 text-sm md:grid-cols-3 md:px-6">
           <ul
             className="mb-4 hidden space-y-4 md:block"
-            aria-labelledby="mega-menu-full-image-Button"
+            aria-labelledby="mega-atom-menu-full-image-Button"
           >
             <li>
-              <CustomLink href="#">Online Stores</CustomLink>
+              <CustomLink href="#">{onlineStores}</CustomLink>
             </li>
             <li>
-              <CustomLink href="#">Segmentation</CustomLink>
+              <CustomLink href="#">{segmentation}</CustomLink>
             </li>
             <li>
-              <CustomLink href="#">Marketing CRM</CustomLink>
+              <CustomLink href="#">{marketingCRM}</CustomLink>
             </li>
             <li>
-              <CustomLink href="#">Online Stores</CustomLink>
+              <CustomLink href="#">{onlineStores}</CustomLink>
             </li>
           </ul>
           <ul className="mb-4 space-y-4">
             <li>
-              <CustomLink href="#">Our Blog</CustomLink>
+              <CustomLink href="#">{ourBlog}</CustomLink>
             </li>
             <li>
-              <CustomLink href="#">Terms & Conditions</CustomLink>
+              <CustomLink href="#">{termsConditions}</CustomLink>
             </li>
             <li>
-              <CustomLink href="#">License</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">Resources</CustomLink>
+              <CustomLink href="#">{resources}</CustomLink>
             </li>
           </ul>
           <div
             className="rounded-lg bg-gray-500 bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken"
             style={{
-              backgroundImage: 'url(/docs/images/dashboard-overview.png)',
+              backgroundImage: `url(${backgroundImage})`,
             }}
           >
             <CustomLink href="#">
               <p className="mb-5 max-w-xl font-extrabold leading-tight tracking-tight text-white">
-                Preview the new uds dashboard navigation.
+                {previewDashboard}
               </p>
-              <Button className="inline-flex items-center rounded-lg border border-white bg-transparent px-2.5 py-1.5 text-center text-xs font-medium text-white hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-700">
-                Get started
-                <svg
-                  className="ms-2 h-3 w-3 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
+              <Button variant="outline">
+                {getStarted}
+                <Icon
+                  name="arrowRight"
+                  className="ms-2 size-4"
+                  variant={'outline'}
+                />
               </Button>
             </CustomLink>
           </div>

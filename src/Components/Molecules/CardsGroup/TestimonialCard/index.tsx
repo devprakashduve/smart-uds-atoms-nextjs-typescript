@@ -1,5 +1,5 @@
 import { TestimonialCardProps } from './TestimonialCard.interface';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 export default function TestimonialCard({
   testimonialText,
