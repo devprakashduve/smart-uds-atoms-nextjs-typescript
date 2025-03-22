@@ -1,7 +1,15 @@
 import Button from '@/Components/Atoms/Button';
 import React, { useState } from 'react';
+import { MegaMenuProps } from './MegaMenu.interface';
+import CustomLink from '@/Components/Atoms/CustomLink';
 
-const MegaMenu = () => {
+const MegaMenu: React.FC<MegaMenuProps> = ({
+  home,
+  company,
+  marketplace,
+  resources,
+  contact,
+}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
 
@@ -16,7 +24,7 @@ const MegaMenu = () => {
   return (
     <nav className="bg-white dark:bg-gray-900">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-3">
-        <a
+        <CustomLink
           href="https://uds.com"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
@@ -28,7 +36,7 @@ const MegaMenu = () => {
           <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
             uds
           </span>
-        </a>
+        </CustomLink>
         <Button
           onClick={toggleMobileMenu}
           data-collapse-toggle="mega-menu-full-image"
@@ -61,13 +69,9 @@ const MegaMenu = () => {
         >
           <ul className="mt-4 flex flex-col font-medium md:mt-0 md:flex-row md:space-x-8 rtl:space-x-reverse">
             <li>
-              <a
-                href="#"
-                className="block border-b border-gray-100 px-3 py-2 text-gray-900 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-                aria-current="page"
-              >
-                Home
-              </a>
+              <CustomLink href="#" aria-current="page">
+                {home}
+              </CustomLink>
             </li>
             <li>
               <Button
@@ -76,7 +80,7 @@ const MegaMenu = () => {
                 data-collapse-toggle="mega-menu-full-image-dropdown"
                 className="flex w-full items-center justify-between border-b border-gray-100 px-3 py-2 font-medium text-gray-900 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
               >
-                Company
+                {company}
                 <svg
                   className="ms-3 h-2.5 w-2.5"
                   aria-hidden="true"
@@ -95,28 +99,13 @@ const MegaMenu = () => {
               </Button>
             </li>
             <li>
-              <a
-                href="#"
-                className="block border-b border-gray-100 px-3 py-2 text-gray-900 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-              >
-                Marketplace
-              </a>
+              <CustomLink href="#">{marketplace}</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="block border-b border-gray-100 px-3 py-2 text-gray-900 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-              >
-                Resources
-              </a>
+              <CustomLink href="#">{resources}</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="block border-b border-gray-100 px-3 py-2 text-gray-900 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent md:dark:hover:text-blue-500"
-              >
-                Contact
-              </a>
+              <CustomLink href="#">{contact}</CustomLink>
             </li>
           </ul>
         </div>
@@ -133,101 +122,62 @@ const MegaMenu = () => {
             aria-labelledby="mega-menu-full-image-Button"
           >
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Online Stores
-              </a>
+              <CustomLink href="#">Online Stores</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Segmentation
-              </a>
+              <CustomLink href="#">Segmentation</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Marketing CRM
-              </a>
+              <CustomLink href="#">Marketing CRM</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Online Stores
-              </a>
+              <CustomLink href="#">Online Stores</CustomLink>
             </li>
           </ul>
           <ul className="mb-4 space-y-4">
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Our Blog
-              </a>
+              <CustomLink href="#">Our Blog</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Terms & Conditions
-              </a>
+              <CustomLink href="#">Terms & Conditions</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                License
-              </a>
+              <CustomLink href="#">License</CustomLink>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-blue-600 hover:underline dark:hover:text-blue-500"
-              >
-                Resources
-              </a>
+              <CustomLink href="#">Resources</CustomLink>
             </li>
           </ul>
-          <a
-            href="#"
+          <div
             className="rounded-lg bg-gray-500 bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken"
             style={{
               backgroundImage: 'url(/docs/images/dashboard-overview.png)',
             }}
           >
-            <p className="mb-5 max-w-xl font-extrabold leading-tight tracking-tight text-white">
-              Preview the new uds dashboard navigation.
-            </p>
-            <Button className="inline-flex items-center rounded-lg border border-white bg-transparent px-2.5 py-1.5 text-center text-xs font-medium text-white hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-700">
-              Get started
-              <svg
-                className="ms-2 h-3 w-3 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </Button>
-          </a>
+            <CustomLink href="#">
+              <p className="mb-5 max-w-xl font-extrabold leading-tight tracking-tight text-white">
+                Preview the new uds dashboard navigation.
+              </p>
+              <Button className="inline-flex items-center rounded-lg border border-white bg-transparent px-2.5 py-1.5 text-center text-xs font-medium text-white hover:bg-white hover:text-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-700">
+                Get started
+                <svg
+                  className="ms-2 h-3 w-3 rtl:rotate-180"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </Button>
+            </CustomLink>
+          </div>
         </div>
       </div>
     </nav>
