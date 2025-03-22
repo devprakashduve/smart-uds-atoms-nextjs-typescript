@@ -106,7 +106,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       >
         <div className="mx-auto grid max-w-screen-xl px-4 py-5 text-sm md:grid-cols-3 md:px-6">
           <ul
-            className="mb-4 hidden space-y-4 md:block"
+            className="mb-4 space-y-4 md:block"
             aria-labelledby="mega-atom-menu-full-image-Button"
           >
             {dropdownLinks?.map((dropdownLink: CompanyLink) => (
