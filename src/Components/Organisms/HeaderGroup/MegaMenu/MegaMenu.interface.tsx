@@ -1,18 +1,22 @@
+export interface MenuItem {
+  label: string;
+  href?: string;
+  children?: MenuItem[];
+}
+
+export interface CompanyLink {
+  label: string;
+  href: string;
+}
+
 export interface MegaMenuProps {
-  logo: string;
-  home: string;
-  company: string;
-  marketplace: string;
-  resources: string;
-  contact: string;
-  onlineStores: string;
-  segmentation: string;
-  marketingCRM: string;
-  ourBlog: string;
-  termsConditions: string;
-  previewDashboard: string;
-  getStarted: string;
-  udsLogoAlt: string;
-  udsText: string;
-  backgroundImage: string;
+  logo?: string;
+  menuItems?: MenuItem[];
+  dropdownLinks?: CompanyLink[];
+  contact?: string;
+  previewDashboard?: string;
+  getStarted?: string;
+  udsLogoAlt?: string;
+  udsText?: string;
+  backgroundImage?: string;
 }

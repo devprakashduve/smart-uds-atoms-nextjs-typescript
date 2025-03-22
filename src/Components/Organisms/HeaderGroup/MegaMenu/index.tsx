@@ -1,37 +1,30 @@
 import Button from '@/Components/Atoms/Button';
 import React, { useState } from 'react';
-import { MegaMenuProps } from './MegaMenu.interface';
+import { MegaMenuProps, MenuItem, CompanyLink } from './MegaMenu.interface';
 import CustomLink from '@/Components/Atoms/CustomLink';
 import Icon from '@/Components/Atoms/Icon';
 import UDSImage from '@/Components/Atoms/UDSImage';
 
 const MegaMenu: React.FC<MegaMenuProps> = ({
-  home,
-  company,
-  marketplace,
-  resources,
+  logo,
+  menuItems,
+  dropdownLinks,
   contact,
-  onlineStores,
-  segmentation,
-  marketingCRM,
-  ourBlog,
-  termsConditions,
   previewDashboard,
   getStarted,
   udsLogoAlt,
   udsText,
   backgroundImage,
-  logo,
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const toggleCompanyDropdown = () => {
-    setIsCompanyDropdownOpen(!isCompanyDropdownOpen);
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -44,7 +37,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
           {logo && (
             <UDSImage
               src={logo}
-              alt={udsLogoAlt}
+              alt={udsLogoAlt || 'logo'}
               className="size-12 rounded-full"
             />
           )}
@@ -76,71 +69,55 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
           } w-full md:order-1 md:flex md:w-auto`}
         >
           <ul className="mt-4 flex flex-col font-medium md:mt-0 md:flex-row md:space-x-8 rtl:space-x-reverse">
-            <li>
-              <CustomLink href="#" aria-current="page">
-                {home}
-              </CustomLink>
-            </li>
-            <li>
-              <Button
-                variant="link"
-                size="null"
-                onClick={toggleCompanyDropdown}
-                data-collapse-toggle="mega-atom-menu-full-image-dropdown"
-              >
-                {company}
-                <Icon
-                  name="chevronDown"
-                  className="ms-2 size-6"
-                  variant={'outline'}
-                />
-              </Button>
-            </li>
-            <li>
-              <CustomLink href="#">{marketplace}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{resources}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{contact}</CustomLink>
-            </li>
+            {menuItems?.map((menuItem: MenuItem) => (
+              <li key={menuItem.label}>
+                {menuItem.children ? (
+                  <Button
+                    variant="link"
+                    size="null"
+                    onClick={toggleDropdown}
+                    data-collapse-toggle="mega-atom-menu-full-image-dropdown"
+                  >
+                    {menuItem.label}
+                    <Icon
+                      name="chevronDown"
+                      className="ms-2 size-6"
+                      variant={'outline'}
+                    />
+                  </Button>
+                ) : (
+                  <CustomLink href={menuItem.href || '#'}>
+                    {menuItem.label}
+                  </CustomLink>
+                )}
+              </li>
+            ))}
+            {contact && (
+              <li>
+                <CustomLink href="#">{contact}</CustomLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>
       <div
         id="mega-atom-menu-full-image-dropdown"
-        className={`${isCompanyDropdownOpen ? 'block' : 'hidden'} mt-1`}
+        className={`${isDropdownOpen ? 'block' : 'hidden'} mt-1`}
       >
         <div className="mx-auto grid max-w-screen-xl px-4 py-5 text-sm md:grid-cols-3 md:px-6">
           <ul
             className="mb-4 hidden space-y-4 md:block"
             aria-labelledby="mega-atom-menu-full-image-Button"
           >
-            <li>
-              <CustomLink href="#">{onlineStores}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{segmentation}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{marketingCRM}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{onlineStores}</CustomLink>
-            </li>
+            {dropdownLinks?.map((dropdownLink: CompanyLink) => (
+              <li key={dropdownLink.label}>
+                <CustomLink href={dropdownLink.href}>
+                  {dropdownLink.label}
+                </CustomLink>
+              </li>
+            ))}
           </ul>
-          <ul className="mb-4 space-y-4">
-            <li>
-              <CustomLink href="#">{ourBlog}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{termsConditions}</CustomLink>
-            </li>
-            <li>
-              <CustomLink href="#">{resources}</CustomLink>
-            </li>
-          </ul>
+
           <div
             className="rounded-lg bg-atom-menu-background bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken"
             style={{
