@@ -11,10 +11,13 @@ export interface CompanyLink {
 
 export interface MegaMenuProps {
   logo?: string;
+  logoHref?: string;
   menuItems?: MenuItem[];
   dropdownLinks?: CompanyLink[];
   contact?: string;
+  contactHref?: string;
   previewDashboard?: string;
+  previewDashboardHref?: string;
   getStarted?: string;
   udsLogoAlt?: string;
   udsText?: string;

@@ -12,6 +12,7 @@ const Template: StoryFn<typeof MegaMenu> = (args) => <MegaMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   logo: '../images/logo.png',
+  logoHref: 'https://uds.com',
   menuItems: [
     { label: 'Start', href: '#' },
     {
@@ -33,7 +34,9 @@ Default.args = {
     { label: 'Store', href: '#' },
   ],
   contact: 'Support',
+  contactHref: '#contact',
   previewDashboard: 'New Dashboard',
+  previewDashboardHref: '#dashboard',
   getStarted: 'Go',
   udsLogoAlt: 'uds Logo',
   udsText: 'uds',

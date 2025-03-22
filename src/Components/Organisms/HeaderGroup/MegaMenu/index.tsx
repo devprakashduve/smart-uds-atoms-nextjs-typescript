@@ -7,10 +7,13 @@ import UDSImage from '@/Components/Atoms/UDSImage';
 
 const MegaMenu: React.FC<MegaMenuProps> = ({
   logo,
+  logoHref,
   menuItems,
   dropdownLinks,
   contact,
+  contactHref,
   previewDashboard,
+  previewDashboardHref,
   getStarted,
   udsLogoAlt,
   udsText,
@@ -30,23 +33,24 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   return (
     <nav className="bg-atom-menu-background bg-gradient-to-r from-atom-menu-from_background to-atom-menu-to_background shadow-xl">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 py-3">
-        <CustomLink
-          href="https://uds.com"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          {logo && (
+        {logo && (
+          <CustomLink
+            href={logoHref || 'https://uds.com'}
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+          >
             <UDSImage
               src={logo}
               alt={udsLogoAlt || 'logo'}
               className="size-12 rounded-full"
             />
-          )}
-          {udsText && (
-            <span className="self-center whitespace-nowrap text-2xl font-semibold">
-              {udsText}
-            </span>
-          )}
-        </CustomLink>
+
+            {udsText && (
+              <span className="self-center whitespace-nowrap text-2xl font-semibold">
+                {udsText}
+              </span>
+            )}
+          </CustomLink>
+        )}
         <Button
           variant="icon"
           onClick={toggleMobileMenu}
@@ -94,7 +98,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             ))}
             {contact && (
               <li>
-                <CustomLink href="#">{contact}</CustomLink>
+                <CustomLink href={contactHref || '#'}>{contact}</CustomLink>
               </li>
             )}
           </ul>
@@ -119,12 +123,12 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
           </ul>
 
           <div
-            className="rounded-lg bg-atom-menu-background bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken"
+            className="rounded-lg bg-gray-100 bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light"
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
           >
-            <CustomLink href="#">
+            <CustomLink href={previewDashboardHref || '#'}>
               <p className="text-atom-menu-text mb-5 max-w-xl font-extrabold leading-tight tracking-tight">
                 {previewDashboard}
               </p>
