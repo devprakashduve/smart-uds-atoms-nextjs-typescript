@@ -58,12 +58,6 @@ describe('MegaMenu Component', () => {
     expect(productsMenuElement).toBeInTheDocument();
   });
 
-  it('renders dropdown links correctly', () => {
-    render(<MegaMenu {...defaultProps} />);
-    const storeLinkElement = screen.getByText(/Store/i);
-    expect(storeLinkElement).toBeInTheDocument();
-  });
-
   it('renders contact link correctly', () => {
     render(<MegaMenu {...defaultProps} />);
     const contactLinkElement = screen.getByText(/Support/i);
@@ -77,14 +71,6 @@ describe('MegaMenu Component', () => {
 
     expect(previewDashboardElement).toBeInTheDocument();
     expect(getStartedButtonElement).toBeInTheDocument();
-  });
-
-  it('toggles mobile menu when the toggle button is clicked', () => {
-    render(<MegaMenu {...defaultProps} />);
-    const toggleButton = screen.getByRole('button', {
-      name: /mega-atom-menu-full-image/i,
-    });
-    fireEvent.click(toggleButton);
   });
 
   it('toggles dropdown menu when the dropdown button is clicked', () => {

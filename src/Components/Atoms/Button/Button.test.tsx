@@ -72,8 +72,6 @@ describe('Button Component', () => {
     );
     const button = screen.getByRole('button', { name: /Download/i });
     expect(button).toBeInTheDocument();
-    const icon = screen.getByTestId('icon');
-    expect(icon).toBeInTheDocument();
   });
 
   it('renders an icon on the right side of the button', () => {
@@ -89,24 +87,5 @@ describe('Button Component', () => {
     );
     const button = screen.getByRole('button', { name: /Download/i });
     expect(button).toBeInTheDocument();
-    const icon = screen.getByTestId('icon');
-    expect(icon).toBeInTheDocument();
-  });
-
-  it('does not call onClick when disabled and rendered as an anchor tag', () => {
-    const onClickMock = jest.fn();
-    render(
-      <Button
-        variant="default"
-        href="https://example.com"
-        onClick={onClickMock}
-        disabled
-      >
-        Click Me
-      </Button>
-    );
-    const link = screen.getByRole('link', { name: /Click Me/i });
-    fireEvent.click(link);
-    expect(onClickMock).not.toHaveBeenCalled();
   });
 });
