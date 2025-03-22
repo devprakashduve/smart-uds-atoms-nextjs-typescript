@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Button from './index';
+import { ArrowDownIcon } from '@heroicons/react/24/outline';
 
 describe('Button Component', () => {
   it('renders as a <button> element when no href is provided', () => {
@@ -54,8 +55,58 @@ describe('Button Component', () => {
         Custom Aria Button
       </Button>
     );
-    // The aria-label is applied to the button element, so we search by role with that label.
     const button = screen.getByRole('button', { name: /Custom Aria/i });
     expect(button).toBeInTheDocument();
+  });
+
+  it('renders an icon on the left side of the button', () => {
+    render(
+      <Button
+        variant="default"
+        onClick={() => {}}
+        icon={<ArrowDownIcon />}
+        iconPosition="left"
+      >
+        Download
+      </Button>
+    );
+    const button = screen.getByRole('button', { name: /Download/i });
+    expect(button).toBeInTheDocument();
+    const icon = screen.getByTestId('icon');
+    expect(icon).toBeInTheDocument();
+  });
+
+  it('renders an icon on the right side of the button', () => {
+    render(
+      <Button
+        variant="default"
+        onClick={() => {}}
+        icon={<ArrowDownIcon />}
+        iconPosition="right"
+      >
+        Download
+      </Button>
+    );
+    const button = screen.getByRole('button', { name: /Download/i });
+    expect(button).toBeInTheDocument();
+    const icon = screen.getByTestId('icon');
+    expect(icon).toBeInTheDocument();
+  });
+
+  it('does not call onClick when disabled and rendered as an anchor tag', () => {
+    const onClickMock = jest.fn();
+    render(
+      <Button
+        variant="default"
+        href="https://example.com"
+        onClick={onClickMock}
+        disabled
+      >
+        Click Me
+      </Button>
+    );
+    const link = screen.getByRole('link', { name: /Click Me/i });
+    fireEvent.click(link);
+    expect(onClickMock).not.toHaveBeenCalled();
   });
 });

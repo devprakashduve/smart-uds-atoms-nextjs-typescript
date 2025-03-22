@@ -27,7 +27,7 @@ export default {
     },
     size: {
       control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'null'],
     },
   },
 };
@@ -36,7 +36,7 @@ export const Default = () => <Button variant="default">Default</Button>;
 
 export const Sizes = () => (
   <div className="space-x-2">
-    {(['xs', 'sm', 'md', 'lg', 'xl'] as ButtonSize[]).map((size) => (
+    {(['xs', 'sm', 'md', 'lg', 'xl', 'null'] as ButtonSize[]).map((size) => (
       <Button key={size} size={size} variant="default">
         {size.toUpperCase()}
       </Button>
