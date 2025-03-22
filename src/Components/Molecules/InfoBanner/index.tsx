@@ -3,7 +3,7 @@ import Icon from '@/Components/Atoms/Icon';
 import Button from '@/Components/Atoms/Button';
 import Typography from '@/Components/Atoms/Typography';
 import { InfoBannerProps } from './InfoBanners.interface';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 export default function InfoBanner({
   title,

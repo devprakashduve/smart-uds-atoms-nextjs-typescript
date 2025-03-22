@@ -2,7 +2,7 @@ import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 import CustomLink from '@/Components/Atoms/CustomLink';
 import React, { useState } from 'react';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 import {
   DropdownMenuProps,
   MobileMenuProps,

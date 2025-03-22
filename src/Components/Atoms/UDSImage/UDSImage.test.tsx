@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 describe('Img Component', () => {
   const testProps = {

@@ -11,7 +11,7 @@ export type ButtonVariant =
   | 'groups'
   | 'disabled';
 
-export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'null';
 
 export interface ButtonProps {
   children?: React.ReactNode;

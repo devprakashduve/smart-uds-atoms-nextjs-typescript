@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
   switch (variant) {
     case 'default':
       extraClasses =
-        'bg-atom-btn-dark text-atom-btn-light hover:border hover:bg-atom-btn-dark/70 focus:border';
+        'bg-atom-btn-dark/90 text-atom-btn-light hover:border hover:bg-atom-btn-dark focus:border';
       break;
     case 'outline':
       extraClasses = 'border border-atom-btn-dark bg-transparent';
@@ -55,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
       break;
   }
   const baseClasses = classNames(
-    'inline-flex items-center rounded-button justify-center border border-transparent hover:shadow focus:shadow-none active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
+    'inline-flex items-center text-atom-btn-dark hover:text-atom-btn rounded-button justify-center  hover:shadow focus:shadow-none active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
     extraClasses,
     `${size === 'xs' && 'py-1 px-2.5 text-xs'} 
    ${size === 'md' && 'py-2 px-4 text-sm'} 

@@ -1,5 +1,5 @@
 import React from 'react';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 import { EventCardProps } from './EventCard.interface';
 
 const EventCard: React.FC<EventCardProps> = ({

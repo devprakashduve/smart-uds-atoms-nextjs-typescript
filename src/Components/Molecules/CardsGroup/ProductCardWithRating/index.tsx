@@ -1,6 +1,6 @@
 import Button from '@/Components/Atoms/Button';
 import Rating from '../../Rating';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 import { ProductCardWithRatingProps } from './ProductCardWithRating.interface';
 
 export default function ProductCardWithRating({

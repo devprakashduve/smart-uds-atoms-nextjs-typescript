@@ -1,4 +1,4 @@
-import UDSImage from '../Image';
+import UDSImage from '../UDSImage';
 import { ListProps } from './ListProps.interface';
 
 const List: React.FC<ListProps> = ({

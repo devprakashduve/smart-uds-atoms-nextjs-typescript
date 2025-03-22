@@ -1,5 +1,5 @@
 import CustomLink from '@/Components/Atoms/CustomLink';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 import { CategoryPreviewsProps, Category } from './CategoryPreviews.interface';
 
 export default function CategoryPreviews({

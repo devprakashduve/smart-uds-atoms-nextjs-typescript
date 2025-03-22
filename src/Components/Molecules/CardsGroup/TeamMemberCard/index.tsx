@@ -1,6 +1,6 @@
 import Button from '@/Components/Atoms/Button';
 import { ArrowUpRightIcon } from '@heroicons/react/16/solid';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 import { TeamMemberCardProps } from './types';
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({

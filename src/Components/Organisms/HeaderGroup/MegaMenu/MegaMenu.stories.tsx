@@ -11,18 +11,20 @@ const Template: StoryFn<typeof MegaMenu> = (args) => <MegaMenu {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  home: 'Home',
-  company: 'Company',
-  marketplace: 'Marketplace',
-  resources: 'Resources',
-  contact: 'Contact',
-};
-
-export const CustomText = Template.bind({});
-CustomText.args = {
+  logo: '../images/logo.png',
   home: 'Start',
-  company: 'About Us',
+  company: 'menus',
   marketplace: 'Products',
   resources: 'Help',
   contact: 'Support',
+  onlineStores: 'Store',
+  segmentation: 'Audience',
+  marketingCRM: 'Email',
+  ourBlog: 'Blog',
+  termsConditions: 'Legal',
+  previewDashboard: 'New Dashboard',
+  getStarted: 'Go',
+  udsLogoAlt: 'uds Logo',
+  udsText: 'uds',
+  backgroundImage: '../images/avatar.jpg',
 };

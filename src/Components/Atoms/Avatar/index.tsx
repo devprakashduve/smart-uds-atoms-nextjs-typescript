@@ -1,4 +1,4 @@
-import UDSImage from '../Image';
+import UDSImage from '../UDSImage';
 import { AvatarProps } from './AvatarProps.interface';
 
 const Avatar = ({

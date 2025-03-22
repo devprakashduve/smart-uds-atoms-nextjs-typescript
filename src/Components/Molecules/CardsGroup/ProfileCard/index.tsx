@@ -1,5 +1,5 @@
 import Avatar from '@/Components/Atoms/Avatar';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 import { ProfileCardProps } from './types';
 
 export default function ProfileCard({

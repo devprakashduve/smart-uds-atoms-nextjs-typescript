@@ -1,7 +1,7 @@
 import Button from '@/Components/Atoms/Button';
 import React from 'react';
 import { ProductCardProps } from './ProductCard.interface';
-import UDSImage from '@/Components/Atoms/Image';
+import UDSImage from '@/Components/Atoms/UDSImage';
 
 export default function ProductCard({
   imageUrl = '',

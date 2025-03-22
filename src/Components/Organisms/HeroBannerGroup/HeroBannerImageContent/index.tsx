@@ -1,5 +1,5 @@
 import React from 'react';
-import UDSImage from '../../../../Components/Atoms/Image';
+import UDSImage from '../../../Atoms/UDSImage';
 import { HeroBannerImageContentProps } from './HeroBannerImageContent.interface';
 import Button from '../../../../Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
