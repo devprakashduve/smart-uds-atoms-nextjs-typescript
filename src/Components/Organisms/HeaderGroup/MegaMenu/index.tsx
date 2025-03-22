@@ -49,7 +49,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             />
           )}
           {udsText && (
-            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+            <span className="self-center whitespace-nowrap text-2xl font-semibold">
               {udsText}
             </span>
           )}
@@ -142,13 +142,13 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             </li>
           </ul>
           <div
-            className="rounded-lg bg-gray-500 bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken"
+            className="rounded-lg bg-atom-menu-background bg-cover bg-center bg-no-repeat p-8 bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken"
             style={{
               backgroundImage: `url(${backgroundImage})`,
             }}
           >
             <CustomLink href="#">
-              <p className="mb-5 max-w-xl font-extrabold leading-tight tracking-tight text-white">
+              <p className="text-atom-menu-text mb-5 max-w-xl font-extrabold leading-tight tracking-tight">
                 {previewDashboard}
               </p>
               <Button variant="outline">
