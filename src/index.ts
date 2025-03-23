@@ -1,7 +1,6 @@
 import Avatar from './Components/Atoms/Avatar';
 import Button from './Components/Atoms/Button';
 import Icon from './Components/Atoms/Icon';
-import Image from './Components/Atoms/UDSImage';
 import Label from './Components/Atoms/Label';
 import Checkbox from './Components/Atoms/InputGroup/Checkbox';
 import Input from './Components/Atoms/InputGroup/Input';
@@ -61,6 +60,7 @@ import HeroBanner from './Components/Organisms/HeroBannerGroup/HeroBanner';
 import DisplayMap from './Components/Organisms/DisplayMap';
 import HeroBannerImageContent from './Components/Organisms/HeroBannerGroup/HeroBannerImageContent';
 import Section from './Components/Organisms/Section';
+import UDSImage from './Components/Atoms/UDSImage';
 
 export {
   Avatar,
@@ -69,7 +69,7 @@ export {
   CustomLink,
   Divider,
   Icon,
-  Image,
+  UDSImage,
   Label,
   List,
   Paragraph,
