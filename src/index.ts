@@ -61,6 +61,7 @@ import DisplayMap from './Components/Organisms/DisplayMap';
 import HeroBannerImageContent from './Components/Organisms/HeroBannerGroup/HeroBannerImageContent';
 import Section from './Components/Organisms/Section';
 import UDSImage from './Components/Atoms/UDSImage';
+import NotFoundPage from './Components/Pages/NotFoundPage';
 
 export {
   Avatar,
@@ -126,4 +127,5 @@ export {
   DisplayMap,
   HeroBannerImageContent,
   Section,
+  NotFoundPage,
 };
