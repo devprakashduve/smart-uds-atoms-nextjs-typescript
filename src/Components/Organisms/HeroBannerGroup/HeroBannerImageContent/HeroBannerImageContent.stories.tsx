@@ -3,7 +3,7 @@ import HeroBannerImageContent from '.';
 import { HeroBannerImageContentProps } from './HeroBannerImageContent.interface';
 
 export default {
-  title: 'Components/Hero/HeroBannerImageContent',
+  title: 'Components/Organisms/HeroBannerGroup/HeroBannerImageContent',
   component: HeroBannerImageContent,
   argTypes: {
     imagePosition: {
