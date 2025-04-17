@@ -1,158 +1,15 @@
 // src/components/MegaMenu.tsx
-import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link'; // Using Next.js Link
+import {
+  MenuItem,
+  MenuColumn,
+  LinkItem,
+  MegaMenuProps,
+  ColumnRendererProps,
+} from './MegaMenu.interface'; // Import interfaces
 
-// --- Data Structure Interfaces ---
-type LinkStyle = 'header' | 'default' | 'chevron';
-interface LinkItem {
-  label: string;
-  href: string;
-  styleType?: LinkStyle;
-  revealsColumnId?: string;
-}
-// Using level and triggerLinkHref for hierarchy
-interface MenuColumn {
-  id: string;
-  title?: string;
-  level: number;
-  parentColumnId?: string;
-  triggerLinkHref?: string;
-  links: LinkItem[];
-  widthClass?: string;
-}
-interface MenuItem {
-  id: string;
-  label: string;
-  href: string;
-  megaMenuColumns?: MenuColumn[];
-}
-
-// --- Sample Menu Data (CLEANED - Removed 'col2-empty') ---
-const menuData: MenuItem[] = [
-  { id: 'home', label: 'Home', href: '/home' },
-  {
-    id: 'biosimilars',
-    label: 'Biosimilars',
-    href: '/biosimilars',
-    megaMenuColumns: [
-      {
-        // Level 1
-        id: 'col1-bio',
-        level: 1,
-        widthClass: 'w-60',
-        links: [
-          // Links that DO reveal L2 columns:
-          {
-            label: "Sandoz's Biosimilars",
-            href: '/sandoz-biosimilars',
-            styleType: 'chevron',
-            revealsColumnId: 'col2-products',
-          },
-          // Example: { label: 'Biosimilar heritage', href: '/biosimilars/heritage', styleType: 'chevron', revealsColumnId: 'col2-heritage'},
-
-          // Links that DO NOT reveal L2 columns (no revealsColumnId):
-          {
-            label: 'Biosimilar heritage',
-            href: '/biosimilars/heritage',
-            styleType: 'default',
-          },
-          {
-            label: 'Biosimilar education',
-            href: '/biosimilars/education',
-            styleType: 'default',
-          },
-          {
-            label: 'Impact on access',
-            href: '/biosimilars/impact',
-            styleType: 'default',
-          },
-          {
-            label: 'Patient support',
-            href: '/biosimilars/support',
-            styleType: 'default',
-          },
-        ],
-      },
-      {
-        // Level 2 - Triggered by /sandoz-biosimilars
-        id: 'col2-products',
-        level: 2,
-        parentColumnId: 'col1-bio',
-        triggerLinkHref: '/sandoz-biosimilars',
-        title: 'Products',
-        widthClass: 'w-60',
-        links: [
-          {
-            label: 'ERELZI®',
-            href: '/products/erelzi',
-            styleType: 'chevron',
-            revealsColumnId: 'col3-erelzi',
-          },
-          {
-            label: 'HYRIMOZ®',
-            href: '/products/hyrimoz',
-            styleType: 'chevron',
-            revealsColumnId: 'col3-hyrimoz',
-          },
-          {
-            label: 'OMNITROPE®',
-            href: '/products/omnitrope',
-            styleType: 'chevron',
-          },
-        ],
-      },
-      // Example Level 2 - Triggered by /biosimilars/heritage (if added above)
-      // { id: 'col2-heritage', level: 2, parentColumnId: 'col1-bio', triggerLinkHref: '/biosimilars/heritage', title: 'Heritage Details', widthClass: 'w-52', links: [ /* ... */ ]},
-      {
-        // Level 3 - Triggered by /products/erelzi
-        id: 'col3-erelzi',
-        level: 3,
-        parentColumnId: 'col2-products',
-        triggerLinkHref: '/products/erelzi',
-        title: 'About ERELZI®',
-        widthClass: 'w-72',
-        links: [
-          {
-            label: 'Key Clinical Data',
-            href: '/products/erelzi/data',
-            styleType: 'default',
-          },
-          {
-            label: 'Treatment Areas',
-            href: '/products/erelzi/treatment',
-            styleType: 'default',
-          },
-        ],
-      },
-      {
-        // Level 3 - Triggered by /products/hyrimoz
-        id: 'col3-hyrimoz',
-        level: 3,
-        parentColumnId: 'col2-products',
-        triggerLinkHref: '/products/hyrimoz',
-        title: 'About HYRIMOZ®',
-        widthClass: 'w-72',
-        links: [
-          {
-            label: 'HYRIMOZ Info 1',
-            href: '/products/hyrimoz/info1',
-            styleType: 'default',
-          },
-          {
-            label: 'HYRIMOZ Info 2',
-            href: '/products/hyrimoz/info2',
-            styleType: 'default',
-          },
-        ],
-      },
-    ],
-  },
-  { id: 'products', label: 'Products', href: '/products' },
-  { id: 'support', label: 'Patient support programs', href: '/support' },
-  { id: 'resources', label: 'Resources', href: '/resources' },
-];
-
-// --- Helper Icons --- (Same as before)
+// --- Helper Icons ---
 const ChevronRightIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -210,25 +67,6 @@ const EmptyColumnPlaceholder: React.FC<{
   />
 );
 
-// --- Reusable Column Renderer ---
-interface ColumnRendererProps {
-  /* ... same props as before ... */ column: MenuColumn | null | undefined;
-  isMobile: boolean;
-  placeholderWidthClass?: string;
-  level?: number;
-  onMouseEnterAnyMenuPart?: () => void;
-  onMouseLeaveAnyMenuPart?: () => void;
-  handleLinkEnter?: (
-    level: number,
-    linkHref?: string | null,
-    revealsColumn?: boolean
-  ) => void;
-  onMobileLinkClick?: (
-    event: React.MouseEvent,
-    revealsColumnId?: string
-  ) => void;
-  onMobileBackClick?: (parentColumnId?: string) => void;
-}
 const ColumnRenderer: React.FC<ColumnRendererProps> = ({
   column,
   isMobile,
@@ -239,8 +77,9 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
   handleLinkEnter = () => {},
   onMobileLinkClick = () => {},
   onMobileBackClick = () => {},
+  closeMenu = () => {},
 }) => {
-  // Desktop Rendering
+  // --- Desktop Rendering ---
   if (!isMobile) {
     if (!column)
       return (
@@ -256,25 +95,21 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
         onMouseEnter={onMouseEnterAnyMenuPart}
         onMouseLeave={onMouseLeaveAnyMenuPart}
       >
-        {' '}
         {column.title && (
           <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
             {column.title}
           </h3>
-        )}{' '}
+        )}
         <ul className="space-y-1">
-          {' '}
           {column.links.map((link) => (
             <li key={link.href} className="group">
-              {' '}
               <Link
                 href={link.href}
                 className="-mx-2 flex items-center justify-between rounded p-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
                 onClick={(e) => {
                   if (!isMobile) {
-                    e.preventDefault();
-                    window.location.href = link.href;
-                  }
+                    closeMenu(); /* Close menu before navigation */
+                  } /* Let Next Link handle navigation */
                 }}
                 onMouseEnter={() =>
                   handleLinkEnter(
@@ -284,22 +119,22 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
                   )
                 }
                 onMouseLeave={onMouseLeaveAnyMenuPart}
+                // Add focus handling if enhancing keyboard navigation
               >
-                {' '}
-                <span className="flex-grow pr-2">{link.label}</span>{' '}
-                {link.revealsColumnId && <ChevronRightIcon />}{' '}
-              </Link>{' '}
+                <span className="flex-grow pr-2">{link.label}</span>
+                {link.revealsColumnId && <ChevronRightIcon />}
+              </Link>
             </li>
-          ))}{' '}
-        </ul>{' '}
+          ))}
+        </ul>
       </div>
     );
   }
-  // Mobile Rendering
+
+  // --- Mobile Rendering ---
   if (isMobile && column) {
     return (
       <div className="w-full bg-blue-50 px-4 py-4">
-        {' '}
         {column.level > 1 && (
           <button
             onClick={() => onMobileBackClick(column.parentColumnId)}
@@ -309,32 +144,32 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
             {' '}
             <ChevronLeftIcon /> <span className="ml-1">Back</span>{' '}
           </button>
-        )}{' '}
+        )}
         {column.title && (
           <h3 className="mb-2 text-sm font-semibold text-gray-800">
             {column.title}
           </h3>
-        )}{' '}
+        )}
         <ul className="space-y-1">
-          {' '}
           {column.links.map((link) => (
             <li
               key={link.href}
               className="border-b border-blue-100 last:border-b-0"
             >
-              {' '}
               <Link
                 href={link.href}
                 className="flex items-center justify-between py-2.5 text-sm text-gray-700"
-                onClick={(e) => onMobileLinkClick(e, link.revealsColumnId)}
+                onClick={(e) =>
+                  onMobileLinkClick(e, link.href, link.revealsColumnId)
+                }
                 aria-haspopup={!!link.revealsColumnId}
               >
-                {' '}
-                {link.label} {link.revealsColumnId && <ChevronRightIcon />}{' '}
-              </Link>{' '}
+                {link.label}
+                {link.revealsColumnId && <ChevronRightIcon />}
+              </Link>
             </li>
-          ))}{' '}
-        </ul>{' '}
+          ))}
+        </ul>
       </div>
     );
   }
@@ -342,7 +177,8 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
 };
 
 // --- Main MegaMenu Component ---
-const MegaMenu: React.FC = () => {
+const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
+  // Accept menuData as prop
   // --- State ---
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [level1TriggerLink, setLevel1TriggerLink] = useState<string | null>(
@@ -358,19 +194,14 @@ const MegaMenu: React.FC = () => {
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
-  // --- Effects & Handlers --- (Keep same as previous version)
+  // --- Effects ---
   useEffect(() => {
-    /* ... Mobile detection & outside click ... */
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     const handleOutsideClick = (event: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setActiveMenu(null);
-        setMobileVisibleColumnId(null);
-        setLevel1TriggerLink(null);
-        setLevel2TriggerLink(null);
-        clearMenuTimeout();
+        closeMenu();
       }
     };
     document.addEventListener('mousedown', handleOutsideClick);
@@ -380,20 +211,27 @@ const MegaMenu: React.FC = () => {
       clearMenuTimeout();
     };
   }, []);
+
+  // --- Event Handlers ---
   const clearMenuTimeout = () => {
     if (menuTimeoutRef.current) {
       clearTimeout(menuTimeoutRef.current);
       menuTimeoutRef.current = null;
     }
   };
+  const closeMenu = () => {
+    // Centralized function to close menu and reset state
+    setActiveMenu(null);
+    setLevel1TriggerLink(null);
+    setLevel2TriggerLink(null);
+    setMobileVisibleColumnId(null);
+    clearMenuTimeout();
+  };
   const startMenuCloseTimeout = () => {
     clearMenuTimeout();
-    menuTimeoutRef.current = setTimeout(() => {
-      setActiveMenu(null);
-      setLevel1TriggerLink(null);
-      setLevel2TriggerLink(null);
-    }, 200);
+    menuTimeoutRef.current = setTimeout(closeMenu, 200);
   };
+
   const handleMouseEnterAnyMenuPart = () => {
     if (!isMobile) {
       clearMenuTimeout();
@@ -435,8 +273,7 @@ const MegaMenu: React.FC = () => {
     if (isMobile) {
       const firstLevelColId = columns?.find((c) => c.level === 1)?.id || null;
       if (activeMenu === menuId) {
-        setActiveMenu(null);
-        setMobileVisibleColumnId(null);
+        closeMenu();
       } else {
         setActiveMenu(menuId);
         setMobileVisibleColumnId(firstLevelColId);
@@ -447,15 +284,18 @@ const MegaMenu: React.FC = () => {
   };
   const handleMobileLinkClick = (
     event: React.MouseEvent,
+    href: string,
     revealsColumnId?: string
   ) => {
     if (isMobile) {
       if (revealsColumnId) {
         event.preventDefault();
         setMobileVisibleColumnId(revealsColumnId);
+      } else {
+        closeMenu(); /* Optional: Close menu on final mobile link click */
       }
     }
-  };
+  }; // Pass href if needed for analytics etc.
   const handleMobileBackClick = (parentColumnId?: string) => {
     if (isMobile && parentColumnId) {
       setMobileVisibleColumnId(parentColumnId);
@@ -465,12 +305,15 @@ const MegaMenu: React.FC = () => {
 
   // --- Render ---
   return (
+    // Root element with ref for outside click detection
     <nav
       ref={navRef}
       className="relative border-b border-gray-200 bg-white"
       aria-label="Main Navigation"
     >
+      {/* Container for centering */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* List of top-level navigation items */}
         <ul className="flex flex-col lg:flex-row lg:items-center lg:space-x-1">
           {menuData.map((item) => {
             const hasMegaMenu =
@@ -478,7 +321,7 @@ const MegaMenu: React.FC = () => {
             const menuIsOpen = isOpen(item.id);
             const columns = item.megaMenuColumns || [];
 
-            // Find active columns for desktop / current column for mobile
+            // Find active columns for desktop / current column for mobile based on state
             const level1Column = menuIsOpen
               ? columns.find((c) => c.level === 1)
               : null;
@@ -508,6 +351,7 @@ const MegaMenu: React.FC = () => {
               columns.find((c) => c.level === 3)?.widthClass || 'w-72';
 
             return (
+              // Top-level List Item
               <li
                 key={item.id}
                 onMouseEnter={
@@ -521,7 +365,7 @@ const MegaMenu: React.FC = () => {
                     : undefined
                 }
               >
-                {/* Top Level Link */}
+                {/* Top Level Link (using Next.js Link) */}
                 <Link
                   href={item.href}
                   onClick={(e) => {
@@ -529,12 +373,14 @@ const MegaMenu: React.FC = () => {
                       e.preventDefault();
                       handleTopLevelToggle(item.id, columns);
                     } else if (!isMobile && hasMegaMenu) {
-                      e.preventDefault();
+                      e.preventDefault(); /* Desktop click on parent prevented */
                     }
                   }}
                   aria-haspopup={hasMegaMenu ? 'true' : 'false'}
                   aria-expanded={hasMegaMenu ? menuIsOpen : undefined}
-                  className={`flex items-center justify-between border-b-2 px-3 py-3 text-sm font-medium outline-none transition-colors duration-150 ease-in-out lg:justify-start lg:px-4 lg:py-5 ${menuIsOpen ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-700 hover:border-blue-600 hover:text-blue-600'} ${isMobile ? 'w-full border-b lg:border-b-2' : ''} `}
+                  className={`flex items-center justify-between border-b-2 px-3 py-3 text-sm font-medium outline-none transition-colors duration-150 ease-in-out focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 lg:justify-start lg:px-4 lg:py-5 ${menuIsOpen ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-700 hover:border-blue-600 hover:text-blue-600'} ${isMobile ? 'w-full border-b lg:border-b-2' : ''} `}
+                  // Add keyboard handling if needed
+                  // onKeyDown={(e) => handleKeyDown(e, item.id, hasMegaMenu)}
                 >
                   {item.label}
                   {hasMegaMenu && isMobile && (
@@ -546,7 +392,7 @@ const MegaMenu: React.FC = () => {
                   )}
                 </Link>
 
-                {/* Mega Menu Panel */}
+                {/* Mega Menu Panel Container */}
                 {hasMegaMenu && (
                   <div
                     id={`megamenu-${item.id}`}
@@ -554,9 +400,10 @@ const MegaMenu: React.FC = () => {
                     aria-label={`${item.label} Menu`}
                     onMouseEnter={handleMouseEnterAnyMenuPart}
                     onMouseLeave={handleMouseLeaveAnyMenuPart}
-                    className={`transition-opacity duration-300 ease-in-out ${menuIsOpen ? 'visible opacity-100' : 'invisible opacity-0'} ${isMobile ? 'relative border-t' : 'absolute left-0 right-0 top-full'} z-20 mt-0 w-full bg-blue-50 shadow-lg lg:border-t-0`}
-                    style={{ transitionDelay: menuIsOpen ? '0ms' : '100ms' }}
+                    className={`transition-opacity duration-300 ease-in-out ${menuIsOpen ? 'visible opacity-100' : 'invisible opacity-0'} ${isMobile ? 'relative w-full border-t' : 'absolute left-0 right-0 top-full'} z-20 mt-0 bg-blue-50 shadow-lg lg:border-t-0`}
+                    style={{ transitionDelay: menuIsOpen ? '0ms' : '100ms' }} // Delay hiding for smoother transition off
                   >
+                    {/* Inner container for padding/layout */}
                     <div
                       className={`mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 lg:py-8 ${isMobile ? '' : 'flex min-h-[200px] flex-row gap-x-8'}`}
                     >
@@ -567,6 +414,7 @@ const MegaMenu: React.FC = () => {
                           isMobile={true}
                           onMobileLinkClick={handleMobileLinkClick}
                           onMobileBackClick={handleMobileBackClick}
+                          closeMenu={closeMenu}
                         />
                       )}
 
@@ -584,6 +432,7 @@ const MegaMenu: React.FC = () => {
                             }
                             handleLinkEnter={handleLinkEnter}
                             isMobile={false}
+                            closeMenu={closeMenu}
                           />
                           <ColumnRenderer
                             column={level2Column}
@@ -597,6 +446,7 @@ const MegaMenu: React.FC = () => {
                             }
                             handleLinkEnter={handleLinkEnter}
                             isMobile={false}
+                            closeMenu={closeMenu}
                           />
                           <ColumnRenderer
                             column={level3Column}
@@ -610,6 +460,7 @@ const MegaMenu: React.FC = () => {
                             }
                             handleLinkEnter={handleLinkEnter}
                             isMobile={false}
+                            closeMenu={closeMenu}
                           />
                         </>
                       )}
