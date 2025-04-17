@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react';
 import { ButtonProps } from './ButtonProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
@@ -97,18 +98,24 @@ const Button: React.FC<ButtonProps> = ({
       iconPosition === 'right' && 'ml-2'
     );
 
-    const spinnerElement = <Spinner className={iconClass} aria-label="Loading" />;
+    const spinnerElement = (
+      <Spinner className={iconClass} aria-label="Loading" />
+    );
 
     return (
       <div className="flex items-center">
         {loading && !icon && spinnerElement}
-        {icon && iconPosition === 'left' && (
-          loading ? spinnerElement : React.cloneElement(icon, { className: iconClass })
-        )}
+        {icon &&
+          iconPosition === 'left' &&
+          (loading
+            ? spinnerElement
+            : React.cloneElement(icon, { className: iconClass }))}
         {children}
-        {icon && iconPosition === 'right' && (
-          loading ? spinnerElement : React.cloneElement(icon, { className: iconClass })
-        )}
+        {icon &&
+          iconPosition === 'right' &&
+          (loading
+            ? spinnerElement
+            : React.cloneElement(icon, { className: iconClass }))}
       </div>
     );
   };
@@ -141,8 +148,8 @@ const Button: React.FC<ButtonProps> = ({
         (variant === 'icon'
           ? 'Icon button'
           : typeof children === 'string'
-          ? children
-          : undefined)
+            ? children
+            : undefined)
       }
       className={baseClasses}
     >
