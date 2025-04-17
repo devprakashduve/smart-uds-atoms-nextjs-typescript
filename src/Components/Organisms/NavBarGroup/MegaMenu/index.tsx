@@ -6,47 +6,8 @@ import {
   MegaMenuProps,
   ColumnRendererProps,
 } from './MegaMenu.interface'; // Import interfaces
-
-// --- Helper Icons ---
-const ChevronRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="ml-auto inline-block h-4 w-4 text-gray-400 group-hover:text-blue-600"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-  </svg>
-);
-const ChevronDownIcon = () => (
-  <svg
-    className={`ml-1 h-5 w-5 transition-transform duration-200`}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      fillRule="evenodd"
-      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-const ChevronLeftIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-  </svg>
-);
+import Icon from '@/Components/Atoms/Icon';
+import Button from '@/Components/Atoms/Button';
 
 // --- Placeholder Component ---
 const EmptyColumnPlaceholder: React.FC<{
@@ -114,7 +75,13 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
                 // Add focus handling if enhancing keyboard navigation
               >
                 <span className="flex-grow pr-2">{link.label}</span>
-                {link.revealsColumnId && <ChevronRightIcon />}
+                {link.revealsColumnId && (
+                  <Icon
+                    name={'chevronRight'}
+                    variant={'outline'}
+                    className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+                  />
+                )}
               </Link>
             </li>
           ))}
@@ -126,18 +93,25 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
   // --- Mobile Rendering ---
   if (isMobile && column) {
     return (
-      <div className="w-full bg-blue-50 px-4 py-4">
+      <div className="w-full bg-blue-50 px-0">
         {column.level > 1 && (
-          <button
+          <Button
+            variant="link"
+            size="sm"
             onClick={() => onMobileBackClick(column.parentColumnId)}
-            className="-ml-1 mb-3 flex items-center rounded p-1 text-sm font-medium text-blue-600 hover:bg-blue-100"
+            className="-ml-2 mb-3"
             aria-label={`Back to previous menu`}
           >
-            <ChevronLeftIcon /> <span className="ml-1">Back</span>
-          </button>
+            <Icon
+              name={'chevronLeft'}
+              variant={'outline'}
+              className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+            />
+            <span className="ml-1">Back</span>
+          </Button>
         )}
         {column.title && (
-          <h3 className="mb-2 text-sm font-semibold text-gray-800">
+          <h3 className="text-sm font-semibold text-gray-800">
             {column.title}
           </h3>
         )}
@@ -156,7 +130,13 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
                 aria-haspopup={!!link.revealsColumnId}
               >
                 {link.label}
-                {link.revealsColumnId && <ChevronRightIcon />}
+                {link.revealsColumnId && (
+                  <Icon
+                    name={'chevronRight'}
+                    variant={'outline'}
+                    className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+                  />
+                )}
               </Link>
             </li>
           ))}
@@ -378,7 +358,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                     <span
                       className={`${menuIsOpen ? 'rotate-180' : ''} transition-transform`}
                     >
-                      <ChevronDownIcon />
+                      <Icon
+                        name={'chevronDown'}
+                        variant={'outline'}
+                        className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+                      />
                     </span>
                   )}
                 </Link>
@@ -396,7 +380,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                   >
                     {/* Inner container for padding/layout */}
                     <div
-                      className={`mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 lg:py-8 ${isMobile ? '' : 'flex min-h-[200px] flex-row gap-x-8'}`}
+                      className={`mx-auto max-w-7xl px-4 ${isMobile ? '' : 'flex min-h-[200px] flex-row gap-x-8'}`}
                     >
                       {/* --- Mobile Rendering --- */}
                       {isMobile && menuIsOpen && (
