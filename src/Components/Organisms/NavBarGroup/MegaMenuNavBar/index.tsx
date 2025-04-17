@@ -3,6 +3,7 @@ import {
   MegaMenuMobileMenuProps,
   MegaMenuDesktopMenuProps,
   MegaMenuNavBarComponentProps,
+  MegaMenuNavBarProps as Navigation,
 } from './MegaMenuNavBar.interface';
 import CustomLink from '@/Components/Atoms/CustomLink';
 import Button from '@/Components/Atoms/Button';
@@ -209,7 +210,7 @@ function DesktopMenu({
       <div className="flex h-full space-x-8">
         {navigation.categories &&
           navigation.categories.map((category) => (
-            <div key={category.name} className="flex">
+            <div key={category.name} className="relative flex">
               <div className="relative flex">
                 <CustomLink
                   onClick={() =>
@@ -229,7 +230,7 @@ function DesktopMenu({
                 </CustomLink>
               </div>
               {activeTab === category.name && (
-                <div className="absolute inset-x-0 top-full text-atom-menu-dark">
+                <div className="absolute inset-x-0 top-full text-atom-menu-dark z-20">
                   <div
                     aria-hidden="true"
                     className="absolute inset-0 top-1/2 bg-atom-menu-background bg-gradient-to-r from-atom-menu-from_background to-atom-menu-to_background shadow-sm"
@@ -269,7 +270,9 @@ function DesktopMenu({
                             ))}
                           </div>
                         )}
-                        <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10">
+                        <div
+                          className={`row-start-1 ${category.featured ? 'col-start-1' : ''} grid grid-cols-3 gap-x-8 gap-y-10`}
+                        >
                           {category.sections.map((section) => (
                             <div key={section.name}>
                               {section.name && (
@@ -324,6 +327,166 @@ function DesktopMenu({
   );
 }
 
+const TopBarSection: React.FC<{
+  signInText?: string;
+  createAccountText?: string;
+  changeCurrencyText?: string;
+  currency?: string;
+}> = ({
+  signInText,
+  createAccountText,
+  changeCurrencyText,
+  currency,
+}) => (
+  <div className="flex h-10 items-center justify-end px-4 sm:px-6 lg:px-8">
+    {signInText && (
+      <div className="flex">
+        <div className="flex">
+          <div className="flex">
+            <CustomLink
+              href="#"
+              className="text-sm text-atom-menu-dark/90 hover:text-atom-menu-dark"
+              underlineHover={false}
+            >
+              {signInText}
+            </CustomLink>
+          </div>
+        </div>
+        <span aria-hidden="true" className="mx-4 h-6 w-px bg-atom-menu-dark/20" />
+        {createAccountText && (
+          <div className="flex">
+            <div className="flex">
+              <CustomLink
+                href="#"
+                className="text-sm text-atom-menu-dark/90 hover:text-atom-menu-dark"
+                underlineHover={false}
+              >
+                {createAccountText}
+              </CustomLink>
+            </div>
+          </div>
+        )}
+        <span aria-hidden="true" className="mx-4 h-6 w-px bg-atom-menu-dark/20" />
+      </div>
+    )}
+
+    {currency && (
+      <div className="flex">
+        <div className="flex">
+          <CustomLink
+            href="#"
+            className="flex items-center text-atom-menu-dark/90 hover:text-atom-menu-dark"
+            underlineHover={false}
+          >
+            <UDSImage
+              alt=""
+              src="/images/avatar.jpg"
+              className="block h-auto w-5 shrink-0"
+            />
+            <span className="ml-3 block text-sm">{currency}</span>
+            <span className="sr-only">{changeCurrencyText}</span>
+          </CustomLink>
+        </div>
+      </div>
+    )}
+  </div>
+);
+
+const MainNavBarSection: React.FC<{
+  logoSrc: string;
+  logoAlt: string;
+  navigation: Navigation;
+  searchBox?: boolean;
+  setOpen: (open: boolean) => void;
+  DesktopMenuComponent: React.FC<MegaMenuDesktopMenuProps>;
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+  shopNowText?: string;
+}> = ({
+  logoSrc,
+  logoAlt,
+  navigation,
+  searchBox,
+  setOpen,
+  DesktopMenuComponent,
+  activeTab,
+  setActiveTab,
+  shopNowText,
+}) => (
+  <div className="border-b border-atom-menu-dark">
+    <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="flex h-16 items-center">
+        <Button
+          type="button"
+          variant='icon'
+          className="relative rounded-md p-2 lg:hidden"
+          onClick={() => setOpen(true)}
+        >
+          <span className="sr-only">Open menu</span>
+          <Icon
+            aria-hidden="true"
+            className="size-6 text-atom-menu-dark hover:text-atom-menu-dark/50"
+            name={'bars3'}
+            variant={'outline'}
+          />
+        </Button>
+
+        <div className="ml-4 flex lg:ml-0">
+          <CustomLink href="#">
+            <span className="sr-only">Your Company</span>
+            <UDSImage
+              alt={logoAlt}
+              src={logoSrc}
+              className="h-8 w-auto"
+            />
+          </CustomLink>
+        </div>
+
+        <DesktopMenuComponent
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          navigation={navigation}
+          shopNowText={shopNowText}
+        />
+
+        <div className="ml-auto flex items-center">
+          {searchBox && (
+            <div className="flex lg:ml-6">
+              <CustomLink
+                href="#"
+                className="p-2 text-atom-menu-dark/90 hover:text-atom-menu-dark/50"
+              >
+                <span className="sr-only">Search</span>
+                <Icon
+                  aria-hidden="true"
+                  className="size-6"
+                  name={'search'}
+                  variant={'outline'}
+                />
+              </CustomLink>
+            </div>
+          )}
+
+          <div className="ml-4 flow-root lg:ml-6">
+            <CustomLink href="#" className="group -m-2 flex items-center p-2">
+              <Icon
+                aria-hidden="true"
+                name={'shoppingCart'}
+                variant='outline'
+                className="size-6 shrink-0 text-atom-menu-dark group-hover:text-atom-menu-dark/50"
+              />
+              <span className="ml-2 text-sm text-atom-menu-dark group-hover:text-atom-menu-dark/50">
+                0
+              </span>
+              <span className="sr-only">items in cart, view bag</span>
+            </CustomLink>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+);
+
 export default function MegaMenuNavBar({
   navigation,
   freeDeliveryText,
@@ -334,116 +497,56 @@ export default function MegaMenuNavBar({
   searchBox,
   logoSrc,
   logoAlt,
+  closeMenuText = 'Close menu',
+  shopNowText = 'Shop now',
 }: MegaMenuNavBarComponentProps) {
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('');
 
   return (
-    <div>
-      <MobileMenu
-        open={open}
-        setOpen={setOpen}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        navigation={navigation}
-        closeMenuText="Close menu"
-        shopNowText=""
-        signInText={signInText || ''}
-        createAccountText={createAccountText || ''}
-        changeCurrencyText={changeCurrencyText || ''}
-        currency={currency || ''}
-      />
-      <header className="relative bg-atom-menu-background bg-gradient-to-r from-atom-menu-from_background to-atom-menu-to_background">
-        {freeDeliveryText && (
-          <p className="flex h-10 items-center justify-center bg-atom-menu-dark/90 p-2 text-atom-menu-light/80 sm:py-6 lg:px-8">
-            {freeDeliveryText}
-          </p>
-        )}
-        <nav
-          aria-label="Top"
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-        >
-          <div className="">
-            <div className="flex h-20 items-center">
-              <CustomLink
-                onClick={() => setOpen(true)}
-                underlineHover={false}
-                className="relative rounded-md bg-atom-menu-light p-2 text-atom-menu-dark lg:hidden"
-                href={'#'}
-              >
-                <span className="sr-only">Menu</span>
-                <Icon
-                  aria-hidden="true"
-                  className="size-6"
-                  name={'bars3'}
-                  variant={'outline'}
-                />
-              </CustomLink>
-              <div className="ml-4 flex lg:ml-0">
-                <Button variant="icon" href="/">
-                  <span className="sr-only">{logoAlt}</span>
-                  <UDSImage
-                    alt={logoAlt}
-                    src={logoSrc}
-                    className="h-8 w-auto"
-                  />
-                </Button>
-              </div>
-              <DesktopMenu
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-                navigation={navigation}
-                shopNowText=""
-              />
-              <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {signInText && (
-                    <>
-                      <CustomLink
-                        href="#"
-                        underlineHover={false}
-                        className="text-atom-menu-dark/90 hover:text-atom-menu-dark/50"
-                      >
-                        {signInText}
-                      </CustomLink>
-                      <span
-                        aria-hidden="true"
-                        className="h-6 w-px bg-atom-menu-dark"
-                      />
-                    </>
-                  )}
-                  {createAccountText && (
-                    <CustomLink
-                      href="#"
-                      underlineHover={false}
-                      className="text-atom-menu-dark/90 hover:text-atom-menu-dark/50"
-                    >
-                      {createAccountText}
-                    </CustomLink>
-                  )}
-                </div>
+    <div className="relative z-10">
+      <div className="rounded-menu bg-menu-background bg-gradient-to-r from-menu-from_background to-menu-to_background">
+        <MobileMenu
+          open={open}
+          setOpen={setOpen}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          navigation={navigation}
+          closeMenuText={closeMenuText}
+          shopNowText={shopNowText}
+          signInText={signInText ?? ''}
+          createAccountText={createAccountText ?? ''}
+          changeCurrencyText={changeCurrencyText ?? ''}
+          currency={currency ?? ''}
+        />
 
-                {searchBox && (
-                  <div className="flex lg:ml-6">
-                    <a
-                      href="#"
-                      className="p-2 text-atom-menu-dark/90 hover:text-atom-menu-dark/50"
-                    >
-                      <span className="sr-only">Search</span>
-                      <Icon
-                        aria-hidden="true"
-                        className="size-6"
-                        name={'search'}
-                        variant={'outline'}
-                      />
-                    </a>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
+        <header className="relative">
+          {freeDeliveryText && (
+            <p className="flex h-10 items-center justify-center bg-atom-menu-accent-dark px-4 text-sm text-atom-menu-accent-light sm:px-6 lg:px-8">
+              {freeDeliveryText}
+            </p>
+          )}
+
+          <TopBarSection
+            signInText={signInText}
+            createAccountText={createAccountText}
+            changeCurrencyText={changeCurrencyText}
+            currency={currency}
+          />
+
+          <MainNavBarSection
+            logoSrc={logoSrc}
+            logoAlt={logoAlt}
+            navigation={navigation}
+            searchBox={searchBox}
+            setOpen={setOpen}
+            DesktopMenuComponent={DesktopMenu}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            shopNowText={shopNowText}
+          />
+        </header>
+      </div>
     </div>
   );
 }
