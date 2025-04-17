@@ -22,7 +22,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = ({
         subheading={pageSubTitle}
         border={sectionBorder}
         textAlign={sectionTextAlign}
-        topHeading=''
+        topHeading=""
       >
         {children}
       </Section>
@@ -30,4 +30,4 @@ export const PageTemplate: React.FC<PageTemplateProps> = ({
   );
 };
 
-export default PageTemplate; 
+export default PageTemplate;

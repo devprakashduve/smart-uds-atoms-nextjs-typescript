@@ -18,8 +18,12 @@ export default meta;
 type Story = StoryObj<typeof BaseTemplate>;
 
 const defaultArgs: BaseTemplateProps = {
-  header: <div style={{ padding: '1rem', background: '#eee' }}>Mock Header</div>,
-  footer: <div style={{ padding: '1rem', background: '#ddd' }}>Mock Footer</div>,
+  header: (
+    <div style={{ padding: '1rem', background: '#eee' }}>Mock Header</div>
+  ),
+  footer: (
+    <div style={{ padding: '1rem', background: '#ddd' }}>Mock Footer</div>
+  ),
   children: (
     <div style={{ padding: '2rem' }}>
       <h2>Main Content Area</h2>
@@ -41,4 +45,4 @@ export const WithoutHeaderFooter: Story = {
     footer: undefined,
     children: defaultArgs.children,
   },
-}; 
+};

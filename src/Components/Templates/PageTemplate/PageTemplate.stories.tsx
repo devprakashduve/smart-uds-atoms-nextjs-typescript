@@ -4,8 +4,12 @@ import PageTemplate from '.';
 import { PageTemplateProps } from './PageTemplate.interface';
 
 // Mock Header/Footer for simplicity in stories
-const MockHeader = <div style={{ padding: '1rem', background: '#eee' }}>Mock Header</div>;
-const MockFooter = <div style={{ padding: '1rem', background: '#ddd' }}>Mock Footer</div>;
+const MockHeader = (
+  <div style={{ padding: '1rem', background: '#eee' }}>Mock Header</div>
+);
+const MockFooter = (
+  <div style={{ padding: '1rem', background: '#ddd' }}>Mock Footer</div>
+);
 
 const meta: Meta<typeof PageTemplate> = {
   title: 'Components/Templates/PageTemplate',
@@ -14,7 +18,10 @@ const meta: Meta<typeof PageTemplate> = {
   argTypes: {
     pageTitle: { control: 'text' },
     pageSubTitle: { control: 'text' },
-    sectionTextAlign: { control: 'radio', options: ['left', 'center', 'right'] },
+    sectionTextAlign: {
+      control: 'radio',
+      options: ['left', 'center', 'right'],
+    },
     sectionBorder: { control: 'boolean' },
     children: { control: 'text' }, // Control might not render complex children well
   },
@@ -69,4 +76,4 @@ export const Minimal: Story = {
     pageSubTitle: undefined,
     children: <p>Minimal content only.</p>,
   },
-}; 
+};

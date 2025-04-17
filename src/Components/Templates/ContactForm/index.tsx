@@ -28,12 +28,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     >
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <FormHandler {...formHandlerData} />
-        {contactInfo && (
-          <ContactInformation {...contactInfo} />
-        )}
+        {contactInfo && <ContactInformation {...contactInfo} />}
       </div>
     </PageTemplate>
   );
 };
 
-export default ContactForm; 
+export default ContactForm;

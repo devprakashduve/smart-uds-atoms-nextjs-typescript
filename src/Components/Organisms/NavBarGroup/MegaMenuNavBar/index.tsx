@@ -230,7 +230,7 @@ function DesktopMenu({
                 </CustomLink>
               </div>
               {activeTab === category.name && (
-                <div className="absolute inset-x-0 top-full text-atom-menu-dark z-20">
+                <div className="absolute inset-x-0 top-full z-20 text-atom-menu-dark">
                   <div
                     aria-hidden="true"
                     className="absolute inset-0 top-1/2 bg-atom-menu-background bg-gradient-to-r from-atom-menu-from_background to-atom-menu-to_background shadow-sm"
@@ -332,12 +332,7 @@ const TopBarSection: React.FC<{
   createAccountText?: string;
   changeCurrencyText?: string;
   currency?: string;
-}> = ({
-  signInText,
-  createAccountText,
-  changeCurrencyText,
-  currency,
-}) => (
+}> = ({ signInText, createAccountText, changeCurrencyText, currency }) => (
   <div className="flex h-10 items-center justify-end px-4 sm:px-6 lg:px-8">
     {signInText && (
       <div className="flex">
@@ -352,7 +347,10 @@ const TopBarSection: React.FC<{
             </CustomLink>
           </div>
         </div>
-        <span aria-hidden="true" className="mx-4 h-6 w-px bg-atom-menu-dark/20" />
+        <span
+          aria-hidden="true"
+          className="mx-4 h-6 w-px bg-atom-menu-dark/20"
+        />
         {createAccountText && (
           <div className="flex">
             <div className="flex">
@@ -366,7 +364,10 @@ const TopBarSection: React.FC<{
             </div>
           </div>
         )}
-        <span aria-hidden="true" className="mx-4 h-6 w-px bg-atom-menu-dark/20" />
+        <span
+          aria-hidden="true"
+          className="mx-4 h-6 w-px bg-atom-menu-dark/20"
+        />
       </div>
     )}
 
@@ -418,7 +419,7 @@ const MainNavBarSection: React.FC<{
       <div className="flex h-16 items-center">
         <Button
           type="button"
-          variant='icon'
+          variant="icon"
           className="relative rounded-md p-2 lg:hidden"
           onClick={() => setOpen(true)}
         >
@@ -434,11 +435,7 @@ const MainNavBarSection: React.FC<{
         <div className="ml-4 flex lg:ml-0">
           <CustomLink href="#">
             <span className="sr-only">Your Company</span>
-            <UDSImage
-              alt={logoAlt}
-              src={logoSrc}
-              className="h-8 w-auto"
-            />
+            <UDSImage alt={logoAlt} src={logoSrc} className="h-8 w-auto" />
           </CustomLink>
         </div>
 
@@ -472,7 +469,7 @@ const MainNavBarSection: React.FC<{
               <Icon
                 aria-hidden="true"
                 name={'shoppingCart'}
-                variant='outline'
+                variant="outline"
                 className="size-6 shrink-0 text-atom-menu-dark group-hover:text-atom-menu-dark/50"
               />
               <span className="ml-2 text-sm text-atom-menu-dark group-hover:text-atom-menu-dark/50">
@@ -505,7 +502,7 @@ export default function MegaMenuNavBar({
 
   return (
     <div className="relative z-10">
-      <div className="rounded-menu bg-menu-background bg-gradient-to-r from-menu-from_background to-menu-to_background">
+      <div className="rounded-menu bg-menu-background from-menu-from_background to-menu-to_background bg-gradient-to-r">
         <MobileMenu
           open={open}
           setOpen={setOpen}
@@ -522,7 +519,7 @@ export default function MegaMenuNavBar({
 
         <header className="relative">
           {freeDeliveryText && (
-            <p className="flex h-10 items-center justify-center bg-atom-menu-accent-dark px-4 text-sm text-atom-menu-accent-light sm:px-6 lg:px-8">
+            <p className="bg-atom-menu-accent-dark text-atom-menu-accent-light flex h-10 items-center justify-center px-4 text-sm sm:px-6 lg:px-8">
               {freeDeliveryText}
             </p>
           )}

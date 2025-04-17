@@ -7,4 +7,4 @@ export interface PageTemplateProps extends BaseTemplateProps {
   // Add props needed by Section
   sectionBorder?: boolean;
   sectionTextAlign?: 'left' | 'right' | 'center';
-} 
+}

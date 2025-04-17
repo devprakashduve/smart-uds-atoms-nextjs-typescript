@@ -9,11 +9,11 @@ export const BaseTemplate: React.FC<BaseTemplateProps> = ({
 }) => {
   return (
     <div className="flex min-h-screen flex-col">
-      {header} 
+      {header}
       <main className={`flex-grow ${className}`}>{children}</main>
-      {footer} 
+      {footer}
     </div>
   );
 };
 
-export default BaseTemplate; 
+export default BaseTemplate;

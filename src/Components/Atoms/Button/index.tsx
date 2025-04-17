@@ -1,5 +1,4 @@
-'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ButtonProps } from './ButtonProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Spinner from '@/Components/Atoms/Spinner';
@@ -21,20 +20,6 @@ const Button: React.FC<ButtonProps> = ({
   className,
   underlineHover = false,
 }) => {
-  // Accessibility warning for icon buttons without ariaLabel in development
-  useEffect(() => {
-    if (
-      process.env.NODE_ENV === 'development' &&
-      variant === 'icon' &&
-      !ariaLabel &&
-      !children
-    ) {
-      console.warn(
-        'Warning: Button with `variant="icon"` should have an `ariaLabel` prop for accessibility when there is no visible text content.'
-      );
-    }
-  }, [variant, ariaLabel, children]);
-
   let extraClasses = '';
   switch (variant) {
     case 'default':

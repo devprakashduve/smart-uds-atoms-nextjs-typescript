@@ -2,8 +2,12 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import Button from '.';
 import { ButtonSize, ButtonVariant } from './ButtonProps.interface';
-import { ArrowDownIcon, ArrowUpRightIcon, ArrowDownTrayIcon, PencilIcon } from '@heroicons/react/24/outline';
-import Spinner from '@/Components/Atoms/Spinner'; // Import Spinner if needed for specific icon stories
+import {
+  ArrowDownIcon,
+  ArrowUpRightIcon,
+  ArrowDownTrayIcon,
+  PencilIcon,
+} from '@heroicons/react/24/outline';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Atoms/Button',
@@ -12,7 +16,8 @@ const meta: Meta<typeof Button> = {
   parameters: {
     docs: {
       description: {
-        component: 'A versatile button component supporting multiple styles, sizes, states, and icons.',
+        component:
+          'A versatile button component supporting multiple styles, sizes, states, and icons.',
       },
     },
   },
@@ -83,7 +88,8 @@ const meta: Meta<typeof Button> = {
     },
     ariaLabel: {
       control: 'text',
-      description: 'ARIA label for accessibility, especially important for icon-only buttons.',
+      description:
+        'ARIA label for accessibility, especially important for icon-only buttons.',
     },
     className: {
       control: 'text',
@@ -91,10 +97,12 @@ const meta: Meta<typeof Button> = {
     },
     underlineHover: {
       control: 'boolean',
-      description: 'Whether to underline the button text on hover (useful for link variant).',
+      description:
+        'Whether to underline the button text on hover (useful for link variant).',
     },
   },
-  args: { // Default args for controls
+  args: {
+    // Default args for controls
     children: 'Button Text',
     variant: 'default',
     size: 'md',
@@ -177,7 +185,10 @@ export const Loading: Story = {
   },
   parameters: {
     docs: {
-      description: { story: 'Button in loading state. Spinner replaces icon or appears left.' },
+      description: {
+        story:
+          'Button in loading state. Spinner replaces icon or appears left.',
+      },
     },
   },
 };
@@ -224,7 +235,9 @@ export const IconOnly: Story = {
   },
   parameters: {
     docs: {
-      description: { story: 'Button containing only an icon. Requires `ariaLabel`.' },
+      description: {
+        story: 'Button containing only an icon. Requires `ariaLabel`.',
+      },
     },
   },
 };
@@ -239,7 +252,10 @@ export const LoadingWithIcon: Story = {
   },
   parameters: {
     docs: {
-      description: { story: 'Loading state when an icon is present. Spinner replaces the icon.' },
+      description: {
+        story:
+          'Loading state when an icon is present. Spinner replaces the icon.',
+      },
     },
   },
 };
@@ -255,7 +271,12 @@ export const Sizes: Story = {
   render: (args) => (
     <div className="flex items-center space-x-2">
       {(['xs', 'sm', 'md', 'lg', 'xl'] as ButtonSize[]).map((size) => (
-        <Button {...args} key={size} size={size} variant={args.variant || 'default'}>
+        <Button
+          {...args}
+          key={size}
+          size={size}
+          variant={args.variant || 'default'}
+        >
           {size.toUpperCase()}
         </Button>
       ))}
@@ -270,12 +291,14 @@ export const AsLink: Story = {
     children: 'Visit Docs',
     variant: 'link',
     href: '#', // Replace with actual link in real use
-    icon: <ArrowUpRightIcon className="h-4 w-4"/>,
-    iconPosition: 'right'
+    icon: <ArrowUpRightIcon className="h-4 w-4" />,
+    iconPosition: 'right',
   },
   parameters: {
     docs: {
-      description: { story: 'Button rendered as an `<a>` tag using the `href` prop.' },
+      description: {
+        story: 'Button rendered as an `<a>` tag using the `href` prop.',
+      },
     },
   },
 };
@@ -289,9 +312,11 @@ export const AsExternalLink: Story = {
     icon: <ArrowUpRightIcon className="h-4 w-4" />,
     iconPosition: 'right',
   },
-    parameters: {
+  parameters: {
     docs: {
-      description: { story: 'Button rendered as an `<a>` tag opening in a new tab.' },
+      description: {
+        story: 'Button rendered as an `<a>` tag opening in a new tab.',
+      },
     },
   },
 };
@@ -302,7 +327,9 @@ export const Comparison: Story = {
   parameters: {
     controls: { hideNoControlsWarning: true }, // Hide warning as this story doesn't use args directly
     docs: {
-      description: { story: 'A visual comparison of different button variants and states.' },
+      description: {
+        story: 'A visual comparison of different button variants and states.',
+      },
     },
   },
   render: () => (
@@ -324,22 +351,49 @@ export const Comparison: Story = {
       </div>
 
       <h3 className="text-lg font-semibold">States</h3>
-       <div className="flex flex-wrap items-center gap-2">
-        <Button variant="default" loading>Loading</Button>
-        <Button variant="outline" loading icon={<ArrowDownIcon className="h-5 w-5"/>}>Loading Icon</Button>
-        <Button variant="default" disabled>Disabled</Button>
-        <Button variant="link" disabled>Disabled Link</Button>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button variant="default" loading>
+          Loading
+        </Button>
+        <Button
+          variant="outline"
+          loading
+          icon={<ArrowDownIcon className="h-5 w-5" />}
+        >
+          Loading Icon
+        </Button>
+        <Button variant="default" disabled>
+          Disabled
+        </Button>
+        <Button variant="link" disabled>
+          Disabled Link
+        </Button>
       </div>
 
       <h3 className="text-lg font-semibold">Icons</h3>
-       <div className="flex flex-wrap items-center gap-2">
-         <Button variant="default" icon={<ArrowDownTrayIcon className="h-5 w-5" />}>Icon Left</Button>
-         <Button variant="outline" icon={<ArrowUpRightIcon className="h-5 w-5" />} iconPosition="right">Icon Right</Button>
-         <Button variant="icon" icon={<PencilIcon className="h-5 w-5" />} ariaLabel="Edit" />
-       </div>
+      <div className="flex flex-wrap items-center gap-2">
+        <Button
+          variant="default"
+          icon={<ArrowDownTrayIcon className="h-5 w-5" />}
+        >
+          Icon Left
+        </Button>
+        <Button
+          variant="outline"
+          icon={<ArrowUpRightIcon className="h-5 w-5" />}
+          iconPosition="right"
+        >
+          Icon Right
+        </Button>
+        <Button
+          variant="icon"
+          icon={<PencilIcon className="h-5 w-5" />}
+          ariaLabel="Edit"
+        />
+      </div>
 
       <h3 className="text-lg font-semibold">Sizes (Default Variant)</h3>
-       <div className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         <Button size="xs">XS</Button>
         <Button size="sm">SM</Button>
         <Button size="md">MD</Button>

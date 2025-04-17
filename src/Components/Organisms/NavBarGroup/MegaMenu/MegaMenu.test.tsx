@@ -1,48 +1,31 @@
-// src/components/MegaMenu.test.tsx
 import React from 'react';
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  act,
-} from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-
 import MegaMenu from '.';
 import { MenuItem } from './MegaMenu.interface'; // Adjust path if needed
 
 // --- Mock Next.js Link ---
 // Provides basic anchor tag rendering for tests
-jest.mock('next/link', () => {
-  return ({
-    children,
-    href,
-    ...props
-  }: {
-    children: React.ReactNode;
-    href: string;
-    [key: string]: any;
-  }) => {
-    // Filter out internal Next.js props before passing to `a`
-    const {
-      locale,
-      legacyBehavior,
-      passHref,
-      prefetch,
-      replace,
-      scroll,
-      shallow,
-      ...anchorProps
-    } = props;
-    return (
-      <a href={href} {...anchorProps}>
-        {children}
-      </a>
-    );
-  };
-});
+// jest.mock('next/link', () => {
+//   return ({
+//     children,
+//     href,
+//     ...props
+//   }: {
+//     children: React.ReactNode;
+//     href: string;
+//     [key: string]: string | boolean | React.ReactNode;
+//   }) => {
+//     // Filter out internal Next.js props before passing to `a`
+//     const { ...anchorProps } = props;
+//     return (
+//       <a href={href} {...anchorProps}>
+//         {children}
+//       </a>
+//     );
+//   };
+// });
 
 // --- Test Data ---
 // Using the dummy data structure from previous steps
@@ -326,7 +309,7 @@ describe('MegaMenu Component', () => {
       const triggerLink = screen.getByRole('link', { name: 'Category 1' });
 
       // Panel initially hidden
-      const panel = screen.queryByRole('region', { name: /Category 1 Menu/i });
+      // const panel = screen.queryByRole('region', { name: /Category 1 Menu/i });
       // expect(panel).not.toBeVisible();
       expect(triggerLink).toHaveAttribute('aria-expanded', 'false');
 

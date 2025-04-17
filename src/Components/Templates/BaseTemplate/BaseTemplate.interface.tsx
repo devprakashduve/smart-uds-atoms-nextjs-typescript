@@ -5,4 +5,4 @@ export interface BaseTemplateProps {
   footer?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
-} 
+}

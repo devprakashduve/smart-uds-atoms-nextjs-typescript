@@ -2,9 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link'; // Using Next.js Link
 import {
-  MenuItem,
   MenuColumn,
-  LinkItem,
   MegaMenuProps,
   ColumnRendererProps,
 } from './MegaMenu.interface'; // Import interfaces
@@ -19,8 +17,7 @@ const ChevronRightIcon = () => (
     stroke="currentColor"
     strokeWidth={2}
   >
-    {' '}
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />{' '}
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
   </svg>
 );
 const ChevronDownIcon = () => (
@@ -47,12 +44,7 @@ const ChevronLeftIcon = () => (
     stroke="currentColor"
     strokeWidth={2}
   >
-    {' '}
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M15 19l-7-7 7-7"
-    />{' '}
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
   </svg>
 );
 
@@ -106,7 +98,7 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
               <Link
                 href={link.href}
                 className="-mx-2 flex items-center justify-between rounded p-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
-                onClick={(e) => {
+                onClick={() => {
                   if (!isMobile) {
                     closeMenu(); /* Close menu before navigation */
                   } /* Let Next Link handle navigation */
@@ -141,8 +133,7 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
             className="-ml-1 mb-3 flex items-center rounded p-1 text-sm font-medium text-blue-600 hover:bg-blue-100"
             aria-label={`Back to previous menu`}
           >
-            {' '}
-            <ChevronLeftIcon /> <span className="ml-1">Back</span>{' '}
+            <ChevronLeftIcon /> <span className="ml-1">Back</span>
           </button>
         )}
         {column.title && (
@@ -210,7 +201,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
       document.removeEventListener('mousedown', handleOutsideClick);
       clearMenuTimeout();
     };
-  }, []);
+  });
 
   // --- Event Handlers ---
   const clearMenuTimeout = () => {
