@@ -59,4 +59,6 @@ export interface MegaMenuNavBarComponentProps {
   searchBox?: boolean;
   logoSrc: string;
   logoAlt: string;
+  closeMenuText?: string;
+  shopNowText?: string;
 }
