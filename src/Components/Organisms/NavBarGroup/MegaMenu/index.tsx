@@ -44,21 +44,21 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
     return (
       <div
         key={column.id}
-        className={`flex-shrink-0 space-y-3 ${column.widthClass || 'w-64'}`}
+        className={`flex-shrink-0 space-y-1 py-5 ${column.widthClass || 'w-64'}`}
         onMouseEnter={onMouseEnterAnyMenuPart}
         onMouseLeave={onMouseLeaveAnyMenuPart}
       >
         {column.title && (
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+          <h3 className="py-2 text-sm font-semibold uppercase tracking-wider">
             {column.title}
           </h3>
         )}
-        <ul className="space-y-1">
+        <ul className="space-y-2">
           {column.links.map((link) => (
             <li key={link.href} className="group">
               <Link
                 href={link.href}
-                className="-mx-2 flex items-center justify-between rounded p-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                className="-mx-2 flex items-center justify-between rounded p-2 text-sm hover:bg-atom-menu-hover hover:text-atom-menu-dark focus:outline-none focus:ring-1"
                 onClick={() => {
                   if (!isMobile) {
                     closeMenu(); /* Close menu before navigation */
@@ -79,7 +79,7 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
                   <Icon
                     name={'chevronRight'}
                     variant={'outline'}
-                    className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+                    className="h-4 w-5 group-hover:text-atom-menu-dark"
                   />
                 )}
               </Link>
@@ -93,7 +93,7 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
   // --- Mobile Rendering ---
   if (isMobile && column) {
     return (
-      <div className="w-full bg-blue-50 px-0">
+      <div className="w-full bg-atom-menu-light px-0">
         {column.level > 1 && (
           <Button
             variant="link"
@@ -105,25 +105,23 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
             <Icon
               name={'chevronLeft'}
               variant={'outline'}
-              className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+              className="h-4 w-5 group-hover:text-atom-menu-dark"
             />
             <span className="ml-1">Back</span>
           </Button>
         )}
         {column.title && (
-          <h3 className="text-sm font-semibold text-gray-800">
-            {column.title}
-          </h3>
+          <h3 className="text-sm font-semibold">{column.title}</h3>
         )}
         <ul className="space-y-1">
           {column.links.map((link) => (
             <li
               key={link.href}
-              className="border-b border-blue-100 last:border-b-0"
+              className="border-b border-atom-menu-dark last:border-b-0"
             >
               <Link
                 href={link.href}
-                className="flex items-center justify-between py-2.5 text-sm text-gray-700"
+                className="flex items-center justify-between py-2.5 text-sm"
                 onClick={(e) =>
                   onMobileLinkClick(e, link.href, link.revealsColumnId)
                 }
@@ -134,7 +132,7 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
                   <Icon
                     name={'chevronRight'}
                     variant={'outline'}
-                    className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+                    className="h-4 w-5 group-hover:text-atom-menu-dark"
                   />
                 )}
               </Link>
@@ -279,7 +277,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
     // Root element with ref for outside click detection
     <nav
       ref={navRef}
-      className="relative border-b border-gray-200 bg-white"
+      className="relative border-b border-atom-menu-dark bg-atom-menu-from_background bg-atom-menu-to_background bg-gradient-to-r"
       aria-label="Main Navigation"
     >
       {/* Container for centering */}
@@ -349,7 +347,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                   }}
                   aria-haspopup={hasMegaMenu ? 'true' : 'false'}
                   aria-expanded={hasMegaMenu ? menuIsOpen : undefined}
-                  className={`flex items-center justify-between border-b-2 px-3 py-3 text-sm font-medium outline-none transition-colors duration-150 ease-in-out focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 lg:justify-start lg:px-4 lg:py-5 ${menuIsOpen ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-700 hover:border-blue-600 hover:text-blue-600'} ${isMobile ? 'w-full border-b lg:border-b-2' : ''} `}
+                  className={`flex items-center justify-between border-b-2 px-3 py-3 text-sm font-medium outline-none transition-colors duration-150 ease-in-out focus-visible:bg-atom-menu-dark focus-visible:ring-2 focus-visible:ring-offset-1 lg:justify-start lg:px-4 lg:py-5 ${menuIsOpen ? 'border-atom-menu-dark text-atom-menu-dark' : 'border-transparent hover:border-atom-menu-dark hover:text-atom-menu-dark'} ${isMobile ? 'w-full border-b lg:border-b-2' : ''} `}
                   // Add keyboard handling if needed
                   // onKeyDown={(e) => handleKeyDown(e, item.id, hasMegaMenu)}
                 >
@@ -361,7 +359,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                       <Icon
                         name={'chevronDown'}
                         variant={'outline'}
-                        className="h-4 w-5 text-gray-400 group-hover:text-blue-600"
+                        className="h-4 w-5 group-hover:text-atom-menu-dark"
                       />
                     </span>
                   )}
@@ -375,7 +373,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                     aria-label={`${item.label} Menu`}
                     onMouseEnter={handleMouseEnterAnyMenuPart}
                     onMouseLeave={handleMouseLeaveAnyMenuPart}
-                    className={`transition-opacity duration-300 ease-in-out ${menuIsOpen ? 'visible opacity-100' : 'invisible opacity-0'} ${isMobile ? 'relative w-full border-t' : 'absolute left-0 right-0 top-full'} z-20 mt-0 bg-blue-50 shadow-lg lg:border-t-0`}
+                    className={`bg-atom-menu-background transition-opacity duration-300 ease-in-out ${menuIsOpen ? 'visible opacity-100' : 'invisible opacity-0'} ${isMobile ? 'relative w-full border-t' : 'absolute left-0 right-0 top-full'} z-20 mt-0 lg:border-t-0`}
                     style={{ transitionDelay: menuIsOpen ? '0ms' : '100ms' }} // Delay hiding for smoother transition off
                   >
                     {/* Inner container for padding/layout */}

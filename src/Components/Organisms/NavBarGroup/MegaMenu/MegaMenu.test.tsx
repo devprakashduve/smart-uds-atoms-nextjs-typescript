@@ -5,28 +5,6 @@ import '@testing-library/jest-dom';
 import MegaMenu from '.';
 import { MenuItem } from './MegaMenu.interface'; // Adjust path if needed
 
-// --- Mock Next.js Link ---
-// Provides basic anchor tag rendering for tests
-// jest.mock('next/link', () => {
-//   return ({
-//     children,
-//     href,
-//     ...props
-//   }: {
-//     children: React.ReactNode;
-//     href: string;
-//     [key: string]: string | boolean | React.ReactNode;
-//   }) => {
-//     // Filter out internal Next.js props before passing to `a`
-//     const { ...anchorProps } = props;
-//     return (
-//       <a href={href} {...anchorProps}>
-//         {children}
-//       </a>
-//     );
-//   };
-// });
-
 // --- Test Data ---
 // Using the dummy data structure from previous steps
 const testMenuData: MenuItem[] = [
