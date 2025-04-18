@@ -50,7 +50,7 @@ const Button: React.FC<ButtonProps> = ({
       break;
     case 'link':
       extraClasses =
-        'bg-transparent text-atom-btn-dark underline-offset-4 shadow-none transition-all hover:bg-transparent hover:text-atom-btn-dark/80 hover:shadow-none focus:shadow-none active:shadow-none';
+        'bg-transparent text-atom-btn-dark underline-offset-4 shadow-none hover:bg-transparent hover:text-atom-btn-dark/80 hover:shadow-none focus:shadow-none focus:ring-0  hover:ring-0 active:ring-0 active:shadow-none';
       break;
     case 'icon':
       extraClasses = 'p-2 hover:shadow-none !important';

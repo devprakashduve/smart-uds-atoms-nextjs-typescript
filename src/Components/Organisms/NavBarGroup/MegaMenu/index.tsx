@@ -6,47 +6,8 @@ import {
   MegaMenuProps,
   ColumnRendererProps,
 } from './MegaMenu.interface'; // Import interfaces
-
-// --- Helper Icons ---
-const ChevronRightIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="ml-auto inline-block h-4 w-4 text-gray-400 group-hover:text-blue-600"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-  </svg>
-);
-const ChevronDownIcon = () => (
-  <svg
-    className={`ml-1 h-5 w-5 transition-transform duration-200`}
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      fillRule="evenodd"
-      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-const ChevronLeftIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth={2}
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-  </svg>
-);
+import Icon from '@/Components/Atoms/Icon';
+import Button from '@/Components/Atoms/Button';
 
 // --- Placeholder Component ---
 const EmptyColumnPlaceholder: React.FC<{
@@ -83,21 +44,21 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
     return (
       <div
         key={column.id}
-        className={`flex-shrink-0 space-y-3 ${column.widthClass || 'w-64'}`}
+        className={`flex-shrink-0 space-y-1 py-5 ${column.widthClass || 'w-64'}`}
         onMouseEnter={onMouseEnterAnyMenuPart}
         onMouseLeave={onMouseLeaveAnyMenuPart}
       >
         {column.title && (
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-500">
+          <h3 className="py-2 text-sm font-semibold uppercase tracking-wider">
             {column.title}
           </h3>
         )}
-        <ul className="space-y-1">
+        <ul className="space-y-2">
           {column.links.map((link) => (
             <li key={link.href} className="group">
               <Link
                 href={link.href}
-                className="-mx-2 flex items-center justify-between rounded p-2 text-sm text-gray-700 hover:bg-blue-100 hover:text-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                className="-mx-2 flex items-center justify-between rounded p-2 text-sm hover:bg-atom-menu-hover hover:text-atom-menu-dark focus:outline-none focus:ring-1"
                 onClick={() => {
                   if (!isMobile) {
                     closeMenu(); /* Close menu before navigation */
@@ -114,7 +75,13 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
                 // Add focus handling if enhancing keyboard navigation
               >
                 <span className="flex-grow pr-2">{link.label}</span>
-                {link.revealsColumnId && <ChevronRightIcon />}
+                {link.revealsColumnId && (
+                  <Icon
+                    name={'chevronRight'}
+                    variant={'outline'}
+                    className="h-4 w-5 group-hover:text-atom-menu-dark"
+                  />
+                )}
               </Link>
             </li>
           ))}
@@ -126,37 +93,48 @@ const ColumnRenderer: React.FC<ColumnRendererProps> = ({
   // --- Mobile Rendering ---
   if (isMobile && column) {
     return (
-      <div className="w-full bg-blue-50 px-4 py-4">
+      <div className="w-full bg-atom-menu-light px-0">
         {column.level > 1 && (
-          <button
+          <Button
+            variant="link"
+            size="sm"
             onClick={() => onMobileBackClick(column.parentColumnId)}
-            className="-ml-1 mb-3 flex items-center rounded p-1 text-sm font-medium text-blue-600 hover:bg-blue-100"
+            className="-ml-2 mb-3"
             aria-label={`Back to previous menu`}
           >
-            <ChevronLeftIcon /> <span className="ml-1">Back</span>
-          </button>
+            <Icon
+              name={'chevronLeft'}
+              variant={'outline'}
+              className="h-4 w-5 group-hover:text-atom-menu-dark"
+            />
+            <span className="ml-1">Back</span>
+          </Button>
         )}
         {column.title && (
-          <h3 className="mb-2 text-sm font-semibold text-gray-800">
-            {column.title}
-          </h3>
+          <h3 className="text-sm font-semibold">{column.title}</h3>
         )}
         <ul className="space-y-1">
           {column.links.map((link) => (
             <li
               key={link.href}
-              className="border-b border-blue-100 last:border-b-0"
+              className="border-b border-atom-menu-dark last:border-b-0"
             >
               <Link
                 href={link.href}
-                className="flex items-center justify-between py-2.5 text-sm text-gray-700"
+                className="flex items-center justify-between py-2.5 text-sm"
                 onClick={(e) =>
                   onMobileLinkClick(e, link.href, link.revealsColumnId)
                 }
                 aria-haspopup={!!link.revealsColumnId}
               >
                 {link.label}
-                {link.revealsColumnId && <ChevronRightIcon />}
+                {link.revealsColumnId && (
+                  <Icon
+                    name={'chevronRight'}
+                    variant={'outline'}
+                    className="h-4 w-5 group-hover:text-atom-menu-dark"
+                  />
+                )}
               </Link>
             </li>
           ))}
@@ -299,7 +277,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
     // Root element with ref for outside click detection
     <nav
       ref={navRef}
-      className="relative border-b border-gray-200 bg-white"
+      className="relative border-b border-atom-menu-dark bg-atom-menu-from_background bg-atom-menu-to_background bg-gradient-to-r"
       aria-label="Main Navigation"
     >
       {/* Container for centering */}
@@ -369,7 +347,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                   }}
                   aria-haspopup={hasMegaMenu ? 'true' : 'false'}
                   aria-expanded={hasMegaMenu ? menuIsOpen : undefined}
-                  className={`flex items-center justify-between border-b-2 px-3 py-3 text-sm font-medium outline-none transition-colors duration-150 ease-in-out focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 lg:justify-start lg:px-4 lg:py-5 ${menuIsOpen ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-700 hover:border-blue-600 hover:text-blue-600'} ${isMobile ? 'w-full border-b lg:border-b-2' : ''} `}
+                  className={`flex items-center justify-between border-b-2 px-3 py-3 text-sm font-medium outline-none transition-colors duration-150 ease-in-out focus-visible:bg-atom-menu-dark focus-visible:ring-2 focus-visible:ring-offset-1 lg:justify-start lg:px-4 lg:py-5 ${menuIsOpen ? 'border-atom-menu-dark text-atom-menu-dark' : 'border-transparent hover:border-atom-menu-dark hover:text-atom-menu-dark'} ${isMobile ? 'w-full border-b lg:border-b-2' : ''} `}
                   // Add keyboard handling if needed
                   // onKeyDown={(e) => handleKeyDown(e, item.id, hasMegaMenu)}
                 >
@@ -378,7 +356,11 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                     <span
                       className={`${menuIsOpen ? 'rotate-180' : ''} transition-transform`}
                     >
-                      <ChevronDownIcon />
+                      <Icon
+                        name={'chevronDown'}
+                        variant={'outline'}
+                        className="h-4 w-5 group-hover:text-atom-menu-dark"
+                      />
                     </span>
                   )}
                 </Link>
@@ -391,12 +373,12 @@ const MegaMenu: React.FC<MegaMenuProps> = ({ menuData }) => {
                     aria-label={`${item.label} Menu`}
                     onMouseEnter={handleMouseEnterAnyMenuPart}
                     onMouseLeave={handleMouseLeaveAnyMenuPart}
-                    className={`transition-opacity duration-300 ease-in-out ${menuIsOpen ? 'visible opacity-100' : 'invisible opacity-0'} ${isMobile ? 'relative w-full border-t' : 'absolute left-0 right-0 top-full'} z-20 mt-0 bg-blue-50 shadow-lg lg:border-t-0`}
+                    className={`bg-atom-menu-background transition-opacity duration-300 ease-in-out ${menuIsOpen ? 'visible opacity-100' : 'invisible opacity-0'} ${isMobile ? 'relative w-full border-t' : 'absolute left-0 right-0 top-full'} z-20 mt-0 lg:border-t-0`}
                     style={{ transitionDelay: menuIsOpen ? '0ms' : '100ms' }} // Delay hiding for smoother transition off
                   >
                     {/* Inner container for padding/layout */}
                     <div
-                      className={`mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 lg:py-8 ${isMobile ? '' : 'flex min-h-[200px] flex-row gap-x-8'}`}
+                      className={`mx-auto max-w-7xl px-4 ${isMobile ? '' : 'flex min-h-[200px] flex-row gap-x-8'}`}
                     >
                       {/* --- Mobile Rendering --- */}
                       {isMobile && menuIsOpen && (

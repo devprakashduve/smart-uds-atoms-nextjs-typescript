@@ -62,6 +62,7 @@ import HeroBannerImageContent from './Components/Organisms/HeroBannerGroup/HeroB
 import Section from './Components/Organisms/Section';
 import UDSImage from './Components/Atoms/UDSImage';
 import NotFoundPage from './Components/Pages/NotFoundPage';
+import MegaMenu from './Components/Organisms/NavBarGroup/MegaMenu';
 
 export {
   Avatar,
@@ -128,4 +129,5 @@ export {
   HeroBannerImageContent,
   Section,
   NotFoundPage,
+  MegaMenu,
 };
