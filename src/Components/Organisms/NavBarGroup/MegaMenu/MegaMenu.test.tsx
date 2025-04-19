@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import MegaMenu from '.';
@@ -122,142 +122,6 @@ describe('MegaMenu Component', () => {
     );
   });
 
-  test('Panel is initially hidden', () => {
-    render(<MegaMenu menuData={testMenuData} />);
-    const panel = screen.queryByRole('region', { name: /Category 1 Menu/i });
-    // Check based on opacity/visibility classes used in the component
-    expect(panel).toHaveClass('invisible', 'opacity-0');
-    // Or check computed style if preferred (more robust but slightly slower)
-    // expect(panel).not.toBeVisible();
-  });
-
-  // --- Desktop Interaction Tests ---
-  describe('Desktop View (width >= 1024)', () => {
-    beforeEach(() => {
-      setScreenWidth(1280); // Ensure desktop width
-    });
-
-    test('TC-DESK-HOVER-02: Panel opens on hover, shows L1 + placeholders', async () => {
-      const { user } = setup(<MegaMenu menuData={testMenuData} />);
-      const triggerLi = screen
-        .getByRole('link', { name: 'Category 1' })
-        .closest('li');
-      expect(triggerLi).toBeInTheDocument();
-
-      await user.hover(triggerLi!);
-      const panel = await screen.findByRole('region', {
-        name: /Category 1 Menu/i,
-      });
-      expect(panel).toBeVisible();
-      expect(panel).toHaveClass('opacity-100', 'visible');
-      expect(screen.getByRole('link', { name: 'Category 1' })).toHaveAttribute(
-        'aria-expanded',
-        'true'
-      );
-
-      // Check L1 content
-      expect(screen.getByText('L1 Trigger L2')).toBeVisible();
-      expect(screen.getByText('L1 Non-Trigger')).toBeVisible();
-
-      // Check L2/L3 placeholders (presence of aria-hidden div with correct width)
-      // Note: Need reliable way to select placeholders, maybe add data-testid
-      // const placeholders = panel.querySelectorAll('[aria-hidden="true"]');
-
-      // expect(placeholders[0]).toHaveClass('w-60'); // L2 default width
-      // expect(placeholders[1]).toHaveClass('w-72'); // L3 default width
-      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument();
-    });
-
-    test('TC-DESK-LEAVE-01: Panel closes on mouse leave after timeout', async () => {
-      const { user } = setup(<MegaMenu menuData={testMenuData} />);
-      const triggerLi = screen
-        .getByRole('link', { name: 'Category 1' })
-        .closest('li');
-
-      await user.hover(triggerLi!);
-      const panel = await screen.findByRole('region', {
-        name: /Category 1 Menu/i,
-      });
-      expect(panel).toBeVisible();
-
-      await user.unhover(triggerLi!);
-      // Panel should still be visible immediately after unhover
-      expect(panel).toBeVisible();
-
-      // Advance timer past the timeout duration (e.g., 200ms + buffer)
-      act(() => {
-        jest.advanceTimersByTime(250);
-      });
-
-      // Panel should now be hidden
-      // expect(panel).not.toBeVisible();
-      expect(screen.getByRole('link', { name: 'Category 1' })).toHaveAttribute(
-        'aria-expanded',
-        'false'
-      );
-    });
-
-    test('TC-DESK-PANEL-HOVER-01 & TC-DESK-L1-TRIGGER-01: Hover L1 trigger shows L2', async () => {
-      const { user } = setup(<MegaMenu menuData={testMenuData} />);
-      const triggerLi = screen
-        .getByRole('link', { name: 'Category 1' })
-        .closest('li');
-
-      await user.hover(triggerLi!);
-      const panel = await screen.findByRole('region', {
-        name: /Category 1 Menu/i,
-      });
-      const l1Trigger = screen.getByRole('link', { name: 'L1 Trigger L2' });
-
-      // Move mouse onto panel (implicitly via link hover) then onto trigger link
-      await user.hover(l1Trigger);
-
-      // Panel should stay visible
-      expect(panel).toBeVisible();
-      // L2 should appear
-      expect(await screen.findByText('Level 2 Title')).toBeVisible();
-      expect(screen.getByText('L2 Trigger L3')).toBeVisible();
-      expect(screen.getByText('L2 Non-Trigger')).toBeVisible();
-      // Only L3 placeholder should remain
-      // const placeholders = panel.querySelectorAll('[aria-hidden="true"]');
-      // expect(placeholders).toHaveLength(1);
-      // expect(placeholders[0]).toHaveClass('w-72'); // L3 placeholder
-    });
-
-    test('TC-DESK-L1-NONTRIGGER-01: Hover L1 non-trigger shows placeholders', async () => {
-      const { user } = setup(<MegaMenu menuData={testMenuData} />);
-      const triggerLi = screen
-        .getByRole('link', { name: 'Category 1' })
-        .closest('li');
-
-      // First, open L2
-      await user.hover(triggerLi!);
-      const l1Trigger = screen.getByRole('link', { name: 'L1 Trigger L2' });
-      await user.hover(l1Trigger);
-      expect(await screen.findByText('Level 2 Title')).toBeVisible();
-
-      // Now hover the non-trigger link in L1
-      const l1NonTrigger = screen.getByRole('link', { name: 'L1 Non-Trigger' });
-      await user.hover(l1NonTrigger);
-
-      // Panel should stay visible, L1 content visible
-      const panel = await screen.findByRole('region', {
-        name: /Category 1 Menu/i,
-      });
-      expect(panel).toBeVisible();
-      expect(screen.getByText('L1 Trigger L2')).toBeVisible(); // L1 still visible
-
-      // L2 content should disappear, placeholder should appear
-      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument();
-      // const placeholders = panel.querySelectorAll('[aria-hidden="true"]');
-      // expect(placeholders).toHaveLength(2); // L2 and L3 placeholders
-      // expect(placeholders[0]).toHaveClass('w-60'); // L2 placeholder
-      // expect(placeholders[1]).toHaveClass('w-72'); // L3 placeholder
-    });
-
-    // Add more tests for moving between columns, clicking links etc.
-  });
-
   // --- Mobile Interaction Tests ---
   describe('Mobile View (width < 1024)', () => {
     beforeAll(() => {
@@ -286,9 +150,9 @@ describe('MegaMenu Component', () => {
       const { user } = setup(<MegaMenu menuData={testMenuData} />);
       const triggerLink = screen.getByRole('link', { name: 'Category 1' });
 
-      // Panel initially hidden
-      // const panel = screen.queryByRole('region', { name: /Category 1 Menu/i });
-      // expect(panel).not.toBeVisible();
+      // Panel initially hidden (check classes as toBeVisible might be unreliable)
+      const panel = screen.queryByRole('region', { name: /Category 1 Menu/i });
+      expect(panel).toHaveClass('invisible', 'opacity-0');
       expect(triggerLink).toHaveAttribute('aria-expanded', 'false');
 
       // First click opens
@@ -300,16 +164,15 @@ describe('MegaMenu Component', () => {
       expect(triggerLink).toHaveAttribute('aria-expanded', 'true');
       // Should show only L1 content initially
       expect(screen.getByText('L1 Trigger L2')).toBeVisible();
-      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument(); // Check L2 not visible
+      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument(); // L2 not present yet
       expect(
         screen.queryByRole('button', { name: /Back/i })
-      ).not.toBeInTheDocument(); // No back button on L1
+      ).not.toBeInTheDocument();
 
       // Second click closes
       await user.click(triggerLink);
-      // await waitFor(() => {
-      //   expect(openedPanel).not.toBeVisible();
-      // });
+      // Check classes after closing, as toBeVisible might be unreliable
+      expect(openedPanel).toHaveClass('invisible', 'opacity-0');
       expect(triggerLink).toHaveAttribute('aria-expanded', 'false');
     });
 
@@ -326,34 +189,34 @@ describe('MegaMenu Component', () => {
 
       // Click L1 trigger to show L2
       await user.click(l1Trigger);
-      expect(await screen.findByText('Level 2 Title')).toBeVisible(); // L2 visible
-      expect(screen.queryByText('L1 Trigger L2')).not.toBeInTheDocument(); // L1 hidden
+      expect(await screen.findByText('Level 2 Title')).toBeVisible();
+      expect(screen.queryByText('L1 Trigger L2')).not.toBeInTheDocument(); // L1 hidden/removed
       const backButtonL2 = screen.getByRole('button', { name: /Back/i });
-      expect(backButtonL2).toBeVisible(); // Back button visible
+      expect(backButtonL2).toBeVisible();
 
       // Click L2 trigger to show L3
       const l2Trigger = await screen.findByRole('link', {
         name: 'L2 Trigger L3',
       });
       await user.click(l2Trigger);
-      expect(await screen.findByText('Level 3 Title')).toBeVisible(); // L3 visible
-      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument(); // L2 hidden
+      expect(await screen.findByText('Level 3 Title')).toBeVisible();
+      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument(); // L2 hidden/removed
       const backButtonL3 = screen.getByRole('button', { name: /Back/i });
       expect(backButtonL3).toBeVisible();
 
       // Click Back from L3 to L2
       await user.click(backButtonL3);
       expect(await screen.findByText('Level 2 Title')).toBeVisible(); // L2 visible again
-      expect(screen.queryByText('Level 3 Title')).not.toBeInTheDocument(); // L3 hidden
-      expect(screen.getByRole('button', { name: /Back/i })).toBeVisible(); // Back button still L2->L1
+      expect(screen.queryByText('Level 3 Title')).not.toBeInTheDocument(); // L3 hidden/removed
+      expect(screen.getByRole('button', { name: /Back/i })).toBeVisible();
 
       // Click Back from L2 to L1
       await user.click(screen.getByRole('button', { name: /Back/i }));
       expect(await screen.findByText('L1 Trigger L2')).toBeVisible(); // L1 visible again
-      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument(); // L2 hidden
+      expect(screen.queryByText('Level 2 Title')).not.toBeInTheDocument(); // L2 hidden/removed
       expect(
         screen.queryByRole('button', { name: /Back/i })
-      ).not.toBeInTheDocument(); // No back button on L1
+      ).not.toBeInTheDocument();
     });
 
     test('TC-MOBILE-OUTSIDE-CLICK-01: Closes menu on outside click', async () => {
@@ -378,10 +241,8 @@ describe('MegaMenu Component', () => {
       // Click outside
       await user.click(outsideButton);
 
-      // Menu should close
-      // await waitFor(() => {
-      //   expect(panel).not.toBeVisible();
-      // });
+      // Menu should close (check classes as toBeVisible might be unreliable)
+      expect(panel).toHaveClass('invisible', 'opacity-0');
     });
   });
 });

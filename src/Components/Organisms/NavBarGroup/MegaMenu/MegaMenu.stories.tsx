@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions'; // Import action addon
 
 import MegaMenu from '.';
-import { MenuItem } from './MegaMenu.interface'; // Import interfaces
+import { MenuItem, MenuAlignment } from './MegaMenu.interface'; // Import interfaces & MenuAlignment
 
 // --- Sample Data for Stories ---
 const defaultMenuData: MenuItem[] = [
@@ -134,7 +135,7 @@ const defaultMenuData: MenuItem[] = [
 // You can now use this `defaultMenuData` in your Storybook stories or tests.
 
 const meta: Meta<typeof MegaMenu> = {
-  title: 'Components/Organisms/NacBarGroup/MegaMenu',
+  title: 'Components/Organisms/NavBarGroup/MegaMenu',
   component: MegaMenu,
   parameters: {
     // Optional Storybook parameters
@@ -142,18 +143,49 @@ const meta: Meta<typeof MegaMenu> = {
   },
   tags: ['autodocs'], // Enable automatic documentation generation
   argTypes: {
-    // Define controls for props if needed, though menuData is complex
     menuData: { control: 'object' },
+    logoSrc: { control: 'text' },
+    logoAlt: { control: 'text' },
+    logoHref: { control: 'text' },
+    menuAlignment: {
+      control: 'select',
+      options: ['left', 'center', 'right'] as MenuAlignment[],
+    },
+    showSearch: { control: 'boolean' },
+    isLoggedIn: { control: 'boolean' },
+    onSearchClick: { action: 'searchClicked' },
+    onLoginClick: { action: 'loginClicked' },
+    onLogoutClick: { action: 'logoutClicked' },
+    onSignupClick: { action: 'signupClicked' },
+    // Featured product props are part of menuData items, not top-level args
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof MegaMenu>;
 
-// Default story using the sample data
+// --- Sample Data with Featured Product ---
+const menuDataWithFeaturedProduct: MenuItem[] = defaultMenuData.map((item) => {
+  if (item.id === 'category-1') {
+    // Add featured product to 'Category 1'
+    return {
+      ...item,
+      featuredProductImageSrc: '/bannerImages/banner1.jpg', // Example image path
+      featuredProductImageAlt: 'Featured Gadget',
+      featuredProductTitle: 'Explore Our Latest Gadget',
+      featuredProductHref: '/products/featured-gadget',
+    };
+  }
+  return item;
+});
+
+// Default story using the sample data with featured product
 export const Default: Story = {
   args: {
-    menuData: defaultMenuData,
+    menuData: menuDataWithFeaturedProduct, // Use updated data
+    // Add other args like logo, search etc. if desired for the default view
+    logoSrc: '/images/logo.png',
+    showSearch: true,
   },
 };
 
@@ -191,5 +223,44 @@ export const NoMegaMenus: Story = {
       { id: 'item2', label: 'Item 2', href: '/item2' },
       { id: 'item3', label: 'Item 3', href: '/item3' },
     ],
+  },
+};
+
+// Story with Logo and Search (Now inherits featured product from Default)
+export const WithLogoAndSearch: Story = {
+  args: {
+    ...Default.args, // Reuse default args (which now includes featured product data)
+    logoSrc: '/images/logo.png',
+    logoAlt: 'My Company Logo',
+    logoHref: '/',
+    showSearch: true,
+    onSearchClick: action('searchClicked'),
+    onLoginClick: action('loginClicked'),
+    onSignupClick: action('signupClicked'),
+  },
+};
+
+// Story with Center Alignment
+export const CenterAligned: Story = {
+  args: {
+    ...WithLogoAndSearch.args, // Reuse logo and search setup
+    menuAlignment: 'center',
+  },
+};
+
+// Story with Right Alignment
+export const RightAligned: Story = {
+  args: {
+    ...WithLogoAndSearch.args, // Reuse logo and search setup
+    menuAlignment: 'right',
+  },
+};
+
+// Story simulating Logged In state
+export const LoggedIn: Story = {
+  args: {
+    ...WithLogoAndSearch.args, // Reuse logo and search setup
+    isLoggedIn: true,
+    onLogoutClick: action('logoutClicked'),
   },
 };
