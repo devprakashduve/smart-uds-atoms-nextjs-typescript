@@ -135,7 +135,7 @@ const defaultMenuData: MenuItem[] = [
 // You can now use this `defaultMenuData` in your Storybook stories or tests.
 
 const meta: Meta<typeof MegaMenu> = {
-  title: 'Components/Organisms/NacBarGroup/MegaMenu',
+  title: 'Components/Organisms/NavBarGroup/MegaMenu',
   component: MegaMenu,
   parameters: {
     // Optional Storybook parameters

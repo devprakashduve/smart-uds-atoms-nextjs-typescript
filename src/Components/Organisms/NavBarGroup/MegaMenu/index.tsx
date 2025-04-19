@@ -192,7 +192,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       document.removeEventListener('mousedown', handleOutsideClick);
       clearMenuTimeout();
     };
-  }, []); // Run effect only once on mount
+  }); // Run effect only once on mount
 
   // --- Event Handlers ---
   const toggleMobileMenu = () => {
