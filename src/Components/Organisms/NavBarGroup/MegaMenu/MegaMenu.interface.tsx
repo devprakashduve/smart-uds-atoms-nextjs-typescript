@@ -30,9 +30,22 @@ export interface MenuItem {
   megaMenuColumns?: MenuColumn[]; // Optional array of columns displayed in the mega menu for this item
 }
 
+/** Defines the alignment options for the main menu items. */
+export type MenuAlignment = 'left' | 'center' | 'right';
+
 /** Props for the main MegaMenu component */
 export interface MegaMenuProps {
   menuData: MenuItem[]; // Array of top-level menu items and their potential columns/links
+  logoSrc?: string; // Optional URL for the logo image
+  logoAlt?: string; // Optional alt text for the logo image
+  logoHref?: string; // Optional link for the logo
+  menuAlignment?: MenuAlignment; // How to align the main menu items (default: 'left')
+  showSearch?: boolean; // Whether to show the search icon (default: false)
+  isLoggedIn?: boolean; // Whether the user is currently logged in (controls Login/Logout visibility)
+  onSearchClick?: () => void; // Callback when search icon is clicked
+  onLoginClick?: () => void; // Callback when Login button is clicked
+  onLogoutClick?: () => void; // Callback when Logout button is clicked
+  onSignupClick?: () => void; // Callback when Signup button is clicked
 }
 
 // --- Reusable Column Renderer ---

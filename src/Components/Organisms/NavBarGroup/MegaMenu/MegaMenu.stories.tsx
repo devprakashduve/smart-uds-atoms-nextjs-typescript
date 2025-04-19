@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions'; // Import action addon
 
 import MegaMenu from '.';
-import { MenuItem } from './MegaMenu.interface'; // Import interfaces
+import { MenuItem, MenuAlignment } from './MegaMenu.interface'; // Import interfaces & MenuAlignment
 
 // --- Sample Data for Stories ---
 const defaultMenuData: MenuItem[] = [
@@ -142,8 +143,20 @@ const meta: Meta<typeof MegaMenu> = {
   },
   tags: ['autodocs'], // Enable automatic documentation generation
   argTypes: {
-    // Define controls for props if needed, though menuData is complex
     menuData: { control: 'object' },
+    logoSrc: { control: 'text' },
+    logoAlt: { control: 'text' },
+    logoHref: { control: 'text' },
+    menuAlignment: {
+      control: 'select',
+      options: ['left', 'center', 'right'] as MenuAlignment[],
+    },
+    showSearch: { control: 'boolean' },
+    isLoggedIn: { control: 'boolean' },
+    onSearchClick: { action: 'searchClicked' },
+    onLoginClick: { action: 'loginClicked' },
+    onLogoutClick: { action: 'logoutClicked' },
+    onSignupClick: { action: 'signupClicked' },
   },
 };
 
@@ -191,5 +204,44 @@ export const NoMegaMenus: Story = {
       { id: 'item2', label: 'Item 2', href: '/item2' },
       { id: 'item3', label: 'Item 3', href: '/item3' },
     ],
+  },
+};
+
+// Story with Logo and Search
+export const WithLogoAndSearch: Story = {
+  args: {
+    ...Default.args, // Reuse default menu data
+    logoSrc: '/images/logo.png', // Make sure this path is accessible in Storybook
+    logoAlt: 'My Company Logo',
+    logoHref: '/',
+    showSearch: true,
+    onSearchClick: action('searchClicked'),
+    onLoginClick: action('loginClicked'),
+    onSignupClick: action('signupClicked'),
+  },
+};
+
+// Story with Center Alignment
+export const CenterAligned: Story = {
+  args: {
+    ...WithLogoAndSearch.args, // Reuse logo and search setup
+    menuAlignment: 'center',
+  },
+};
+
+// Story with Right Alignment
+export const RightAligned: Story = {
+  args: {
+    ...WithLogoAndSearch.args, // Reuse logo and search setup
+    menuAlignment: 'right',
+  },
+};
+
+// Story simulating Logged In state
+export const LoggedIn: Story = {
+  args: {
+    ...WithLogoAndSearch.args, // Reuse logo and search setup
+    isLoggedIn: true,
+    onLogoutClick: action('logoutClicked'),
   },
 };
