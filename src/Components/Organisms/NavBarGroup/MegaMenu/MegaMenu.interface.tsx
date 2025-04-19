@@ -28,6 +28,11 @@ export interface MenuItem {
   label: string; // Text displayed for the top-level link
   href: string; // Target URL for the top-level link
   megaMenuColumns?: MenuColumn[]; // Optional array of columns displayed in the mega menu for this item
+  // Optional featured product display within the mega menu panel
+  featuredProductImageSrc?: string;
+  featuredProductImageAlt?: string;
+  featuredProductTitle?: string;
+  featuredProductHref?: string; // Optional link for the featured product
 }
 
 /** Defines the alignment options for the main menu items. */

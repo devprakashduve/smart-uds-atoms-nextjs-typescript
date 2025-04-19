@@ -712,6 +712,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             const level3DefaultWidth =
               columns.find((c) => c.level === 3)?.widthClass || 'w-72';
 
+            // Extract featured product props for the current item
+            const {
+              featuredProductImageSrc,
+              featuredProductImageAlt,
+              featuredProductTitle,
+              featuredProductHref,
+            } = item;
+
             return (
               hasMegaMenu && (
                 <div
@@ -754,6 +762,47 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                       isMobile={false}
                       closeMenu={closeMenu}
                     />
+                    {/* --- Featured Product Section (Desktop Only) --- */}
+                    {featuredProductImageSrc && featuredProductTitle && (
+                      <div className="my-5 w-40 flex-shrink-0 border-l border-atom-menu-light">
+                        {' '}
+                        {/* Adjust width and spacing as needed */}
+                        {featuredProductHref ? (
+                          <Link
+                            href={featuredProductHref}
+                            className="group block"
+                          >
+                            <UDSImage
+                              src={featuredProductImageSrc}
+                              alt={
+                                featuredProductImageAlt || featuredProductTitle
+                              }
+                              width={200} // Adjust size
+                              height={150}
+                              className="mb-2 h-auto w-full rounded object-cover transition-opacity group-hover:opacity-80"
+                            />
+                            <p className="text-sm font-medium transition-colors group-hover:text-atom-menu-dark">
+                              {featuredProductTitle}
+                            </p>
+                          </Link>
+                        ) : (
+                          <div>
+                            <UDSImage
+                              src={featuredProductImageSrc}
+                              alt={
+                                featuredProductImageAlt || featuredProductTitle
+                              }
+                              width={200}
+                              height={150}
+                              className="mb-2 h-auto w-full rounded object-cover"
+                            />
+                            <p className="text-sm font-medium">
+                              {featuredProductTitle}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               )

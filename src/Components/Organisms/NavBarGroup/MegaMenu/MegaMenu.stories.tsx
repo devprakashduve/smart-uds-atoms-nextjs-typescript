@@ -157,16 +157,35 @@ const meta: Meta<typeof MegaMenu> = {
     onLoginClick: { action: 'loginClicked' },
     onLogoutClick: { action: 'logoutClicked' },
     onSignupClick: { action: 'signupClicked' },
+    // Featured product props are part of menuData items, not top-level args
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof MegaMenu>;
 
-// Default story using the sample data
+// --- Sample Data with Featured Product ---
+const menuDataWithFeaturedProduct: MenuItem[] = defaultMenuData.map((item) => {
+  if (item.id === 'category-1') {
+    // Add featured product to 'Category 1'
+    return {
+      ...item,
+      featuredProductImageSrc: '/bannerImages/banner1.jpg', // Example image path
+      featuredProductImageAlt: 'Featured Gadget',
+      featuredProductTitle: 'Explore Our Latest Gadget',
+      featuredProductHref: '/products/featured-gadget',
+    };
+  }
+  return item;
+});
+
+// Default story using the sample data with featured product
 export const Default: Story = {
   args: {
-    menuData: defaultMenuData,
+    menuData: menuDataWithFeaturedProduct, // Use updated data
+    // Add other args like logo, search etc. if desired for the default view
+    logoSrc: '/images/logo.png',
+    showSearch: true,
   },
 };
 
@@ -207,11 +226,11 @@ export const NoMegaMenus: Story = {
   },
 };
 
-// Story with Logo and Search
+// Story with Logo and Search (Now inherits featured product from Default)
 export const WithLogoAndSearch: Story = {
   args: {
-    ...Default.args, // Reuse default menu data
-    logoSrc: '/images/logo.png', // Make sure this path is accessible in Storybook
+    ...Default.args, // Reuse default args (which now includes featured product data)
+    logoSrc: '/images/logo.png',
     logoAlt: 'My Company Logo',
     logoHref: '/',
     showSearch: true,
