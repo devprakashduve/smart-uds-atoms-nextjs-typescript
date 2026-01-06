@@ -24,7 +24,7 @@ export interface ButtonProps {
   variant?: ButtonVariant;
   size?: ButtonSize;
   type?: 'button' | 'submit' | 'reset';
-  icon?: React.ReactElement;
+  icon?: React.ReactElement<{ className?: string }>;
   iconPosition?: 'left' | 'right';
   ariaLabel?: string;
   className?: string;
