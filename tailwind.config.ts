@@ -1,6 +1,3 @@
-import Breadcrumbs from '@/Components/Molecules/Breadcrumb';
-import { link } from 'fs';
-import { text } from 'stream/consumers';
 import type { Config } from 'tailwindcss';
 
 const darkPinkWhitePalette = {
