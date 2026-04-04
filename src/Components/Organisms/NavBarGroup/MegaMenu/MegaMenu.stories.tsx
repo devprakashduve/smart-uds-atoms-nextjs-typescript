@@ -10,12 +10,14 @@ const defaultMenuData: MenuItem[] = [
   {
     id: 'category-1', // Changed ID
     label: 'Category 1', // Changed Label
+
     href: '/category-1', // Changed href
     megaMenuColumns: [
       {
         // Level 1
         id: 'cat1-col1', // Changed ID
         level: 1,
+        title: 'Category 1',
         widthClass: 'w-60',
         links: [
           {

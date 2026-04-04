@@ -27,6 +27,9 @@ const Input: React.FC<InputProps> = ({
   pattern,
   maxLength,
   disablePasswordHint = false,
+  onKeyDown,
+  onFocus,
+  onBlur,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState('');
@@ -138,7 +141,12 @@ const Input: React.FC<InputProps> = ({
           name={name}
           value={value}
           onChange={handleChange}
-          onFocus={validationOnFocus ? handleChange : () => {}}
+          onFocus={(e) => {
+            if (validationOnFocus) handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>);
+            if (onFocus) onFocus(e);
+          }}
+          onBlur={onBlur}
+          onKeyDown={onKeyDown}
           placeholder={placeholder}
           disabled={disabled}
           required={isRequired}

@@ -11,8 +11,8 @@ const List: React.FC<ListProps> = ({ title, links, textColor }) => (
       </h2>
     )}
     <ul className="mb-10 list-none">
-      {links.map((link, index) => (
-        <li key={index}>
+      {links.map((link) => (
+        <li key={link.name}>
           <CustomLink
             href={link.href}
             underline

@@ -44,10 +44,17 @@ export interface MegaMenuProps {
   logoSrc?: string; // Optional URL for the logo image
   logoAlt?: string; // Optional alt text for the logo image
   logoHref?: string; // Optional link for the logo
+  logoNode?: React.ReactNode; // Optional custom logo element (takes precedence over logoSrc)
   menuAlignment?: MenuAlignment; // How to align the main menu items (default: 'left')
   showSearch?: boolean; // Whether to show the search icon (default: false)
   isLoggedIn?: boolean; // Whether the user is currently logged in (controls Login/Logout visibility)
-  onSearchClick?: () => void; // Callback when search icon is clicked
+  // Search callbacks / controlled value
+  onSearchClick?: (query?: string) => void; // Callback when search is submitted (receives optional query)
+  searchValue?: string; // Controlled search input value
+  onSearchChange?: (val: string) => void; // Controlled input change handler
+  searchPlaceholder?: string; // Optional placeholder text for search inputs
+  searchData?: { name: string; href: string }[]; // Optional additional search items to include in results
+  cart?: React.ReactNode; // Optional custom cart element to render on the right
   onLoginClick?: () => void; // Callback when Login button is clicked
   onLogoutClick?: () => void; // Callback when Logout button is clicked
   onSignupClick?: () => void; // Callback when Signup button is clicked

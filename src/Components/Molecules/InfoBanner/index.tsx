@@ -78,7 +78,7 @@ export default function InfoBanner({
         <Button
           type="button"
           variant="icon"
-          aria-label="Dismiss banner"
+          ariaLabel="Dismiss banner"
           onClick={handleDismiss}
         >
           <Icon

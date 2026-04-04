@@ -76,7 +76,7 @@ const SelectMenus: React.FC<SelectMenusProps> = ({
           }`}
         >
           <span className="col-start-1 row-start-1 flex items-center gap-3 pr-6">
-            {selected.avatar && (
+            {selected?.avatar && (
               <Avatar
                 alt={selected.name}
                 src={selected.avatar}

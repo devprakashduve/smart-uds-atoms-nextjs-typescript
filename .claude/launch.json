@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Next.js Dev Server",
+      "runtimeExecutable": "/Users/devd/.nvm/versions/node/v20.16.0/bin/node",
+      "runtimeArgs": ["node_modules/.bin/next", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "Storybook",
+      "runtimeExecutable": "/Users/devd/.nvm/versions/node/v20.16.0/bin/node",
+      "runtimeArgs": ["node_modules/storybook/bin/index.cjs", "dev", "-p", "6006"],
+      "port": 6006
+    }
+  ]
+}

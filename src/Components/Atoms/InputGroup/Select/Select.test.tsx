@@ -21,6 +21,48 @@ describe('Select Component', () => {
     expect(screen.getByText('Test Select')).toBeInTheDocument();
   });
 
+  it('renders without label', () => {
+    render(
+      <Select
+        options={options}
+        name="testSelect"
+        onChange={() => {}}
+      />
+    );
+    expect(screen.queryByText('Test Select')).not.toBeInTheDocument();
+  });
+
+  it('uses id for label htmlFor if provided', () => {
+    render(
+      <Select
+        options={options}
+        name="testSelect"
+        label="Label ID"
+        id="unique-id"
+        onChange={() => {}}
+      />
+    );
+    // Label htmlFor should be 'unique-id'
+    // We can check by label association
+    const label = screen.getByText('Label ID');
+    expect(label).toHaveAttribute('for', 'unique-id');
+  });
+
+  it('uses label text for htmlFor if id and name are missing', () => {
+    render(
+      <Select
+        options={options}
+        // name is optional? Interface? Assuming yes or we pass empty?
+        // If name is required by PropType but we pass undefined casting...
+        // Let's assume name is optional in implementation usage logic `name || label`.
+        label="Label Only"
+        onChange={() => {}}
+      />
+    );
+    const label = screen.getByText('Label Only');
+    expect(label).toHaveAttribute('for', 'Label Only');
+  });
+
   it('renders the default option and provided options correctly', () => {
     render(
       <Select
@@ -31,9 +73,7 @@ describe('Select Component', () => {
         onChange={() => {}}
       />
     );
-    // Check for the default prompt option
     expect(screen.getByText('Select an option')).toBeInTheDocument();
-    // Check for each provided option
     options.forEach((option) => {
       expect(screen.getByText(option.label)).toBeInTheDocument();
     });
@@ -61,7 +101,7 @@ describe('Select Component', () => {
         onChange={handleChange}
       />
     );
-    const selectElement = screen.getByRole('combobox'); // Role for select element
+    const selectElement = screen.getByRole('combobox');
     fireEvent.change(selectElement, { target: { value: 'option2' } });
     expect(handleChange).toHaveBeenCalled();
     expect(selectElement).toHaveValue('option2');
@@ -92,7 +132,6 @@ describe('Select Component', () => {
       />
     );
     const selectElement = screen.getByRole('combobox');
-    // Simulate user interaction to mark field as touched
     fireEvent.change(selectElement, { target: { value: '' } });
     expect(screen.getByText('This field is required')).toBeInTheDocument();
   });
@@ -107,5 +146,86 @@ describe('Select Component', () => {
       />
     );
     expect(screen.getByText('Select an option')).toBeInTheDocument();
+  });
+
+  it('updates internal value when value prop changes', () => {
+    const { rerender } = render(
+      <Select
+        options={options}
+        name="testSelect"
+        value="option1"
+        onChange={() => {}}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).toHaveValue('option1');
+
+    rerender(
+      <Select
+        options={options}
+        name="testSelect"
+        value="option2"
+        onChange={() => {}}
+      />
+    );
+    expect(selectElement).toHaveValue('option2');
+  });
+
+  it('does not change value if disabled', () => {
+    const handleChange = jest.fn();
+    render(
+      <Select
+        options={options}
+        name="testSelect"
+        disabled={true}
+        onChange={handleChange}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    fireEvent.change(selectElement, { target: { value: 'option2' } });
+    expect(handleChange).not.toHaveBeenCalled();
+  });
+
+  it('does not change value if no options', () => {
+    const handleChange = jest.fn();
+    render(
+      <Select
+        options={[]}
+        name="testSelect"
+        onChange={handleChange}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    fireEvent.change(selectElement, { target: { value: 'option2' } });
+    expect(handleChange).not.toHaveBeenCalled();
+  });
+
+  it('displays error styles when error prop is true and touched', () => {
+    render(
+      <Select
+        options={options}
+        name="testSelect"
+        error={true}
+        onChange={() => {}}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).not.toHaveClass('border-error');
+    fireEvent.change(selectElement, { target: { value: 'option1' } });
+    expect(selectElement).toHaveClass('border-error');
+  });
+
+  it('displays error styles immediately if value is present', () => {
+    render(
+      <Select
+        options={options}
+        name="testSelect"
+        value="option1"
+        error={true}
+        onChange={() => {}}
+      />
+    );
+    const selectElement = screen.getByRole('combobox');
+    expect(selectElement).toHaveClass('border-error');
   });
 });

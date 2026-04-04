@@ -14,8 +14,9 @@ describe('Checkbox Component', () => {
   });
 
   it('renders with default props', () => {
-    render(<Checkbox checked={false} {...baseProps} />);
+    render(<Checkbox {...baseProps} />); // checked is undefined, defaults to false
     expect(screen.getByRole('checkbox')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).not.toBeChecked();
     expect(screen.getByLabelText(baseProps.label)).toBeInTheDocument();
   });
 
@@ -78,5 +79,30 @@ describe('Checkbox Component', () => {
     const label = screen.getByText(baseProps.label);
     fireEvent.click(label);
     expect(mockOnChange).not.toHaveBeenCalled(); // Renamed from mockToggle
+  });
+
+  it('sets indeterminate state correctly', () => {
+    render(<Checkbox checked={false} {...baseProps} indeterminate={true} />);
+    const checkbox = screen.getByRole('checkbox') as HTMLInputElement;
+    expect(checkbox.indeterminate).toBe(true);
+    // Verify indeterminate visual box is rendered
+    // The visual box is a div with specific classes inside the span
+    // We can't query by role easily, maybe by class or just ensuring the Icon is NOT there
+    // Or we can add a test id to the indeterminate box if needed, or query by className convention
+    // But let's check that the Icon is not rendered
+    const icon = screen.queryByRole('img', { hidden: true }); // Icon usually has some role or we check presence
+    // Actually Icon component likely renders an SVG. If name="check", it might not have accessible role "img" by default unless configured.
+    // In "displays checkmark when checked", it queries by testId 'checkmark-icon'.
+    // 'checkmark-icon' is the wrapper div.
+    // The Icon is inside.
+    // Let's rely on input indeterminate property mainly, and maybe check class on the checkbox input if 'indeterminate:bg-atom-input' is present?
+    expect(checkbox).toHaveClass('indeterminate:bg-atom-input');
+  });
+
+  it('handles click without onChange prop provided', () => {
+    render(<Checkbox checked={false} label="No Handler" name="no-handler" />);
+    const checkbox = screen.getByRole('checkbox');
+    fireEvent.click(checkbox);
+    expect(checkbox).toBeChecked();
   });
 });

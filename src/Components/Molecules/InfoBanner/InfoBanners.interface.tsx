@@ -1,7 +1,7 @@
 export interface InfoBannerProps {
   title: string;
   subtitle?: string;
-  imageUrl: string;
+  imageUrl?: string;
   linkUrl: string;
   altText: string;
   className?: string;
