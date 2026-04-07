@@ -7,4 +7,7 @@ export interface ModalDialogsProps {
   confirmText?: string;
   cancelText?: string;
   icon?: string;
+  className?: string;
+  /** Render modal in a React Portal attached to document.body */
+  usePortal?: boolean;
 }

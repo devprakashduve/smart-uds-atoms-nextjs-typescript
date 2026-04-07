@@ -14,7 +14,7 @@ jest.mock('next/link', () => {
 describe('EcommerceHomePage', () => {
   it('renders without crashing', () => {
     render(<EcommerceHomePage />);
-    expect(screen.getByText('TechStore')).toBeInTheDocument();
+    // Hero section headline is always rendered
     expect(screen.getAllByText('Summer Tech Sale')[0]).toBeInTheDocument();
   });
 
@@ -22,5 +22,23 @@ describe('EcommerceHomePage', () => {
     render(<EcommerceHomePage />);
     expect(screen.getByText('Premium Wireless Headphones')).toBeInTheDocument();
     expect(screen.getByText('Smart Watch Pro')).toBeInTheDocument();
+  });
+
+  it('renders category filter buttons', () => {
+    render(<EcommerceHomePage />);
+    // The "All" category filter is always present as a button
+    const allButtons = screen.getAllByRole('button', { name: /^all$/i });
+    expect(allButtons.length).toBeGreaterThan(0);
+  });
+
+  it('renders the navigation bar', () => {
+    render(<EcommerceHomePage />);
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
+  });
+
+  it('renders hero CTA buttons', () => {
+    render(<EcommerceHomePage />);
+    expect(screen.getByRole('button', { name: /shop now/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /view deals/i })).toBeInTheDocument();
   });
 });

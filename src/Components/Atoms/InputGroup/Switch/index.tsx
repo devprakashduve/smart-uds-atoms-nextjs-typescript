@@ -1,93 +1,101 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import { SwitchProps } from './SwitchProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Icon from '../../Icon';
 
-const Switch = (props: SwitchProps) => {
-  const {
-    textForOn,
-    textForOff,
-    disabled,
-    checked,
-    disableIcons,
-    noBackground,
-    size = 'md',
-  } = props;
-  const [isChecked, setIsChecked] = useState(checked);
-  const switchClass = classNames(
-    !noBackground
-      ? isChecked
-        ? 'bg-atom-input/40'
-        : 'bg-atom-input/40'
-      : isChecked
-        ? 'border border-input'
-        : 'border border-input/40'
-  );
+const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
+  (props, ref) => {
+    const {
+      textForOn,
+      textForOff,
+      disabled,
+      checked,
+      disableIcons,
+      noBackground,
+      size = 'md',
+    } = props;
+    const [isChecked, setIsChecked] = useState(checked);
+    const inputRef = useRef<HTMLInputElement>(null);
+    useImperativeHandle(ref, () => inputRef.current!);
 
-  const sizeClasses = {
-    sm: {
-      container: 'w-16 h-8',
-      dot: 'w-6 h-6',
-    },
-    md: {
-      container: 'w-20 h-10',
-      dot: 'w-8 h-8 ',
-    },
-    lg: {
-      container: 'w-24 h-12',
-      dot: 'w-10 h-10 ',
-    },
-  };
+    const switchClass = classNames(
+      !noBackground
+        ? isChecked
+          ? 'bg-atom-input/40'
+          : 'bg-atom-input/40'
+        : isChecked
+          ? 'border border-input'
+          : 'border border-input/40'
+    );
 
-  const handleToggle = () => {
-    const newChecked = !isChecked;
-    setIsChecked(newChecked);
-    if (props.onChange) {
-      props.onChange(newChecked);
-    }
-  };
+    const sizeClasses = {
+      sm: {
+        container: 'w-16 h-8',
+        dot: 'w-6 h-6',
+      },
+      md: {
+        container: 'w-20 h-10',
+        dot: 'w-8 h-8 ',
+      },
+      lg: {
+        container: 'w-24 h-12',
+        dot: 'w-10 h-10 ',
+      },
+    };
 
-  return (
-    <label className="flex cursor-pointer items-center">
-      <div className="relative">
-        <input
-          type="checkbox"
-          className="sr-only"
-          checked={isChecked}
-          onChange={handleToggle}
-          disabled={disabled}
-        />
-        {/* Switch Background */}
-        <div
-          className={`rounded-input border border-atom-input/40 shadow-inner transition-all hover:border-atom-input focus:border-atom-input ${switchClass} ${sizeClasses[size].container}`}
-        ></div>
+    const handleToggle = () => {
+      const newChecked = !isChecked;
+      setIsChecked(newChecked);
+      if (props.onChange) {
+        props.onChange(newChecked);
+      }
+    };
 
-        {/* Thumb with Check Mark */}
-        <div
-          className={`absolute left-2 top-1 flex items-center justify-center rounded-input bg-atom-input shadow transition-all ${sizeClasses[size].dot} ${
-            isChecked ? 'translate-x-full' : ''
-          }`}
-        >
-          {!disableIcons &&
-            (isChecked ? (
-              <Icon
-                name="check"
-                variant={'outline'}
-                className="text-atom-input-text dark:text-atom-input-background"
-              />
-            ) : (
-              <Icon
-                name="close"
-                variant={'outline'}
-                className="text-atom-input-text dark:text-atom-input-background"
-              />
-            ))}
+    return (
+      <label className="flex cursor-pointer items-center">
+        <div className="relative">
+          <input
+            ref={inputRef}
+            type="checkbox"
+            className="sr-only"
+            checked={isChecked}
+            onChange={handleToggle}
+            disabled={disabled}
+          />
+          {/* Switch Background */}
+          <div
+            className={`rounded-input border border-atom-input/40 shadow-inner transition-all hover:border-atom-input focus:border-atom-input ${switchClass} ${sizeClasses[size].container}`}
+          ></div>
+
+          {/* Thumb with Check Mark */}
+          <div
+            className={`absolute left-2 top-1 flex items-center justify-center rounded-input bg-atom-input shadow transition-all ${sizeClasses[size].dot} ${
+              isChecked ? 'translate-x-full' : ''
+            }`}
+          >
+            {!disableIcons &&
+              (isChecked ? (
+                <Icon
+                  name="check"
+                  variant={'outline'}
+                  className="text-atom-input-text dark:text-atom-input-background"
+                />
+              ) : (
+                <Icon
+                  name="close"
+                  variant={'outline'}
+                  className="text-atom-input-text dark:text-atom-input-background"
+                />
+              ))}
+          </div>
         </div>
-      </div>
-      {/* Label */}
-      <span className="ml-3">{isChecked ? textForOn : textForOff}</span>
-    </label>
-  );
-};
+        {/* Label */}
+        <span className="ml-3">{isChecked ? textForOn : textForOff}</span>
+      </label>
+    );
+  }
+);
+
+Switch.displayName = 'Switch';
 
 export default Switch;

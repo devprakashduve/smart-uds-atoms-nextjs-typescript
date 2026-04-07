@@ -7,6 +7,7 @@ const Alert: React.FC<AlertProps> = ({
   message,
   dismissible = false,
   onClose,
+  className,
 }) => {
   const [visible, setVisible] = React.useState(true);
   const alertTypeClasses = {
@@ -25,7 +26,7 @@ const Alert: React.FC<AlertProps> = ({
     <>
       {visible && (
         <div
-          className={`alert ${alertTypeClasses[type]} flex items-start rounded-md border-l-4 p-4 shadow-md`}
+          className={`alert ${alertTypeClasses[type]} flex items-start rounded-md border-l-4 p-4 shadow-md ${className ?? ''}`}
         >
           <div className="flex-1">
             <p className="text-sm font-medium">{message}</p>

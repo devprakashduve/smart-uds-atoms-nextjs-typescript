@@ -4,4 +4,5 @@ export interface TagProps {
   removable?: boolean;
   onRemove?: () => void;
   icon?: React.ReactNode;
+  className?: string;
 }

@@ -1,3 +1,4 @@
+import React from 'react';
 import UDSImage from '../UDSImage';
 import { AvatarProps } from './AvatarProps.interface';
 
@@ -26,7 +27,9 @@ const Avatar = ({
   };
 
   return (
-    <div className={`relative inline-block ${sizeClasses[size]} ${className}`}>
+    <div
+      className={`relative inline-block ${sizeClasses[size]} ${className}`}
+    >
       {src ? (
         <UDSImage
           src={src}
@@ -36,12 +39,15 @@ const Avatar = ({
           } border-2 border-atom-avatar-background`}
         />
       ) : (
+        // Initials fallback — expose as img role since there is no real <img>
         <div
+          role="img"
+          aria-label={alt || initials || 'User avatar'}
           className={`bg-atom-avatar-background ${
             rounded ? 'rounded-full' : 'rounded-lg'
           } flex h-full w-full items-center justify-center border-2 border-atom-avatar-background`}
         >
-          <span className="text-lg font-medium text-atom-avatar-text">
+          <span className="text-lg font-medium text-atom-avatar-text" aria-hidden="true">
             {initials || 'UA'}
           </span>
         </div>
@@ -49,14 +55,19 @@ const Avatar = ({
 
       {status && (
         <span
+          aria-label={`Status: ${status}`}
+          title={`Status: ${status}`}
           className={`absolute bottom-0 right-0 block animate-pulse rounded-full ring-2 ring-atom-avatar-text ${
             size === 'sm' ? 'h-2 w-2' : 'h-3 w-3'
           } ${statusClasses[status]}`}
         />
       )}
 
-      {notification && (
-        <span className="absolute -right-1 -top-1 rounded-full bg-atom-avatar-background px-2 py-1 text-xs font-bold text-atom-avatar-text">
+      {notification !== undefined && (
+        <span
+          aria-label={`${notification} notifications`}
+          className="absolute -right-1 -top-1 rounded-full bg-atom-avatar-background px-2 py-1 text-xs font-bold text-atom-avatar-text"
+        >
           {notification}
         </span>
       )}

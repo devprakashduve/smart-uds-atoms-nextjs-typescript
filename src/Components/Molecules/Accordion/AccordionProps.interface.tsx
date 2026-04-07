@@ -10,4 +10,5 @@ export interface AccordionProps {
   onToggle?: (isExpanded: boolean) => void;
   isRounded?: boolean;
   size?: 'sm' | 'md' | 'lg';
+  className?: string;
 }

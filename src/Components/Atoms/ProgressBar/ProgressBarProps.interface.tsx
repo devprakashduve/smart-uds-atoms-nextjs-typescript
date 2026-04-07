@@ -3,4 +3,7 @@ export interface ProgressBarProps {
   max: number; // The maximum value of the progress
   height?: number; // Optional height for the progress bar
   striped?: boolean; // Whether to have striped effect
+  /** Accessible label for screen readers */
+  ariaLabel?: string;
+  className?: string;
 }

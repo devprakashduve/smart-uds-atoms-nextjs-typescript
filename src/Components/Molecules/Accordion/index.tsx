@@ -9,6 +9,7 @@ const Accordion: React.FC<AccordionProps> = ({
   size,
   allowMultiple = false,
   onToggle,
+  className,
 }) => {
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
@@ -28,7 +29,7 @@ const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div className="accordion-container w-full">
+    <div className={`accordion-container w-full ${className ?? ''}`}>
       {items.map((item, index) => (
         <AccordionItem
           key={index}

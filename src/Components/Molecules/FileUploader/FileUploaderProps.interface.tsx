@@ -6,4 +6,9 @@ export interface FileUploaderProps {
   uploadButtonText?: string; // Optional: Text for the upload button
   errorMessageFileType?: string; // Optional: Error message for invalid file type
   errorMessageFileSize?: string; // Optional: Error message for file size exceeding limit
+  /** Enable drag-and-drop file upload. Default: true */
+  dragAndDrop?: boolean;
+  /** Allow selecting multiple files. Default: false */
+  multiple?: boolean;
+  className?: string;
 }
