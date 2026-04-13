@@ -8,6 +8,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({
   userMenu,
   navigation,
   hero,
+  breadcrumb,
   filters,
   products,
   footer,
@@ -19,9 +20,9 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({
       {megaMenu || (
         <header className="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div className="flex justify-between items-center h-16 gap-4">
-                <div className="flex items-center gap-8">
-                   {logo}
+              <div className="flex justify-between items-center h-16 gap-2 sm:gap-4">
+                <div className="flex items-center gap-2 sm:gap-8 min-w-0">
+                   <div className="flex-shrink-0">{logo}</div>
                    <div className="hidden md:block">{navigation}</div>
                 </div>
                 
@@ -29,11 +30,11 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({
                    {searchBar}
                 </div>
   
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
                    {userMenu}
                    {cart}
                 </div>
-             </div>
+              </div>
              {/* Mobile Search - Visible only on small screens */}
              {searchBar && (
                <div className="md:hidden py-3 border-t border-gray-100">
@@ -48,6 +49,7 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({
          {hero && <div className="w-full">{hero}</div>}
          
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fadeIn">
+            {breadcrumb && <div className="mb-4">{breadcrumb}</div>}
             <div className="flex flex-col lg:flex-row gap-8">
                {filters && (
                  <aside className="w-full lg:w-64 flex-shrink-0">

@@ -108,7 +108,9 @@ describe('Slider Component', () => {
   });
 
   it('renders with default step when not provided', () => {
-    render(<Slider min={0} max={100} value={50} onChange={() => {}} />);
+    render(<Slider min={0} max={100} value={50} onChange={() => { } } setStep={function (step: number): void {
+      throw new Error('Function not implemented.');
+    } } />);
     const slider = screen.getByTitle('slider') as HTMLInputElement;
     // Step default is 1
     expect(slider).toHaveAttribute('step', '1');

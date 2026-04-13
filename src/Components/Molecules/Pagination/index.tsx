@@ -48,7 +48,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const renderPageNumbers = () => {
     const pages = [];
-    const maxPagesToShow = 5;
+    const maxPagesToShow = 3;
     const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2);
 
     let startPage = Math.max(1, currentPage - halfMaxPagesToShow);
@@ -104,7 +104,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <div
-      className={`mt-4 flex items-center justify-center gap-2 ${className || ''}`}
+      className={`mt-4 flex flex-wrap items-center justify-center gap-2 ${className || ''}`}
     >
       <PaginationButton
         className="pagination-button previous"

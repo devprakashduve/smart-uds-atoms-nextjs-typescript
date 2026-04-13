@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     <aside
       className={classNames(
         'flex flex-col h-full bg-white border-r border-gray-200 transition-all duration-300 shadow-sm z-20',
-        isCollapsed ? 'w-20' : 'w-64',
+        isCollapsed ? 'w-16 lg:w-20' : 'w-full lg:w-64',
         className
       )}
     >

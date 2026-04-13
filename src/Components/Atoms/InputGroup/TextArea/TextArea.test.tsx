@@ -125,14 +125,13 @@ describe('TextArea Component', () => {
   it('validates with custom error messages', () => {
     render(
       <TextArea 
-        id="custom" 
-        value="" 
-        onChange={() => {}} 
-        isRequired={true} 
+        id="custom"
+        value=""
+        onChange={() => { } }
+        isRequired={true}
         requiredErrorMessage="Custom Required Error"
         pattern="^[A-Z]+$"
-        validationErrorMessage="Custom Pattern Error"
-      />
+        validationErrorMessage="Custom Pattern Error" name={''}      />
     );
     const area = screen.getByRole('textbox');
     

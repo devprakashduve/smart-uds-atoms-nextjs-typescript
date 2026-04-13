@@ -12,7 +12,7 @@ export default function CategoryPreviews({
         <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
           <h2 className="text-2xl font-bold">{title}</h2>
 
-          <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
+          <div className="mt-6 space-y-12 md:grid md:grid-cols-2 md:gap-x-6 md:space-y-0 lg:grid-cols-3">
             {categories.map((category: Category) => (
               <div key={category.name || 'xyz'} className="group relative">
                 <UDSImage

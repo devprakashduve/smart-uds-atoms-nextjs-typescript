@@ -42,7 +42,7 @@ const FooterWithCategories: React.FC<FooterWithCategoriesProps> = ({
         <div className="container mx-auto flex flex-wrap items-center px-5 py-8">
           <div className="flex flex-wrap justify-center md:justify-start">
             <Input
-              className="mr-1 w-80"
+              className="mr-1 w-full sm:w-80"
               placeholder={subscribePlaceholder}
               type="email"
               value=""

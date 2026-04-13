@@ -41,7 +41,7 @@ describe('Sidebar Component', () => {
     const { container } = render(<Sidebar items={mockItems} />);
     
     const aside = container.querySelector('aside');
-    expect(aside).toHaveClass('w-64');
+    expect(aside).toHaveClass('lg:w-64');
     
     const toggleButton = screen.getByRole('button');
     
@@ -51,7 +51,7 @@ describe('Sidebar Component', () => {
     // Click toggle
     fireEvent.click(toggleButton);
     
-    expect(aside).toHaveClass('w-20');
+    expect(aside).toHaveClass('lg:w-20');
     // Home text should be hidden when collapsed
     expect(screen.queryByText('Home')).not.toBeInTheDocument();
   });

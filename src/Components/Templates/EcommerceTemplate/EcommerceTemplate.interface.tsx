@@ -7,6 +7,8 @@ export interface EcommerceTemplateProps {
   userMenu?: React.ReactNode;
   navigation?: React.ReactNode;
   hero?: React.ReactNode;
+  /** Optional breadcrumb navigation shown above the product grid */
+  breadcrumb?: React.ReactNode;
   filters?: React.ReactNode;
   products: React.ReactNode;
   footer?: React.ReactNode;

@@ -52,7 +52,7 @@ const Table = <T,>({
   const totalPages = Math.ceil(data.length / pageSize);
 
   return (
-    <div className={`table-container ${className || ''}`}>
+    <div className={`table-container overflow-x-auto ${className || ''}`}>
       <table className="min-w-full border-collapse border border-atom-btn/30">
         <thead className="bg-atom-btn/70 text-left">
           <tr>
