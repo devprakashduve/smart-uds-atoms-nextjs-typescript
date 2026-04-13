@@ -38,5 +38,5 @@ export interface TypographyProps {
     | 'neutral';
   align?: 'left' | 'center' | 'right';
   className?: string;
-  as?: keyof JSX.IntrinsicElements; // New property to allow custom HTML tags
+  as?: React.ElementType; // New property to allow custom HTML tags
 }

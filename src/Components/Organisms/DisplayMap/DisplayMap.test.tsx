@@ -31,4 +31,21 @@ describe('DisplayMap Component', () => {
     render(<DisplayMap {...defaultProps} />);
     expect(screen.getByTitle('map')).toBeInTheDocument();
   });
+
+  it('renders FormHandler when formHandlerContent is provided', () => {
+    const propsWithForm = {
+      ...defaultProps,
+      formHandlerContent: {
+        btnText: 'Contact Us',
+        onSubmit: jest.fn(),
+        inputFields: [
+          { name: 'email', label: 'Email', type: 'email', value: '' },
+        ],
+      },
+    };
+    render(<DisplayMap {...propsWithForm} />);
+    expect(
+      screen.getByRole('button', { name: /Contact Us/i })
+    ).toBeInTheDocument();
+  });
 });

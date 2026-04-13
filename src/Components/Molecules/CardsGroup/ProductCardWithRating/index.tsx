@@ -6,6 +6,7 @@ import { ProductCardWithRatingProps } from './ProductCardWithRating.interface';
 export default function ProductCardWithRating({
   imageUrl,
   productName,
+  price,
   description,
   rating,
   reviewsCount,
@@ -16,6 +17,11 @@ export default function ProductCardWithRating({
       <UDSImage className="w-full" src={imageUrl} alt={productName} />
       <div className="p-4">
         <h3 className="text-lg font-semibold">{productName}</h3>
+        {price !== undefined && (
+          <p className="text-atom-card-DEFAULT mt-1 text-lg font-bold">
+            ${price.toFixed(2)}
+          </p>
+        )}
         <p className="mt-2 text-sm">{description}</p>
         <div className="mt-2 flex items-center">
           <Rating maxRating={5} onRatingChange={() => {}} rating={rating} />

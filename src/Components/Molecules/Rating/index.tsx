@@ -1,6 +1,5 @@
 import React from 'react';
 import { RatingProps } from './RatingProps.interface';
-import Button from '@/Components/Atoms/Button';
 
 const Rating: React.FC<RatingProps> = ({
   rating,
@@ -15,18 +14,48 @@ const Rating: React.FC<RatingProps> = ({
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (!isInteractive) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const next = Math.min(index + 1, maxRating - 1);
+      onRatingChange?.(next + 1);
+      (e.currentTarget.parentElement?.children[next] as HTMLElement)?.focus();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      const prev = Math.max(index - 1, 0);
+      onRatingChange?.(prev + 1);
+      (e.currentTarget.parentElement?.children[prev] as HTMLElement)?.focus();
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleRatingClick(index);
+    }
+  };
+
   return (
-    <div className={`flex items-center ${className || ''}`}>
-      {Array.from({ length: maxRating }, (_, index) => (
-        <Button
-          key={index}
-          className={`cursor-default text-xl text-atom-rating-dark ${index < rating ? 'text-atom-rating-light' : ''} ${isInteractive ? 'cursor-pointer hover:text-atom-rating' : ''}`}
-          onClick={() => handleRatingClick(index)}
-          variant="icon"
-        >
-          ★
-        </Button>
-      ))}
+    <div
+      role="radiogroup"
+      aria-label="Rating"
+      className={`flex items-center ${className || ''}`}
+    >
+      {Array.from({ length: maxRating }, (_, index) => {
+        const starValue = index + 1;
+        const isSelected = index < rating;
+        return (
+          <button
+            key={index}
+            type="button"
+            aria-pressed={isInteractive ? isSelected : undefined}
+            aria-label={`${starValue} ${starValue === 1 ? 'star' : 'stars'}`}
+            tabIndex={isInteractive ? (index === 0 ? 0 : -1) : undefined}
+            onClick={() => handleRatingClick(index)}
+            onKeyDown={(e) => handleKeyDown(e, index)}
+            className={`select-none border-none bg-transparent p-0 text-xl ${isSelected ? 'text-atom-rating-light' : 'text-atom-rating-dark'} ${isInteractive ? 'cursor-pointer hover:text-atom-rating focus:outline-none focus:ring-1 focus:ring-atom-rating' : 'cursor-default'} `}
+          >
+            ★
+          </button>
+        );
+      })}
     </div>
   );
 };

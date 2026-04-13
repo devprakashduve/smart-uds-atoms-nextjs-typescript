@@ -2,6 +2,12 @@ import React from 'react';
 import { SectionProps } from './Section.interface';
 import Paragraph from '@/Components/Atoms/Paragraph';
 
+const alignMap: Record<'left' | 'right' | 'center', string> = {
+  left: 'items-start text-left',
+  center: 'items-center text-center',
+  right: 'items-end text-right',
+};
+
 const Section: React.FC<SectionProps> = ({
   heading,
   subheading,
@@ -11,23 +17,27 @@ const Section: React.FC<SectionProps> = ({
   className,
   topHeading,
 }) => {
+  const alignClasses = alignMap[textAlign];
+
   return (
-    <section className={`${border && 'border-t border-gray-200'} ${className}`}>
+    <section
+      className={`${border ? 'border-t border-gray-200' : ''} ${className ?? ''}`}
+    >
       <div className="container mx-auto px-5 py-24">
         {(heading || subheading) && (
           <div
-            className={`mb-20 flex w-full flex-col flex-wrap items-${textAlign} text-${textAlign}`}
+            className={`mb-20 flex w-full flex-col flex-wrap ${alignClasses}`}
           >
             {topHeading && (
               <Paragraph
-                className={`mb-2 text-${textAlign} font-semibold md:mb-3 lg:text-lg`}
+                className={`mb-2 font-semibold md:mb-3 lg:text-lg ${alignClasses}`}
               >
                 {topHeading}
               </Paragraph>
             )}
             {heading && (
               <h2
-                className={`title-font mb-2 text-2xl font-medium sm:text-3xl text-${textAlign}`}
+                className={`title-font mb-2 text-2xl font-medium sm:text-3xl ${alignClasses}`}
                 title={heading}
               >
                 {heading}
@@ -36,7 +46,7 @@ const Section: React.FC<SectionProps> = ({
             {subheading && (
               <Paragraph
                 thin
-                className={`w-full text-base leading-relaxed text-${textAlign}`}
+                className={`w-full text-base leading-relaxed ${alignClasses}`}
               >
                 {subheading}
               </Paragraph>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useImperativeHandle } from 'react';
 import { SwitchProps } from './SwitchProps.interface';
 import { classNames } from '@/Components/Utilities/componentsMethods';
 import Icon from '../../Icon';
 
-const Switch = (props: SwitchProps) => {
+const Switch = React.forwardRef<HTMLInputElement, SwitchProps>((props, ref) => {
   const {
     textForOn,
     textForOff,
@@ -14,6 +14,9 @@ const Switch = (props: SwitchProps) => {
     size = 'md',
   } = props;
   const [isChecked, setIsChecked] = useState(checked);
+  const inputRef = useRef<HTMLInputElement>(null);
+  useImperativeHandle(ref, () => inputRef.current!);
+
   const switchClass = classNames(
     !noBackground
       ? isChecked
@@ -51,6 +54,7 @@ const Switch = (props: SwitchProps) => {
     <label className="flex cursor-pointer items-center">
       <div className="relative">
         <input
+          ref={inputRef}
           type="checkbox"
           className="sr-only"
           checked={isChecked}
@@ -88,6 +92,8 @@ const Switch = (props: SwitchProps) => {
       <span className="ml-3">{isChecked ? textForOn : textForOff}</span>
     </label>
   );
-};
+});
+
+Switch.displayName = 'Switch';
 
 export default Switch;

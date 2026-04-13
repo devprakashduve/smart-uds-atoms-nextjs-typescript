@@ -11,6 +11,7 @@ const Stepper = ({
   orientation = 'horizontal',
   prevButtonText,
   nextButtonText,
+  className,
 }: StepperProps) => {
   const [currentStep, setCurrentStep] = useState(value);
 
@@ -43,7 +44,7 @@ const Stepper = ({
 
   return (
     <div
-      className={`flex justify-between ${orientation === 'vertical' ? 'flex-col' : 'flex-row'}`}
+      className={`flex justify-between ${orientation === 'vertical' ? 'flex-col' : 'flex-row'} ${className ?? ''}`}
     >
       <div
         className={`flex ${orientation === 'vertical' ? 'absolute h-full flex-col' : 'relative w-full'} items-center justify-between`}

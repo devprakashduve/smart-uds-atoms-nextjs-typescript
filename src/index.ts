@@ -20,6 +20,10 @@ import Spinner from './Components/Atoms/Spinner';
 import Tag from './Components/Atoms/Tag';
 import Tooltip from './Components/Atoms/Tooltip';
 import Video from './Components/Atoms/Video';
+import Quote from './Components/Atoms/Quote';
+import Loader from './Components/Atoms/Loader';
+import ColorPicker from './Components/Atoms/ColorPicker';
+import ThemeProvider, { useTheme } from './Components/Providers/ThemeProvider';
 import Accordion from './Components/Molecules/Accordion';
 import AccordionItem from './Components/Molecules/AccordionItem';
 import Alert from './Components/Molecules/Alert';
@@ -80,6 +84,11 @@ export {
   Tag,
   Tooltip,
   Video,
+  Quote,
+  Loader,
+  ColorPicker,
+  ThemeProvider,
+  useTheme,
   Checkbox,
   Input,
   RadioButton,

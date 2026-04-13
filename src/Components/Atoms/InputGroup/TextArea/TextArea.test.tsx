@@ -121,4 +121,36 @@ describe('TextArea Component', () => {
     // The char count should be displayed with a warning class
     expect(screen.getByText('5/10')).toHaveClass('char-count');
   });
+
+  it('validates with custom error messages', () => {
+    render(
+      <TextArea
+        id="custom"
+        value=""
+        onChange={() => {}}
+        isRequired={true}
+        requiredErrorMessage="Custom Required Error"
+        pattern="^[A-Z]+$"
+        validationErrorMessage="Custom Pattern Error"
+        name={''}
+      />
+    );
+    const area = screen.getByRole('textbox');
+
+    // Trigger required error
+    fireEvent.change(area, { target: { value: 'a' } });
+    fireEvent.change(area, { target: { value: '' } });
+    expect(screen.getByText('Custom Required Error')).toBeInTheDocument();
+
+    // Trigger pattern error
+    fireEvent.change(area, { target: { value: 'abc' } });
+    expect(screen.getByText('Custom Pattern Error')).toBeInTheDocument();
+  });
+
+  it('renders with default value when prop is missing', () => {
+    // @ts-expect-error - simulating missing prop for coverage of default value
+    render(<TextArea id="default" onChange={() => {}} />);
+    const area = screen.getByRole('textbox');
+    expect(area).toHaveValue('');
+  });
 });

@@ -7,4 +7,5 @@ export interface StepperProps {
   orientation?: 'horizontal' | 'vertical';
   prevButtonText?: string;
   nextButtonText?: string;
+  className?: string;
 }

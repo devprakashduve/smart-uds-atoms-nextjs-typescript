@@ -17,6 +17,7 @@ const customJestConfig: Config.InitialOptions = {
     '<rootDir>/node_modules/',
     '<rootDir>/.rollup.cache/',
     '<rootDir>/dist/',
+    '<rootDir>/.claude/',
   ],
 };
 

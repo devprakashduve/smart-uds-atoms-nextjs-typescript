@@ -4,4 +4,5 @@ export interface AlertProps {
   dismissible?: boolean; // Optional: Whether the alert can be dismissed
   onClose?: () => void; // Optional: Callback for when the alert is dismissed
   icon?: React.ReactNode; // Optional: Custom icon for the alert
+  className?: string;
 }

@@ -152,6 +152,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   logoSrc,
   logoAlt = 'Logo', // Default alt text
   logoHref = '/', // Default logo link to homepage
+  logoNode,
   menuAlignment = 'left', // Default alignment
   showSearch = false,
   isLoggedIn = false,
@@ -159,10 +160,19 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   onLoginClick,
   onLogoutClick,
   onSignupClick,
+  searchValue,
+  onSearchChange,
+  searchPlaceholder,
+  searchData,
+  cart: _cart,
 }) => {
   // --- State ---
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu toggle
+  const [internalSearchOpen, setInternalSearchOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const [internalSearchQuery, setInternalSearchQuery] = useState('');
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [level1TriggerLink, setLevel1TriggerLink] = useState<string | null>(
     null
   );
@@ -178,6 +188,12 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
 
   // --- Effects ---
   useEffect(() => {
+    if (typeof searchValue === 'string') {
+      setInternalSearchQuery(searchValue);
+    }
+  }, [searchValue]);
+
+  useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -192,7 +208,15 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       document.removeEventListener('mousedown', handleOutsideClick);
       clearMenuTimeout();
     };
-  }); // Run effect only once on mount
+    // closeMenu and clearMenuTimeout only reference stable state setters and refs
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Run effect only once on mount
+
+  useEffect(() => {
+    if (internalSearchOpen || mobileSearchOpen) {
+      setTimeout(() => searchInputRef.current?.focus(), 50);
+    }
+  }, [internalSearchOpen, mobileSearchOpen]);
 
   // --- Event Handlers ---
   const toggleMobileMenu = () => {
@@ -278,7 +302,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   };
   const handleMobileLinkClick = (
     event: React.MouseEvent,
-    href: string,
+    _href: string,
     revealsColumnId?: string
   ) => {
     if (isMobile) {
@@ -298,6 +322,24 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   };
   const isOpen = (menuId: string) => activeMenu === menuId;
 
+  // Build flat search items from menuData + optional extra searchData
+  const searchItems = React.useMemo(() => {
+    const items: { name: string; href: string }[] = [];
+    if (Array.isArray(searchData)) items.push(...searchData);
+    menuData.forEach((mi) => {
+      if (mi.label) items.push({ name: mi.label, href: mi.href });
+      mi.megaMenuColumns?.forEach((col) =>
+        col.links.forEach((l) => items.push({ name: l.label, href: l.href }))
+      );
+      if (mi.featuredProductTitle)
+        items.push({
+          name: mi.featuredProductTitle,
+          href: mi.featuredProductHref || mi.href,
+        });
+    });
+    return items;
+  }, [menuData, searchData]);
+
   // --- Render ---
   return (
     // Root element with ref for outside click detection
@@ -309,7 +351,9 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       {/* Main container with flex layout */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Logo */}
-        {logoSrc && (
+        {logoNode ? (
+          <div className="flex-shrink-0">{logoNode}</div>
+        ) : logoSrc ? (
           <div className="flex-shrink-0">
             <Link href={logoHref || '/'} className="flex items-center">
               <UDSImage
@@ -321,7 +365,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
               />
             </Link>
           </div>
-        )}
+        ) : null}
 
         {/* Mobile Menu Toggle Button (Hidden on lg screens) */}
         <div className="flex items-center lg:hidden">
@@ -434,7 +478,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                   </Link>
 
                   {/* Mega Menu Panel Container */}
-                  {hasMegaMenu && (
+                  {hasMegaMenu && !internalSearchOpen && (
                     <div
                       id={`megamenu-${item.id}`}
                       role="region"
@@ -515,16 +559,76 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
 
           {/* Right Side Elements (Search, Auth) - Desktop */}
           <div className="ml-4 flex flex-shrink-0 items-center space-x-4">
-            {showSearch && (
-              <Button
-                variant="icon"
-                onClick={onSearchClick}
-                aria-label="Search"
-              >
-                <Icon name="search" variant="outline" className="h-5 w-5" />
-                {/* Added variant and className */}
-              </Button>
-            )}
+            {showSearch &&
+              (internalSearchOpen ? (
+                <div className="flex items-center space-x-2">
+                  <input
+                    ref={searchInputRef}
+                    type="search"
+                    value={internalSearchQuery}
+                    onChange={(e) => {
+                      setInternalSearchQuery(e.target.value);
+                      onSearchChange?.(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        onSearchClick?.(internalSearchQuery);
+                        setInternalSearchOpen(false);
+                        setInternalSearchQuery('');
+                        onSearchChange?.('');
+                      }
+                      if (e.key === 'Escape') {
+                        setInternalSearchOpen(false);
+                        setInternalSearchQuery('');
+                        onSearchChange?.('');
+                      }
+                    }}
+                    placeholder={searchPlaceholder || 'Search'}
+                    aria-label="Search"
+                    className="w-64 rounded border border-atom-menu-light bg-white px-3 py-1 text-sm focus:outline-none focus:ring-2"
+                  />
+                  <Button
+                    variant="icon"
+                    onClick={() => {
+                      onSearchClick?.(internalSearchQuery);
+                      setInternalSearchOpen(false);
+                      setInternalSearchQuery('');
+                      onSearchChange?.('');
+                    }}
+                    aria-label="Submit search"
+                  >
+                    <Icon
+                      name="chevronRight"
+                      variant="outline"
+                      className="h-5 w-5"
+                    />
+                  </Button>
+                  <Button
+                    variant="icon"
+                    onClick={() => {
+                      setInternalSearchOpen(false);
+                      setInternalSearchQuery('');
+                      onSearchChange?.('');
+                    }}
+                    aria-label="Close search"
+                  >
+                    <Icon name="close" variant="outline" className="h-5 w-5" />
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  variant="icon"
+                  onClick={() => {
+                    setInternalSearchOpen(true);
+                    setIsMobileMenuOpen(false);
+                    setActiveMenu(null);
+                    setMobileVisibleColumnId(null);
+                  }}
+                  aria-label="Open search"
+                >
+                  <Icon name="search" variant="outline" className="h-5 w-5" />
+                </Button>
+              ))}
             {isLoggedIn ? (
               <Button variant="outline" size="sm" onClick={onLogoutClick}>
                 {/* Changed variant */}
@@ -549,6 +653,99 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       {/* --- Mobile Menu Panel --- (Displayed below header when open) */}
       {isMobile && isMobileMenuOpen && (
         <div className="border-t border-atom-menu-dark lg:hidden">
+          {mobileSearchOpen ? (
+            <div className="px-4 pb-3 pt-2">
+              <div className="flex items-center space-x-2">
+                <input
+                  ref={searchInputRef}
+                  type="search"
+                  value={internalSearchQuery}
+                  onChange={(e) => {
+                    setInternalSearchQuery(e.target.value);
+                    onSearchChange?.(e.target.value);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      onSearchClick?.(internalSearchQuery);
+                      setMobileSearchOpen(false);
+                      setInternalSearchQuery('');
+                      onSearchChange?.('');
+                      setIsMobileMenuOpen(false);
+                    }
+                    if (e.key === 'Escape') {
+                      setMobileSearchOpen(false);
+                    }
+                  }}
+                  placeholder={searchPlaceholder || 'Search'}
+                  aria-label="Search"
+                  className="w-full rounded border px-3 py-2"
+                />
+                <Button
+                  variant="icon"
+                  onClick={() => {
+                    onSearchClick?.(internalSearchQuery);
+                    setMobileSearchOpen(false);
+                    setInternalSearchQuery('');
+                    onSearchChange?.('');
+                    setIsMobileMenuOpen(false);
+                  }}
+                >
+                  <Icon
+                    name="chevronRight"
+                    variant="outline"
+                    className="h-5 w-5"
+                  />
+                </Button>
+                <Button
+                  variant="icon"
+                  onClick={() => setMobileSearchOpen(false)}
+                >
+                  <Icon name="close" variant="outline" className="h-5 w-5" />
+                </Button>
+              </div>
+
+              <div className="mt-3">
+                {internalSearchQuery.trim().length > 0 ? (
+                  (() => {
+                    const q = internalSearchQuery.toLowerCase();
+                    const results = searchItems.filter((it) =>
+                      it.name.toLowerCase().includes(q)
+                    );
+                    if (results.length === 0)
+                      return (
+                        <div className="py-4 text-sm text-gray-500">
+                          No results
+                        </div>
+                      );
+                    return (
+                      <ul className="space-y-2">
+                        {results.map((r, idx) => (
+                          <li key={idx} className="border-b last:border-b-0">
+                            <Link
+                              href={r.href}
+                              className="block py-2 text-sm"
+                              onClick={() => {
+                                setMobileSearchOpen(false);
+                                setInternalSearchQuery('');
+                                onSearchChange?.('');
+                                setIsMobileMenuOpen(false);
+                              }}
+                            >
+                              {r.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  })()
+                ) : (
+                  <div className="py-4 text-sm text-gray-500">
+                    Type to search
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : null}
           <ul className="flex flex-col px-4 pb-3 pt-2">
             {menuData.map((item) => {
               const hasMegaMenu =
@@ -659,13 +856,14 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             {/* Search Button in Mobile Menu */}
             {showSearch && (
               <Button
-                variant="link" // Changed variant
+                variant="link"
                 size="sm"
                 onClick={() => {
-                  closeMenu();
-                  onSearchClick?.();
+                  // Open mobile search UI inside the mobile panel
+                  setMobileSearchOpen(true);
+                  setActiveMenu(null);
                 }}
-                className="w-full justify-start text-left" // Align text left
+                className="w-full justify-start text-left"
                 aria-label="Search"
               >
                 <Icon
@@ -673,7 +871,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
                   variant="outline"
                   className="mr-2 h-5 w-5"
                 />
-                Search {/* Added variant and className */}
+                Search
               </Button>
             )}
           </div>
@@ -721,7 +919,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
             } = item;
 
             return (
-              hasMegaMenu && (
+              hasMegaMenu &&
+              !internalSearchOpen && (
                 <div
                   key={`desktop-panel-${item.id}`}
                   id={`megamenu-${item.id}`}
@@ -808,6 +1007,83 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
               )
             );
           })}
+          {/* Desktop search panel shown instead of mega menus */}
+          {internalSearchOpen && !isMobile && (
+            <div
+              role="region"
+              aria-label="Search"
+              className="absolute left-0 right-0 top-full z-30 border-t border-atom-menu-dark bg-atom-menu-background p-4"
+            >
+              <div className="mx-auto max-w-7xl px-4">
+                <div className="mb-3">
+                  <input
+                    ref={searchInputRef}
+                    type="search"
+                    value={internalSearchQuery}
+                    onChange={(e) => {
+                      setInternalSearchQuery(e.target.value);
+                      onSearchChange?.(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        onSearchClick?.(internalSearchQuery);
+                        setInternalSearchOpen(false);
+                        setInternalSearchQuery('');
+                        onSearchChange?.('');
+                      }
+                      if (e.key === 'Escape') {
+                        setInternalSearchOpen(false);
+                        setInternalSearchQuery('');
+                        onSearchChange?.('');
+                      }
+                    }}
+                    placeholder={searchPlaceholder || 'Search menu...'}
+                    className="w-full rounded border px-3 py-2"
+                    aria-label="Search"
+                  />
+                </div>
+                <div>
+                  {internalSearchQuery.trim().length >= 1 ? (
+                    (() => {
+                      const q = internalSearchQuery.toLowerCase();
+                      const results = searchItems.filter((it) =>
+                        it.name.toLowerCase().includes(q)
+                      );
+                      if (results.length === 0)
+                        return (
+                          <div className="py-4 text-sm text-gray-500">
+                            No results
+                          </div>
+                        );
+                      return (
+                        <ul className="space-y-2">
+                          {results.map((r, idx) => (
+                            <li key={idx} className="border-b last:border-b-0">
+                              <Link
+                                href={r.href}
+                                className="block py-2 text-sm"
+                                onClick={() => {
+                                  setInternalSearchOpen(false);
+                                  setInternalSearchQuery('');
+                                  onSearchChange?.('');
+                                }}
+                              >
+                                {r.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    })()
+                  ) : (
+                    <div className="py-4 text-sm text-gray-500">
+                      Type to search the menu
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </nav>

@@ -48,4 +48,7 @@ export interface InputProps {
   /** Maximum length of the input value */
   maxLength?: number;
   disablePasswordHint?: boolean;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }

@@ -1,7 +1,7 @@
 import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 import CustomLink from '@/Components/Atoms/CustomLink';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import UDSImage from '@/Components/Atoms/UDSImage';
 import {
   DropdownMenuProps,
@@ -30,45 +30,45 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, links }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  let Elements = null;
-  if (isOpen) {
-    Elements = (
-      <div className="rounded-menu bg-menu-background from-menu-from_background to-menu-to_background bg-gradient-to-r p-1 text-left shadow-lg">
-        {links.map((link) =>
-          link.subCustomLinks ? (
-            <div key={link.name} className="relative">
-              <CustomLink
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="rounded-menu hover:bg-menu-hover flex w-full items-center justify-between px-4 py-2"
-                href={'#'}
-                underlineHover={false}
-              >
-                {link.name}
-                <Icon name={'chevronDown'} variant={'solid'} />
-              </CustomLink>
-              <div className="pl-4">
-                <DropdownMenu
-                  isOpen={isDropdownOpen}
-                  subCustomLinks={link.subCustomLinks}
-                />
-              </div>
-            </div>
-          ) : (
+  if (!isOpen) return null;
+
+  return (
+    <div
+      id="mobile-menu"
+      className="rounded-menu bg-menu-background from-menu-from_background to-menu-to_background bg-gradient-to-r p-1 text-left shadow-lg"
+    >
+      {links.map((link) =>
+        link.subCustomLinks ? (
+          <div key={link.name} className="relative">
             <CustomLink
-              key={link.name}
-              href={link.href}
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="rounded-menu hover:bg-menu-hover flex w-full items-center justify-between px-4 py-2"
+              href={'#'}
               underlineHover={false}
-              className="rounded-menu hover:bg-menu-hover block px-4 py-2"
             >
               {link.name}
+              <Icon name={'chevronDown'} variant={'solid'} />
             </CustomLink>
-          )
-        )}
-      </div>
-    );
-  }
-
-  return Elements;
+            <div className="pl-4">
+              <DropdownMenu
+                isOpen={isDropdownOpen}
+                subCustomLinks={link.subCustomLinks}
+              />
+            </div>
+          </div>
+        ) : (
+          <CustomLink
+            key={link.name}
+            href={link.href}
+            underlineHover={false}
+            className="rounded-menu hover:bg-menu-hover block px-4 py-2"
+          >
+            {link.name}
+          </CustomLink>
+        )
+      )}
+    </div>
+  );
 };
 
 const LogoSection: React.FC<{ logo: string; altText: string }> = ({
@@ -103,6 +103,8 @@ const DesktopMenuSection: React.FC<{
             onClick={() => handleCustomLinkClick(link.name)}
             className={`hover:text-menu-dark flex items-center ${activeCustomLink === link.name ? 'underline' : ''}`}
             href={'#'}
+            aria-expanded={isDropdownOpen && activeCustomLink === link.name}
+            aria-haspopup="true"
           >
             {link.name}
             <Icon name={'chevronDown'} variant={'solid'} />
@@ -133,7 +135,13 @@ const MobileMenuButtonSection: React.FC<{
   setIsOpen: (isOpen: boolean) => void;
 }> = ({ isOpen, setIsOpen }) => (
   <div className="flex items-center md:hidden">
-    <Button variant="icon" onClick={() => setIsOpen(!isOpen)}>
+    <Button
+      variant="icon"
+      onClick={() => setIsOpen(!isOpen)}
+      ariaLabel={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+      aria-expanded={isOpen}
+      aria-controls="mobile-menu"
+    >
       {isOpen ? (
         <Icon
           name={'close'}
@@ -156,6 +164,20 @@ const Navbar: React.FC<NavbarProps> = ({ logo, altText, links }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeCustomLink, setActiveCustomLink] = useState<string | null>(null);
 
+  const closeAll = useCallback(() => {
+    setIsOpen(false);
+    setIsDropdownOpen(false);
+    setActiveCustomLink(null);
+  }, []);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeAll();
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [closeAll]);
+
   const handleCustomLinkClick = (linkName: string) => {
     setActiveCustomLink((prevActive) =>
       linkName === prevActive ? null : linkName
@@ -166,7 +188,10 @@ const Navbar: React.FC<NavbarProps> = ({ logo, altText, links }) => {
   };
 
   return (
-    <nav className="rounded-menu bg-menu-background from-menu-from_background to-menu-to_background bg-gradient-to-r p-1 text-center">
+    <nav
+      aria-label="Main navigation"
+      className="rounded-menu bg-menu-background from-menu-from_background to-menu-to_background bg-gradient-to-r p-1 text-center"
+    >
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           {/* Logo Section */}

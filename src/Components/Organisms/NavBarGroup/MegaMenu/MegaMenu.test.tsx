@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import MegaMenu from '.';
@@ -65,12 +65,14 @@ const testMenuData: MenuItem[] = [
 
 // Helper to set viewport size (requires jsdom environment)
 const setScreenWidth = (width: number) => {
-  Object.defineProperty(window, 'innerWidth', {
-    writable: true,
-    configurable: true,
-    value: width,
+  act(() => {
+    Object.defineProperty(window, 'innerWidth', {
+      writable: true,
+      configurable: true,
+      value: width,
+    });
+    window.dispatchEvent(new Event('resize'));
   });
-  window.dispatchEvent(new Event('resize'));
 };
 
 describe('MegaMenu Component', () => {
@@ -80,10 +82,12 @@ describe('MegaMenu Component', () => {
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+      // Reset screen width after each test if needed
+      setScreenWidth(1024); // Default back to desktop
+    });
     jest.useRealTimers();
-    // Reset screen width after each test if needed
-    setScreenWidth(1024); // Default back to desktop
   });
 
   // Helper function to setup user event

@@ -20,7 +20,7 @@ export default {
 
 const Template: StoryFn<SectionProps> = (args) => (
   <Section {...args}>
-    <div className="p-4 md:w-1/2 xl:w-1/3">
+    <div className="w-full p-4 md:w-1/2 xl:w-1/3">
       <div className="rounded-lg border border-gray-300 p-6">
         <h2 className="title-font mb-2 text-lg font-medium text-gray-900">
           Sample Card 1

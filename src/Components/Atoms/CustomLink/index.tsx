@@ -17,7 +17,7 @@ const CustomLink: React.FC<CustomLinkProps> = ({
   const containerClasses = classNames(className);
   return (
     <Link
-      onClick={() => (onClick ? onClick : '')}
+      onClick={(e) => (onClick ? onClick(e) : undefined)}
       href={href}
       rel={rel}
       target={target}

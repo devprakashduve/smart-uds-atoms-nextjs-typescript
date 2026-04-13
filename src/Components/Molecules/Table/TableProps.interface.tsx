@@ -3,6 +3,8 @@ export interface TableColumn<T> {
   header: string; // Header text for the column
   render?: (value: T[keyof T], row: T) => React.ReactNode; // Optional custom rendering for the column
   className?: string; // Optional additional className for the column
+  /** Enable column sorting. Default: false */
+  sortable?: boolean;
 }
 
 export interface TableProps<T> {
@@ -13,4 +15,6 @@ export interface TableProps<T> {
   currentPage: number; // Current page number
   pageSize: number; // Number of rows per page
   onPageChange: (page: number) => void; // Callback for when the page changes
+  /** Default sort column and direction */
+  defaultSort?: { key: keyof T; direction: 'asc' | 'desc' };
 }

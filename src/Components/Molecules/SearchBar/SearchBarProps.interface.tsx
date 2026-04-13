@@ -5,4 +5,5 @@ export interface SearchBarProps {
   className?: string; // Optional additional className for the container
   noResultText?: string;
   placeholder?: string; // Placeholder text for the search input
+  data?: { name: string; href: string }[]; // Optional data for suggestions dropdown
 }

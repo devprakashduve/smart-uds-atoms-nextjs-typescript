@@ -6,6 +6,6 @@ export interface CustomLinkProps {
   underline?: boolean;
   underlineHover?: boolean;
   className?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   rel?: string;
 }
