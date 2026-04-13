@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Icon from '.';
 
 describe('Icon Component', () => {
@@ -10,7 +10,7 @@ describe('Icon Component', () => {
     const svg = container.querySelector('svg');
     expect(svg).toBeInTheDocument();
     // Maybe check unique path substring?
-    expect(container.innerHTML).toContain('M18 2h-3a5'); 
+    expect(container.innerHTML).toContain('M18 2h-3a5');
   });
 
   it('renders Twitter icon', () => {
@@ -49,13 +49,15 @@ describe('Icon Component', () => {
   });
 
   it('applies custom className', () => {
-    const { container } = render(<Icon name="search" className="custom-class" />);
+    const { container } = render(
+      <Icon name="search" className="custom-class" />
+    );
     const svg = container.querySelector('svg');
     expect(svg).toHaveClass('custom-class');
   });
 
   it('renders various other icons to cover map references', () => {
-    // We don't need to test every single icon if we trust the map lookup, 
+    // We don't need to test every single icon if we trust the map lookup,
     // but validating that map lookup works for a few samples is good.
     render(<Icon name="bell" />);
     render(<Icon name="close" />);

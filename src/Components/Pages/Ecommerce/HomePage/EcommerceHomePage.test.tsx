@@ -4,9 +4,13 @@ import EcommerceHomePage from './index';
 
 // Mock Next.js Link
 jest.mock('next/link', () => {
-  const MockLink = ({ children, href }: { children: React.ReactNode; href: string }) => (
-    <a href={href}>{children}</a>
-  );
+  const MockLink = ({
+    children,
+    href,
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => <a href={href}>{children}</a>;
   MockLink.displayName = 'MockLink';
   return MockLink;
 });
@@ -38,7 +42,11 @@ describe('EcommerceHomePage', () => {
 
   it('renders hero CTA buttons', () => {
     render(<EcommerceHomePage />);
-    expect(screen.getByRole('button', { name: /shop now/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /view deals/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /shop now/i })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /view deals/i })
+    ).toBeInTheDocument();
   });
 });

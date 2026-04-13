@@ -124,22 +124,24 @@ describe('TextArea Component', () => {
 
   it('validates with custom error messages', () => {
     render(
-      <TextArea 
+      <TextArea
         id="custom"
         value=""
-        onChange={() => { } }
+        onChange={() => {}}
         isRequired={true}
         requiredErrorMessage="Custom Required Error"
         pattern="^[A-Z]+$"
-        validationErrorMessage="Custom Pattern Error" name={''}      />
+        validationErrorMessage="Custom Pattern Error"
+        name={''}
+      />
     );
     const area = screen.getByRole('textbox');
-    
+
     // Trigger required error
     fireEvent.change(area, { target: { value: 'a' } });
     fireEvent.change(area, { target: { value: '' } });
     expect(screen.getByText('Custom Required Error')).toBeInTheDocument();
-    
+
     // Trigger pattern error
     fireEvent.change(area, { target: { value: 'abc' } });
     expect(screen.getByText('Custom Pattern Error')).toBeInTheDocument();

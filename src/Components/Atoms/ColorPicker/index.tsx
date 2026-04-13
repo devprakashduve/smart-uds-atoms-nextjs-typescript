@@ -14,7 +14,9 @@ const ColorPicker: React.FC<ColorPickerProps> = ({
   const id = useId();
   const isControlled = value !== undefined;
   const [internalColor, setInternalColor] = useState(defaultValue);
-  const [hexInput, setHexInput] = useState(isControlled ? value! : defaultValue);
+  const [hexInput, setHexInput] = useState(
+    isControlled ? value! : defaultValue
+  );
 
   const currentColor = isControlled ? value! : internalColor;
 

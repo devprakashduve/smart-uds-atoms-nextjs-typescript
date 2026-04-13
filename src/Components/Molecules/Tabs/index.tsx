@@ -45,9 +45,8 @@ const Tabs: React.FC<TabsProps> = ({
       setActiveTab(nextTab.id);
       onTabChange?.(nextTab.id);
       // Move focus to the newly active tab button
-      const tabButtons = tabListRef.current?.querySelectorAll<HTMLButtonElement>(
-        '[role="tab"]'
-      );
+      const tabButtons =
+        tabListRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]');
       const targetBtn = Array.from(tabButtons ?? []).find(
         (btn) => btn.dataset.tabId === nextTab!.id
       );

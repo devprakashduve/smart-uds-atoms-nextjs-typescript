@@ -14,16 +14,22 @@ export default [
     // Entry point of the library
     input: 'src/index.ts',
     // Output bundles for CommonJS and ES Modules with sourcemaps enabled
+    onwarn(warning, warn) {
+      if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
+      warn(warning);
+    },
     output: [
       {
         file: pkg.main,
         format: 'cjs',
         sourcemap: true,
+        banner: "'use client';",
       },
       {
         file: pkg.module,
         format: 'esm',
         sourcemap: true,
+        banner: "'use client';",
       },
     ],
     plugins: [

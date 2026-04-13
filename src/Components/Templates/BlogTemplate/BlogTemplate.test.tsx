@@ -22,21 +22,21 @@ describe('BlogTemplate', () => {
   });
 
   it('renders without optional sidebar', () => {
-    const { sidebar, ...rest } = mockProps;
+    const { sidebar: _sidebar, ...rest } = mockProps;
     render(<BlogTemplate {...rest} />);
     expect(screen.queryByTestId('sidebar')).not.toBeInTheDocument();
     expect(screen.getByTestId('posts')).toBeInTheDocument();
   });
 
   it('renders without optional featuredPost', () => {
-    const { featuredPost, ...rest } = mockProps;
+    const { featuredPost: _featuredPost, ...rest } = mockProps;
     render(<BlogTemplate {...rest} />);
     expect(screen.queryByTestId('featured')).not.toBeInTheDocument();
     expect(screen.getByTestId('posts')).toBeInTheDocument();
   });
 
   it('renders without optional footer', () => {
-    const { footer, ...rest } = mockProps;
+    const { footer: _footer, ...rest } = mockProps;
     render(<BlogTemplate {...rest} />);
     expect(screen.queryByTestId('footer')).not.toBeInTheDocument();
   });

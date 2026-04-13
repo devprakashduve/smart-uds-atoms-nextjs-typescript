@@ -19,9 +19,9 @@ const SidebarContent = () => (
       <a
         key={item}
         href="#"
-        className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 text-sm font-medium"
+        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100"
       >
-        <span className="w-5 h-5 rounded bg-gray-300 flex-shrink-0" />
+        <span className="h-5 w-5 flex-shrink-0 rounded bg-gray-300" />
         {item}
       </a>
     ))}
@@ -29,11 +29,13 @@ const SidebarContent = () => (
 );
 
 const TopbarContent = () => (
-  <div className="flex items-center justify-between w-full">
+  <div className="flex w-full items-center justify-between">
     <span className="text-lg font-bold text-gray-800">MyApp</span>
     <div className="flex items-center gap-3">
       <span className="text-sm text-gray-500">Welcome, Admin</span>
-      <div className="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center text-xs font-bold">A</div>
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 text-xs font-bold text-white">
+        A
+      </div>
     </div>
   </div>
 );
@@ -46,9 +48,11 @@ export const Default: Story = {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl font-semibold text-gray-900">Dashboard</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Welcome back, here&apos;s what&apos;s happening.</p>
+          <p className="mt-0.5 text-sm text-gray-500">
+            Welcome back, here&apos;s what&apos;s happening.
+          </p>
         </div>
-        <button className="bg-indigo-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-700">
+        <button className="rounded-lg bg-indigo-600 px-4 py-2 text-sm text-white hover:bg-indigo-700">
           New Report
         </button>
       </div>
@@ -56,17 +60,24 @@ export const Default: Story = {
     children: (
       <div className="space-y-6">
         {/* Stats row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { label: 'Total Revenue', value: '$48,295', change: '+12%' },
             { label: 'Active Users', value: '3,842', change: '+5%' },
             { label: 'New Orders', value: '284', change: '+8%' },
             { label: 'Conversion', value: '3.6%', change: '-1%' },
           ].map((stat) => (
-            <div key={stat.label} className="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+            <div
+              key={stat.label}
+              className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
+            >
               <p className="text-sm text-gray-500">{stat.label}</p>
-              <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
-              <p className={`text-xs mt-1 font-medium ${stat.change.startsWith('+') ? 'text-green-600' : 'text-red-500'}`}>
+              <p className="mt-1 text-2xl font-bold text-gray-900">
+                {stat.value}
+              </p>
+              <p
+                className={`mt-1 text-xs font-medium ${stat.change.startsWith('+') ? 'text-green-600' : 'text-red-500'}`}
+              >
                 {stat.change} vs last month
               </p>
             </div>
@@ -74,26 +85,42 @@ export const Default: Story = {
         </div>
 
         {/* Content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-            <h2 className="text-base font-semibold text-gray-900 mb-4">Recent Activity</h2>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm lg:col-span-2">
+            <h2 className="mb-4 text-base font-semibold text-gray-900">
+              Recent Activity
+            </h2>
             <div className="space-y-3">
-              {['Order #1042 placed', 'User Jane Doe signed up', 'Invoice #881 paid'].map((item) => (
-                <div key={item} className="flex items-center gap-3 text-sm text-gray-700">
-                  <div className="w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0" />
+              {[
+                'Order #1042 placed',
+                'User Jane Doe signed up',
+                'Invoice #881 paid',
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 text-sm text-gray-700"
+                >
+                  <div className="h-2 w-2 flex-shrink-0 rounded-full bg-indigo-400" />
                   {item}
                 </div>
               ))}
             </div>
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-            <h2 className="text-base font-semibold text-gray-900 mb-4">Quick Actions</h2>
+          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h2 className="mb-4 text-base font-semibold text-gray-900">
+              Quick Actions
+            </h2>
             <div className="space-y-2">
-              {['Create User', 'Generate Report', 'Export Data'].map((action) => (
-                <button key={action} className="w-full text-left text-sm px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700">
-                  {action}
-                </button>
-              ))}
+              {['Create User', 'Generate Report', 'Export Data'].map(
+                (action) => (
+                  <button
+                    key={action}
+                    className="w-full rounded-lg bg-gray-50 px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    {action}
+                  </button>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -110,7 +137,7 @@ export const NoSidebar: Story = {
       <h1 className="text-xl font-semibold text-gray-900">Settings</h1>
     ),
     children: (
-      <div className="bg-white rounded-xl border border-gray-200 p-8 max-w-2xl">
+      <div className="max-w-2xl rounded-xl border border-gray-200 bg-white p-8">
         <p className="text-gray-600">Settings content goes here.</p>
       </div>
     ),

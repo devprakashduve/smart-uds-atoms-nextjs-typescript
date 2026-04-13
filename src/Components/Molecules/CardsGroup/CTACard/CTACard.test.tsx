@@ -39,7 +39,7 @@ describe('CTACard', () => {
     );
     const input = screen.getByPlaceholderText('Enter email');
     fireEvent.change(input, { target: { value: 'test@example.com' } });
-    
+
     expect(mockOnEmailChange).toHaveBeenCalled();
     expect(input).toHaveValue('test@example.com');
   });
@@ -59,10 +59,10 @@ describe('CTACard', () => {
 
     // Type email
     fireEvent.change(input, { target: { value: 'valid@example.com' } });
-    
+
     // Submit
     fireEvent.click(button);
-    
+
     expect(mockOnSubscribe).toHaveBeenCalledWith('valid@example.com');
   });
 
@@ -77,18 +77,18 @@ describe('CTACard', () => {
       />
     );
     const button = screen.getByText('Sub');
-    
+
     // Submit without typing
     fireEvent.click(button); // Browser validation might stop it?
     // In JSDOM, form submission might happen but logic checks `userEmail`.
     // userEmail is '' initially.
-    
-    // Note: Input is required. JSDOM form submission honors required attribute 
+
+    // Note: Input is required. JSDOM form submission honors required attribute
     // and might prevent submission event or `preventDefault`?
     // Actually JSDOM doesn't enforce 'required' blocking submission unless using `userEvent` or specific config.
     // If submission fires, `handleSubscribe` runs.
     // `if (userEmail && onSubscribe)` -> userEmail is empty.
-    
+
     // So onSubscribe should NOT be called.
     expect(mockOnSubscribe).not.toHaveBeenCalled();
   });

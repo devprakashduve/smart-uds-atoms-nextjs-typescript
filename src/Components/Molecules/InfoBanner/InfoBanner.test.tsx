@@ -21,7 +21,10 @@ describe('InfoBanner', () => {
     expect(screen.getByText('Welcome Banner')).toBeInTheDocument();
     expect(screen.getByText('This is a subtitle')).toBeInTheDocument();
     expect(screen.getByAltText('Test Image')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Register now/i })).toHaveAttribute('href', '/register');
+    expect(screen.getByRole('link', { name: /Register now/i })).toHaveAttribute(
+      'href',
+      '/register'
+    );
   });
 
   test('renders without optional props', () => {
@@ -34,21 +37,23 @@ describe('InfoBanner', () => {
   test('dismisses the banner when close button is clicked', () => {
     const { container } = render(<InfoBanner {...defaultProps} />);
     const dismissBtn = screen.getByLabelText('Dismiss banner');
-    
+
     expect(screen.getByText('Welcome Banner')).toBeInTheDocument();
-    
+
     fireEvent.click(dismissBtn);
-    
+
     expect(mockOnDismiss).toHaveBeenCalled();
     expect(container).toBeEmptyDOMElement();
   });
 
   test('handles dismiss without onDismiss prop', () => {
-    const { container } = render(<InfoBanner title="No Callback" linkUrl="#" altText="" />);
+    const { container } = render(
+      <InfoBanner title="No Callback" linkUrl="#" altText="" />
+    );
     const dismissBtn = screen.getByLabelText('Dismiss banner');
-    
+
     fireEvent.click(dismissBtn);
-    
+
     expect(container).toBeEmptyDOMElement();
     // No error thrown
   });

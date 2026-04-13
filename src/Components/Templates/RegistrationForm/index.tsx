@@ -22,9 +22,9 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
     formHandlerData?.onSubmit(data);
   };
   return (
-    <div className="min-h-screen flex flex-col font-sans">
+    <div className="flex min-h-screen flex-col font-sans">
       {header && (
-        <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-200">
+        <header className="sticky top-0 z-40 border-b border-gray-200 bg-white shadow-sm">
           {header}
         </header>
       )}
@@ -43,7 +43,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({
         </div>
       </main>
       {footer && (
-        <footer className="bg-white border-t border-gray-200">{footer}</footer>
+        <footer className="border-t border-gray-200 bg-white">{footer}</footer>
       )}
     </div>
   );

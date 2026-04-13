@@ -50,10 +50,7 @@ const Rating: React.FC<RatingProps> = ({
             tabIndex={isInteractive ? (index === 0 ? 0 : -1) : undefined}
             onClick={() => handleRatingClick(index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
-            className={`text-xl select-none bg-transparent border-none p-0
-              ${isSelected ? 'text-atom-rating-light' : 'text-atom-rating-dark'}
-              ${isInteractive ? 'cursor-pointer hover:text-atom-rating focus:outline-none focus:ring-1 focus:ring-atom-rating' : 'cursor-default'}
-            `}
+            className={`select-none border-none bg-transparent p-0 text-xl ${isSelected ? 'text-atom-rating-light' : 'text-atom-rating-dark'} ${isInteractive ? 'cursor-pointer hover:text-atom-rating focus:outline-none focus:ring-1 focus:ring-atom-rating' : 'cursor-default'} `}
           >
             ★
           </button>

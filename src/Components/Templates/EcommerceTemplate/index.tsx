@@ -15,59 +15,57 @@ const EcommerceTemplate: React.FC<EcommerceTemplateProps> = ({
   megaMenu,
 }) => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
+    <div className="flex min-h-screen flex-col bg-gray-50 font-sans">
       {/* MegaMenu Header Area */}
       {megaMenu || (
-        <header className="bg-white shadow-sm sticky top-0 z-40 border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center h-16 gap-2 sm:gap-4">
-                <div className="flex items-center gap-2 sm:gap-8 min-w-0">
-                   <div className="flex-shrink-0">{logo}</div>
-                   <div className="hidden md:block">{navigation}</div>
-                </div>
-                
-                <div className="flex-1 max-w-2xl hidden md:flex items-center justify-center">
-                   {searchBar}
-                </div>
-  
-                <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
-                   {userMenu}
-                   {cart}
-                </div>
+        <header className="sticky top-0 z-40 border-b border-gray-200 bg-white shadow-sm">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between gap-2 sm:gap-4">
+              <div className="flex min-w-0 items-center gap-2 sm:gap-8">
+                <div className="flex-shrink-0">{logo}</div>
+                <div className="hidden md:block">{navigation}</div>
               </div>
-             {/* Mobile Search - Visible only on small screens */}
-             {searchBar && (
-               <div className="md:hidden py-3 border-t border-gray-100">
-                  {searchBar}
-               </div>
-             )}
+
+              <div className="hidden max-w-2xl flex-1 items-center justify-center md:flex">
+                {searchBar}
+              </div>
+
+              <div className="flex flex-shrink-0 items-center space-x-2 sm:space-x-4">
+                {userMenu}
+                {cart}
+              </div>
+            </div>
+            {/* Mobile Search - Visible only on small screens */}
+            {searchBar && (
+              <div className="border-t border-gray-100 py-3 md:hidden">
+                {searchBar}
+              </div>
+            )}
           </div>
         </header>
       )}
 
       <main className="flex-1">
-         {hero && <div className="w-full">{hero}</div>}
-         
-         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-fadeIn">
-            {breadcrumb && <div className="mb-4">{breadcrumb}</div>}
-            <div className="flex flex-col lg:flex-row gap-8">
-               {filters && (
-                 <aside className="w-full lg:w-64 flex-shrink-0">
-                    <div className="sticky top-24">
-                        {filters}
-                    </div>
-                 </aside>
-               )}
-               <div className="flex-1">
-                  {products}
-               </div>
-            </div>
-         </div>
+        {hero && <div className="w-full">{hero}</div>}
+
+        <div className="animate-fadeIn mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          {breadcrumb && <div className="mb-4">{breadcrumb}</div>}
+          <div className="flex flex-col gap-8 lg:flex-row">
+            {filters && (
+              <aside className="w-full flex-shrink-0 lg:w-64">
+                <div className="sticky top-24">{filters}</div>
+              </aside>
+            )}
+            <div className="flex-1">{products}</div>
+          </div>
+        </div>
       </main>
-      
-      {footer && <footer className="bg-white border-t border-gray-200">{footer}</footer>}
+
+      {footer && (
+        <footer className="border-t border-gray-200 bg-white">{footer}</footer>
+      )}
     </div>
   );
-}
+};
 
 export default EcommerceTemplate;

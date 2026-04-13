@@ -37,9 +37,15 @@ describe('Table', () => {
 
     it('renders column headers', () => {
       render(<Table {...defaultProps} />);
-      expect(screen.getByRole('columnheader', { name: /name/i })).toBeInTheDocument();
-      expect(screen.getByRole('columnheader', { name: /age/i })).toBeInTheDocument();
-      expect(screen.getByRole('columnheader', { name: /city/i })).toBeInTheDocument();
+      expect(
+        screen.getByRole('columnheader', { name: /name/i })
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('columnheader', { name: /age/i })
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('columnheader', { name: /city/i })
+      ).toBeInTheDocument();
     });
 
     it('renders all data rows', () => {
@@ -56,7 +62,9 @@ describe('Table', () => {
     });
 
     it('applies custom className to the container', () => {
-      const { container } = render(<Table {...defaultProps} className="custom-table" />);
+      const { container } = render(
+        <Table {...defaultProps} className="custom-table" />
+      );
       expect(container.firstChild).toHaveClass('custom-table');
     });
   });

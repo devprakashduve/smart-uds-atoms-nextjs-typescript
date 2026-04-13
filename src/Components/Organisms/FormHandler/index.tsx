@@ -22,7 +22,9 @@ const FormHandler: React.FC<FormHandlerProps> = ({
   showErrorSummary = false,
   className,
 }) => {
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [validationErrors, setValidationErrors] = useState<
+    Record<string, string>
+  >({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

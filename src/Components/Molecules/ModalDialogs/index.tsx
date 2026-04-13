@@ -31,7 +31,10 @@ export default function ModalDialogs({
       requestAnimationFrame(() => {
         setIsActive(true);
         // Move focus to the first focusable element in the modal
-        const focusable = containerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS);
+        const focusable =
+          containerRef.current?.querySelectorAll<HTMLElement>(
+            FOCUSABLE_SELECTORS
+          );
         if (focusable && focusable.length > 0) {
           focusable[0].focus();
         }
@@ -58,7 +61,10 @@ export default function ModalDialogs({
       }
 
       if (e.key === 'Tab') {
-        const focusable = containerRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTORS);
+        const focusable =
+          containerRef.current?.querySelectorAll<HTMLElement>(
+            FOCUSABLE_SELECTORS
+          );
         if (!focusable || focusable.length === 0) return;
 
         const first = focusable[0];
@@ -101,7 +107,7 @@ export default function ModalDialogs({
       <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
         <div
           ref={containerRef}
-          className={`relative transform overflow-y-auto max-h-[90vh] rounded text-left shadow-xl transition-all duration-300 ease-out sm:my-8 sm:w-full sm:max-w-lg ${
+          className={`relative max-h-[90vh] transform overflow-y-auto rounded text-left shadow-xl transition-all duration-300 ease-out sm:my-8 sm:w-full sm:max-w-lg ${
             isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           } ${className ?? ''}`}
           role="dialog"

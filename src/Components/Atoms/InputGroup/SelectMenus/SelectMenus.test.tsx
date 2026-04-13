@@ -28,22 +28,28 @@ describe('SelectMenus', () => {
     renderComponent({ onChange: handleChange });
     fireEvent.click(screen.getByRole('button'));
     fireEvent.click(screen.getByText('Arlene Mccoy'));
-    
+
     expect(handleChange).toHaveBeenCalledWith(items[1]);
     expect(screen.getByText('Arlene Mccoy')).toBeInTheDocument();
   });
 
   it('updates selected value when value prop changes', () => {
-    const { rerender } = render(<SelectMenus items={items} value={items[0]} onChange={() => {}} />);
+    const { rerender } = render(
+      <SelectMenus items={items} value={items[0]} onChange={() => {}} />
+    );
     expect(screen.getByText('Wade Cooper')).toBeInTheDocument();
 
-    rerender(<SelectMenus items={items} value={items[1]} onChange={() => {}} />);
+    rerender(
+      <SelectMenus items={items} value={items[1]} onChange={() => {}} />
+    );
     expect(screen.getByText('Arlene Mccoy')).toBeInTheDocument();
   });
 
   it('renders correctly with different sizes', () => {
-    const { rerender } = render(<SelectMenus items={items} size="sm" label="Size Test" />);
-    
+    const { rerender } = render(
+      <SelectMenus items={items} size="sm" label="Size Test" />
+    );
+
     rerender(<SelectMenus items={items} size="lg" label="Size Test" />);
     rerender(<SelectMenus items={items} size="md" label="Size Test" />);
   });
@@ -53,7 +59,7 @@ describe('SelectMenus', () => {
     renderComponent({ disabled: true, onChange: handleChange });
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
-    
+
     // Attempt click - shouldn't open
     // fireEvent.click(button); // Disabled button interaction check
   });
@@ -71,28 +77,28 @@ describe('SelectMenus', () => {
   });
 
   it('displays required error when cleared or empty', () => {
-      const placeholderItem = { id: '0', name: 'Select...' };
-      
-      render(
-        <SelectMenus 
-            items={[placeholderItem, ...items]} 
-            defaultSelected={placeholderItem} 
-            placeholder="Select..." 
-            required={true} 
-            onChange={() => {}} 
-        />
-      );
-      
-      fireEvent.click(screen.getByRole('button'));
-      const list = screen.getByRole('list');
-      const option = within(list).getByText('Select...');
-      fireEvent.click(option);
-      
-      expect(screen.getByText('This field is required')).toBeInTheDocument();
+    const placeholderItem = { id: '0', name: 'Select...' };
+
+    render(
+      <SelectMenus
+        items={[placeholderItem, ...items]}
+        defaultSelected={placeholderItem}
+        placeholder="Select..."
+        required={true}
+        onChange={() => {}}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button'));
+    const list = screen.getByRole('list');
+    const option = within(list).getByText('Select...');
+    fireEvent.click(option);
+
+    expect(screen.getByText('This field is required')).toBeInTheDocument();
   });
 
   it('renders label', () => {
-      renderComponent({ label: 'My Label' });
-      expect(screen.getByText('My Label')).toBeInTheDocument();
+    renderComponent({ label: 'My Label' });
+    expect(screen.getByText('My Label')).toBeInTheDocument();
   });
 });

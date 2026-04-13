@@ -24,8 +24,8 @@ const items = [
 export const Default: Story = {
   args: {
     items,
-    header: <div className="p-4 font-bold text-lg border-b">MyApp</div>,
-    footer: <div className="p-4 border-t text-sm text-gray-500">v1.0.0</div>,
+    header: <div className="border-b p-4 text-lg font-bold">MyApp</div>,
+    footer: <div className="border-t p-4 text-sm text-gray-500">v1.0.0</div>,
   },
 };
 
@@ -33,7 +33,11 @@ export const Collapsible: Story = {
   args: {
     items,
     collapsible: true,
-    header: <div className="p-4 font-bold overflow-hidden whitespace-nowrap">Admin Panel</div>,
+    header: (
+      <div className="overflow-hidden whitespace-nowrap p-4 font-bold">
+        Admin Panel
+      </div>
+    ),
   },
 };
 

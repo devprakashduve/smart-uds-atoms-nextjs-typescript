@@ -38,10 +38,14 @@ describe('DisplayMap Component', () => {
       formHandlerContent: {
         btnText: 'Contact Us',
         onSubmit: jest.fn(),
-        inputFields: [{ name: 'email', label: 'Email', type: 'email', value: '' }],
+        inputFields: [
+          { name: 'email', label: 'Email', type: 'email', value: '' },
+        ],
       },
     };
     render(<DisplayMap {...propsWithForm} />);
-    expect(screen.getByRole('button', { name: /Contact Us/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /Contact Us/i })
+    ).toBeInTheDocument();
   });
 });

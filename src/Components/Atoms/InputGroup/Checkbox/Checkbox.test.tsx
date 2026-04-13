@@ -90,7 +90,8 @@ describe('Checkbox Component', () => {
     // We can't query by role easily, maybe by class or just ensuring the Icon is NOT there
     // Or we can add a test id to the indeterminate box if needed, or query by className convention
     // But let's check that the Icon is not rendered
-    const icon = screen.queryByRole('img', { hidden: true }); // Icon usually has some role or we check presence
+    // Check that the Icon is not rendered
+    screen.queryByRole('img', { hidden: true });
     // Actually Icon component likely renders an SVG. If name="check", it might not have accessible role "img" by default unless configured.
     // In "displays checkmark when checked", it queries by testId 'checkmark-icon'.
     // 'checkmark-icon' is the wrapper div.

@@ -41,10 +41,7 @@ export default function Tooltip({
     isRounded ? 'rounded' : ''
   );
 
-  const tipClasses = classNames(
-    'h-5 w-4 bg-atom-btn-dark',
-    setBackground
-  );
+  const tipClasses = classNames('h-5 w-4 bg-atom-btn-dark', setBackground);
 
   const showArrow = position === 'top' || position === 'bottom';
 
@@ -65,11 +62,19 @@ export default function Tooltip({
           className={`absolute z-50 ${positionClasses[position]} flex flex-col items-center`}
         >
           {position === 'bottom' && showArrow && (
-            <span className={tipClasses} style={styles.clipTop} aria-hidden="true" />
+            <span
+              className={tipClasses}
+              style={styles.clipTop}
+              aria-hidden="true"
+            />
           )}
           <span className={tooltipClasses}>{content}</span>
           {position === 'top' && showArrow && (
-            <span className={tipClasses} style={styles.clipBottom} aria-hidden="true" />
+            <span
+              className={tipClasses}
+              style={styles.clipBottom}
+              aria-hidden="true"
+            />
           )}
         </span>
       )}

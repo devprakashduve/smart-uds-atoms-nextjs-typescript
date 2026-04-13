@@ -6,10 +6,22 @@ type SortDirection = 'asc' | 'desc' | null;
 
 const SortIcon = ({ direction }: { direction: SortDirection }) => {
   if (direction === 'asc')
-    return <span aria-hidden="true" className="ml-1 text-xs">↑</span>;
+    return (
+      <span aria-hidden="true" className="ml-1 text-xs">
+        ↑
+      </span>
+    );
   if (direction === 'desc')
-    return <span aria-hidden="true" className="ml-1 text-xs">↓</span>;
-  return <span aria-hidden="true" className="ml-1 text-xs opacity-40">↕</span>;
+    return (
+      <span aria-hidden="true" className="ml-1 text-xs">
+        ↓
+      </span>
+    );
+  return (
+    <span aria-hidden="true" className="ml-1 text-xs opacity-40">
+      ↕
+    </span>
+  );
 };
 
 const Table = <T,>({
@@ -22,12 +34,18 @@ const Table = <T,>({
   onPageChange,
   defaultSort,
 }: TableProps<T>) => {
-  const [sortKey, setSortKey] = useState<keyof T | null>(defaultSort?.key ?? null);
-  const [sortDir, setSortDir] = useState<SortDirection>(defaultSort?.direction ?? null);
+  const [sortKey, setSortKey] = useState<keyof T | null>(
+    defaultSort?.key ?? null
+  );
+  const [sortDir, setSortDir] = useState<SortDirection>(
+    defaultSort?.direction ?? null
+  );
 
   const handleSort = (key: keyof T) => {
     if (sortKey === key) {
-      setSortDir((prev) => (prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc'));
+      setSortDir((prev) =>
+        prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc'
+      );
       if (sortDir === 'desc') setSortKey(null);
     } else {
       setSortKey(key);
@@ -42,7 +60,9 @@ const Table = <T,>({
       const bVal = b[sortKey];
       if (aVal == null) return 1;
       if (bVal == null) return -1;
-      const cmp = String(aVal).localeCompare(String(bVal), undefined, { numeric: true });
+      const cmp = String(aVal).localeCompare(String(bVal), undefined, {
+        numeric: true,
+      });
       return sortDir === 'asc' ? cmp : -cmp;
     });
   }, [data, sortKey, sortDir]);
@@ -74,7 +94,9 @@ const Table = <T,>({
                 <span className="inline-flex items-center">
                   {col.header}
                   {col.sortable && (
-                    <SortIcon direction={sortKey === col.key ? sortDir : null} />
+                    <SortIcon
+                      direction={sortKey === col.key ? sortDir : null}
+                    />
                   )}
                 </span>
               </th>

@@ -11,20 +11,20 @@ const LandingPageTemplate: React.FC<LandingPageTemplateProps> = ({
   footer,
 }) => {
   return (
-    <div className="min-h-screen bg-white flex flex-col font-sans">
+    <div className="flex min-h-screen flex-col bg-white font-sans">
       {header && (
-        <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <header className="sticky top-0 z-40 border-b border-gray-100 bg-white/90 shadow-sm backdrop-blur-md">
           {header}
         </header>
       )}
 
       <main className="flex-1">
         {/* Hero */}
-        {hero && <section className="w-full animate-fadeIn">{hero}</section>}
+        {hero && <section className="animate-fadeIn w-full">{hero}</section>}
 
         {/* Features */}
         {features && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
             {features}
           </section>
         )}
@@ -32,7 +32,7 @@ const LandingPageTemplate: React.FC<LandingPageTemplateProps> = ({
         {/* Testimonials */}
         {testimonials && (
           <section className="bg-gray-50 py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               {testimonials}
             </div>
           </section>
@@ -43,8 +43,8 @@ const LandingPageTemplate: React.FC<LandingPageTemplateProps> = ({
 
         {/* CTA */}
         {cta && (
-          <section className="bg-gradient-to-r from-indigo-600 to-violet-600 text-white py-20 px-4">
-            <div className="max-w-3xl mx-auto text-center">{cta}</div>
+          <section className="bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-20 text-white">
+            <div className="mx-auto max-w-3xl text-center">{cta}</div>
           </section>
         )}
       </main>

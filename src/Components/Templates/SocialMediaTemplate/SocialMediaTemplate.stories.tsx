@@ -15,7 +15,9 @@ type Story = StoryObj<typeof SocialMediaTemplate>;
 
 export const Default: Story = {
   args: {
-    megaMenu: <div className="p-4 border-b bg-white font-bold">SocialSpace</div>,
+    megaMenu: (
+      <div className="border-b bg-white p-4 font-bold">SocialSpace</div>
+    ),
     leftSidebar: (
       <div className="space-y-4 p-4">
         <div className="font-bold text-blue-600">Home</div>
@@ -27,13 +29,16 @@ export const Default: Story = {
     feed: (
       <div className="space-y-4">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="bg-white border p-4 rounded-lg shadow-sm">
-            <div className="flex items-center space-x-2 mb-2">
-              <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
+          <div key={i} className="rounded-lg border bg-white p-4 shadow-sm">
+            <div className="mb-2 flex items-center space-x-2">
+              <div className="h-8 w-8 rounded-full bg-gray-300"></div>
               <div className="font-bold">User {i}</div>
             </div>
-            <p>This is a social media post #{i}! How exciting to use atomic design!</p>
-            <div className="mt-4 flex space-x-4 text-gray-500 text-sm">
+            <p>
+              This is a social media post #{i}! How exciting to use atomic
+              design!
+            </p>
+            <div className="mt-4 flex space-x-4 text-sm text-gray-500">
               <span>Like</span>
               <span>Comment</span>
               <span>Share</span>
@@ -44,16 +49,16 @@ export const Default: Story = {
     ),
     rightSidebar: (
       <div className="space-y-6 p-4">
-        <div className="bg-white border rounded-lg p-4 shadow-sm">
-          <h4 className="font-bold mb-2">Trending</h4>
-          <ul className="text-sm space-y-2">
+        <div className="rounded-lg border bg-white p-4 shadow-sm">
+          <h4 className="mb-2 font-bold">Trending</h4>
+          <ul className="space-y-2 text-sm">
             <li>#ReactJS</li>
             <li>#AtomicDesign</li>
             <li>#NextJS</li>
           </ul>
         </div>
-        <div className="bg-white border rounded-lg p-4 shadow-sm">
-          <h4 className="font-bold mb-2">Who to follow</h4>
+        <div className="rounded-lg border bg-white p-4 shadow-sm">
+          <h4 className="mb-2 font-bold">Who to follow</h4>
           <div className="space-y-2">
             <div className="text-xs text-blue-600">Follow User X</div>
             <div className="text-xs text-blue-600">Follow User Y</div>
@@ -62,7 +67,7 @@ export const Default: Story = {
       </div>
     ),
     mobileNav: (
-      <div className="flex justify-around p-3 border-t bg-white">
+      <div className="flex justify-around border-t bg-white p-3">
         <span>🏠</span>
         <span>🔍</span>
         <span>🔔</span>
@@ -74,17 +79,22 @@ export const Default: Story = {
 
 export const FeedOnly: Story = {
   args: {
-    megaMenu: <div className="p-4 border-b bg-white font-bold">SocialSpace</div>,
+    megaMenu: (
+      <div className="border-b bg-white p-4 font-bold">SocialSpace</div>
+    ),
     feed: (
       <div className="space-y-4">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="bg-white border p-4 rounded-lg shadow-sm">
-            <div className="flex items-center space-x-2 mb-2">
-              <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
+          <div key={i} className="rounded-lg border bg-white p-4 shadow-sm">
+            <div className="mb-2 flex items-center space-x-2">
+              <div className="h-8 w-8 rounded-full bg-gray-300"></div>
               <div className="font-bold">User {i}</div>
             </div>
-            <p>This is a social media post #{i}! How exciting to use atomic design!</p>
-            <div className="mt-4 flex space-x-4 text-gray-500 text-sm">
+            <p>
+              This is a social media post #{i}! How exciting to use atomic
+              design!
+            </p>
+            <div className="mt-4 flex space-x-4 text-sm text-gray-500">
               <span>Like</span>
               <span>Comment</span>
               <span>Share</span>

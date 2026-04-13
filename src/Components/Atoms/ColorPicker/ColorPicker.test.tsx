@@ -27,13 +27,17 @@ describe('ColorPicker', () => {
 
   it('uses the defaultValue for uncontrolled mode', () => {
     render(<ColorPicker defaultValue="#FF0000" />);
-    const hexInput = screen.getByLabelText('Hex color code') as HTMLInputElement;
+    const hexInput = screen.getByLabelText(
+      'Hex color code'
+    ) as HTMLInputElement;
     expect(hexInput.value).toBe('#FF0000');
   });
 
   it('uses the value prop in controlled mode', () => {
     render(<ColorPicker value="#00FF00" />);
-    const hexInput = screen.getByLabelText('Hex color code') as HTMLInputElement;
+    const hexInput = screen.getByLabelText(
+      'Hex color code'
+    ) as HTMLInputElement;
     expect(hexInput.value).toBe('#00FF00');
   });
 
@@ -57,7 +61,9 @@ describe('ColorPicker', () => {
     render(<ColorPicker disabled />);
     const hexInput = screen.getByLabelText('Hex color code');
     expect(hexInput).toBeDisabled();
-    const colorInput = document.querySelector('input[type="color"]') as HTMLInputElement;
+    const colorInput = document.querySelector(
+      'input[type="color"]'
+    ) as HTMLInputElement;
     expect(colorInput).toBeDisabled();
   });
 
@@ -68,7 +74,9 @@ describe('ColorPicker', () => {
 
   it('shows the aria-label for the color swatch', () => {
     render(<ColorPicker label="Theme Color" />);
-    const colorInput = document.querySelector('input[type="color"]') as HTMLInputElement;
+    const colorInput = document.querySelector(
+      'input[type="color"]'
+    ) as HTMLInputElement;
     expect(colorInput).toHaveAttribute('aria-label', 'Theme Color');
   });
 });

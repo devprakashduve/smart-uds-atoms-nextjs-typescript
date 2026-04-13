@@ -18,7 +18,7 @@ export default function ProductCardWithRating({
       <div className="p-4">
         <h3 className="text-lg font-semibold">{productName}</h3>
         {price !== undefined && (
-          <p className="mt-1 text-lg font-bold text-atom-card-DEFAULT">
+          <p className="text-atom-card-DEFAULT mt-1 text-lg font-bold">
             ${price.toFixed(2)}
           </p>
         )}

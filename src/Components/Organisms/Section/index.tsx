@@ -20,7 +20,9 @@ const Section: React.FC<SectionProps> = ({
   const alignClasses = alignMap[textAlign];
 
   return (
-    <section className={`${border ? 'border-t border-gray-200' : ''} ${className ?? ''}`}>
+    <section
+      className={`${border ? 'border-t border-gray-200' : ''} ${className ?? ''}`}
+    >
       <div className="container mx-auto px-5 py-24">
         {(heading || subheading) && (
           <div

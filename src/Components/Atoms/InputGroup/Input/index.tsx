@@ -147,7 +147,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             value={value}
             onChange={handleChange}
             onFocus={(e) => {
-              if (validationOnFocus) handleChange(e as unknown as React.ChangeEvent<HTMLInputElement>);
+              if (validationOnFocus)
+                handleChange(
+                  e as unknown as React.ChangeEvent<HTMLInputElement>
+                );
               if (onFocus) onFocus(e);
             }}
             onBlur={onBlur}

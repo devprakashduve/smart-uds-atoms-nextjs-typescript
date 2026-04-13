@@ -4,7 +4,9 @@ import Quote from './index';
 
 describe('Quote', () => {
   it('renders the quote content', () => {
-    render(<Quote content="The best way to predict the future is to invent it." />);
+    render(
+      <Quote content="The best way to predict the future is to invent it." />
+    );
     expect(
       screen.getByText('The best way to predict the future is to invent it.')
     ).toBeInTheDocument();
@@ -21,7 +23,9 @@ describe('Quote', () => {
   });
 
   it('renders source when provided', () => {
-    render(<Quote content="Test quote" author="Alan Kay" source="PARC Research" />);
+    render(
+      <Quote content="Test quote" author="Alan Kay" source="PARC Research" />
+    );
     expect(screen.getByText(/PARC Research/)).toBeInTheDocument();
   });
 
@@ -31,7 +35,9 @@ describe('Quote', () => {
   });
 
   it('renders author footer when only source is provided', () => {
-    const { container } = render(<Quote content="Test quote" source="Some Book" />);
+    const { container } = render(
+      <Quote content="Test quote" source="Some Book" />
+    );
     expect(container.querySelector('footer')).toBeInTheDocument();
   });
 
@@ -43,13 +49,17 @@ describe('Quote', () => {
   });
 
   it('hides quote icon when showIcon is false', () => {
-    const { container } = render(<Quote content="Test quote" showIcon={false} />);
+    const { container } = render(
+      <Quote content="Test quote" showIcon={false} />
+    );
     const icon = container.querySelector('[aria-hidden="true"]');
     expect(icon).not.toBeInTheDocument();
   });
 
   it('applies custom className to the blockquote', () => {
-    const { container } = render(<Quote content="Test quote" className="custom-class" />);
+    const { container } = render(
+      <Quote content="Test quote" className="custom-class" />
+    );
     expect(container.querySelector('blockquote')).toHaveClass('custom-class');
   });
 
@@ -62,7 +72,9 @@ describe('Quote', () => {
       />
     );
     expect(
-      screen.getByText('Innovation distinguishes between a leader and a follower.')
+      screen.getByText(
+        'Innovation distinguishes between a leader and a follower.'
+      )
     ).toBeInTheDocument();
     expect(screen.getByText('Steve Jobs')).toBeInTheDocument();
     expect(screen.getByText(/Various interviews/)).toBeInTheDocument();

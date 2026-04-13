@@ -38,13 +38,13 @@ describe('Avatar Component', () => {
 
   it('renders with rounded false (square)', () => {
     // With src
-    const { container: containerSrc } = render(<Avatar src="/test.jpg" rounded={false} />);
+    render(<Avatar src="/test.jpg" rounded={false} />);
     const img = screen.getByRole('img');
     expect(img).toHaveClass('rounded-lg');
     expect(img).not.toHaveClass('rounded-full');
 
     // Without src (initials)
-    const { container: containerInitials } = render(<Avatar rounded={false} />);
+    render(<Avatar rounded={false} />);
     // The inner div has the class
     const innerDiv = screen.getByText('UA').closest('div');
     expect(innerDiv).toHaveClass('rounded-lg');

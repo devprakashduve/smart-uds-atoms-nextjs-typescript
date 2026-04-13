@@ -10,12 +10,12 @@ const Quote: React.FC<QuoteProps> = ({
 }) => {
   return (
     <blockquote
-      className={`relative border-l-4 border-atom-btn-dark pl-6 py-2 italic text-atom-input-text ${className ?? ''}`}
+      className={`relative border-l-4 border-atom-btn-dark py-2 pl-6 italic text-atom-input-text ${className ?? ''}`}
     >
       {showIcon && (
         <span
           aria-hidden="true"
-          className="absolute -left-1 -top-2 text-5xl leading-none text-atom-btn-dark/30 select-none"
+          className="absolute -left-1 -top-2 select-none text-5xl leading-none text-atom-btn-dark/30"
         >
           &ldquo;
         </span>

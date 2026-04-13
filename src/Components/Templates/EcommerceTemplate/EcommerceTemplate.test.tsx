@@ -17,7 +17,7 @@ describe('EcommerceTemplate', () => {
 
   it('renders all slots correctly', () => {
     render(<EcommerceTemplate {...mockProps} />);
-    
+
     expect(screen.getByTestId('logo')).toBeInTheDocument();
     expect(screen.getAllByTestId('search')[0]).toBeInTheDocument();
     expect(screen.getByTestId('cart')).toBeInTheDocument();
@@ -30,9 +30,14 @@ describe('EcommerceTemplate', () => {
   });
 
   it('renders without optional slots', () => {
-    // Only required (if any, but interface says all are optional except logo in some cases? 
+    // Only required (if any, but interface says all are optional except logo in some cases?
     // Actually our interface has most as optional ReactNode)
-    render(<EcommerceTemplate logo={<div>Logo</div>} products={<div>Products</div>} />);
+    render(
+      <EcommerceTemplate
+        logo={<div>Logo</div>}
+        products={<div>Products</div>}
+      />
+    );
     expect(screen.getByText('Logo')).toBeInTheDocument();
     expect(screen.getByText('Products')).toBeInTheDocument();
   });

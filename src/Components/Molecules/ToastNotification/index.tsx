@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ToastNotificationProps, ToastPosition } from './ToastNotificationProps.interface';
+import {
+  ToastNotificationProps,
+  ToastPosition,
+} from './ToastNotificationProps.interface';
 import Button from '@/Components/Atoms/Button';
 import Icon from '@/Components/Atoms/Icon';
 
@@ -37,12 +40,7 @@ const ToastNotification: React.FC<ToastNotificationProps> = ({
 
   return (
     <div
-      className={`${positionClasses[position]} z-50 mb-4 flex w-full max-w-xs items-center justify-between rounded-lg font-medium text-white shadow-md transition-opacity duration-500 ease-in-out
-        ${type === 'success' ? 'bg-success' : ''}
-        ${type === 'warning' ? 'bg-warning' : ''}
-        ${type === 'info' ? 'bg-info' : ''}
-        ${type === 'error' ? 'bg-error' : ''}
-        ${className ?? ''}`}
+      className={`${positionClasses[position]} z-50 mb-4 flex w-full max-w-xs items-center justify-between rounded-lg font-medium text-white shadow-md transition-opacity duration-500 ease-in-out ${type === 'success' ? 'bg-success' : ''} ${type === 'warning' ? 'bg-warning' : ''} ${type === 'info' ? 'bg-info' : ''} ${type === 'error' ? 'bg-error' : ''} ${className ?? ''}`}
       role="alert"
       aria-live="assertive"
       aria-atomic="true"

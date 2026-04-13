@@ -17,7 +17,9 @@ export interface FormHandlerProps {
    * Return an object of { fieldName: errorMessage } to block submission.
    * Return empty object {} to allow submission.
    */
-  onValidate?: (data: Record<string, FormDataEntryValue>) => Record<string, string>;
+  onValidate?: (
+    data: Record<string, FormDataEntryValue>
+  ) => Record<string, string>;
   /** Show an error summary at the top of the form. Default: false */
   showErrorSummary?: boolean;
 }

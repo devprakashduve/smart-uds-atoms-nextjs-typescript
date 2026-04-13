@@ -112,12 +112,14 @@ describe('RadioButton Component', () => {
   });
 
   it('renders correctly with different sizes', () => {
-    const { rerender } = render(<RadioButton size="sm" name="size-test" label="Small" />);
+    const { rerender } = render(
+      <RadioButton size="sm" name="size-test" label="Small" />
+    );
     // Hits default/sm case
-    
+
     rerender(<RadioButton size="md" name="size-test" label="Medium" />);
     // Hits md case
-    
+
     rerender(<RadioButton size="lg" name="size-test" label="Large" />);
     // Hits lg case
   });

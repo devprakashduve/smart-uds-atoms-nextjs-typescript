@@ -32,7 +32,9 @@ export function ThemeProvider({
   });
 
   const getSystemTheme = (): 'light' | 'dark' =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
 
   const resolvedTheme: 'light' | 'dark' =
     theme === 'system'
@@ -71,7 +73,9 @@ export function ThemeProvider({
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, resolvedTheme, setTheme, toggleTheme }}
+    >
       {children}
     </ThemeContext.Provider>
   );

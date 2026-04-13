@@ -24,7 +24,10 @@ const FileUploader: React.FC<FileUploaderProps> = ({
     const fileArray = Array.from(files);
 
     for (const file of fileArray) {
-      if (acceptedFileTypes.length > 0 && !acceptedFileTypes.includes(file.type)) {
+      if (
+        acceptedFileTypes.length > 0 &&
+        !acceptedFileTypes.includes(file.type)
+      ) {
         setError(errorMessageFileType);
         onFileChange(null);
         return;
@@ -79,11 +82,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({
           onDragEnter={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`flex cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed p-8 text-center transition-colors focus:outline-none focus:ring-2 focus:ring-atom-input focus:ring-offset-1
-            ${isDragging
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed p-8 text-center transition-colors focus:outline-none focus:ring-2 focus:ring-atom-input focus:ring-offset-1 ${
+            isDragging
               ? 'border-atom-input bg-atom-input/10 text-atom-input'
               : 'border-atom-input-text/40 hover:border-atom-input/80'
-            }`}
+          }`}
         >
           <svg
             className="mb-2 h-8 w-8 text-atom-input-text/50"

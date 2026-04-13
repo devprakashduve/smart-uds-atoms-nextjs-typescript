@@ -27,9 +27,7 @@ const Avatar = ({
   };
 
   return (
-    <div
-      className={`relative inline-block ${sizeClasses[size]} ${className}`}
-    >
+    <div className={`relative inline-block ${sizeClasses[size]} ${className}`}>
       {src ? (
         <UDSImage
           src={src}
@@ -47,7 +45,10 @@ const Avatar = ({
             rounded ? 'rounded-full' : 'rounded-lg'
           } flex h-full w-full items-center justify-center border-2 border-atom-avatar-background`}
         >
-          <span className="text-lg font-medium text-atom-avatar-text" aria-hidden="true">
+          <span
+            className="text-lg font-medium text-atom-avatar-text"
+            aria-hidden="true"
+          >
             {initials || 'UA'}
           </span>
         </div>

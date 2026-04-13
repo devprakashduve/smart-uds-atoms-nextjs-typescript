@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { ThemeProvider, useTheme } from './index';
 
 // Helper component to consume theme context
@@ -148,7 +147,9 @@ describe('ThemeProvider', () => {
   });
 
   it('useTheme throws when used outside ThemeProvider', () => {
-    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const consoleError = jest
+      .spyOn(console, 'error')
+      .mockImplementation(() => {});
     expect(() => render(<ThemeConsumer />)).toThrow(
       'useTheme must be used within a ThemeProvider'
     );

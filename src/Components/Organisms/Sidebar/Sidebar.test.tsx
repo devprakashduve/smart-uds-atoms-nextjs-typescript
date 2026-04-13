@@ -16,10 +16,10 @@ describe('Sidebar Component', () => {
 
   it('renders header and footer when provided and not collapsed', () => {
     render(
-      <Sidebar 
-        items={mockItems} 
-        header={<div>My Header</div>} 
-        footer={<div>My Footer</div>} 
+      <Sidebar
+        items={mockItems}
+        header={<div>My Header</div>}
+        footer={<div>My Footer</div>}
       />
     );
     expect(screen.getByText('My Header')).toBeInTheDocument();
@@ -28,9 +28,9 @@ describe('Sidebar Component', () => {
 
   it('hides header when collapsed', () => {
     render(
-      <Sidebar 
-        items={mockItems} 
-        header={<div>My Header</div>} 
+      <Sidebar
+        items={mockItems}
+        header={<div>My Header</div>}
         isCollapsed={true}
       />
     );
@@ -39,18 +39,18 @@ describe('Sidebar Component', () => {
 
   it('toggles collapsed state when click button is pressed', () => {
     const { container } = render(<Sidebar items={mockItems} />);
-    
+
     const aside = container.querySelector('aside');
     expect(aside).toHaveClass('lg:w-64');
-    
+
     const toggleButton = screen.getByRole('button');
-    
+
     // Check for "Home" text
     expect(screen.getByText('Home')).toBeInTheDocument();
-    
+
     // Click toggle
     fireEvent.click(toggleButton);
-    
+
     expect(aside).toHaveClass('lg:w-20');
     // Home text should be hidden when collapsed
     expect(screen.queryByText('Home')).not.toBeInTheDocument();

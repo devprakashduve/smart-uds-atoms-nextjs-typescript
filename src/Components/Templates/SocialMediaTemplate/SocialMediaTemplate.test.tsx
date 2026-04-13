@@ -22,7 +22,9 @@ describe('SocialMediaTemplate', () => {
   });
 
   it('renders with only feed and header', () => {
-    render(<SocialMediaTemplate header={mockProps.header} feed={mockProps.feed} />);
+    render(
+      <SocialMediaTemplate header={mockProps.header} feed={mockProps.feed} />
+    );
     expect(screen.getByTestId('header')).toBeInTheDocument();
     expect(screen.getByTestId('feed')).toBeInTheDocument();
     expect(screen.queryByTestId('left')).not.toBeInTheDocument();

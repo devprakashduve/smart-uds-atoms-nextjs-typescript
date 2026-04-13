@@ -108,21 +108,24 @@ describe('Button Component', () => {
           {variant} btn
         </Button>
       );
-      
-      const name = variant === 'icon' ? /Icon button/i : new RegExp(`${variant} btn`, 'i');
+
+      const name =
+        variant === 'icon' ? /Icon button/i : new RegExp(`${variant} btn`, 'i');
       const button = screen.getByRole('button', { name });
       expect(button).toBeInTheDocument();
     });
   });
 
   it('renders disabled variant with correct classes', () => {
-     render(
-        <Button variant="disabled" onClick={() => {}}>
-          Disabled Variant
-        </Button>
-      );
-      const button = screen.getByRole('button', { name: /Disabled Variant/i });
-      expect(button).toHaveClass('cursor-not-allowed bg-atom-btn-dark text-atom-btn-light opacity-50');
+    render(
+      <Button variant="disabled" onClick={() => {}}>
+        Disabled Variant
+      </Button>
+    );
+    const button = screen.getByRole('button', { name: /Disabled Variant/i });
+    expect(button).toHaveClass(
+      'cursor-not-allowed bg-atom-btn-dark text-atom-btn-light opacity-50'
+    );
   });
 
   it('renders with sm size', () => {
@@ -198,7 +201,12 @@ describe('Button Component', () => {
 
   it('displays loading spinner replacing icon when loading is true', () => {
     render(
-      <Button loading icon={<ArrowDownIcon />} iconPosition="left" onClick={() => {}}>
+      <Button
+        loading
+        icon={<ArrowDownIcon />}
+        iconPosition="left"
+        onClick={() => {}}
+      >
         Loading
       </Button>
     );
@@ -207,7 +215,12 @@ describe('Button Component', () => {
 
   it('displays loading spinner replacing icon on right when loading is true', () => {
     render(
-      <Button loading icon={<ArrowDownIcon />} iconPosition="right" onClick={() => {}}>
+      <Button
+        loading
+        icon={<ArrowDownIcon />}
+        iconPosition="right"
+        onClick={() => {}}
+      >
         Loading
       </Button>
     );

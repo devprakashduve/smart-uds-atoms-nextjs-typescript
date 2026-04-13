@@ -79,38 +79,46 @@ describe('Slider Component', () => {
 
     // With border = true
     const { container: c1 } = render(
-        <Slider 
-            min={0} 
-            max={100} 
-            value={50} 
-            onChange={handleChange} 
-            setStep={handleSetStep}
-            border={true} 
-            step={1}
-        />
+      <Slider
+        min={0}
+        max={100}
+        value={50}
+        onChange={handleChange}
+        setStep={handleSetStep}
+        border={true}
+        step={1}
+      />
     );
     expect(c1.querySelector('.border-atom-input-\\/40')).toBeInTheDocument();
 
     // With background = true
     const { container: c2 } = render(
-        <Slider 
-            min={0} 
-            max={100} 
-            value={50} 
-            onChange={handleChange} 
-            setStep={handleSetStep}
-            background={true}
-            step={1} 
-        />
+      <Slider
+        min={0}
+        max={100}
+        value={50}
+        onChange={handleChange}
+        setStep={handleSetStep}
+        background={true}
+        step={1}
+      />
     );
     const slider2 = c2.querySelector('input');
     expect(slider2).not.toHaveClass('bg-atom-input');
   });
 
   it('renders with default step when not provided', () => {
-    render(<Slider min={0} max={100} value={50} onChange={() => { } } setStep={function (step: number): void {
-      throw new Error('Function not implemented.');
-    } } />);
+    render(
+      <Slider
+        min={0}
+        max={100}
+        value={50}
+        onChange={() => {}}
+        setStep={function (_step: number): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
     const slider = screen.getByTitle('slider') as HTMLInputElement;
     // Step default is 1
     expect(slider).toHaveAttribute('step', '1');

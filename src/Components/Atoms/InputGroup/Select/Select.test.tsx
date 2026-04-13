@@ -22,13 +22,7 @@ describe('Select Component', () => {
   });
 
   it('renders without label', () => {
-    render(
-      <Select
-        options={options}
-        name="testSelect"
-        onChange={() => {}}
-      />
-    );
+    render(<Select options={options} name="testSelect" onChange={() => {}} />);
     expect(screen.queryByText('Test Select')).not.toBeInTheDocument();
   });
 
@@ -188,13 +182,7 @@ describe('Select Component', () => {
 
   it('does not change value if no options', () => {
     const handleChange = jest.fn();
-    render(
-      <Select
-        options={[]}
-        name="testSelect"
-        onChange={handleChange}
-      />
-    );
+    render(<Select options={[]} name="testSelect" onChange={handleChange} />);
     const selectElement = screen.getByRole('combobox');
     fireEvent.change(selectElement, { target: { value: 'option2' } });
     expect(handleChange).not.toHaveBeenCalled();

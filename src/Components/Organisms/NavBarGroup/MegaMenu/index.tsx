@@ -164,7 +164,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   onSearchChange,
   searchPlaceholder,
   searchData,
-  cart,
+  cart: _cart,
 }) => {
   // --- State ---
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -191,6 +191,9 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
     if (typeof searchValue === 'string') {
       setInternalSearchQuery(searchValue);
     }
+  }, [searchValue]);
+
+  useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -205,6 +208,8 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
       document.removeEventListener('mousedown', handleOutsideClick);
       clearMenuTimeout();
     };
+    // closeMenu and clearMenuTimeout only reference stable state setters and refs
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Run effect only once on mount
 
   useEffect(() => {
@@ -297,7 +302,7 @@ const MegaMenu: React.FC<MegaMenuProps> = ({
   };
   const handleMobileLinkClick = (
     event: React.MouseEvent,
-    href: string,
+    _href: string,
     revealsColumnId?: string
   ) => {
     if (isMobile) {
