@@ -1,87 +1,66 @@
 name: Release & Publish to GitHub and npm
 
 on:
-  release:
-    types: [published]
   push:
     branches:
       - main
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
+    # Prevent infinite loop: skip the version-bump commit pushed by this workflow
+    if: github.actor != 'github-actions[bot]'
+    permissions:
+      contents: write
+      packages: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
 
-      - run: npm install
-      - run: npm test # Add tests if applicable
-      - run: npm run build
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event.action == 'published'
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js (GitHub Packages)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          registry-url: https://npm.pkg.github.com/
-          scope: '@devprakashduve'
-
-      - name: Authenticate with GitHub Packages
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
-
       - name: Install dependencies
         run: npm install
 
-      - name: Bump Version (GitHub Packages)
-        run: npm version patch --no-git-tag-version
+      - name: Run tests
+        run: npm test
+
+      - name: Build library
+        run: npm run build:lib
+
+      - name: Bump version
+        id: version
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          npm version patch --no-git-tag-version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "new_version=$NEW_VERSION" >> "$GITHUB_OUTPUT"
+          git add package.json
+          git commit -m "chore: bump version to v$NEW_VERSION"
+          git push
+
+      - name: Publish to npmjs.com
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          npm publish --access=public --registry=https://registry.npmjs.org/
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.npmrc
+          npm publish --registry=https://npm.pkg.github.com/
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  publish-npm:
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.event.action == 'published'
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js (npmjs.com)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          registry-url: https://registry.npmjs.org/
-
-      - name: Authenticate with npmjs.com
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Bump Version (npm)
-        run: npm version patch --no-git-tag-version
-
-      - name: Publish to npmjs.com
-        run: npm  publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish summary
+        run: |
+          echo "### Published v${{ steps.version.outputs.new_version }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- npmjs.com: \`@devprakashduve/atomic-uds-next-app\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- GitHub Packages: \`@devprakashduve/atomic-uds-next-app\`" >> "$GITHUB_STEP_SUMMARY"
